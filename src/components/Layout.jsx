@@ -3,19 +3,20 @@ import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-do
 import {
   Menu, X, ChevronDown, ChevronRight, Search,
   Facebook, Youtube, Linkedin, Twitter, Heart,
-  Mail, Phone
+  Mail, Phone, MapPin
 } from 'lucide-react';
-import { nav, legal } from '../data';
+import { nav, topNav, legal } from '../data';
+import { siteInfo } from '../content';
+import Cookie from './Cookie';
 import DonateLink from './DonateLink';
 
 export const Logo = () => (
-  <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="IHRC Sri Lanka Branch">
-    <img src="/logo.jpeg" alt="IHRC logo" className="h-14 w-14 object-contain mix-blend-multiply sm:h-20 sm:w-20" />
-    <span className="hidden h-16 w-px bg-slate-300 sm:block" />
+  <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="IHRC-USA">
+    <img src="/logo.jpeg" alt="IHRC logo" className="h-10 w-10 object-contain mix-blend-multiply sm:h-12 sm:w-12" />
+    <span className="hidden h-9 w-px bg-slate-300 sm:block" />
     <span className="font-serif leading-tight">
-      <b className="block text-2xl text-navy sm:text-4xl">IHRC</b>
-      <span className="block text-sm font-bold text-navy sm:text-xl">Sri Lanka Branch</span>
-      <i className="hidden text-sm sm:block">Human Rights for a Better Tomorrow</i>
+      <b className="block text-xl text-navy sm:text-2xl">IHRC-USA</b>
+      <i className="hidden text-xs sm:block">“Equal Justice for Everyone & Everywhere”</i>
     </span>
   </Link>
 );
@@ -24,7 +25,7 @@ const SearchBox = ({ cls = '' }) => {
   const [q, setQ] = useState('');
   const go = useNavigate();
   return (
-    <form role="search" onSubmit={e => { e.preventDefault(); go('/news?q=' + encodeURIComponent(q.trim())); }} className={'flex ' + cls}>
+    <form role="search" onSubmit={e => { e.preventDefault(); go('/search?q=' + encodeURIComponent(q.trim())); }} className={'flex ' + cls}>
       <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search..." aria-label="Search"
         className="min-w-0 flex-1 rounded-l border border-slate-300 px-3 py-2 text-sm outline-none focus:border-brand" />
       <button className="rounded-r bg-navy px-3 text-white hover:bg-brand" aria-label="Search">
@@ -34,19 +35,23 @@ const SearchBox = ({ cls = '' }) => {
   );
 };
 
-const Social = () => [Facebook, Youtube, Linkedin, Twitter].map((I, i) => (
-  <a key={i} href="#" onClick={e => e.preventDefault()} aria-label="social"
-    className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white hover:bg-brand">
-    <I size={16} />
-  </a>
-));
+const socialIcons = { facebook: Facebook, youtube: Youtube, linkedin: Linkedin, twitter: Twitter };
+const Social = () => Object.entries(siteInfo.social).filter(([, u]) => u).map(([k, u]) => {
+  const I = socialIcons[k];
+  return (
+    <a key={k} href={u} target="_blank" rel="noopener noreferrer" aria-label={k}
+      className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white hover:bg-brand">
+      <I size={16} />
+    </a>
+  );
+});
 
 const DesktopNav = () => (
   <nav className="hidden bg-navy lg:block">
     <div className="mx-auto flex max-w-[1600px] items-center">
       <div className="w-72 shrink-0" />
       <ul className="flex flex-1 items-center">
-        {nav.map(n => {
+        {topNav.map(n => {
           const I = n.i;
           return (
             <li key={n.l} className="group relative">
@@ -184,50 +189,46 @@ const Drawer = ({ open, close }) => (
   </div>
 );
 
+const quick = [['About Us', '/who-we-are'], ['Human Rights', '/human-rights'], ['Programs', '/programs'], ['Leadership', '/leadership'], ['Global Network', '/global-network'], ['Events', '/events'], ['News', '/news'], ['Publications', '/publications']];
+const involved = [['Membership', '/membership'], ['Volunteer', '/volunteer'], ['Awards & Recognition', '/awards'], ['Partnerships', '/partnerships'], ['NGO Partnership Application', '/partnership-application'], ['Donation', '/donation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
+
 const Footer = () => (
   <footer className="mt-8 bg-navy text-blue-100">
     <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
       <div>
-        <b className="font-serif text-2xl text-white">IHRC–USA</b>
-        <p className="mt-2 text-sm">Equal Justice for Everyone &amp; Everywhere.</p>
+        <Link to="/" className="flex items-center gap-3" aria-label="IHRC-USA home">
+          <img src="/logo.jpeg" alt="IHRC logo" className="h-14 w-14 rounded bg-white object-contain p-1" />
+          <b className="font-serif text-xl text-white">IHRC-USA</b>
+        </Link>
+        <p className="mt-3 text-sm">Promoting human rights awareness, humanitarian values, peace, equality and community development. Equal Justice for Everyone &amp; Everywhere.</p>
         <div className="mt-4 flex gap-2"><Social /></div>
       </div>
       <div>
         <b className="text-white">Quick Links</b>
         <ul className="mt-2 space-y-1 text-sm">
-          {[['About', '/who-we-are'], ['Programs', '/programs'], ['News & Events', '/news'],
-            ['Verify Member', '/verify'], ['Leadership', '/leadership'],
-            ['General Assembly', '/general-assembly'], ['Commissioners', '/commissioners'],
-            ['Ambassadors', '/ambassadors'], ['Volunteers', '/volunteers']
-          ].map(([l, t]) => (
-            <li key={t}><Link to={t} className="hover:text-white">{l}</Link></li>
-          ))}
+          {quick.map(([l, t]) => <li key={t}><Link to={t} className="hover:text-white">{l}</Link></li>)}
         </ul>
       </div>
       <div>
         <b className="text-white">Get Involved</b>
         <ul className="mt-2 space-y-1 text-sm">
-          {[['Apply for Membership', '/apply'], ['Volunteer', '/volunteer'],
-            ['Donate', '/donate'], ['Membership Benefits', '/membership-benefits']
-          ].map(([l, t]) => (
-            <li key={t}>
-              {t === '/donate'
-                ? <DonateLink className="hover:text-white">{l}</DonateLink>
-                : <Link to={t} className="hover:text-white">{l}</Link>
-              }
-            </li>
-          ))}
+          {involved.map(([l, t]) => <li key={t}><Link to={t} className="hover:text-white">{l}</Link></li>)}
         </ul>
       </div>
       <div className="space-y-2 text-sm">
         <b className="text-white">Contact</b>
-        <p className="flex gap-2"><Phone size={16} />WhatsApp: +94 71 101 0031</p>
-        <p className="flex gap-2"><Mail size={16} /><a href="mailto:globalihrc@gmail.com" className="hover:text-white">globalihrc@gmail.com</a></p>
+        {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">Office: {siteInfo.phone}</a></p>}
+        {siteInfo.whatsapp && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp: {siteInfo.whatsapp}</a></p>}
+        <p className="flex gap-2"><Mail size={16} className="mt-0.5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
+        {siteInfo.address && <p className="flex gap-2"><MapPin size={16} className="mt-0.5 shrink-0" />{siteInfo.address}</p>}
       </div>
     </div>
     <div className="border-t border-white/10 px-4 py-4 text-center text-xs">
-      © 2026 International Human Rights Council–USA ·{' '}
-      {legal.map(([l, t]) => <Link key={t} to={t} className="mx-2 hover:text-white">{l}</Link>)}
+      © 2026 IHRC-USA. All rights reserved.
+      <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
+        {legal.map(([l, t]) => <Link key={t} to={t} className="hover:text-white">{l}</Link>)}
+        <button onClick={() => window.dispatchEvent(new Event('open-cookie-settings'))} className="hover:text-white">Cookie Settings</button>
+      </div>
     </div>
   </footer>
 );
@@ -245,13 +246,13 @@ export default function Layout() {
   return (
     <div className="flex h-screen flex-col overflow-hidden">
       <header className="shrink-0 bg-gradient-to-r from-white via-white to-sky-50 shadow-sm">
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-2 lg:px-12 lg:py-3">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-1 lg:px-12 lg:py-1.5">
           <Logo />
           <p className="hidden flex-1 text-center font-serif text-lg italic text-slate-700 xl:block">
             "Because what we do, we do for generations"
           </p>
           <div className="hidden items-center gap-2 md:flex">
-            <Social /><span className="mx-3 h-10 w-px bg-navy" /><SearchBox cls="w-64" />
+            <Social /><span className="mx-3 h-8 w-px bg-navy" /><SearchBox cls="w-64" />
           </div>
           <button onClick={() => setOpen(true)} aria-label="Open menu"
             className="grid h-11 w-11 place-items-center rounded-lg bg-navy text-white lg:hidden">
@@ -270,6 +271,7 @@ export default function Layout() {
           <Footer />
         </main>
       </div>
+      <Cookie />
     </div>
   );
 }

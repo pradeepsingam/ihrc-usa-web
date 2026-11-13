@@ -9,7 +9,7 @@ export const objectiveGroups = [
     items: [
       "To create awareness among children about education and to make efforts to increase the literacy rate in the society.",
       "To create awareness among the people about following traffic rules.",
-      "Striving to create an educated, healthy and strong society.",
+      "Striving to create an educated, healthy, and strong society.",
     ],
   },
   {
@@ -60,7 +60,7 @@ export const objectiveGroups = [
     icon: "🌱",
     tone: "emerald",
     items: [
-      "Striving to prevent environmental pollution.",
+      "To strive to prevent environmental pollution.",
       "Restoring a respectful relationship with the land.",
       "Promote waste reduction and recycling. This includes educating the public about waste reduction, supporting recycling programs, and advocating for sustainable waste management practices.",
       "Supporting sustainable agriculture and food systems.",
@@ -74,7 +74,7 @@ export const objectiveGroups = [
     icon: "🧭",
     tone: "violet",
     items: [
-      "Indivisibility, inalienability and universality of rights.",
+      "Indivisibility, inalienability, and universality of rights.",
       "Intersectional equality and non-discrimination.",
       "Meaningful participation, inclusion and empowerment.",
       "Transparency and accountability.",
@@ -82,7 +82,7 @@ export const objectiveGroups = [
       "Equality and non-discrimination.",
       "Listening to, learning from, and honoring Indigenous worldviews, including the value of working in reciprocity and relationship.",
       "When engaging with society, we move at the speed of trust. We recognize the importance of learning from the stories of the diverse people in these countries, including our elders and youth.",
-      "Access to information, space and services is essential to the realization of human rights. Our work will be tailored to different abilities, cultures, languages, educational levels, learning styles and perspectives.",
+      "Access to information, space, and services is essential to the realization of human rights. Our work will be tailored to different abilities, cultures, languages, educational levels, learning styles, and perspectives.",
     ],
   },
 ];

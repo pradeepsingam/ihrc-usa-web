@@ -1,9 +1,12 @@
-import {ShieldCheck,Scale,Users,ClipboardCheck,Handshake,UserCheck} from 'lucide-react';
+import {ShieldCheck,ClipboardCheck,Scale,UserCheck,Handshake,Landmark,HandHeart,GraduationCap,TrendingUp} from 'lucide-react';
 
 export const coreValues=[
-{name:'Integrity',text:'Be honest and act with strong moral principles.',icon:ShieldCheck},
-{name:'Conduct',text:'Act responsibly, avoid conflicts of interest, and maintain public trust.',icon:Scale},
-{name:'Neutrality',text:'Make decisions based on merit and act fairly without bias.',icon:Users},
-{name:'Accountability',text:'Set clear goals, accept responsibility, and evaluate actions.',icon:ClipboardCheck},
-{name:'Respect',text:'Treat all people fairly and promote a safe, inclusive environment.',icon:Handshake},
-{name:'Leadership',text:'Act independently, without bias, and promote equal rights for all.',icon:UserCheck}];
+{name:'Integrity',text:'The International Human Rights Council – USA is an independent non-governmental organization that pursues pressing issues. Its staff is highly committed to their work; Furthermore, they are not intimidated by governments or authorities from regions or geographical areas that do not comply with basic human rights standards. Grants for IHRC-USA are not accepted from donors who wish to direct operations or do not support our objectives.',icon:ShieldCheck},
+{name:'Conduct',text:'Must be honest and transparent. Use your powers responsibly. Report any misconduct. Avoid real or perceived conflicts of interest. Work to gain and maintain the trust of high-level public figures.',icon:ClipboardCheck},
+{name:'Neutrality',text:'Make decisions and provide advice based on merit. Act without personal bias, greed, prejudice, or selfishness. Act objectively and fairly, considering all relevant facts and fair criteria. Implement government policies and programs equitably.',icon:Scale},
+{name:'Accountability',text:'Strive to set clear goals in a transparent manner. Accept your decisions and take responsibility for your actions. Endeavor to use resources in the best possible way. Subject yourself to appropriate self-examination.',icon:UserCheck},
+{name:'Respect',text:'Treat colleagues, other government officials, and the community fairly and objectively. Ensure freedom from discrimination, harassment, and bullying. Use this to continuously improve upon decisions. Share your opinions.',icon:Handshake},
+{name:'Leadership',text:'Act vigorously to implement, encourage, and support these values. One must act independently and without bias, without identifying themselves with any political party or ideology. There should be no discrimination based on race, religion, language, caste, or gender when making decisions.',icon:Landmark},
+{name:'Support',text:'Make decisions and provide advice in accordance with human rights. Act vigorously to implement, encourage, and support human rights. Promote human rights education.',icon:HandHeart},
+{name:'Skills',text:'Human rights defenders possess significant expertise in our fields. Our analysis is based on robust research and international human rights standards. IHRC-USA always strives for high-quality work, and staff seek to support the growth of the skills and expertise of local partners.',icon:GraduationCap},
+{name:'Performance',text:'The International Human Rights Council – USA is a results-oriented and lean organization with strict financial controls and management. To ensure transparency, accountability, and learning in planning, monitoring, and evaluation, we use a results-based management system. We are able to adapt quickly to changing and volatile situations and have a high degree of flexibility when needed.',icon:TrendingUp}];
