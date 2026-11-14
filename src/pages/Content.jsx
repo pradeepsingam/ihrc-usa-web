@@ -5,10 +5,11 @@ import {texts,programs,benefits,groups,people,allPeople} from '../data';
 import {Page,Card,Tabs,Accordion,ProgramCard,PersonCard,IconBadge,Btn,Pending} from '../components/UI';
 import ObjectivesSection from '../components/ObjectivesSection';
 import CoreValues from '../components/CoreValues';
+import SdgGoals from '../components/SdgGoals';
 import BenefitsOfIhrc from '../components/BenefitsOfIhrc';
 
 export const TextPage=({k})=>{const t=texts[k];return <Page title={t.title} sub={t.sub}>{k==='constitution'?<Accordion items={t.b}/>:
-<div className="space-y-4">{t.b.map(([h,p])=>k==='objectives'&&h==='Objectives'?<ObjectivesSection key={h}/>:k==='objectives'&&h==='Core Values'?<CoreValues key={h}/>:<Card key={h} ><div className="relative"><h2 className="font-serif text-xl font-bold text-navy">{h}</h2>{typeof p==='string'?<p className="mt-2 whitespace-pre-line text-slate-700">{p}</p>:<>{!Array.isArray(p)&&<p className="mt-2 text-slate-700">{p.intro}</p>}<ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">{(Array.isArray(p)?p:p.items).map(i=><li key={i} className="flex gap-2 text-slate-700"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></>}</div></Card>)}</div>}</Page>};
+<div className="space-y-4">{t.b.map(([h,p])=>k==='who-we-are'&&h==='Sustainable Development Goals'?<SdgGoals key={h}/>:k==='objectives'&&h==='Objectives'?<ObjectivesSection key={h}/>:k==='objectives'&&h==='Core Values'?<CoreValues key={h}/>:<Card key={h} ><div className="relative"><h2 className="font-serif text-xl font-bold text-navy">{h}</h2>{typeof p==='string'?<p className="mt-2 whitespace-pre-line text-slate-700">{p}</p>:<>{!Array.isArray(p)&&<p className="mt-2 text-slate-700">{p.intro}</p>}<ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">{(Array.isArray(p)?p:p.items).map(i=><li key={i} className="flex gap-2 text-slate-700"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></>}</div></Card>)}</div>}</Page>};
 
 export const Programs=()=>{const[sp]=useSearchParams();const[c,setC]=useState(sp.get('cat')||'All');useEffect(()=>setC(sp.get('cat')||'All'),[sp]);const cats=['All',...new Set(programs.map(p=>p.c))];
 return <Page title="Programs" sub="Initiatives that educate, protect and empower."><Tabs items={cats} value={c} onChange={setC}/><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{programs.filter(p=>c==='All'||p.c===c).map(p=><ProgramCard key={p.t} p={p}/>)}</div></Page>};

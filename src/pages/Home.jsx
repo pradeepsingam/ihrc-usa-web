@@ -8,11 +8,10 @@ import CooperationMarquee from '../components/CooperationMarquee';
 import {Wrap,Heading,Btn,Card,IconBadge,ProgramCard,NewsCard,EventCard,Empty} from '../components/UI';
 
 const slides=[
-{k:'IHRC-USA',h:'Equal Justice',h2:'for Everyone & Everywhere.',bg:'/images/hero-building.jpg',p:'Promoting Human Dignity • Advancing Justice • Building Peace • Serving Humanity • Defending Human Rights',to:'/who-we-are',g:'from-sky-50 to-sky-100'},
+{k:'IHRC-USA',h:'Equal Justice',h2:'for Everyone & Everywhere.',bg:'/images/hero-building.jpg',p:'Promoting Human Dignity , Advancing Justice , Building Peace , Serving Humanity , Defending Human Rights',to:'/who-we-are',g:'from-sky-50 to-sky-100'},
 {k:'Get Involved',h:'Join Our Community.',h2:'Become a Member.',bg:'/images/hero-students.jpg',p:'Stand with advocates and volunteers across the island.',to:'/apply',g:'from-sky-50 to-sky-100'},
 {k:'Programs',h:'Education for Rights.',h2:'Hope for Generations.',bg:'/images/hero 1.png',p:'Workshops, clinics and youth forums in every province.',to:'/programs',g:'from-sky-50 to-sky-100'},
-// 4 - the motto slide (same style as the first slide)
-{k:'Our Motto',h:'Always, Everywhere,',h2:'Service Above Self.',bg:'/images/hero-building.jpg',p:'Dignity, security and well-being for all.',more:['Promoting Human Dignity • Advancing Justice • Building Peace • Serving Humanity • Defending Human Rights','“IHRC–USA is committed to advancing awareness of human rights, equality, justice, peace”'],to:'/vision-mission',g:'from-sky-50 to-sky-100'}];
+{k:'Our Motto',h:'Always, Everywhere,',h2:'Service Above Self.',bg:'/images/motto.jpg',p:'dignity, equality, freedom, peace, security and well-being for all.',to:'/vision-mission',g:'from-sky-50 to-sky-100'}];
 
 const priorities=[['Human Rights','Promoting awareness of fundamental human rights and dignity.'],['Justice','Encouraging equality, fairness, accountability and access to justice.'],['Peace','Supporting dialogue, tolerance and peaceful coexistence.'],['Humanitarian Service','Supporting vulnerable communities through responsible humanitarian initiatives.'],['Education','Promoting knowledge, awareness and opportunities for learning.'],['Empowerment','Encouraging women, children, youth and communities to participate in positive change.']];
 
