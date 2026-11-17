@@ -4,6 +4,7 @@ import {Card} from './UI';
 import {FORM_ENDPOINT} from '../config';
 import {siteInfo} from '../content';
 import {submitForm} from '../lib/submitForm';
+import PayButton from './PayButton';
 
 const EXT={image:['jpg','jpeg','png','gif','webp','heic','bmp'],pdf:['pdf'],document:['pdf','doc','docx','odt','rtf','txt']};
 const KIND_LABEL={image:'image',pdf:'PDF',document:'document'};
@@ -103,7 +104,7 @@ export default function RegistrationForm({spec}){
       {b.notes&&<ol className="mt-2 list-decimal space-y-0.5 pl-5 text-xs font-semibold text-slate-700">{b.notes.map(n=><li key={n}>{n}</li>)}</ol>}
       <p className="mt-2 text-xs text-slate-500">{fileHint(b.file)}</p>
       <label htmlFor={id} className={'mt-2 inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium text-brand hover:bg-blue-50 '+(e[b.id]?'border-red-400':'border-slate-300')}><Upload size={16}/>{files[b.id]?'Change file':'Add File'}</label>
-      <input id={id} type="file" className="sr-only" accept={b.file.kinds.flatMap(k=>EXT[k].map(x=>'.'+x)).join(',')} onChange={x=>pick(b,x.target.files[0])}/>
+      <input id={id} type="file" className="sr-only" accept={b.file.kinds.flatMap(k=>EXT[k].map(x=>'.'+x)).join(',')} onChange={x=>pick(b,x.target.files[0])}/>{b.payOnline&&<span className="ml-3 inline-block align-top"><PayButton/></span>}
       {files[b.id]&&<span className="ml-3 inline-flex items-center gap-1 text-sm text-slate-700"><Paperclip size={14}/>{files[b.id].name}<button type="button" onClick={()=>pick(b,null)} className="ml-2 text-xs text-red-600 underline">Remove</button></span>}
       <Err id={b.id}/></div>;
     return null;

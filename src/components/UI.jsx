@@ -30,13 +30,13 @@ export const EventCard=({e})=><Link to={'/events/'+e.id}><Card cls="flex h-full 
 export const PersonCard=({p})=><Link to={'/member-profile/'+p.id}><Card cls="text-center">{p.photo?<img src={p.photo} alt={p.name} className="mx-auto h-20 w-20 rounded-full object-cover"/>:<span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-navy/10 text-navy"><User size={34}/></span>}<h3 className={'mt-3 font-bold '+(p.tbd?'italic text-slate-400':'text-navy')}>{p.name}</h3><p className="text-sm text-slate-500">{p.role}</p></Card></Link>;
 
 const rules={email:/^\S+@\S+\.\S+$/,tel:/^\+?[\d\s-]{9,15}$/};
-export function Form({fields,button='Submit',ok='Thank you. Your email app has opened with your details. Please press Send there to complete your submission.',to=siteInfo.email,subject='',init={}}){
+export function Form({fields,button='Submit',ok='Thank you. Your email app has opened with your details. Please press Send there to complete your submission.',to=siteInfo.email,subject='',init={},afterDone=null}){
 const[v,setV]=useState(init);const[e,setE]=useState({});const[done,setDone]=useState(false);
 const set=(n,x)=>setV({...v,[n]:x});
 const[busy,setBusy]=useState(false);const[err,setErr]=useState('');const[mode,setMode]=useState('mailto');
 const submit=async ev=>{ev.preventDefault();const er={};fields.forEach(f=>{const x=(v[f.n]||'').trim();if(f.req&&!x)er[f.n]='This field is required';else if(x&&rules[f.type]&&!rules[f.type].test(x))er[f.n]='Enter a valid '+(f.type==='tel'?'phone number':f.type);});setE(er);setErr('');if(Object.keys(er).length)return;
 setBusy(true);try{const m=await submitForm({form:subject||button,subject:subject||button,to,fields:fields.map(f=>({label:f.label,value:v[f.n]}))});setMode(m);setDone(true);setV(init)}catch(x){setErr('Sorry, we could not send your form. Please try again, or email us at '+to+'.')}finally{setBusy(false)}};
-if(done)return <div role="status" className="rounded-xl bg-green-50 p-6 text-center text-green-800"><CheckCircle2 className="mx-auto mb-2"/><p>{mode==='api'?'Thank you. Your form has been submitted successfully. We will get back to you soon.':mode==='mailto-copy'?'Your details were copied. Your email app has opened: paste them into the email body (Ctrl+V) and press Send.':ok}</p><button onClick={()=>setDone(false)} className="mt-3 text-sm font-semibold underline">Fill again</button></div>;
+if(done)return <div role="status" className="rounded-xl bg-green-50 p-6 text-center text-green-800"><CheckCircle2 className="mx-auto mb-2"/><p>{mode==='api'?'Thank you. Your form has been submitted successfully. We will get back to you soon.':mode==='mailto-copy'?'Your details were copied. Your email app has opened: paste them into the email body (Ctrl+V) and press Send.':ok}</p>{afterDone}<button onClick={()=>setDone(false)} className="mt-3 block mx-auto text-sm font-semibold underline">Fill again</button></div>;
 const cl=n=>'mt-1 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand '+(e[n]?'border-red-400':'border-slate-300');
 const has=Object.keys(e).length>0;
 return <form noValidate onSubmit={submit} className="grid gap-4 sm:grid-cols-2">

@@ -1,4 +1,10 @@
-export const DONATE_URL = '';
+// ---- Online payment ------------------------------------------------------
+// Paste the official online payment link here (example: 'https://pay.example.org/ihrc').
+// It is used by:
+//   - the "Proceed to Payment" button shown after the Donation form is submitted
+//   - the "Pay Online" button next to every "Upload Payment Receipt" field
+// While this is empty the buttons are shown but disabled ("link coming soon").
+export const PAYMENT_URL = '';
 
 // ---- Backend connection -------------------------------------------------
 // Put your backend URL here (example: 'https://api.yourdomain.com/forms').

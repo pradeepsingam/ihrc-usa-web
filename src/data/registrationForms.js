@@ -180,9 +180,9 @@ export const membershipForm = {
       { t: 'radio', id: 'consent', n: 55, label: 'Privacy/Data Consent & Applicant Confirmation', lines: ['1. ' + consent], opts: AGREE, req: 1, mustAgree: 'I agree' },
     ] },
     { title: '', blocks: [
-      { t: 'info', lines: ['If you have any questions or require additional information, please contact us at the following email address: globalihrc@gmail.com'] },
+      { t: 'info', lines: ['If you have any questions or require additional information, please contact us at the following email address: info@gmail.com'] },
       { t: 'tel', id: 'emergency', n: '', label: 'Please provide an emergency phone number.' },
-      { t: 'file', id: 'receipt', label: 'Please Upload Payment Receipt', req: 1, file: { kinds: ['pdf', 'image'], maxMB: 10 } },
+      { t: 'file', id: 'receipt', label: 'Please Upload Payment Receipt', req: 1, payOnline: 1, file: { kinds: ['pdf', 'image'], maxMB: 10 } },
     ] },
   ],
 };

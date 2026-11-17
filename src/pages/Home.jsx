@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {ChevronLeft,ChevronRight,Heart,BadgeCheck,HandHeart,ShieldAlert} from 'lucide-react';
 import {mvo,programs,texts} from '../data';
 import {news,events,pubCategories} from '../content';
+import {recognitionText,recognitionMarquee} from '../data/recognition';
 import DonateLink from '../components/DonateLink';
 import CooperationMarquee from '../components/CooperationMarquee';
 import {Wrap,Heading,Btn,Card,IconBadge,ProgramCard,NewsCard,EventCard,Empty} from '../components/UI';
@@ -35,6 +36,7 @@ const latest=[...news].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
 return <>
 <Slider/>
 <Wrap cls="grid gap-4 md:grid-cols-3">{mvo.map(m=><Card key={m.t} cls="flex items-center gap-4"><IconBadge i={m.i}/><div><h3 className="font-bold text-navy">{m.t}</h3><p className="text-sm text-slate-600">{m.d}</p><Link to={m.to} className="mt-2 inline-block text-sm font-semibold text-brand">Read More →</Link></div></Card>)}</Wrap>
+<Wrap><Heading to="/recognition">Our Recognition</Heading><Card><p className="text-slate-700">{recognitionText}</p><div className="marquee mt-5 overflow-hidden" aria-label="UN and EU registrations"><ul className="marquee-track">{[...recognitionMarquee,...recognitionMarquee].map((l,k)=><li key={k} aria-hidden={k>=recognitionMarquee.length?'true':undefined} className="mr-4 flex h-28 w-52 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white p-3 shadow-sm"><img src={l.src} alt={k>=recognitionMarquee.length?'':l.alt} loading="lazy" className="max-h-full max-w-full object-contain"/></li>)}</ul></div><div className="mt-4"><Btn to="/recognition">Read More →</Btn></div></Card></Wrap>
 <Wrap><div><Heading>About IHRC-USA</Heading><p className="text-slate-700">The International Human Rights Council – USA (IHRC-USA) is an organization focused on human rights awareness, humanitarian values, peace, equality and community development, working through education, advocacy, community engagement and responsible cooperation.</p><div className="mt-4"><Btn to="/who-we-are">About Us →</Btn></div></div></Wrap>
 <Wrap><Heading to="/chairman-message">Welcome Message</Heading><Card><p className="whitespace-pre-line text-slate-700">{welcome}</p><div className="mt-4"><Btn to="/chairman-message" alt>Read the Chairman’s Message</Btn></div></Card></Wrap>
 <Wrap><Heading to="/who-we-are">Human Rights Priorities</Heading><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{priorities.map(([t,d])=><Card key={t}><h3 className="font-bold text-navy">{t}</h3><p className="mt-1 text-sm text-slate-600">{d}</p></Card>)}</div></Wrap>

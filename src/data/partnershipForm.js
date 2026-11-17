@@ -7,7 +7,7 @@ export const partnershipMeta = {
   title: 'Questionnaire for NGO Partnership',
   subtitle:
     'Questionnaire to be completed by non-governmental organizations applying for CSO Status with the Department of Social Affairs and Partnerships (DSAP), International Human Rights Council-USA',
-  email: 'globalihrc@gmail.com',
+  email: 'info@gmail.com',
 };
 
 // type: text | email | tel | url | date | textarea
@@ -93,7 +93,7 @@ export const formattingRules = [
   'The permanent address must be a valid physical address (PO Boxes are not accepted).',
   'Keep the e-mail address up to date at all times - it will be used for all future communications.',
   'Ensure any website provided is active at all times.',
-  'All applications, including the required documents, must be submitted using the email method accessible at globalihrc@gmail.com.',
+  'All applications, including the required documents, must be submitted using the email method accessible at info@gmail.com.',
 ];
 
 export const allQuestionItems = partnershipSections.flatMap(s => s.items);

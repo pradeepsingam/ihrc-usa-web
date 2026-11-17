@@ -1,8 +1,5 @@
 import {Link} from 'react-router-dom';
-import {DONATE_URL} from '../config';
 
+// Every "Donate" button opens the donation form first; the payment step comes after the form (see PayButton).
 export default function DonateLink({className='',onClick,children}){
-const external=/^https?:\/\//i.test(DONATE_URL);
-return external
-?<a href={DONATE_URL} onClick={onClick} className={className} target="_blank" rel="noopener noreferrer">{children}</a>
-:<Link to="/donation" onClick={onClick} className={className}>{children}</Link>}
+return <Link to="/donation" onClick={onClick} className={className}>{children}</Link>}

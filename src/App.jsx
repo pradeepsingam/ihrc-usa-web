@@ -5,6 +5,9 @@ import {TextPage,Programs,Benefits,People,Profile} from './pages/Content';
 import {Apply,Volunteer,Contact,Verify} from './pages/Forms';
 import {HumanRights,GlobalNetwork,Events,EventDetail,NewsList,NewsDetail,Publications,Awards,Partnerships,Donation,ReportConcern,ProgramDetail,SearchPage} from './pages/Extra';
 import PartnershipApplication from './pages/PartnershipApplication';
+import Roles from './pages/Roles';
+import Countries from './pages/Countries';
+import Recognition from './pages/Recognition';
 import {texts,groups} from './data';
 
 export default function App(){return <Routes><Route element={<Layout/>}>
@@ -12,6 +15,7 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 {Object.keys(texts).map(k=><Route key={k} path={k} element={<TextPage k={k}/>}/>)}
 {Object.keys(groups).map(g=><Route key={g} path={g} element={<People g={g}/>}/>)}
 <Route path="member-profile" element={<Profile/>}/><Route path="member-profile/:id" element={<Profile/>}/>
+<Route path="roles-responsibilities" element={<Roles/>}/><Route path="countries" element={<Countries/>}/><Route path="recognition" element={<Recognition/>}/>
 <Route path="human-rights" element={<HumanRights/>}/>
 <Route path="programs" element={<Programs/>}/><Route path="programs/:slug" element={<ProgramDetail/>}/>
 <Route path="global-network" element={<GlobalNetwork/>}/>

@@ -219,6 +219,7 @@ const Footer = () => (
         <b className="text-white">Contact</b>
         {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">Office: {siteInfo.phone}</a></p>}
         {siteInfo.whatsapp && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp: {siteInfo.whatsapp}</a></p>}
+        {siteInfo.whatsappChannel && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Channel</a></p>}
         <p className="flex gap-2"><Mail size={16} className="mt-0.5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
         {siteInfo.address && <p className="flex gap-2"><MapPin size={16} className="mt-0.5 shrink-0" />{siteInfo.address}</p>}
       </div>
