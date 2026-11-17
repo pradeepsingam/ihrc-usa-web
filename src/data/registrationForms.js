@@ -18,7 +18,7 @@ const checklistBlock = { t: 'radio', id: 'checklist', label: 'Essential Checklis
 
 const intro = (kind) => [
   'Thank you for your interest in joining the International Human Rights Council – USA (IHRC-USA). Please complete this application accurately. The information provided will be used for ' + (kind === 'membership' ? 'membership assessment' : 'assessment') + ', communication, documentation, and legitimate organizational purposes.',
-  'IHRC-USA is an independent, Non Governmental, ' + (kind === 'membership' ? 'human rights organization' : 'International Human Rights Council') + ' and is not a branch or agency of the United Nations.',
+  'IHRC-USA is an independent, Civil Society, ' + (kind === 'membership' ? 'human rights organization' : 'International Human Rights Council') + ' and is not a branch or agency of the United Nations.',
 ];
 
 export const volunteerForm = {
@@ -127,6 +127,9 @@ export const membershipForm = {
     ] },
     { title: 'Membership Category', note: '(There is a membership fee)', blocks: [
       { t: 'radio', id: 'title', n: 23, label: 'Select Membership Title', opts: ['General Member', 'Coordinator', 'HR Officer', 'Director', 'Ambassador', 'Youth Member', 'Professional Member', 'Youth Ambassador', 'Peace Ambassador', 'Secretary', 'Chief Investigation Officer', 'Commissioner', 'Other'], other: 'Other', req: 1 },
+      { t: 'radio', id: 'titleCoordinator', label: 'Coordinator Level', opts: ['International', 'National', 'Regional', 'District'], req: 1, showIf: { id: 'title', eq: 'Coordinator' } },
+      { t: 'radio', id: 'titleDirector', label: 'Director Level', opts: ['Regional', 'National'], req: 1, showIf: { id: 'title', eq: 'Director' } },
+      { t: 'radio', id: 'titleCommissioner', label: 'Commissioner Level', opts: ['Regional', 'National'], req: 1, showIf: { id: 'title', eq: 'Commissioner' } },
       { t: 'textarea', id: 'reason', n: 24, label: 'What is the reason for your interest in the human rights field?', req: 1 },
       { t: 'textarea', id: 'why', n: 25, label: 'Why do you want to join IHRC-USA?' },
       { t: 'textarea', id: 'contribute', n: 26, label: 'How can you contribute?', req: 1 },

@@ -1,0 +1,37 @@
+// The 31 Specific Objectives of IHRC-USA, shown on the website as Programs.
+// n = objective number, t = title, d = description, c = category (used by the filter tabs).
+// Images: /public/images/programs/<slug>.jpg
+export const programs=[
+  {n:1,t:"Education for Children",c:"Education",d:"To create educational awareness and increase the literacy rate of society."},
+  {n:2,t:"Environmental Protection",c:"Environment",d:"To work hard to prevent environmental pollution."},
+  {n:3,t:"Traffic Rules",c:"Education",d:"To create awareness about traffic rules among the public."},
+  {n:4,t:"Healthy Society",c:"Education",d:"To create an educated, healthy and strong society."},
+  {n:5,t:"Women’s Empowerment",c:"Inclusion",d:"To empower women by making them aware of their rights."},
+  {n:6,t:"Prevention of Human Trafficking",c:"Protection",d:"To prevent illegal abortion and human trafficking."},
+  {n:7,t:"Help for the Poor",c:"Humanitarian",d:"To secure the rights of poor and helpless people in society."},
+  {n:8,t:"Health",c:"Humanitarian",d:"To create health awareness and provide appropriate medical treatment."},
+  {n:9,t:"Government Schemes",c:"Advocacy",d:"To ensure that government welfare schemes reach ordinary citizens."},
+  {n:10,t:"Eradication",c:"Advocacy",d:"To create public awareness and work towards building a society free from fear and corruption."},
+  {n:11,t:"Police–Public Relations",c:"Advocacy",d:"To establish better coordination between the police and the public."},
+  {n:12,t:"Advice and Assistance",c:"Humanitarian",d:"To provide necessary advice and assistance to affected persons."},
+  {n:13,t:"Transparency",c:"Advocacy",d:"To work with the government to expose corruption and promote transparency."},
+  {n:14,t:"Prevention of Human Rights Violations",c:"Protection",d:"To continuously strive to prevent human rights violations."},
+  {n:15,t:"Legal Aid",c:"Protection",d:"To provide legal advice and assistance to those in need."},
+  {n:16,t:"Universal Rights",c:"Advocacy",d:"To uphold the indivisibility and universality of human rights."},
+  {n:17,t:"Equality",c:"Inclusion",d:"To ensure equality and non-discrimination among all parties."},
+  {n:18,t:"Empowerment",c:"Inclusion",d:"To promote meaningful participation, inclusion and social empowerment."},
+  {n:19,t:"Accountability",c:"Advocacy",d:"To ensure transparency and accountability in governance."},
+  {n:20,t:"Rule of Law",c:"Advocacy",d:"To give due respect to the rule of law."},
+  {n:21,t:"Non-Discrimination",c:"Inclusion",d:"To promote equality and freedom from discrimination."},
+  {n:22,t:"Indigenous Values",c:"Inclusion",d:"To learn about and respect Indigenous worldviews, relationships and values."},
+  {n:23,t:"Connecting with Nature",c:"Environment",d:"To re-establish a respectful relationship with the Earth and nature."},
+  {n:24,t:"Waste Management",c:"Environment",d:"To promote waste reduction and recycling and raise public awareness."},
+  {n:25,t:"Sustainable Agriculture",c:"Environment",d:"To support sustainable farming and food systems."},
+  {n:26,t:"Water Conservation",c:"Environment",d:"To promote rainwater harvesting, water recycling and water conservation practices."},
+  {n:27,t:"Minority Rights",c:"Inclusion",d:"To uphold a democracy in which the rights of the majority do not override the rights of minorities."},
+  {n:28,t:"The Speed of Trust",c:"Inclusion",d:"To learn from the stories of diverse people and build mutual trust within society."},
+  {n:29,t:"Right to Information",c:"Advocacy",d:"To ensure the right of all persons, including persons with disabilities and people from different linguistic and cultural backgrounds, to access information."},
+  {n:30,t:"Investigations",c:"Protection",d:"To conduct investigations into human rights violations and submit reports to the State Human Rights Commission."},
+  {n:31,t:"Legal Functions",c:"Advocacy",d:"To perform all other lawful functions necessary to achieve the above objectives."},
+];
+programs.forEach(p=>{p.slug=p.t.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');p.img='/images/programs/'+p.slug+'.jpg'});

@@ -7,16 +7,26 @@ export const FORM_LINKS={
  member:{to:'/apply',label:'Apply for Membership',icon:UserPlus},
  contact:{to:'/contact',label:'Contact Us',icon:Mail},
  concern:{to:'/report-concern',label:'Report a Concern',icon:ShieldAlert},
- partner:{to:'/partnership-application',label:'NGO Partnership Application',icon:Handshake}};
+ partner:{to:'/partnership-application',label:'CSO Partnership Application',icon:Handshake}};
 
 // Which buttons each page shows. The first button is the main (filled) one.
 export const PAGE_CTA={
  volunteers:['volunteer','member'],
  'general-assembly':['member','contact'],
  ambassadors:['member','contact'],
- 'ambassador-at-large':['member','contact'],
- 'chief-human-rights-investigation-officer':['concern','contact'],
- 'human-rights-officer':['concern','contact'],
+ 'board-of-directors':['member','contact'],
+ 'president-chairperson':['member','contact'],
+ 'secretary-general-chief-executive':['member','contact'],
+ 'deputy-secretary-general':['member','contact'],
+ 'international-executive-council':['member','contact'],
+ 'advisory-council':['member','contact'],
+ 'standing-committees':['member','contact'],
+ 'community-partners':['member','contact'],
+ 'our-partners':['partner','contact'],
+ 'what-we-do':['member','volunteer'],
+ directors:['member','contact'],
+ coordinators:['member','contact'],
+ 'human-rights-officers':['concern','contact'],
  'honorary-members':['member','contact'],
  commissioners:['member','contact'],
  leadership:['member','contact'],

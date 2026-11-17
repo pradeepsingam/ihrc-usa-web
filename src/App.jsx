@@ -8,14 +8,17 @@ import PartnershipApplication from './pages/PartnershipApplication';
 import Roles from './pages/Roles';
 import Countries from './pages/Countries';
 import Recognition from './pages/Recognition';
+import OurPartners from './pages/OurPartners';
+import WhatWeDo from './pages/WhatWeDo';
 import {texts,groups} from './data';
 
 export default function App(){return <Routes><Route element={<Layout/>}>
 <Route index element={<Home/>}/>
 {Object.keys(texts).map(k=><Route key={k} path={k} element={<TextPage k={k}/>}/>)}
 {Object.keys(groups).map(g=><Route key={g} path={g} element={<People g={g}/>}/>)}
+<Route path="ambassador-at-large" element={<Navigate to="/ambassadors" replace/>}/><Route path="chief-human-rights-investigation-officer" element={<Navigate to="/human-rights-officers" replace/>}/><Route path="human-rights-officer" element={<Navigate to="/human-rights-officers" replace/>}/>
 <Route path="member-profile" element={<Profile/>}/><Route path="member-profile/:id" element={<Profile/>}/>
-<Route path="roles-responsibilities" element={<Roles/>}/><Route path="countries" element={<Countries/>}/><Route path="recognition" element={<Recognition/>}/>
+<Route path="roles-responsibilities" element={<Roles/>}/><Route path="countries" element={<Countries/>}/><Route path="recognition" element={<Recognition/>}/><Route path="our-partners" element={<OurPartners/>}/><Route path="what-we-do" element={<WhatWeDo/>}/>
 <Route path="human-rights" element={<HumanRights/>}/>
 <Route path="programs" element={<Programs/>}/><Route path="programs/:slug" element={<ProgramDetail/>}/>
 <Route path="global-network" element={<GlobalNetwork/>}/>

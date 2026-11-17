@@ -1,12 +1,12 @@
-// Source of truth for the NGO partnership (CSO status) questionnaire.
+// Source of truth for the CSO partnership (CSO status) questionnaire.
 // Used by the online form (src/pages/PartnershipApplication.jsx).
 
 export const partnershipMeta = {
   org: 'International Human Rights Council – USA (IHRC-USA)',
   tagline: 'Equal Justice for Everyone & Everywhere',
-  title: 'Questionnaire for NGO Partnership',
+  title: 'Questionnaire for CSO Partnership',
   subtitle:
-    'Questionnaire to be completed by non-governmental organizations applying for CSO Status with the Department of Social Affairs and Partnerships (DSAP), International Human Rights Council-USA',
+    'Questionnaire to be completed by civil society organizations applying for CSO Status with the Department of Social Affairs and Partnerships (DSAP), International Human Rights Council-USA',
   email: 'info@gmail.com',
 };
 
@@ -18,8 +18,8 @@ export const partnershipSections = [
     title: 'A. Organization Details',
     items: [
       { id: 'applicantEmail', n: '', label: 'Email', type: 'email', req: 1, hint: 'The e-mail address used for all future communications.' },
-      { id: 'ngoName', n: 1, label: 'Name of the non-governmental organization (NGO)', type: 'text', req: 1, hint: 'Must match the certificate of registration exactly. Please do not use all capital letters.' },
-      { id: 'ngoAcronym', n: 2, label: 'Acronym of the non-governmental organization (NGO)', type: 'text', req: 1, hint: 'Capital letters are allowed for acronyms only. Spell the acronym out the first time it appears.' },
+      { id: 'ngoName', n: 1, label: 'Name of the civil society organization (CSO)', type: 'text', req: 1, hint: 'Must match the certificate of registration exactly. Please do not use all capital letters.' },
+      { id: 'ngoAcronym', n: 2, label: 'Acronym of the civil society organization (CSO)', type: 'text', req: 1, hint: 'Capital letters are allowed for acronyms only. Spell the acronym out the first time it appears.' },
       { id: 'submitDate', n: 3, label: 'Date of submission of the application', type: 'date', req: 1, hint: 'Example: January 7, 2019' },
       { id: 'hqAddress', n: 4, label: 'Address of headquarters', type: 'textarea', hint: 'A valid physical address (PO Boxes are not accepted).' },
       {
@@ -45,9 +45,9 @@ export const partnershipSections = [
   {
     title: 'B. Aims, History and Relevance',
     items: [
-      { id: 'aims', n: 8, label: 'Aims and purposes of the NGO', type: 'textarea', req: 1, hint: 'As set forth in its constitution, statutes or by-laws, including its strategy.', attach: 'Constitution, statutes or by-laws (if available)' },
-      { id: 'history', n: 9, label: 'History of the NGO, including the length of time the NGO has been in existence and relevant previous activities/events.', type: 'textarea', req: 1 },
-      { id: 'relevance', n: 10, label: 'Descriptive statement of the extent to which the purposes of the NGO relate to those of IHRC-USA, in particular what contribution the NGO can make to the work of IHRC-USA, including its technical cooperation programme.', type: 'textarea', req: 1 },
+      { id: 'aims', n: 8, label: 'Aims and purposes of the CSO', type: 'textarea', req: 1, hint: 'As set forth in its constitution, statutes or by-laws, including its strategy.', attach: 'Constitution, statutes or by-laws (if available)' },
+      { id: 'history', n: 9, label: 'History of the CSO, including the length of time the CSO has been in existence and relevant previous activities/events.', type: 'textarea', req: 1 },
+      { id: 'relevance', n: 10, label: 'Descriptive statement of the extent to which the purposes of the CSO relate to those of IHRC-USA, in particular what contribution the CSO can make to the work of IHRC-USA, including its technical cooperation programme.', type: 'textarea', req: 1 },
       { id: 'structure', n: 11, label: 'Organizational structure and officers’ names and titles', type: 'textarea', req: 1 },
     ],
   },
@@ -55,11 +55,11 @@ export const partnershipSections = [
     title: 'C. Membership and Cooperation',
     items: [
       { id: 'membership', n: 12, label: 'Membership', type: 'textarea', req: 1, hint: 'Nature of membership, name of members and country where their main offices are based.' },
-      { id: 'affiliation', n: 13, label: 'Indicate whether the NGO is a member of, affiliated to or otherwise associated with another NGO which enjoys consultative status or has other forms of association with IHRC-USA.', type: 'textarea', req: 1 },
-      { id: 'expertise', n: 14, label: 'Indicate how the NGO can contribute new expertise to IHRC-USA by describing which work outputs, as described in the Strategic Plan for the Organization, that they would be interested in contributing to in the next biennium?', type: 'textarea', req: 1 },
+      { id: 'affiliation', n: 13, label: 'Indicate whether the CSO is a member of, affiliated to or otherwise associated with another CSO which enjoys consultative status or has other forms of association with IHRC-USA.', type: 'textarea', req: 1 },
+      { id: 'expertise', n: 14, label: 'Indicate how the CSO can contribute new expertise to IHRC-USA by describing which work outputs, as described in the Strategic Plan for the Organization, that they would be interested in contributing to in the next biennium?', type: 'textarea', req: 1 },
       { id: 'un', n: 15, label: 'Relations with the United Nations system and other intergovernmental organizations?', type: 'textarea', req: 1 },
-      { id: 'participate', n: 16, label: 'Indicate by what means IHRC-USA could participate in the NGO’s activities', type: 'textarea', req: 1 },
-      { id: 'promote', n: 17, label: 'Indicate by what means the NGO will promote and disseminate the principles and work of IHRC-USA?', type: 'textarea', req: 1 },
+      { id: 'participate', n: 16, label: 'Indicate by what means IHRC-USA could participate in the CSO’s activities', type: 'textarea', req: 1 },
+      { id: 'promote', n: 17, label: 'Indicate by what means the CSO will promote and disseminate the principles and work of IHRC-USA?', type: 'textarea', req: 1 },
     ],
   },
   {
@@ -67,8 +67,8 @@ export const partnershipSections = [
     items: [
       { id: 'funding', n: 18, label: 'Indicate source of funding and provide evidence of financial sustainability', type: 'textarea', req: 1, hint: 'Three years.' },
       { id: 'publications', n: 19, label: 'List of publications and/or other relevant documentation', type: 'textarea', req: 1, attach: 'Publications or other relevant documentation' },
-      { id: 'additional', n: 20, label: 'Additional information which the NGO may wish to provide', type: 'textarea', req: 1 },
-      { id: 'provide', n: 21, label: 'What would that non-governmental organization (NGO) like to provide to IHRC-USA?', type: 'textarea', req: 1, hint: 'Please provide it clearly written, with the office seal and signature.', attach: 'Signed and sealed statement (if prepared as a separate document)' },
+      { id: 'additional', n: 20, label: 'Additional information which the CSO may wish to provide', type: 'textarea', req: 1 },
+      { id: 'provide', n: 21, label: 'What would that civil society organization (CSO) like to provide to IHRC-USA?', type: 'textarea', req: 1, hint: 'Please provide it clearly written, with the office seal and signature.', attach: 'Signed and sealed statement (if prepared as a separate document)' },
     ],
   },
   {

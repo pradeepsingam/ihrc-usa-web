@@ -1,15 +1,15 @@
-import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network,ShieldCheck,GraduationCap,Gavel,Search,Baby,AlertTriangle,HelpingHand,Bird,Leaf,Mountain,Users2,Accessibility,Info as InfoIcon,Shield,Ban,FlaskConical,Globe,Megaphone,Laptop} from 'lucide-react';
+import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network} from 'lucide-react';
 import {leaders} from './content';
-const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['Our Recognition','/recognition'],['Roles & Responsibilities','/roles-responsibilities'],['Countries','/countries']];
-const L=[['Leadership','/leadership'],['General Assembly','/general-assembly'],['Commissioners','/commissioners'],['Ambassadors','/ambassadors'],['Ambassador At Large','/ambassador-at-large'],['Chief Human Rights Investigation Officer','/chief-human-rights-investigation-officer'],['Human Rights Officer','/human-rights-officer'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
-const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion']];
+const A=[['Who We Are','/who-we-are'],['What We Do','/what-we-do'],['Our Partners','/our-partners'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['Our Recognition','/recognition'],['Roles & Responsibilities','/roles-responsibilities'],['Countries','/countries']];
+const L=[['Leadership','/leadership'],['General Assembly / Members’ Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President / Chairperson','/president-chairperson'],['Secretary-General / Chief Executive','/secretary-general-chief-executive'],['Deputy Secretary-General','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['Community Partners','/community-partners'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Ambassadors','/ambassadors'],['Human Rights Officers','/human-rights-officers'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
+const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion'],['Environment','/programs?cat=Environment']];
 export const nav=[
 {l:'Home',to:'/',i:Home},
 {l:'About',i:Info,c:[...A,['Human Rights','/human-rights']]},
 {l:'Our People',i:Users,c:L},
 {l:'Programs',i:Globe2,c:P},
 {l:'News & Events',i:Newspaper,c:[['Events','/events'],['News','/news'],['Publications','/publications']]},
-{l:'Get Involved',i:Heart,c:[['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Volunteer','/volunteer'],['Global Network','/global-network'],['Awards & Recognition','/awards'],['Partnerships','/partnerships'],['NGO Partnership Application','/partnership-application'],['Donation','/donation']]},
+{l:'Get Involved',i:Heart,c:[['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Volunteer','/volunteer'],['Global Network','/global-network'],['Awards & Recognition','/awards'],['Partnerships','/partnerships'],['CSO Partnership Application','/partnership-application'],['Donation','/donation']]},
 {l:'Verify Member',to:'/verify',i:BadgeCheck},
 {l:'Contact',i:Mail,c:[['Contact Us','/contact'],['Report a Human Rights Concern','/report-concern']]}];
 export const topNav=[
@@ -19,45 +19,33 @@ export const topNav=[
 {l:'Programs',to:'/programs'},
 {l:'Leadership',c:L},
 {l:'Events & News',c:[['Events','/events'],['News','/news'],['Publications','/publications']]},
-{l:'Get Involved',c:[['Membership','/membership'],['Volunteer','/volunteer'],['Global Network','/global-network'],['Awards & Recognition','/awards'],['Partnerships','/partnerships'],['NGO Partnership Application','/partnership-application'],['Donation','/donation']]},
+{l:'Get Involved',c:[['Membership','/membership'],['Volunteer','/volunteer'],['Global Network','/global-network'],['Awards & Recognition','/awards'],['Partnerships','/partnerships'],['CSO Partnership Application','/partnership-application'],['Donation','/donation']]},
 {l:'Contact Us',to:'/contact'}];
 export const legal=[['Privacy Policy','/privacy-policy'],['Terms of Use','/terms'],['Official Disclaimer','/disclaimer'],['Refund Policy','/refund']];
 export const mvo=[
 {t:'Our Mission',d:'To promote human-rights awareness, humanitarian values, peace, equality and community empowerment.',i:Scale,to:'/vision-mission'},
 {t:'Our Vision',d:'A world where every person enjoys dignity, equality, freedom, justice and peace.',i:Eye,to:'/vision-mission'},
 {t:'Our Objectives',d:'To build a fair, peaceful and inclusive society.',i:Handshake,to:'/objectives'}];
-export const programs=[
-{t:'Human Rights Protection',c:'Protection',d:'Safeguarding individuals and families from rights violations.',icon:ShieldCheck},
-{t:'Human Rights Education',c:'Education',d:'Workshops and school clubs that teach rights and responsibilities.',icon:GraduationCap},
-{t:'Legal Awareness & Assistance',c:'Advocacy',d:'Free sessions explaining legal protections and remedies.',icon:Gavel},
-{t:'Investigation & Documentation',c:'Protection',d:'Documenting cases carefully and independently.',icon:Search},
-{t:'Women Empowerment',c:'Inclusion',d:'Supporting women to lead and claim their rights.',icon:Users2},
-{t:'Child Protection',c:'Protection',d:'Keeping children safe, heard and supported.',icon:Baby},
-{t:'Human Trafficking Prevention',c:'Protection',d:'Awareness and reporting support against trafficking.',icon:AlertTriangle},
-{t:'Poverty & Vulnerable Persons',c:'Humanitarian',d:'Standing with the most vulnerable in our communities.',icon:HelpingHand},
-{t:'Peace & Conflict Prevention',c:'Advocacy',d:'Dialogue and reconciliation to build lasting peace.',icon:Bird},
-{t:'Environmental & Climate Justice',c:'Advocacy',d:'Linking environmental protection with human rights.',icon:Leaf},
-{t:'Indigenous Peoples & Traditional Values',c:'Inclusion',d:'Respecting heritage, culture and traditional knowledge.',icon:Mountain},
-{t:'Minority Rights',c:'Inclusion',d:'Equal dignity and protection for every community.',icon:Users},
-{t:'Disability Inclusion',c:'Inclusion',d:'Accessible, inclusive participation for all.',icon:Accessibility},
-{t:'Right to Information',c:'Advocacy',d:'Promoting open access to public information.',icon:InfoIcon},
-{t:'Police–Public Relations',c:'Advocacy',d:'Building trust between communities and law enforcement.',icon:Shield},
-{t:'Anti-Corruption & Transparency',c:'Advocacy',d:'Promoting accountability and integrity.',icon:Ban},
-{t:'Research & Policy Advocacy',c:'Advocacy',d:'Evidence-based research and policy recommendations.',icon:FlaskConical},
-{t:'International Cooperation',c:'Advocacy',d:'Partnering with organisations around the world.',icon:Globe},
-{t:'Humanitarian Response',c:'Humanitarian',d:'Relief support in times of crisis and disaster.',icon:Heart},
-{t:'Communication & Public Awareness',c:'Education',d:'Campaigns that bring human rights to everyone.',icon:Megaphone},
-{t:'Digital Human Rights Platform',c:'Education',d:'Online tools for learning, reporting and outreach.',icon:Laptop}];
-programs.forEach(p=>{p.slug=p.t.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});
-export const ambassadorCats=['Goodwill Ambassador','Peace Ambassador','Women Ambassador','Youth Ambassador','Ambassador – International Communications'];
+export {programs} from './data/programs';
+export const ambassadorCats=['Goodwill Ambassador','Peace Ambassador','Youth Ambassador','Women Ambassador','Ambassador – International Communications','Ambassador At Large'];
+const deptCats=['Specialized Administration & Programme Delivery','Human Rights & Legal Affairs','Peace & Reconciliation','Women & Child Protection','Youth Empowerment','Social Justice & Equality','Education & Research','Environment & Sustainable Development','International Relations & Cooperation','Media & Communications','Finance & Administration','Membership & Volunteer Affairs','Monitoring, Evaluation & Reporting'];
+const coordExtra=['Community Coordinator','Regional Coordinator','District Coordinator','National Coordinator'];
 export const groups={
 leadership:{title:'Leadership',sub:'The executive team guiding IHRC-USA.',r:['President','Vice President','Secretary','Treasurer','Director – Programs','Director – Communications']},
-'general-assembly':{title:'General Assembly',sub:'Members who represent the branch in its governing assembly.',r:Array(8).fill('Assembly Member')},
+'general-assembly':{title:'General Assembly / Members’ Assembly',sub:'Members who represent the branch in its governing assembly.',r:Array(8).fill('Assembly Member')},
 commissioners:{title:'Commissioners',sub:'Commissioners serving across districts and provinces.',r:['Commissioner – Central','Commissioner – Western','Commissioner – Northern','Commissioner – Southern','Commissioner – Eastern','Commissioner – Uva']},
-ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of human rights.',cats:ambassadorCats,r:ambassadorCats.flatMap(c=>[c,c])},
-'ambassador-at-large':{title:'Ambassador At Large',sub:'Special assignments and cross-regional initiatives allocated by IHRC-USA management.',r:Array(4).fill('Ambassador At Large')},
-'chief-human-rights-investigation-officer':{title:'Chief Human Rights Investigation Officer',sub:'Oversees initial documentation, information assessment and report preparation for human-rights complaints referred to the organisation.',r:['Chief Human Rights Investigation Officer']},
-'human-rights-officer':{title:'Human Rights Officer',sub:'Supports human-rights education, community awareness, basic complaint intake, safe documentation and referral.',r:Array(6).fill('Human Rights Officer')},
+directors:{title:'Directors',sub:'Departmental Directors leading IHRC-USA’s programme areas.',cats:deptCats,r:deptCats.map(d=>'Director – '+d)},
+coordinators:{title:'Coordinators',sub:'Departmental, community, regional, district and national coordinators.',cats:[...deptCats,...coordExtra],r:[...deptCats.map(d=>'Coordinator – '+d),...coordExtra]},
+ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of human rights.',cats:ambassadorCats,r:ambassadorCats.flatMap(c=>c==='Ambassador At Large'?[c,c,c,c]:[c,c])},
+'human-rights-officers':{title:'Human Rights Officers',sub:'Oversees and supports human-rights education, community awareness, complaint intake, safe documentation and referral.',cats:['Chief Human Rights Investigation Officer','Human Rights Officer'],r:['Chief Human Rights Investigation Officer',...Array(6).fill('Human Rights Officer')]},
+'board-of-directors':{title:'Board of Directors',sub:'The Board of Directors governing IHRC-USA.',r:Array(8).fill('Board Member')},
+'president-chairperson':{title:'President / Chairperson',sub:'The head of IHRC-USA.',r:Array(1).fill('President / Chairperson')},
+'secretary-general-chief-executive':{title:'Secretary-General / Chief Executive',sub:'The chief executive of IHRC-USA.',r:Array(1).fill('Secretary-General / Chief Executive')},
+'deputy-secretary-general':{title:'Deputy Secretary-General',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('Deputy Secretary-General')},
+'international-executive-council':{title:'International Executive Council',sub:'The international executive body of IHRC-USA.',r:Array(6).fill('Council Member')},
+'advisory-council':{title:'Advisory Council',sub:'Advisers supporting IHRC-USA with experience and expertise.',r:Array(6).fill('Advisory Council Member')},
+'standing-committees':{title:'Standing Committees',sub:'The standing committees of IHRC-USA.',r:Array(6).fill('Committee Member')},
+'community-partners':{title:'Community Partners',sub:'Community partners working with IHRC-USA.',r:Array(6).fill('Community Partner')},
 'honorary-members':{title:'Honorary Members',sub:'Persons recognised for supporting the organisation through experience, expertise, goodwill or community standing.',r:Array(6).fill('Honorary Member')},
 volunteers:{title:'Volunteers',sub:'The dedicated volunteers behind our community work.',r:Array(8).fill('Volunteer')}};
 export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>[k,g.r.map((r,i)=>{const id=k+'-'+(i+1);return {id,name:'Name to be added',role:r,tbd:!leaders[id],...leaders[id]}})]));
