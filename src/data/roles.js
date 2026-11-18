@@ -13,7 +13,7 @@ export const rolesStructure=[
  [
   "Governance & Leadership",
   [
-   "General Assembly / Members’ Assembly",
+   "General Assembly ",
    "Board of Directors",
    "President / Chairperson",
    "Secretary-General / Chief Executive",

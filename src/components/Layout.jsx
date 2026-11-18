@@ -215,7 +215,7 @@ const Drawer = ({ open, close }) => (
 );
 
 const quick = [['About Us', '/who-we-are'], ['Human Rights', '/human-rights'], ['Programs', '/programs'], ['Leadership', '/leadership'], ['Global Network', '/global-network'], ['Events', '/events'], ['News', '/news'], ['Publications', '/publications']];
-const involved = [['Membership', '/membership'], ['Volunteer', '/volunteer'], ['Awards & Recognition', '/awards'], ['Partnerships', '/partnerships'], ['CSO Partnership Application', '/partnership-application'], ['Donation', '/donation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
+const involved = [['Volunteer', '/volunteer'], ['Membership', '/membership'], ['Awards & Recognition', '/awards'], ['CSO Partnership', '/partnership-application'], ['Accreditation', '/accreditation'], ['Donation', '/donation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
 
 const Footer = () => (
   <footer className="mt-8 bg-navy text-blue-100">

@@ -7,7 +7,7 @@ export const FORM_LINKS={
  member:{to:'/apply',label:'Apply for Membership',icon:UserPlus},
  contact:{to:'/contact',label:'Contact Us',icon:Mail},
  concern:{to:'/report-concern',label:'Report a Concern',icon:ShieldAlert},
- partner:{to:'/partnership-application',label:'CSO Partnership Application',icon:Handshake}};
+ partner:{to:'/partnership-application',label:'CSO Partnership',icon:Handshake}};
 
 // Which buttons each page shows. The first button is the main (filled) one.
 export const PAGE_CTA={
@@ -23,7 +23,10 @@ export const PAGE_CTA={
  'standing-committees':['member','contact'],
  'community-partners':['member','contact'],
  'our-partners':['partner','contact'],
+ accreditation:['partner','contact'],
+ 'our-supporters':['partner','contact'],
  'what-we-do':['member','volunteer'],
+ 'high-commissioner':['member','contact'],
  directors:['member','contact'],
  coordinators:['member','contact'],
  'human-rights-officers':['concern','contact'],

@@ -1,6 +1,6 @@
 import {Page,Card} from '../components/UI';
 import FormCta from '../components/FormCta';
-import {recognitionText,recognitionMarquee} from '../data/recognition';
+import {recognitionMarquee} from '../data/recognition';
 
 const P='/images/partners/';
 const ourPartners=[
@@ -13,7 +13,6 @@ export default function OurPartners(){
  return <Page title="Our Partners" sub="The organizations and institutions IHRC-USA works with and is recognised by.">
   <div className="space-y-4">
    <Card><h2 className="font-serif text-xl font-bold text-navy">Our Partners</h2>
-    <p className="mt-2 text-slate-700">{recognitionText}</p>
     <div className="mt-4 grid gap-4 sm:grid-cols-2">{ourPartners.map(p=><Logo key={p.name} src={p.src} name={p.name} big/>)}</div></Card>
    <Card><h2 className="font-serif text-xl font-bold text-navy">Our Recognition</h2>
     <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{recognitionMarquee.map(r=><Logo key={r.src} src={r.src} name={r.alt}/>)}</div></Card>

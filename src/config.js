@@ -9,7 +9,7 @@ export const PAYMENT_URL = '';
 // ---- Backend connection -------------------------------------------------
 // Put your backend URL here (example: 'https://api.yourdomain.com/forms').
 // Every form on the site (Membership, Volunteer, Contact, Partnership request,
-// CSO Partnership Application) will POST to this URL.
+// CSO Partnership) will POST to this URL.
 //   Forms without files  -> JSON: { form, subject, submittedAt, data: { "<question>": "<answer>", ... } }
 //   Forms with uploads (Volunteer, Membership) -> multipart/form-data with the parts:
 //     form, subject, submittedAt, data (a JSON string of the answers),
@@ -17,3 +17,13 @@ export const PAYMENT_URL = '';
 // A 2xx response means success. While this is empty, forms fall back to opening
 // the visitor's email app (mailto) so nothing breaks before the backend is ready.
 export const FORM_ENDPOINT = '';
+
+// ---- Our Supporters (Donors & Sponsors) ----------------------------------
+// URL of your backend that returns the supporters. The "Our Supporters" page
+// loads it when it opens (GET) and shows the logos and details you add in the backend.
+// Expected JSON:
+//   { "donors":   [ { "name": "...", "logo": "https://.../logo.png", "details": "...", "url": "https://..." } ],
+//     "sponsors": [ { "name": "...", "logo": "...", "details": "...", "url": "..." } ] }
+// Only "name" is required; "logo", "details" and "url" are optional.
+// The backend must allow requests from this website (CORS).
+export const SUPPORTERS_ENDPOINT = '';

@@ -41,7 +41,7 @@ export default function PartnershipApplication(){
     if(Object.keys(er).length){const first=Object.keys(er)[0];const el=document.getElementById('pa-'+first)||document.getElementById('pa-agree');el&&el.scrollIntoView({behavior:'smooth',block:'center'});return}
     const flat=allQuestionItems.filter(q=>!q.fileOnly).flatMap(q=>q.parts?q.parts.map(p=>({label:q.n+'. '+q.label+' - '+p.label,value:v[p.id]})):[{label:(q.n?q.n+'. ':'')+q.label,value:q.type==='date'?fmtDate(v[q.id]||''):v[q.id]}]);
     setBusy(true);
-    try{const m=await submitForm({form:'CSO Partnership Application',subject:'CSO Partnership Application – '+(v.ngoName||''),to:meta.email,fields:flat});setDone(m);window.scrollTo({top:0,behavior:'smooth'})}
+    try{const m=await submitForm({form:'CSO Partnership',subject:'CSO Partnership – '+(v.ngoName||''),to:meta.email,fields:flat});setDone(m);window.scrollTo({top:0,behavior:'smooth'})}
     catch(x){setSendErr('Sorry, we could not send your application. Please try again, or email us at '+meta.email+'.')}
     finally{setBusy(false)}
   };
@@ -49,7 +49,7 @@ export default function PartnershipApplication(){
   const Label=({q,htmlFor})=><label htmlFor={htmlFor} className="block text-sm font-semibold text-navy">{q.n?<span className="mr-1">{q.n}.</span>:null}{q.label}{q.req&&<span className="text-red-600"> *</span>}</label>;
   const Err=({id})=>e[id]?<span role="alert" className="mt-1 block text-xs text-red-600">{e[id]}</span>:null;
 
-  return <Page title="CSO Partnership Application" sub="Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).">
+  return <Page title="CSO Partnership" sub="Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).">
     <div className="space-y-6">
       {done&&<div role="status" className="rounded-xl bg-green-50 p-5 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done==='api'?'Your application has been submitted.':'Your email app has opened.'}</div><p className="mt-2 text-sm">{done==='api'?'Thank you. ':done==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send. ':'Press Send in your email app to complete your application. '}Please also email your partnership request letter, logo and registration copy to <a className="font-semibold underline" href={'mailto:'+meta.email}>{meta.email}</a>.</p></div>}
 
