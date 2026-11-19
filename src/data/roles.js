@@ -11,7 +11,7 @@ export const rolesIntro={
 };
 export const rolesStructure=[
  [
-  "Governance & Leadership",
+  "Governance & Leadership(P5)",
   [
    "General Assembly ",
    "Board of Directors",
@@ -171,7 +171,7 @@ export const roles=[
    "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
-   "Leadership training; approved youth events; participation certificates subject to age and safeguarding rules."
+   "Leadership(P5) training; approved youth events; participation certificates subject to age and safeguarding rules."
   ],
   "reporting": [
    "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
