@@ -1,12 +1,12 @@
 ﻿import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network} from 'lucide-react';
 import {leaders} from './content';
 const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['What We Do','/what-we-do'],['Roles & Responsibilities','/roles-responsibilities'],['Our Partners','/our-partners'],['Our Supporters','/our-supporters'],['Our Recognition','/recognition'],['Countries','/countries']];
-const L=[['Leadership','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Deputy Secretary-General','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
+const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['National Member','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
 const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion'],['Environment','/programs?cat=Environment']];
 export const nav=[
 {l:'Home',to:'/',i:Home},
 {l:'About',i:Info,c:[...A,['Human Rights','/human-rights']]},
-{l:'Our Members',i:Users,c:L},
+{l:'Members',i:Users,c:L},
 {l:'Programs',i:Globe2,c:P},
 {l:'News & Events',i:Newspaper,c:[['Events','/events'],['News','/news'],['Projects','/projects'],['Publications','/publications']]},
 {l:'Get Involved',i:Heart,c:[['Volunteer','/volunteer'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
@@ -17,7 +17,7 @@ export const topNav=[
 {l:'About Us',c:A},
 {l:'Human Rights',to:'/human-rights'},
 {l:'Programs',to:'/programs'},
-{l:'Our Members',c:L},
+{l:'Members',c:L},
 {l:'Events & News',c:[['Events','/events'],['News','/news'],['Projects','/projects'],['Publications','/publications']]},
 {l:'Get Involved',c:[['Volunteer','/volunteer'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
 {l:'Contact Us',to:'/contact'}];
@@ -31,7 +31,7 @@ export const ambassadorCats=['Goodwill Ambassador','Peace Ambassador','Youth Amb
 const deptCats=['Human Rights & Legal Affairs','Peace & Reconciliation','Women & Child Protection','Youth Empowerment','Social Justice & Equality','Education & Research','Environment & Sustainable Development','International Relations & Cooperation','Media & Communications','Finance & Administration','Membership & Volunteer Affairs','Monitoring, Evaluation & Reporting'];
 const commCats=['Environment, Digital Affairs and Administration','Human Rights, Recommendations and Legal Affairs','Peace, Community and Humanitarian Affairs','Education, Youth and Public Awareness','International Relations, Research and Institutional Development'];
 export const groups={
-leadership:{title:'Leadership',sub:'The executive team guiding IHRC-USA.',r:['President','Vice President','Secretary','Treasurer','Director – Programs','Director – Communications']},
+leadership:{title:'Leadership(P5)',sub:'The executive team guiding IHRC-USA.',r:['President','Vice President','Secretary','Treasurer','Director – Programs','Director – Communications']},
 'general-assembly':{title:'General Assembly',sub:'Members who represent the branch in its governing assembly.',r:Array(8).fill('Assembly Member')},
 commissioners:{title:'Commissioners',sub:'Commissioners leading the main portfolios of IHRC-USA.',cats:commCats,r:commCats.map((c,i)=>i<4?'Commissioner — '+c:'Commissioner for '+c)},
 directors:{title:'Directors',sub:'Departmental Directors leading IHRC-USA’s programme areas.',cats:deptCats,r:deptCats.map(d=>'Director — '+d)},
@@ -41,7 +41,7 @@ ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of hu
 'board-of-directors':{title:'Board of Directors',sub:'The Board of Directors governing IHRC-USA.',r:Array(8).fill('Board Member')},
 'president-chairperson':{title:'President',sub:'The head of IHRC-USA.',r:Array(1).fill('President')},
 'secretary-general-chief-executive':{title:'Secretary-General',sub:'The chief executive of IHRC-USA.',r:Array(1).fill('Secretary-General')},
-'deputy-secretary-general':{title:'Deputy Secretary-General',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('Deputy Secretary-General')},
+'deputy-secretary-general':{title:'National Member',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('National Member')},
 'international-executive-council':{title:'International Executive Council',sub:'The international executive body of IHRC-USA.',r:Array(6).fill('Council Member')},
 'advisory-council':{title:'Advisory Council',sub:'Advisers supporting IHRC-USA with experience and expertise.',r:Array(6).fill('Advisory Council Member')},
 'standing-committees':{title:'Standing Committees',sub:'The standing committees of IHRC-USA.',r:Array(6).fill('Committee Member')},
@@ -56,7 +56,7 @@ export const benefits=[['Official Membership ID','A verifiable member number and
 const p=(t,s,b)=>({title:t,sub:s,b});
 export const texts={
 'who-we-are':p('Who We Are','An organization focused on human rights awareness, humanitarian values, peace, equality and community development.',[
-['Who We Are','The International Human Rights Council – USA (IHRC-USA) is an organization focused on human rights awareness, humanitarian values, peace, equality and community development.\n\nIHRC-USA seeks to bring together individuals, volunteers, professionals, community leaders and organizations who share a commitment to human dignity and social responsibility.\n\nOur approach emphasizes education, awareness, community participation, humanitarian service and constructive cooperation.'],
+['Who We Are','The International Human Rights Council – USA (IHRC-USA) is an organization focused on human rights awareness, Research,Dignity, humanitarian values, peace, equality and community development.\n\nIHRC-USA seeks to bring together individuals, volunteers, professionals, community leaders and organizations who share a commitment to human dignity and social responsibility.\n\nOur approach emphasizes education, awareness, community participation, humanitarian service and constructive cooperation.'],
 ['Our Core Principles',['Human Dignity','Universal Human Rights','Right to Life','Right to Liberty','Equality','Freedom from Discrimination','Freedom of Expression','Freedom of Religion or Belief','Right to Education','Right to Health','Women’s Rights','Children’s Rights','Refugee Rights','Environmental Rights','Right to Peace','Equality and Non-Discrimination','Freedom and Justice','Peace and Security','Rule of Law','Accountability','Transparency','Protection of Children','Environmental Responsibility']],
 ['Our Purpose',{intro:'IHRC-USA seeks to:',items:['Education, Literacy Awareness & Research','Prevent Environmental Pollution','Traffic Rule Awareness','Healthy and Strong Society','Women Empowerment','Prevent Abortion and Human Trafficking','Help the Poor and Helpless','Health Awareness and Proper Treatment','Government Schemes for Citizens','Rights Awareness','Police-Public Coordination','Counseling and Assistance','Expose Corruption and Ensure Transparency','Prevent Human Rights Violations','Legal Advice and Assistance','Indivisibility, Inalienability and Universality of Rights','Equality and Non-Discrimination','Inclusion and Empowerment','Transparency and Accountability','Respect for the Rule of Law','Equality and Non-Discrimination','Respect for Indigenous Worldviews and Values','Restore a Respectful Relationship with the Land','Support Sustainable Agriculture and Food Systems','Waste Reduction and Recycling','Rainwater Harvesting and Water Conservation','Democracy and Minority Rights','Trust & Learning','Access for All','Investigations & Reporting','Do All Other Lawful Activities']}],
 ['Sustainable Development Goals','']]),
