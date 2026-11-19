@@ -12,6 +12,14 @@ social:{facebook:'https://www.facebook.com/IHRC5/',instagram:'',youtube:'',tikto
 
 export const news=[];
 export const events=[];
+// ---- How news, events and projects are added -----------------------------
+// Items are shown as headings; clicking a heading opens the full article.
+// To show an item on a Program, add  program:'<slug>'  (the program page address, e.g. 'environmental-protection')
+// or  category:'Education'  (one of the Programs filter tabs) when it is not tied to one program.
+//   news     { id, title, type, date:'YYYY-MM-DD', summary, body, image, program }
+//   events   { id, title, date, endDate, location, description, body, image, images, program }
+//   projects { id, title, date, status:'Ongoing'|'Completed'|'Planned', location, summary, body, image, images, file, program }
+export const projects=[];
 export const publications=[];
 export const partners=[];
 export const awardCategories=[];
@@ -20,4 +28,4 @@ export const programDetails={};
 
 export const branches=[];
 
-export const pubCategories=['Official Handbook','Human Rights Awareness Materials','Training Resources','Annual Reports','Newsletters','Conference Reports','Policy Documents','Press Releases','Educational Publications'];
+export const pubCategories=['Official Handbook','Human Rights Awareness Materials','Training Resources','Research','Annual Reports','Newsletters','Conference Reports','Policy Documents','Press Releases','Educational Publications'];

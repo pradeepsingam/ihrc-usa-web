@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
 import {Page,Card,Btn} from '../components/UI';
 import FormCta from '../components/FormCta';
-import {texts} from '../data';
 import {programs} from '../data/programs';
+import {researchAreas,researchWho,researchBenefits} from '../data/research';
 
-const purpose=texts['who-we-are'].b.find(x=>x[0]==='Our Purpose')[1].items;
-const cats=[...new Set(programs.map(p=>p.c))].map(c=>[c,programs.filter(p=>p.c===c)]);
+const purpose=['Promote understanding of human rights.','Encourage equality and dignity.','Support vulnerable communities.','Promote peaceful coexistence.','Encourage humanitarian service.','Promote educational awareness.','Encourage women’s and children’s empowerment.','Support youth participation.','Promote environmental responsibility.','Encourage international cooperation.'];
+const areas=[['Human Rights Protection and Advocacy',[['Human Rights Protection','/programs/prevention-of-human-rights-violations'],['Human Rights Defenders','/programs/advice-and-assistance'],['Fundamental Freedoms','/programs/universal-rights'],['Anti-Discrimination','/programs/non-discrimination'],['Human Rights Monitoring','/programs/investigations']]],['Justice, Law and Accountability',[['Legal Assistance','/programs/legal-aid'],['Access to Justice','/programs/rule-of-law'],['Prevention of Torture','/programs/prevention-of-human-rights-violations'],['Anti-Corruption','/programs/eradication'],['Institutional Accountability','/programs/accountability']]],['Education, Research and Capacity Building',[['Human Rights Education','/programs?cat=Education'],['Literacy and Research','/programs/education-for-children'],['Training and Development','/events'],['Publications and Reports','/news'],['Institutional Capacity Building','/events']]],['Women, Children and Vulnerable Groups',[['Women’s Empowerment','/programs/women-s-empowerment'],['Child Protection','/programs/prevention-of-human-trafficking'],['Disability Rights','/programs/right-to-information'],['Elderly Rights','/programs/help-for-the-poor'],['Refugee and Migrant Protection','/programs/minority-rights']]],['Humanitarian Assistance and Social Development',[['Humanitarian Support','/programs?cat=Humanitarian'],['Emergency Relief','/news'],['Victim Assistance','/programs/advice-and-assistance'],['Health Awareness','/programs/health'],['Community Development','/programs/healthy-society']]],['Peace, Reconciliation and Social Harmony',[['Peacebuilding','/programs/the-speed-of-trust'],['Conflict Resolution','/programs/police-public-relations'],['Transitional Justice','/programs/accountability'],['Intercultural Dialogue','/programs/indigenous-values'],['Social Cohesion','/programs/equality']]],['Environmental and Sustainable Development',[['Environmental Protection','/programs/environmental-protection'],['Climate Awareness','/programs?cat=Environment'],['Biodiversity Conservation','/programs/connecting-with-nature'],['Sustainable Communities','/programs/sustainable-agriculture'],['Environmental Justice','/programs/waste-management']]],['Global Cooperation and International Relations',[['International Advocacy','/news'],['Global Partnerships','/events'],['International Human Rights Cooperation','/programs/universal-rights'],['Policy Development','/programs/government-schemes'],['Cross-Border Humanitarian Initiatives','/programs?cat=Humanitarian']]]];
 
 export default function WhatWeDo(){
  return <Page title="What We Do" sub="Education, awareness, community participation and humanitarian service for human dignity.">
@@ -13,10 +13,20 @@ export default function WhatWeDo(){
    <Card><h2 className="font-serif text-xl font-bold text-navy">Our Work</h2>
     <p className="mt-2 text-slate-700">IHRC-USA works to promote human-rights awareness, humanitarian values, peace, equality and community empowerment through education, advocacy, service, partnerships and responsible action.</p></Card>
    <Card><h2 className="font-serif text-xl font-bold text-navy">Our Purpose</h2>
-    <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">{purpose.map(i=><li key={i} className="flex gap-2 text-slate-700"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></Card>
+    <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">{purpose.map((i,n)=><li key={n} className="flex gap-2 text-slate-700"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></Card>
+   <Card><h2 className="font-serif text-xl font-bold text-navy">Research</h2>
+    <p className="mt-2 text-slate-700">IHRC-USA invites researchers, academics, legal experts and field investigators to join its global research network in the service of human rights.</p>
+    <div className="mt-4 grid gap-4 md:grid-cols-3">
+     <div className="rounded-lg bg-blue-50 p-4 ring-1 ring-blue-100"><h3 className="font-bold text-navy">Research Areas</h3><ul className="mt-2 space-y-1 text-sm text-slate-700">{researchAreas.map(i=><li key={i} className="flex gap-2"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></div>
+     <div className="rounded-lg bg-blue-50 p-4 ring-1 ring-blue-100"><h3 className="font-bold text-navy">Who Can Apply</h3><ul className="mt-2 space-y-1 text-sm text-slate-700">{researchWho.map(i=><li key={i} className="flex gap-2"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></div>
+     <div className="rounded-lg bg-blue-50 p-4 ring-1 ring-blue-100"><h3 className="font-bold text-navy">Benefits</h3><ul className="mt-2 space-y-1 text-sm text-slate-700">{researchBenefits.map(i=><li key={i} className="flex gap-2"><span className="text-brand">•</span><span>{i}</span></li>)}</ul></div>
+    </div>
+    <div className="mt-5 rounded-lg bg-slate-50 p-4 ring-1 ring-slate-100"><h3 className="font-bold text-navy">How to Apply</h3>
+     <p className="mt-1 text-slate-700">Complete the Researchers Application Form in full and attach your CV, a one-page research proposal abstract and copies of your certificates.</p>
+     <div className="mt-3 flex flex-wrap gap-3"><Btn to="/research#apply">Research Application</Btn><Btn to="/research" alt>Call for Researchers</Btn></div></div></Card>
    <Card><h2 className="font-serif text-xl font-bold text-navy">Our Programme Areas</h2>
-    <p className="mt-2 text-slate-700">Our work is organised under {programs.length} specific objectives across these areas.</p>
-    <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{cats.map(([c,list])=><Link key={c} to={'/programs?cat='+c}><div className="h-full rounded-lg bg-blue-50 p-4 ring-1 ring-blue-100 transition hover:bg-blue-100"><h3 className="font-bold text-navy">{c}</h3><p className="mt-1 text-sm text-slate-600">{list.length} {list.length===1?'objective':'objectives'}</p><ul className="mt-2 space-y-1 text-sm text-slate-700">{list.slice(0,4).map(p=><li key={p.n}>• {p.t}</li>)}</ul></div></Link>)}</div>
+    <p className="mt-2 text-slate-700">Our work is organised across these eight programme areas, supported by {programs.length} specific objectives.</p>
+    <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{areas.map(([t,list],n)=><div key={t} className="h-full rounded-lg bg-blue-50 p-4 ring-1 ring-blue-100"><h3 className="font-bold text-navy">{n+1}. {t}</h3><ul className="mt-2 space-y-1 text-sm text-slate-700">{list.map(([i,to])=><li key={i} className="flex gap-2"><span className="text-brand">•</span><Link to={to} className="hover:text-brand hover:underline">{i}</Link></li>)}</ul></div>)}</div>
     <div className="mt-5"><Btn to="/programs">View all programs</Btn></div></Card>
   </div>
   <FormCta page="what-we-do" cls="mt-8"/>

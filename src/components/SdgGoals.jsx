@@ -8,7 +8,7 @@ export default function SdgGoals(){
 const [active,setActive]=useState(null);
 const g=active?sdgs.find(s=>s.n===active):null;
 return <Card>
-<h2 className="font-serif text-xl font-bold text-navy">Sustainable Development Goals</h2>
+<h2 className="font-serif text-xl font-bold text-navy">We Support the Sustainable Development Goals</h2>
 <p className="mt-2 text-base text-slate-700 sm:text-lg">IHRC-USA works in support of the United Nations Sustainable Development Goals. Hover over (or tap) the goals to open them up and read each one.</p>
 <div className="mx-auto mt-6 max-w-4xl" onMouseLeave={()=>setActive(null)}>
 <ul className="group/sdg grid grid-cols-6 gap-[1.6%] transition-all duration-300 ease-out hover:gap-3 focus-within:gap-3 sm:hover:gap-5">

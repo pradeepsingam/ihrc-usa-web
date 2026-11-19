@@ -36,5 +36,5 @@ export const recognitionSections=[
  images:[{src:I+'un-ngo-branch.png',c:'UN-NGO Branch'}]},
 {t:'European Commission – EU Funding & Tenders Portal',d:'IHRC-USA is registered on the European Commission’s EU Funding & Tenders Portal, the European Commission’s online gateway for EU funding opportunities and tenders.',
  images:[{src:I+'european-commission.png',c:'European Commission'}]},
-{t:'Sustainable Development Goals',d:'IHRC-USA’s work supports the 17 United Nations Sustainable Development Goals, from ending poverty and hunger to peace, justice and strong institutions.',
+{t:'We Support the Sustainable Development Goals',d:'IHRC-USA’s work supports the 17 United Nations Sustainable Development Goals, from ending poverty and hunger to peace, justice and strong institutions.',
  images:[{src:I+'sdg.png',c:'The 17 Sustainable Development Goals'}]}];

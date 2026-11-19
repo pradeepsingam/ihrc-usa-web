@@ -60,12 +60,17 @@ export const socialLinks = () => Object.entries({
   whatsapp: siteInfo.whatsappLink,
   whatsappChannel: siteInfo.whatsappChannel
 }).filter(([, u]) => u);
+const socialColors = {
+  facebook: '#1877F2', instagram: 'linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4)', youtube: '#FF0000',
+  twitter: '#000000', linkedin: '#0A66C2', tiktok: '#000000', whatsapp: '#25D366', whatsappChannel: '#25D366'
+};
+export const socialBg = k => ({ background: socialColors[k] || '#0B2A5B' });
 export const socialIcon = (k, size = 16) => { const I = socialIcons[k]; return <I size={size} />; };
 const Social = () => socialLinks().map(([k, u]) => {
   const I = socialIcons[k];
   return (
     <a key={k} href={u} target="_blank" rel="noopener noreferrer" aria-label={socialNames[k]} title={socialNames[k]}
-      className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white hover:bg-brand">
+      className="grid h-9 w-9 place-items-center rounded-full text-white ring-1 ring-white/30 transition hover:scale-110" style={socialBg(k)}>
       <I size={16} />
     </a>
   );
@@ -242,10 +247,11 @@ const Footer = () => (
       </div>
       <div className="space-y-2 text-sm">
         <b className="text-white">Contact</b>
-        {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">Office: {siteInfo.phone}</a></p>}
-        {siteInfo.whatsappChannel && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" /><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Channel</a></p>}
-        <p className="flex gap-2"><Mail size={16} className="mt-0.5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
-        {siteInfo.address && <p className="flex gap-2"><MapPin size={16} className="mt-0.5 shrink-0" />{siteInfo.address}</p>}
+        {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" style={{ color: '#34D399' }} /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">Office: {siteInfo.phone}</a></p>}
+        {siteInfo.whatsappLink && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp</a></p>}
+        {siteInfo.whatsappChannel && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Channel</a></p>}
+        <p className="flex gap-2"><img src="/images/icons/mail.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
+        {siteInfo.address && <p className="flex gap-2"><img src="/images/icons/location.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" />{siteInfo.address}</p>}
       </div>
     </div>
     <div className="border-t border-white/10 px-4 py-4 text-center text-xs">
@@ -260,13 +266,17 @@ const Footer = () => (
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const mainRef = useRef(null);
 
   useEffect(() => {
     mainRef.current?.scrollTo(0, 0);
     setOpen(false);
-  }, [pathname]);
+    if (hash) {
+      const t = setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 100);
+      return () => clearTimeout(t);
+    }
+  }, [pathname, hash]);
 
   return (
     <div className="flex h-screen flex-col overflow-hidden">
