@@ -1,7 +1,7 @@
 ﻿import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network} from 'lucide-react';
 import {leaders} from './content';
 const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['What We Do','/what-we-do'],['Roles & Responsibilities','/roles-responsibilities'],['Our Partners','/our-partners'],['Our Supporters','/our-supporters'],['Our Recognition','/recognition'],['Countries','/countries']];
-const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['National Member','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
+const L=[['Leadership','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Deputy Secretary-General','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
 const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion'],['Environment','/programs?cat=Environment']];
 export const nav=[
 {l:'Home',to:'/',i:Home},
@@ -17,7 +17,7 @@ export const topNav=[
 {l:'About Us',c:A},
 {l:'Human Rights',to:'/human-rights'},
 {l:'Programs',to:'/programs'},
-{l:'Members',c:L},
+{l:'Our Members',c:L},
 {l:'Events & News',c:[['Events','/events'],['News','/news'],['Projects','/projects'],['Publications','/publications']]},
 {l:'Get Involved',c:[['Volunteer','/volunteer'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
 {l:'Contact Us',to:'/contact'}];
@@ -28,10 +28,10 @@ export const mvo=[
 {t:'Our Objectives',d:'To build a fair, peaceful and inclusive society.',i:Handshake,to:'/objectives'}];
 export {programs} from './data/programs';
 export const ambassadorCats=['Goodwill Ambassador','Peace Ambassador','Youth Ambassador','Women Ambassador','Ambassador – International Communications','Ambassador At Large'];
-const deptCats=['Human Rights & Legal Affairs','Peace & Reconciliation','Women & Child Protection','Youth Empowerment','Social Justice & Equality','Education & Research','Environment & Sustainable Development','International Relations & Cooperation','Media & Communications','Finance & Administration','Membership & Volunteer Affairs','Monitoring, Evaluation & Reporting'];
-const commCats=['Environment, Digital Affairs and Administration','Human Rights, Recommendations and Legal Affairs','Peace, Community and Humanitarian Affairs','Education, Youth and Public Awareness','International Relations, Research and Institutional Development'];
+const deptCats=['International','Regional','National','Human Rights & Legal Affairs','Peace & Reconciliation','Women & Child Protection','Youth Empowerment','Social Justice & Equality','Education & Research','Environment & Sustainable Development','International Relations & Cooperation','Media & Communications','Finance & Administration','Membership & Volunteer Affairs','Monitoring, Evaluation & Reporting'];
+const commCats=['International','Regional','National','Environment, Digital Affairs and Administration','Human Rights, Recommendations and Legal Affairs','Peace, Community and Humanitarian Affairs','Education, Youth and Public Awareness','International Relations, Research and Institutional Development'];
 export const groups={
-leadership:{title:'Leadership(P5)',sub:'The executive team guiding IHRC-USA.',r:['President','Vice President','Secretary','Treasurer','Director – Programs','Director – Communications']},
+leadership:{title:'Leadership',sub:'The executive team guiding IHRC-USA.',r:['President','Vice President','Secretary','Treasurer','Director – Programs','Director – Communications']},
 'general-assembly':{title:'General Assembly',sub:'Members who represent the branch in its governing assembly.',r:Array(8).fill('Assembly Member')},
 commissioners:{title:'Commissioners',sub:'Commissioners leading the main portfolios of IHRC-USA.',cats:commCats,r:commCats.map((c,i)=>i<4?'Commissioner — '+c:'Commissioner for '+c)},
 directors:{title:'Directors',sub:'Departmental Directors leading IHRC-USA’s programme areas.',cats:deptCats,r:deptCats.map(d=>'Director — '+d)},
@@ -41,11 +41,11 @@ ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of hu
 'board-of-directors':{title:'Board of Directors',sub:'The Board of Directors governing IHRC-USA.',r:Array(8).fill('Board Member')},
 'president-chairperson':{title:'President',sub:'The head of IHRC-USA.',r:Array(1).fill('President')},
 'secretary-general-chief-executive':{title:'Secretary-General',sub:'The chief executive of IHRC-USA.',r:Array(1).fill('Secretary-General')},
-'deputy-secretary-general':{title:'National Member',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('National Member')},
+'deputy-secretary-general':{title:'Deputy Secretary-General',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('Deputy Secretary-General')},
 'international-executive-council':{title:'International Executive Council',sub:'The international executive body of IHRC-USA.',r:Array(6).fill('Council Member')},
 'advisory-council':{title:'Advisory Council',sub:'Advisers supporting IHRC-USA with experience and expertise.',r:Array(6).fill('Advisory Council Member')},
 'standing-committees':{title:'Standing Committees',sub:'The standing committees of IHRC-USA.',r:Array(6).fill('Committee Member')},
-'high-commissioner':{title:'High Commissioner',sub:'High Commissioners of IHRC-USA – regional, international and national.',cats:['Regional','International','National'],r:['Regional','International','National'].map(c=>'High Commissioner — '+c)},
+'high-commissioner':{title:'High Commissioner',sub:'High Commissioners of IHRC-USA – regional, international and national.',cats:['International','Regional','National'],r:['Regional','International','National'].map(c=>'High Commissioner — '+c)},
 'community-partners':{title:'Community Partners',sub:'Community partners working with IHRC-USA.',r:Array(6).fill('Community Partner')},
 'honorary-members':{title:'Honorary Members',sub:'Persons recognised for supporting the organisation through experience, expertise, goodwill or community standing.',r:Array(6).fill('Honorary Member')},
 volunteers:{title:'Volunteers',sub:'The dedicated volunteers behind our community work.',r:Array(8).fill('Volunteer')}};

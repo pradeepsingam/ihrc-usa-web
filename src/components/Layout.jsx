@@ -219,7 +219,7 @@ const Drawer = ({ open, close }) => (
   </div>
 );
 
-const quick = [['About Us', '/who-we-are'], ['Human Rights', '/human-rights'], ['Programs', '/programs'], ['Leadership(P5)', '/leadership'], ['Global Network', '/global-network'], ['Events', '/events'], ['News', '/news'], ['Publications', '/publications']];
+const quick = [['About Us', '/who-we-are'], ['Human Rights', '/human-rights'], ['Programs', '/programs'], ['Leadership', '/leadership'], ['Global Network', '/global-network'], ['Events', '/events'], ['News', '/news'], ['Publications', '/publications']];
 const involved = [['Volunteer', '/volunteer'], ['Membership', '/membership'], ['Awards & Recognition', '/awards'], ['CSO Partnership', '/partnership-application'], ['Accreditation', '/accreditation'], ['Donation', '/donation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
 
 const Footer = () => (

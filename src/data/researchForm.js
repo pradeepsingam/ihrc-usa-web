@@ -74,7 +74,7 @@ export const researchForm = {
       { t: 'text', id: 'langOther', label: 'If “Other”, which language?' },
     ] },
     { title: 'Section G — Technical & Other Skills', blocks: [
-      { t: 'multi', id: 'skills', label: 'Skills (select all that apply)', opts: ['Data analysis (SPSS / STATA / R / Python)', 'Data visualization (Tableau / Power BI)', 'Field research & conducting interviews', 'Stakeholder engagement & networking', 'Grant / proposal writing', 'Training delivery / lecturing', 'Translation (Tamil ⇄ English)', 'Other'] },
+      { t: 'multi', id: 'skills', label: 'Skills (select all that apply)', opts: ['Data analysis (SPSS / STATA / R / Python)', 'Data visualization (Tableau / Power BI)', 'Field research & conducting interviews', 'Stakeholder engagement & networking', 'Grant / proposal writing', 'Training delivery / lecturing', 'Translation ', 'Other'] },
       { t: 'text', id: 'skillsOther', label: 'Other skills (if any)' },
     ] },
     { title: 'Section H — Preferred Mode of Contribution', blocks: [

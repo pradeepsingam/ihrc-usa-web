@@ -11,13 +11,13 @@ export const rolesIntro={
 };
 export const rolesStructure=[
  [
-  "Governance & Leadership(P5)",
+  "Governance & Leadership",
   [
    "General Assembly ",
    "Board of Directors",
    "President / Chairperson",
    "Secretary-General / Chief Executive",
-   "National Member",
+   "Deputy Secretary-General",
    "International Executive Council",
    "Advisory Council",
    "Standing Committees"
@@ -171,7 +171,7 @@ export const roles=[
    "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
-   "Leadership(P5) training; approved youth events; participation certificates subject to age and safeguarding rules."
+   "Leadership training; approved youth events; participation certificates subject to age and safeguarding rules."
   ],
   "reporting": [
    "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
