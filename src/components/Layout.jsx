@@ -7,12 +7,14 @@ import {
 } from 'lucide-react';
 import { nav, topNav, legal } from '../data';
 import { siteInfo } from '../content';
+import Subscribe from './Subscribe';
 import Cookie from './Cookie';
+import Seo from '../seo/Seo';
 import DonateLink from './DonateLink';
 
 export const Logo = () => (
   <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="IHRC-USA">
-    <img src="/logo.jpeg" alt="IHRC logo" className="h-10 w-10 object-contain mix-blend-multiply sm:h-12 sm:w-12" />
+    <img src="/logo.jpeg" alt="IHRC-USA logo" width="48" height="48" className="h-10 w-10 object-contain mix-blend-multiply sm:h-12 sm:w-12" />
     <span className="hidden h-9 w-px bg-slate-300 sm:block" />
     <span className="font-serif leading-tight">
       <b className="block text-xl text-navy sm:text-2xl">IHRC-USA</b>
@@ -227,7 +229,7 @@ const Footer = () => (
     <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
       <div>
         <Link to="/" className="flex items-center gap-3" aria-label="IHRC-USA home">
-          <img src="/logo.jpeg" alt="IHRC logo" className="h-14 w-14 rounded bg-white object-contain p-1" />
+          <img src="/logo.jpeg" alt="IHRC-USA logo" width="56" height="56" className="h-14 w-14 rounded bg-white object-contain p-1" />
           <b className="font-serif text-xl text-white">IHRC-USA</b>
         </Link>
         <p className="mt-3 text-sm">Promoting human rights awareness, humanitarian values, peace, equality and community development. Equal Justice for Everyone &amp; Everywhere.</p>
@@ -254,6 +256,7 @@ const Footer = () => (
         {siteInfo.address && <p className="flex gap-2"><img src="/images/icons/location.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" />{siteInfo.address}</p>}
       </div>
     </div>
+    <div className="mx-auto max-w-6xl px-4 pb-8"><div className="max-w-md"><Subscribe /></div></div>
     <div className="border-t border-white/10 px-4 py-4 text-center text-xs">
       © 2026 IHRC-USA. All rights reserved.
       <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
@@ -280,6 +283,7 @@ export default function Layout() {
 
   return (
     <div className="flex h-screen flex-col overflow-hidden">
+      <Seo />
       <header className="shrink-0 bg-gradient-to-r from-white via-white to-sky-50 shadow-sm">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-1 lg:px-12 lg:py-1.5">
           <Logo />

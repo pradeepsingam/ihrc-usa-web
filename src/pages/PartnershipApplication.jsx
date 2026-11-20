@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Mail,FileText,Paperclip,AlertCircle,CheckCircle2} from 'lucide-react';
 import {Page,Card,Accordion,Btn} from '../components/UI';
 import {submitForm} from '../lib/submitForm';
+import {Reference} from '../components/UI';
 import {partnershipMeta as meta,partnershipSections as sections,formattingRules,allQuestionItems} from '../data/partnershipForm';
 
 const rules={email:/^\S+@\S+\.\S+$/,tel:/^\+?[\d\s()-]{7,20}$/,url:/^(https?:\/\/)?[\w-]+(\.[\w-]+)+\S*$/i};
@@ -51,7 +52,7 @@ export default function PartnershipApplication(){
 
   return <Page title="CSO Partnership" sub="Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).">
     <div className="space-y-6">
-      {done&&<div role="status" className="rounded-xl bg-green-50 p-5 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done==='api'?'Your application has been submitted.':'Your email app has opened.'}</div><p className="mt-2 text-sm">{done==='api'?'Thank you. ':done==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send. ':'Press Send in your email app to complete your application. '}Please also email your partnership request letter, logo and registration copy to <a className="font-semibold underline" href={'mailto:'+meta.email}>{meta.email}</a>.</p></div>}
+      {done&&<div role="status" className="rounded-xl bg-green-50 p-5 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done==='api'?<>Your application has been submitted.<Reference/></>:'Your email app has opened.'}</div><p className="mt-2 text-sm">{done==='api'?'Thank you. ':done==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send. ':'Press Send in your email app to complete your application. '}Please also email your partnership request letter, logo and registration copy to <a className="font-semibold underline" href={'mailto:'+meta.email}>{meta.email}</a>.</p></div>}
 
       <Card>
         <p className="font-serif text-lg font-bold text-navy">{meta.org}</p>

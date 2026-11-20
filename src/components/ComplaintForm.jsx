@@ -1,6 +1,9 @@
 import {useState,useRef} from 'react';
-import {AlertCircle,CheckCircle2,Copy,Download,Mail,ChevronLeft,ChevronRight,Pencil,ShieldAlert} from 'lucide-react';
+import {AlertCircle,CheckCircle2,Copy,Download,Mail,ChevronLeft,ChevronRight,Pencil,ShieldAlert,Send} from 'lucide-react';
 import {siteInfo} from '../content';
+import {FORM_ENDPOINT} from '../config';
+import {submitForm} from '../lib/submitForm';
+import {Reference} from './UI';
 
 // Change this one line to rename the organization everywhere in the form text.
 export const ORG='IHRC-USA';
@@ -107,6 +110,8 @@ else if(a&&rules[x.type]&&!rules[x.type].test(a))e[x.n]='Enter a valid '+(x.type
 const ans=(x,v)=>{const a=v[x.n];if(x.type==='checks'){const l=(a||[]).map(o=>o==='Other'&&(v[x.n+'Other']||'').trim()?'Other: '+v[x.n+'Other'].trim():o);return l.join('; ')}
 if(x.type==='consent')return a?'Yes – confirmed':'';
 let s=String(a||'').trim();if(s==='Other'&&(v[x.n+'Other']||'').trim())s='Other: '+v[x.n+'Other'].trim();return s};
+// Answers as [{label, value}] for the backend (one entry per answered question).
+const buildFields=v=>steps.flatMap(s=>visible(s,v).map(x=>({label:'Section '+s.id+(x.no?' · '+x.no:'')+'. '+(x.group?x.group+' – ':'')+x.label,value:ans(x,v)})).filter(f=>f.value));
 export const buildText=v=>{const out=['COMPLAINT SUBMISSION – '+ORG,'Submitted via website on: '+today(),''];
 steps.forEach(s=>{const lines=visible(s,v).map(x=>[x,ans(x,v)]).filter(([,a])=>a).map(([x,a])=>(x.no?x.no+'. ':'')+x.label+(/[?:.]$/.test(x.label)?'':':')+'\n   '+a.replace(/\n/g,'\n   '));
 if(lines.length){out.push('SECTION '+s.id+' – '+s.title.toUpperCase(),...lines,'')}});
@@ -137,7 +142,7 @@ return <div data-err={err?1:undefined} className={wide?'sm:col-span-2':''}><labe
 :<input id={id} type={x.type} value={v[x.n]||''} aria-invalid={!!err} onChange={e=>set(x.n,e.target.value)} max={x.type==='date'?today():undefined} className={inp(err)}/>}{msg}</div>}
 
 export default function ComplaintForm(){
-const[v,setV]=useState({submitDate:today()});const[step,setStep]=useState(0);const[err,setErr]=useState({});const[review,setReview]=useState(false);const[status,setStatus]=useState('');
+const[v,setV]=useState({submitDate:today()});const[step,setStep]=useState(0);const[err,setErr]=useState({});const[review,setReview]=useState(false);const[status,setStatus]=useState('');const[sent,setSent]=useState(false);const[busy,setBusy]=useState(false);const[sendErr,setSendErr]=useState('');
 const top=useRef(null);const set=(n,x)=>setV(p=>({...p,[n]:x}));
 const go=i=>{setStep(i);setErr({});setReview(false);setTimeout(()=>top.current&&top.current.scrollIntoView({behavior:'smooth',block:'start'}),0)};
 const s=steps[step],last=step===steps.length-1;
@@ -145,6 +150,7 @@ const next=()=>{const e=validate(s,v);setErr(e);if(Object.keys(e).length){setTim
 if(last){setReview(true);setStatus('');setTimeout(()=>top.current&&top.current.scrollIntoView({behavior:'smooth',block:'start'}),0)}else go(step+1)};
 const text=buildText(v);const subject='Complaint Submission – '+(v.name||'').trim();
 const copy=async()=>{try{await navigator.clipboard.writeText(text);return true}catch{return false}};
+const send=async()=>{setBusy(true);setSendErr('');try{await submitForm({form:'Complaint Submission',subject,to:siteInfo.email,fields:buildFields(v)});setSent(true);setTimeout(()=>top.current&&top.current.scrollIntoView({behavior:'smooth',block:'start'}),0)}catch(e){setSendErr(e.userMessage||'Sorry, your complaint could not be sent. Please try again, or use one of the options below to email it to '+siteInfo.email+'.')}finally{setBusy(false)}};
 const doCopy=async()=>setStatus(await copy()?'Complaint text copied. You can paste it into an email or message.':'Copying was blocked by your browser. Please use “Download as text file” instead.');
 const download=()=>{const b=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='complaint-submission.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);setStatus('Downloaded to your device. Attach it to an email to '+siteInfo.email+'.')};
 const openMail=async()=>{const full='mailto:'+siteInfo.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(text);
@@ -152,12 +158,14 @@ if(full.length<=1800){window.location.href=full;setStatus('Your email app should
 const ok=await copy();window.location.href='mailto:'+siteInfo.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent('Please paste my complaint here (Ctrl+V / paste). If nothing was copied, attach the downloaded text file instead.');
 setStatus((ok?'Your complaint is long, so it was copied to your clipboard. Paste it into the email body.':'Your complaint is too long for an email link. Download the text file and attach it to the email.')+' Nothing is sent until you press Send in your email app.')};
 
+if(sent)return <div ref={top} role="status" className="scroll-mt-24 rounded-xl bg-green-50 p-6 text-center text-green-800"><CheckCircle2 className="mx-auto mb-2"/><p className="font-semibold">Your complaint has been submitted to {ORG}.</p><p className="mt-1 text-sm">It will be reviewed confidentially. We will contact you using the details you provided.</p><Reference/>{v.danger==='Yes'&&<p className="mt-3 text-sm text-red-800">If someone is in immediate danger, contact your local emergency services or police now.</p>}<button type="button" onClick={()=>{setV({submitDate:today()});setSent(false);setReview(false);setStep(0)}} className="mt-3 text-sm font-semibold underline">Submit another complaint</button></div>;
 if(review)return <div ref={top} className="scroll-mt-24">
 <h3 className="font-serif text-xl font-bold text-navy">Review your complaint</h3>
-<p className="mt-1 text-sm text-slate-600">Check your answers. Your complaint has <b>not</b> been sent yet. This website does not store your answers.</p>
+<p className="mt-1 text-sm text-slate-600">Check your answers. Your complaint has <b>not</b> been sent yet.{FORM_ENDPOINT?' Press “Submit complaint” to send it securely to '+ORG+'.':' This website does not store your answers.'}</p>
 {v.danger==='Yes'&&<div role="alert" className="mt-4 flex gap-3 rounded-lg bg-red-50 p-4 text-sm text-red-800"><ShieldAlert className="shrink-0"/><p>You said someone is currently in danger. Please contact your local emergency services or police now, without waiting for a reply to this form.</p></div>}
 <pre className="mt-4 max-h-[420px] overflow-auto whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-xs leading-relaxed text-slate-800 ring-1 ring-slate-200">{text}</pre>
-<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><button type="button" onClick={openMail} className={primary}><Mail size={16}/>Open email draft</button><button type="button" onClick={doCopy} className={ghost}><Copy size={16}/>Copy complaint text</button><button type="button" onClick={download} className={ghost}><Download size={16}/>Download as text file</button><button type="button" onClick={()=>go(0)} className={ghost}><Pencil size={16}/>Edit answers</button></div>
+{sendErr&&<p role="alert" className="mt-4 flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700"><AlertCircle size={18}/>{sendErr}</p>}
+<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">{FORM_ENDPOINT&&<button type="button" onClick={send} disabled={busy} className={primary+'disabled:opacity-60'}><Send size={16}/>{busy?'Sending…':'Submit complaint'}</button>}<button type="button" onClick={openMail} className={FORM_ENDPOINT?ghost:primary}><Mail size={16}/>Open email draft</button><button type="button" onClick={doCopy} className={ghost}><Copy size={16}/>Copy complaint text</button><button type="button" onClick={download} className={ghost}><Download size={16}/>Download as text file</button><button type="button" onClick={()=>go(0)} className={ghost}><Pencil size={16}/>Edit answers</button></div>
 {status&&<p role="status" className="mt-4 flex gap-2 rounded-lg bg-green-50 p-3 text-sm text-green-800"><CheckCircle2 size={18} className="mt-0.5 shrink-0"/>{status}</p>}
 <p className="mt-4 text-xs text-slate-500">Safety tip: if another person can read your email, phone or computer, consider using a device and account only you can access.</p></div>;
 

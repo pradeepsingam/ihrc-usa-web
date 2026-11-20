@@ -1,9 +1,10 @@
+import NotFound from './NotFound';
 import {useState} from 'react';
-import {Link,useParams,Navigate} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import {Calendar,MapPin,Download,Search as SearchIcon} from 'lucide-react';
 import {projects} from '../content';
 import {programs} from '../data';
-import {Page,Card,Tabs,Btn,Img,Empty,Gallery,fmt,Heading} from '../components/UI';
+import {Page,Card,Tabs,Btn,Img,Empty,Gallery,fmt,Heading,RichText} from '../components/UI';
 
 const ProjectCard=({p})=><Link to={'/projects/'+p.id}><Card cls="flex h-full flex-col">
   {p.image&&<Img src={p.image} alt={p.title} cls="mb-3 w-full rounded-lg"/>}
@@ -26,13 +27,13 @@ export const Projects=()=>{
 };
 
 export const ProjectDetail=()=>{
-  const{id}=useParams();const p=projects.find(x=>x.id===id);
-  if(!p)return <Navigate to="/projects" replace/>;
+  const{id}=useParams();const p=projects.find(x=>String(x.id)===id);
+  if(!p)return <NotFound/>;
   const prog=p.program&&programs.find(x=>x.slug===p.program);
   const rel=projects.filter(x=>x.id!==id).slice(0,3);
   return <Page title={p.title} sub={[p.status,p.date&&fmt(p.date),p.location].filter(Boolean).join(' · ')}>
     {p.image&&<Img src={p.image} alt={p.title} cls="mb-6 max-h-96 w-full rounded-xl"/>}
-    <Card><div className="space-y-3 whitespace-pre-line text-slate-700">{p.body||p.summary}</div>
+    <Card><RichText text={p.body||p.summary} cls="space-y-3"/>
       {(prog||p.file)&&<div className="mt-5 flex flex-wrap gap-3">
         {prog&&<Btn to={'/programs/'+prog.slug} alt>Program: {prog.t}</Btn>}
         {p.file&&<a href={p.file} download className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-navy px-6 py-2 text-sm font-semibold text-white hover:bg-brand"><Download size={14}/>Download document</a>}

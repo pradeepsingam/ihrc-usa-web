@@ -22,9 +22,12 @@ export const events=[];
 export const projects=[];
 export const publications=[];
 export const partners=[];
+export const supporters={donors:[],sponsors:[]};
 export const awardCategories=[];
 export const leaders={};
 export const programDetails={};
+// Forms made or edited in the admin Form Builder, keyed by web address (membership, volunteer, research, …)
+export const forms={};
 
 export const branches=[];
 
