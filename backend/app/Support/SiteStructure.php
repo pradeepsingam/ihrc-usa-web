@@ -38,6 +38,12 @@ class SiteStructure
         return $out;
     }
 
+    /** Roles used on a Members page, e.g. ['President', 'Vice President', …] (suggestions in the admin). */
+    public static function roleOptions(?string $group): array
+    {
+        return $group ? array_values(array_unique(static::all()['groups'][$group]['roles'] ?? [])) : [];
+    }
+
     public static function role(string $group, int $position): ?string
     {
         return static::all()['groups'][$group]['roles'][$position - 1] ?? null;

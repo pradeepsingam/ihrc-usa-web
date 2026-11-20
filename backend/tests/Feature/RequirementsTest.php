@@ -266,6 +266,9 @@ class RequirementsTest extends TestCase
         $pdf = Livewire::test(Resources\FormSubmissionResource\Pages\ViewFormSubmission::class, ['record' => $s->id])->callAction('pdf');
         $pdf->assertFileDownloaded($s->reference.'.pdf');
         Livewire::test(Resources\FormSubmissionResource\Pages\ListFormSubmission::class)
+            ->filterTable('received', ['from' => now()->subDay()->toDateString(), 'until' => now()->toDateString()])->assertCanSeeTableRecords([$s])
+            ->filterTable('received', ['from' => now()->addDay()->toDateString()])->assertCanNotSeeTableRecords([$s])
+            ->resetTableFilters()
             ->filterTable('status', 'Approved')->assertCanSeeTableRecords([$s])
             ->callTableAction('exportCsv')->assertFileDownloaded();
     }
@@ -418,6 +421,105 @@ class RequirementsTest extends TestCase
         $this->actingAs($this->admin());
         Livewire::test(Resources\SettingResource\Pages\ListSetting::class)->callTableAction('testEmail', data: ['to' => 'me@example.org'])->assertNotified();
         $this->actingAs($this->admin(User::EDITOR))->get('/admin/settings')->assertForbidden();
+    }
+
+    // ---------------------------------------------------------------- Problems reported (20 Nov 2026)
+
+    public function test_only_one_members_menu_item(): void
+    {
+        $html = $this->actingAs($this->admin())->get('/admin')->getContent();
+        preg_match_all('/fi-sidebar-item-label[^>]*>\s*([^<]+?)\s*</', $html, $m);
+        $this->assertSame(1, count(array_filter($m[1], fn ($l) => str_contains($l, 'Member'))), implode(' | ', $m[1]));
+    }
+
+    public function test_publication_can_be_view_only_and_award_has_image(): void
+    {
+        Storage::disk('public')->put('a.pdf', '%PDF-1.1');
+        Models\Publication::create(['title' => 'Read only', 'category' => 'Annual Reports', 'file' => 'a.pdf', 'allow_download' => false]);
+        Models\AwardCategory::create(['name' => 'Peace', 'image' => 'awards/p.jpg']);
+        $this->getJson('/api/publications')->assertJsonPath('0.download', false);
+        $this->assertStringEndsWith('/storage/awards/p.jpg', $this->getJson('/api/content')->json('awardCategories.0.image'));
+
+        $this->actingAs($this->admin(User::EDITOR));
+        $p = Models\Publication::first();
+        Livewire::test(Resources\PublicationResource\Pages\EditPublication::class, ['record' => $p->id])
+            ->fillForm(['allow_download' => true])->call('save')->assertHasNoFormErrors();
+        $this->assertTrue($p->fresh()->allow_download);
+    }
+
+    public function test_subscriber_details_page_resend_and_mail_failure(): void
+    {
+        $this->postJson('/api/subscribe', ['email' => 'a@example.org', 'name' => 'Ann'])->assertCreated();
+        $s = Subscriber::first();
+        $this->actingAs($this->admin(User::EDITOR));
+        Livewire::test(Resources\SubscriberResource\Pages\ListSubscriber::class)->filterTable('state', 'pending')->assertCanSeeTableRecords([$s])
+            ->filterTable('state', 'active')->assertCanNotSeeTableRecords([$s]);
+        $this->get('/admin/subscribers/'.$s->id)
+            ->assertOk()->assertSee('a@example.org')->assertSee('Ann')->assertSee('Waiting for confirmation');
+        Livewire::test(Resources\SubscriberResource\Pages\ViewSubscriber::class, ['record' => $s->id])->callAction('resend')->assertNotified();
+        Mail::assertSent(SubscribeConfirmation::class, 2);
+        Livewire::test(Resources\SubscriberResource\Pages\ViewSubscriber::class, ['record' => $s->id])->callAction('confirm');
+        $this->assertTrue($s->fresh()->isActive());
+
+        // If the email cannot be sent, the visitor is told (no false "check your email").
+        Mail::shouldReceive('to')->andThrow(new \RuntimeException('SMTP down'));
+        $this->postJson('/api/subscribe', ['email' => 'b@example.org'])->assertStatus(503)
+            ->assertJsonPath('message', 'We could not send the confirmation email right now. Please try again later.');
+    }
+
+    public function test_mail_not_configured_warning_and_settings_validation(): void
+    {
+        config(['mail.default' => 'log']);
+        $this->actingAs($this->admin());
+        Livewire::test(\App\Filament\Widgets\MailStatus::class)->assertSee('Emails are not being sent');
+
+        $pay = Setting::where('key', 'paymentUrl')->first();
+        Livewire::test(Resources\SettingResource\Pages\ListSetting::class)
+            ->call('updateTableColumnState', 'value', (string) $pay->id, 'not a link');
+        $this->assertNull($pay->fresh()->value);
+        Livewire::test(Resources\SettingResource\Pages\ListSetting::class)
+            ->call('updateTableColumnState', 'value', (string) $pay->id, 'https://pay.example.org/ihrc');
+        $this->assertSame('https://pay.example.org/ihrc', $pay->fresh()->value);
+        $this->assertSame('https://pay.example.org/ihrc', $this->getJson('/api/content')->json('paymentUrl'));
+    }
+
+    public function test_preview_of_unsaved_news_page_and_form(): void
+    {
+        config(['app.frontend_url' => 'http://site.test']);
+        $this->actingAs($this->admin());
+
+        $grab = function ($component) {
+            $component->mountAction('preview')->assertActionMounted('preview');
+            $url = \App\Filament\Support\Preview::url($component->instance());
+            preg_match('#^http://site\.test/preview/([A-Za-z0-9]{40})$#', $url, $m);
+            $this->assertNotEmpty($m, 'preview link in modal');
+
+            return $this->getJson('/api/preview/'.$m[1])->assertOk()->json();
+        };
+
+        $news = Livewire::test(Resources\NewsResource\Pages\CreateNews::class)->fillForm(['title' => 'Unsaved news', 'date' => '2026-11-20', 'summary' => 'Short']);
+        $p = $grab($news);
+        $this->assertSame('news', $p['type']);
+        $this->assertSame('Unsaved news', $p['item']['title']);
+        $this->assertSame(0, Models\News::count(), 'preview does not save');
+
+        $page = Models\Page::where('slug', 'who-we-are')->first();
+        $edit = Livewire::test(Resources\PageResource\Pages\EditPage::class, ['record' => $page->id])
+            ->fillForm(['title' => 'Who We Are (draft)', 'sections' => [['heading' => 'New part', 'body' => '<p>Draft text</p>']]]);
+        $p = $grab($edit);
+        $this->assertSame('page', $p['type']);
+        $this->assertSame('Who We Are (draft)', $p['item']['title']);
+        $this->assertSame('New part', $p['item']['b'][0][0]);
+        $this->assertStringContainsString('Draft text', $p['item']['b'][0][1]);
+        $this->assertSame('Who We Are', $page->fresh()->title);
+
+        $form = Models\FormDefinition::where('slug', 'volunteer')->first();
+        $p = $grab(Livewire::test(Resources\FormDefinitionResource\Pages\EditFormDefinition::class, ['record' => $form->id])->fillForm(['title' => 'Volunteer (draft)']));
+        $this->assertSame('form', $p['type']);
+        $this->assertSame('Volunteer (draft)', $p['item']['title']);
+        $this->assertGreaterThan(5, count($p['item']['sections']));
+
+        $this->getJson('/api/preview/'.str_repeat('x', 40))->assertNotFound();
     }
 
     // ---------------------------------------------------------------- dashboard

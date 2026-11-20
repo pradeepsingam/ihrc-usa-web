@@ -50,6 +50,8 @@ class PublicationResource extends Resource
                 Fields::document("file", "publications", "Document (PDF)")->required(),
                 Fields::image("cover_image", "publications", "Cover image (optional)"),
                 Fields::published(),
+                \Filament\Forms\Components\Toggle::make("allow_download")->label("Visitors can download the file")->default(true)
+                    ->helperText("When off, visitors can read it on the website but there is no Download button."),
             ]),
         ]);
     }
@@ -60,6 +62,7 @@ class PublicationResource extends Resource
             TextColumn::make("title")->searchable()->wrap(),
             TextColumn::make("category")->badge(),
             TextColumn::make("date")->date()->sortable(),
+            IconColumn::make("allow_download")->label("Download")->boolean(),
             IconColumn::make("is_published")->label("Published")->boolean(),
         ])->filters([SelectFilter::make("category")->options(fn () => SiteStructure::publicationCategories())])
           ->recordActions([EditAction::make(), DeleteAction::make()])

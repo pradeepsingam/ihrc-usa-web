@@ -58,19 +58,9 @@ class ContentController extends Controller
             'paymentUrl' => (string) ($settings['paymentUrl'] ?? ''),
 
             // Unpublished pages are sent as {published:false} so the website hides its built-in copy too.
-            'pages' => Page::orderBy('menu_sort')->get()->mapWithKeys(fn (Page $p) => [$p->slug => $p->is_published ? $clean([
-                'title' => $p->title,
-                'sub' => (string) $p->subtitle,
-                'b' => collect($p->sections ?? [])->map(fn ($s) => [$s['heading'] ?? '', $this->rich($s['body'] ?? '')])->values()->all(),
-                'image' => $this->url($p->image),
-                'images' => $this->urls($p->images),
-                'menu' => $p->menu,
-                'menuLabel' => $p->menu_label ?: $p->title,
-                'form' => $p->form_slug,
-                'published' => true,
-            ]) : ['published' => false]]),
+            'pages' => Page::orderBy('menu_sort')->get()->mapWithKeys(fn (Page $p) => [$p->slug => $this->item($p)]),
 
-            'forms' => FormDefinition::where('is_published', true)->get()->mapWithKeys(fn ($f) => [$f->slug => FormSpec::toWebsite($f)]),
+            'forms' => FormDefinition::where('is_published', true)->get()->mapWithKeys(fn ($f) => [$f->slug => $this->item($f)]),
 
             'news' => $this->list('news'),
             'events' => $this->list('events'),
@@ -82,7 +72,7 @@ class ContentController extends Controller
                 'description' => $p->description, 'website' => $p->website,
             ])),
 
-            'awardCategories' => AwardCategory::orderBy('sort')->get(['name', 'description']),
+            'awardCategories' => AwardCategory::orderBy('sort')->get()->map(fn (AwardCategory $a) => $clean(['name' => $a->name, 'description' => $a->description, 'image' => $this->url($a->image)]))->values(),
 
             'branches' => Branch::orderBy('sort')->orderBy('country')->get()->map(fn (Branch $b) => $clean([
                 'id' => (string) $b->id, 'country' => $b->country, 'name' => $b->name,
@@ -90,11 +80,14 @@ class ContentController extends Controller
                 'phone' => $b->phone, 'location' => $b->location, 'activities' => $b->activities,
             ])),
 
-            // keyed "<group>-<seat>", e.g. "leadership-1" — same ids the React app uses
-            'leaders' => Member::where('show_on_site', true)->whereNotNull('group')->whereNotNull('position')->whereIn('status', ['Active', 'Pending'])->get()->mapWithKeys(fn (Member $m) => [$m->group.'-'.$m->position => $clean([
-                'name' => $m->name, 'photo' => $m->photo_public ? $this->url($m->photo) : null, 'bio' => $m->bio, 'memberId' => $m->member_id,
-                'responsibilities' => $m->responsibilities,
-            ])]),
+            // People shown on the website's Members pages, per page (any number per role).
+            'people' => Member::where('show_on_site', true)->whereNotNull('group')->whereIn('status', ['Active', 'Pending'])
+                ->orderByRaw('position is null')->orderBy('position')->orderBy('name')->get()
+                ->groupBy('group')->map(fn ($list) => $list->map(fn (Member $m) => $clean([
+                    'id' => $m->member_id ?: 'member-'.$m->id, 'name' => $m->name, 'role' => $m->public_role ?: $m->title,
+                    'photo' => $m->photo_public ? $this->url($m->photo) : null, 'country' => $m->country,
+                    'bio' => $m->bio, 'responsibilities' => $m->responsibilities,
+                ]))->values()),
 
             'programDetails' => ProgramDetail::all()->mapWithKeys(fn (ProgramDetail $p) => [$p->slug => $clean([
                 'description' => $p->description, 'location' => $p->location, 'date' => $date($p->date),
@@ -123,38 +116,61 @@ class ContentController extends Controller
 
     protected function list(string $type): array
     {
+        $model = match ($type) {
+            'news' => News::class, 'events' => Event::class, 'projects' => Project::class, 'publications' => Publication::class,
+            default => abort(404),
+        };
+
+        return $model::where('is_published', true)->orderByDesc('date')->orderByDesc('id')->get()
+            ->map(fn ($item) => $this->item($item))->all();
+    }
+
+    /** One item exactly as the website receives it (also used for admin previews of unsaved changes). */
+    public function item(\Illuminate\Database\Eloquent\Model $m): array
+    {
         $date = fn ($d) => $d?->format('Y-m-d');
         $clean = fn (array $a) => array_filter($a, fn ($v) => $v !== null && $v !== '' && $v !== []);
 
-        return match ($type) {
-            'news' => News::where('is_published', true)->orderByDesc('date')->orderByDesc('id')->get()->map(fn (News $n) => $clean([
-                'id' => $n->slug, 'title' => $n->title, 'type' => $n->type, 'date' => $date($n->date),
-                'summary' => $n->summary, 'body' => $this->rich($n->body), 'image' => $this->url($n->image),
-                'program' => $n->program, 'category' => $n->category,
-            ]))->all(),
-            'events' => Event::where('is_published', true)->orderByDesc('date')->orderByDesc('id')->get()->map(fn (Event $e) => $clean([
-                'id' => $e->slug, 'title' => $e->title, 'date' => $date($e->date), 'endDate' => $date($e->end_date),
-                'location' => $e->location, 'description' => $e->description, 'body' => $this->rich($e->body),
-                'image' => $this->url($e->image), 'images' => $this->urls($e->images),
-                'program' => $e->program, 'category' => $e->category,
-            ]) + ['registration' => (bool) $e->registration_open])->all(),
-            'projects' => Project::where('is_published', true)->orderByDesc('date')->orderByDesc('id')->get()->map(fn (Project $p) => $clean([
-                'id' => $p->slug, 'title' => $p->title, 'date' => $date($p->date), 'status' => $p->status,
-                'location' => $p->location, 'summary' => $p->summary, 'body' => $this->rich($p->body),
-                'image' => $this->url($p->image), 'images' => $this->urls($p->images), 'file' => $this->url($p->file),
-                'program' => $p->program, 'category' => $p->category,
-            ]))->all(),
-            'publications' => Publication::where('is_published', true)->orderByDesc('date')->orderByDesc('id')->get()->map(fn (Publication $p) => $clean([
-                'id' => (string) $p->id, 'title' => $p->title, 'category' => $p->category,
-                'year' => $p->year ?: $p->date?->format('Y'), 'date' => $date($p->date),
-                'description' => $p->description, 'file' => $this->url($p->file), 'cover' => $this->url($p->cover_image),
-            ]))->all(),
-            default => abort(404),
+        return match (true) {
+            $m instanceof News => $clean([
+                'id' => $m->slug, 'title' => $m->title, 'type' => $m->type, 'date' => $date($m->date),
+                'summary' => $m->summary, 'body' => $this->rich($m->body), 'image' => $this->url($m->image),
+                'program' => $m->program, 'category' => $m->category,
+            ]),
+            $m instanceof Event => $clean([
+                'id' => $m->slug, 'title' => $m->title, 'date' => $date($m->date), 'endDate' => $date($m->end_date),
+                'location' => $m->location, 'description' => $m->description, 'body' => $this->rich($m->body),
+                'image' => $this->url($m->image), 'images' => $this->urls($m->images),
+                'program' => $m->program, 'category' => $m->category,
+            ]) + ['registration' => (bool) ($m->registration_open ?? true)],
+            $m instanceof Project => $clean([
+                'id' => $m->slug, 'title' => $m->title, 'date' => $date($m->date), 'status' => $m->status,
+                'location' => $m->location, 'summary' => $m->summary, 'body' => $this->rich($m->body),
+                'image' => $this->url($m->image), 'images' => $this->urls($m->images), 'file' => $this->url($m->file),
+                'program' => $m->program, 'category' => $m->category,
+            ]),
+            $m instanceof Publication => $clean([
+                'id' => (string) $m->id, 'title' => $m->title, 'category' => $m->category,
+                'year' => $m->year ?: $m->date?->format('Y'), 'date' => $date($m->date),
+                'description' => $m->description, 'file' => $this->url($m->file), 'cover' => $this->url($m->cover_image),
+            ]) + ['download' => (bool) ($m->allow_download ?? true)],
+            $m instanceof Page => $m->is_published ? $clean([
+                'title' => $m->title,
+                'sub' => (string) $m->subtitle,
+                'b' => collect($m->sections ?? [])->map(fn ($s) => [$s['heading'] ?? '', $this->rich($s['body'] ?? '')])->values()->all(),
+                'image' => $this->url($m->image),
+                'images' => $this->urls($m->images),
+                'menu' => $m->menu,
+                'menuLabel' => $m->menu_label ?: $m->title,
+                'form' => $m->form_slug,
+                'published' => true,
+            ]) : ['published' => false],
+            $m instanceof FormDefinition => FormSpec::toWebsite($m),
         };
     }
 
     /** Rich-text (HTML) from the admin editor, cleaned of anything unsafe. Plain text is left as it is. */
-    protected function rich(mixed $html): mixed
+    public function rich(mixed $html): mixed
     {
         if (! is_string($html) || $html === null || $html === '' || ! preg_match('/<[a-z][\s\S]*>/i', $html)) {
             return $html;
@@ -176,7 +192,7 @@ class ContentController extends Controller
         ];
     }
 
-    protected function url(?string $path): ?string
+    public function url(?string $path): ?string
     {
         if (! $path) {
             return null;
@@ -188,7 +204,7 @@ class ContentController extends Controller
         return str_starts_with($u, '/') && ! str_starts_with($u, '//') ? url($u) : $u;
     }
 
-    protected function urls(?array $paths): array
+    public function urls(?array $paths): array
     {
         return array_values(array_filter(array_map(fn ($p) => $this->url($p), $paths ?? [])));
     }

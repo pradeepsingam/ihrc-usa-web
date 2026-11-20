@@ -37,7 +37,9 @@ class SubscribeController extends Controller
         try {
             Mail::to($s->email)->send(new SubscribeConfirmation($s));
         } catch (\Throwable $e) {
-            Log::warning('Subscription email failed: '.$e->getMessage());
+            Log::error('Subscription confirmation email could not be sent to '.$s->email.': '.$e->getMessage());
+
+            return response()->json(['ok' => false, 'message' => 'We could not send the confirmation email right now. Please try again later.'], 503);
         }
 
         return response()->json(['ok' => true, 'message' => 'Please check your email and click the link to confirm your subscription.'], 201);

@@ -13,6 +13,9 @@ Route::get('/supporters', [ContentController::class, 'supporters']);
 Route::get('/{type}', [ContentController::class, 'listing'])->whereIn('type', ['news', 'events', 'projects', 'publications']);
 Route::get('/{type}/{id}', [ContentController::class, 'show'])->whereIn('type', ['news', 'events', 'projects', 'publications']);
 
+// Admin previews of unsaved changes (random token, expires after 30 minutes)
+Route::get('/preview/{token}', fn (string $token) => response()->json(cache('preview:'.$token) ?? abort(404))->header('Cache-Control', 'no-store'))->where('token', '[A-Za-z0-9]{40}');
+
 Route::post('/forms', [FormController::class, 'store'])->middleware('throttle:10,1');
 
 Route::get('/verify/{memberId}', VerifyController::class)->middleware('throttle:30,1');

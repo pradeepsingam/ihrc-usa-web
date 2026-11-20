@@ -44,7 +44,7 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            ->navigationGroups(['Inbox', 'Members', 'News & Updates', 'Organisation', 'Website pages', 'Newsletter', 'Administration'])
+            ->navigationGroups(['Inbox', 'News & Updates', 'Organisation', 'Website pages', 'Newsletter', 'Administration'])
             ->widgets([
                 AccountWidget::class,
             ])

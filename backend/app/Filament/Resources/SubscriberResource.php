@@ -9,6 +9,12 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ViewAction;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Notifications\Notification;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Mail;
 use Filament\Resources\Resource;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
@@ -39,6 +45,47 @@ class SubscriberResource extends Resource
         return $s->unsubscribed_at ? 'Unsubscribed' : ($s->confirmed_at ? 'Subscribed' : 'Waiting for confirmation');
     }
 
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema->components([
+            Section::make('Subscriber')->columns(3)->columnSpanFull()->schema([
+                TextEntry::make('email')->copyable(),
+                TextEntry::make('name')->placeholder('—'),
+                TextEntry::make('status')->state(fn ($record) => static::status($record))->badge()
+                    ->color(fn ($state) => match ($state) { 'Subscribed' => 'success', 'Unsubscribed' => 'gray', default => 'warning' }),
+                TextEntry::make('created_at')->label('Signed up')->dateTime('d M Y H:i'),
+                TextEntry::make('confirmed_at')->label('Confirmed')->dateTime('d M Y H:i')->placeholder('Not confirmed yet'),
+                TextEntry::make('unsubscribed_at')->label('Unsubscribed')->dateTime('d M Y H:i')->placeholder('—'),
+                TextEntry::make('ip')->label('Signed up from (IP address)')->placeholder('—'),
+                TextEntry::make('updated_at')->label('Last change')->since(),
+            ]),
+        ]);
+    }
+
+    /** Buttons on a subscriber's page. */
+    public static function subscriberActions(): array
+    {
+        return [
+            Action::make('resend')->label('Resend confirmation email')->icon(Heroicon::Envelope)->color('gray')
+                ->visible(fn ($record) => ! $record->confirmed_at && ! $record->unsubscribed_at && auth()->user()->can('update', $record))
+                ->action(function (Subscriber $record) {
+                    try {
+                        Mail::to($record->email)->send(new \App\Mail\SubscribeConfirmation($record));
+                        Notification::make()->success()->title('Confirmation email sent to '.$record->email)->body(\App\Support\MailCheck::describe())->send();
+                    } catch (\Throwable $e) {
+                        Notification::make()->danger()->title('Could not send the email')->body($e->getMessage())->persistent()->send();
+                    }
+                }),
+            Action::make('confirm')->label('Mark as confirmed')->icon(Heroicon::CheckCircle)->color('success')->requiresConfirmation()
+                ->modalDescription('Only do this when the person asked you directly to be subscribed.')
+                ->visible(fn ($record) => ! $record->isActive() && auth()->user()->can('update', $record))
+                ->action(fn (Subscriber $record) => $record->update(['confirmed_at' => now(), 'unsubscribed_at' => null])),
+            Action::make('unsubscribe')->icon(Heroicon::NoSymbol)->color('danger')->requiresConfirmation()
+                ->visible(fn ($record) => ! $record->unsubscribed_at && auth()->user()->can('update', $record))
+                ->action(fn (Subscriber $record) => $record->update(['unsubscribed_at' => now()])),
+        ];
+    }
+
     public static function table(Table $table): Table
     {
         return $table->defaultSort('created_at', 'desc')->columns([
@@ -48,18 +95,20 @@ class SubscriberResource extends Resource
                 ->color(fn ($state) => match ($state) { 'Subscribed' => 'success', 'Unsubscribed' => 'gray', default => 'warning' }),
             TextColumn::make('created_at')->label('Signed up')->date()->sortable(),
             TextColumn::make('confirmed_at')->label('Confirmed')->date()->placeholder('—')->toggleable(),
-        ])->filters([
+            TextColumn::make('unsubscribed_at')->label('Unsubscribed')->date()->placeholder('—')->toggleable(),
+        ])->recordUrl(fn ($record) => static::getUrl('view', ['record' => $record]))->filters([
             SelectFilter::make('state')->label('Status')->options(['active' => 'Subscribed', 'pending' => 'Waiting for confirmation', 'unsubscribed' => 'Unsubscribed'])
-                ->query(fn (Builder $q, array $data) => match ($data['value'] ?? null) {
-                    'active' => $q->active(),
-                    'pending' => $q->whereNull('confirmed_at')->whereNull('unsubscribed_at'),
-                    'unsubscribed' => $q->whereNotNull('unsubscribed_at'),
-                    default => $q,
+                ->query(fn (Builder $query, array $data) => match ($data['value'] ?? null) {
+                    'active' => $query->active(),
+                    'pending' => $query->whereNull('confirmed_at')->whereNull('unsubscribed_at'),
+                    'unsubscribed' => $query->whereNotNull('unsubscribed_at'),
+                    default => $query,
                 }),
         ])->headerActions([
             Action::make('export')->label('Export CSV')->icon(Heroicon::ArrowDownTray)->color('gray')
                 ->action(fn ($livewire) => static::export($livewire->getFilteredSortedTableQuery()->get())),
         ])->recordActions([
+            ViewAction::make(),
             Action::make('unsubscribe')->icon(Heroicon::NoSymbol)->color('danger')->requiresConfirmation()
                 ->visible(fn ($record) => ! $record->unsubscribed_at && auth()->user()->can('update', $record))
                 ->action(fn (Subscriber $record) => $record->update(['unsubscribed_at' => now()])),
@@ -81,6 +130,9 @@ class SubscriberResource extends Resource
 
     public static function getPages(): array
     {
-        return ['index' => SubscriberResource\Pages\ListSubscriber::route('/')];
+        return [
+            'index' => SubscriberResource\Pages\ListSubscriber::route('/'),
+            'view' => SubscriberResource\Pages\ViewSubscriber::route('/{record}'),
+        ];
     }
 }

@@ -2,6 +2,7 @@ import {Routes,Route,Navigate} from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Preview from './pages/Preview';
 import {TextPage,Programs,Benefits,People,Profile,FormPage} from './pages/Content';
 import {Apply,Volunteer,Contact,Verify} from './pages/Forms';
 import {HumanRights,GlobalNetwork,Events,EventDetail,NewsList,NewsDetail,Publications,Awards,Partnerships,Donation,ReportConcern,ProgramDetail,SearchPage} from './pages/PublicPages';
@@ -16,6 +17,9 @@ import WhatWeDo from './pages/WhatWeDo';
 import Accreditation from './pages/Accreditation';
 import {Projects,ProjectDetail} from './pages/Projects';
 import {texts,groups} from './data';
+
+// Read when the route is shown (the admin preview adds texts.__preview at that moment).
+const PreviewPage=()=>texts.__preview?<TextPage k="__preview"/>:<NotFound/>;
 
 export default function App(){return <Routes><Route element={<Layout/>}>
 <Route index element={<Home/>}/>
@@ -43,5 +47,6 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 <Route path="verify" element={<Verify/>}/><Route path="contact" element={<Contact/>}/>
 <Route path="search" element={<SearchPage/>}/>
 <Route path="forms/:slug" element={<FormPage/>}/>
+<Route path="preview/:token" element={<Preview/>}/><Route path="preview-page" element={<PreviewPage/>}/>
 <Route path="privacy" element={<Navigate to="/privacy-policy" replace/>}/>
 <Route path="*" element={<NotFound/>}/></Route></Routes>}

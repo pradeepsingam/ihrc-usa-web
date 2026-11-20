@@ -5,7 +5,7 @@ import * as content from '../content';
 // exported by src/content.js, before the rest of the app is loaded (see main.jsx).
 // If the backend is not configured or does not answer in time, the built-in content is used.
 const LISTS=['news','events','projects','publications','partners','awardCategories','branches'];
-const MAPS=['leaders','programDetails','supporters','forms'];
+const MAPS=['leaders','programDetails','supporters','forms','people'];
 
 export let remotePages={};
 

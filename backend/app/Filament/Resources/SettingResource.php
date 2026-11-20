@@ -63,7 +63,13 @@ class SettingResource extends Resource
             ])
             ->columns([
                 TextColumn::make("label")->label("Setting")->weight("bold"),
-                TextInputColumn::make("value")->label("Value"),
+                TextInputColumn::make("value")->label("Value")
+                    ->rules(fn ($record) => match (true) {
+                        str_starts_with($record->key, "mailbox."), $record->key === "email" => ["nullable", "email"],
+                        $record->key === "paymentUrl", $record->key === "mapUrl", $record->key === "whatsappLink", $record->key === "whatsappChannel", str_starts_with($record->key, "social.") => ["nullable", "url:https,http"],
+                        default => ["nullable", "string", "max:500"],
+                    })
+                    ->tooltip(fn ($record) => $record->key === "paymentUrl" ? "Full address of the online payment page, starting with https://" : null),
             ]);
     }
 

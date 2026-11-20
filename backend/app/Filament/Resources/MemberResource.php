@@ -44,11 +44,15 @@ class MemberResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedIdentification;
 
-    protected static string|UnitEnum|null $navigationGroup = 'Members';
+    protected static string|UnitEnum|null $navigationGroup = null;
+
+    protected static ?string $slug = 'members';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'Member register';
+    protected static ?string $navigationLabel = 'Members';
+
+    protected static ?string $modelLabel = 'member';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -59,7 +63,7 @@ class MemberResource extends Resource
 
     /** CSV columns used for export and import. */
     public const CSV = ['member_id', 'name', 'title', 'status', 'email', 'phone', 'country', 'city', 'address', 'date_of_birth', 'gender',
-        'nationality', 'profession', 'organization', 'interests', 'joined_at', 'expires_at', 'fee_status', 'show_on_site', 'group', 'position'];
+        'nationality', 'profession', 'organization', 'interests', 'joined_at', 'expires_at', 'fee_status', 'show_on_site', 'group', 'public_role', 'position'];
 
     public static function form(Schema $schema): Schema
     {
@@ -101,21 +105,24 @@ class MemberResource extends Resource
         ]);
     }
 
-    public static function publicSection(bool $required = false): Section
+    public static function publicSection(): Section
     {
-        return Section::make('Show on the public website')->columns(2)->columnSpanFull()
-            ->description('Turn on to show this person on a Members page (Leadership, Ambassadors, Directors…) in the chosen seat.')
+        $on = fn (Get $get) => (bool) $get('show_on_site');
+
+        return Section::make('Show on the public website')->columns(3)->columnSpanFull()
+            ->description('Turn on to show this person on a Members page (Leadership, Ambassadors, Directors…). Any number of people can have the same role.')
             ->schema([
-                Toggle::make('show_on_site')->label('Show on public site')->live()->default($required)->columnSpanFull()->hidden($required),
+                Toggle::make('show_on_site')->label('Show on public site')->live()->columnSpanFull(),
                 Select::make('group')->label('Members page')->options(fn () => SiteStructure::groupOptions())
-                    ->required(fn (Get $get) => $required || $get('show_on_site'))->visible(fn (Get $get) => $required || $get('show_on_site'))
-                    ->live()->afterStateUpdated(fn ($set) => $set('position', null)),
-                Select::make('position')->label('Seat')->options(fn (Get $get) => SiteStructure::seatOptions($get('group')))
-                    ->required(fn (Get $get) => $required || $get('show_on_site'))->visible(fn (Get $get) => $required || $get('show_on_site'))
-                    ->unique(ignoreRecord: true, modifyRuleUsing: fn ($rule, Get $get) => $rule->where('group', $get('group')))
-                    ->validationMessages(['unique' => 'Another person already uses this seat.']),
-                Textarea::make('bio')->label('Biography')->rows(5)->columnSpanFull()->visible(fn (Get $get) => $required || $get('show_on_site')),
-                Textarea::make('responsibilities')->rows(3)->columnSpanFull()->visible(fn (Get $get) => $required || $get('show_on_site')),
+                    ->required($on)->visible($on)->live()->searchable(),
+                TextInput::make('public_role')->label('Role on the page')->maxLength(190)
+                    ->datalist(fn (Get $get) => SiteStructure::roleOptions($get('group')))
+                    ->required($on)->visible($on)->placeholder('e.g. President')
+                    ->helperText('Pick a suggestion or type a new role.'),
+                TextInput::make('position')->label('Order on the page')->numeric()->minValue(0)->visible($on)
+                    ->helperText('Lower numbers are shown first. Leave empty to sort by name.'),
+                Textarea::make('bio')->label('Biography')->rows(5)->columnSpanFull()->visible($on),
+                Textarea::make('responsibilities')->rows(3)->columnSpanFull()->visible($on),
             ]);
     }
 
@@ -129,8 +136,11 @@ class MemberResource extends Resource
             TextColumn::make('country')->searchable()->toggleable(),
             TextColumn::make('status')->badge()->color(fn ($state) => match ($state) { 'Active' => 'success', 'Pending' => 'warning', 'Suspended', 'Rejected' => 'danger', default => 'gray' }),
             TextColumn::make('expires_at')->label('Expires')->date()->sortable()->toggleable(),
-            IconColumn::make('show_on_site')->label('Public')->boolean()->toggleable(),
+            IconColumn::make('show_on_site')->label('On website')->boolean()->toggleable(),
+            TextColumn::make('group')->label('Members page')->formatStateUsing(fn ($state) => SiteStructure::groupOptions()[$state] ?? $state)->toggleable()->sortable(),
+            TextColumn::make('public_role')->label('Role')->toggleable()->searchable(),
         ])->filters([
+            SelectFilter::make('group')->label('Members page')->options(fn () => SiteStructure::groupOptions()),
             SelectFilter::make('status')->options(Member::STATUSES),
             SelectFilter::make('fee_status')->options(Member::FEE_STATUSES),
             TernaryFilter::make('show_on_site')->label('Shown on public site'),

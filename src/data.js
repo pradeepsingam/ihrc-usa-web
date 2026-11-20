@@ -1,5 +1,5 @@
 ﻿import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network} from 'lucide-react';
-import {leaders} from './content';
+import {leaders,people as cmsPeople} from './content';
 import {remotePages} from './lib/loadContent';
 const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['What We Do','/what-we-do'],['Roles & Responsibilities','/roles-responsibilities'],['Our Partners','/our-partners'],['Our Supporters','/our-supporters'],['Our Recognition','/recognition'],['Countries','/countries']];
 const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Deputy Secretary-General','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
@@ -10,7 +10,7 @@ export const nav=[
 {l:'Members',i:Users,c:L},
 {l:'Programs',i:Globe2,c:P},
 {l:'News & Events',i:Newspaper,c:[['Events','/events'],['News','/news'],['Projects','/projects'],['Publications','/publications']]},
-{l:'Get Involved',i:Heart,c:[['Volunteer','/volunteer'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
+{l:'Get Involved',i:Heart,c:[['Volunteer','/volunteer'],['Global Network','/global-network'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
 {l:'Verify Member',to:'/verify',i:BadgeCheck},
 {l:'Contact',i:Mail,c:[['Contact Us','/contact'],['Report a Human Rights Concern','/report-concern']]}];
 export const topNav=[
@@ -20,7 +20,7 @@ export const topNav=[
 {l:'Programs',to:'/programs'},
 {l:'Our Members',c:L},
 {l:'Events & News',c:[['Events','/events'],['News','/news'],['Projects','/projects'],['Publications','/publications']]},
-{l:'Get Involved',c:[['Volunteer','/volunteer'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
+{l:'Get Involved',c:[['Volunteer','/volunteer'],['Global Network','/global-network'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation'],['Donation','/donation']]},
 {l:'Contact Us',to:'/contact'}];
 export const legal=[['Privacy Policy','/privacy-policy'],['Terms of Use','/terms'],['Official Disclaimer','/disclaimer'],['Refund Policy','/refund']];
 export const mvo=[
@@ -50,7 +50,15 @@ ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of hu
 'community-partners':{title:'Community Partners',sub:'Community partners working with IHRC-USA.',r:Array(6).fill('Community Partner')},
 'honorary-members':{title:'Honorary Members',sub:'Persons recognised for supporting the organisation through experience, expertise, goodwill or community standing.',r:Array(6).fill('Honorary Member')},
 volunteers:{title:'Volunteers',sub:'The dedicated volunteers behind our community work.',r:Array(8).fill('Volunteer')}};
-export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>[k,g.r.map((r,i)=>{const id=k+'-'+(i+1);return {id,name:'Name to be added',role:r,tbd:!leaders[id],...leaders[id]}})]));
+// People on each Members page: everyone the admin added for that page (any number per role), followed by a
+// "Name to be added" card for each of the page's usual roles that nobody holds yet.
+export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>{
+ const added=(cmsPeople[k]||[]).map(p=>({...p,role:p.role||g.r[0]}));
+ const slots=g.r.map((r,i)=>{const id=k+'-'+(i+1);return {id,name:'Name to be added',role:r,tbd:!leaders[id],...leaders[id]}});
+ if(!added.length)return [k,slots];
+ const filled=new Set(added.map(p=>p.role));const seen=new Set();
+ return [k,[...added,...slots.filter(s=>!s.tbd||(!filled.has(s.role)&&!seen.has(s.role)&&seen.add(s.role)))]];
+}));
 export const allPeople=Object.values(people).flat();
 export const members=[];
 export const benefits=[['Official Membership ID','A verifiable member number and digital certificate.'],['Training & Workshops','Priority access to human rights training.'],['Networking','Connect with human rights advocates worldwide.'],['Voice in the Assembly','Eligible to take part in General Assembly activities.'],['Community Projects','Join field projects and outreach campaigns.'],['Resources','Guides, reports and toolkits for members.']];

@@ -44,6 +44,7 @@ class AwardCategoryResource extends Resource
             Section::make()->columnSpanFull()->schema([
                 TextInput::make("name")->required(),
                 Textarea::make("description")->rows(3),
+                Fields::image("image", "awards", "Image (shown on the Awards page)"),
                 TextInput::make("sort")->label("Order")->numeric()->default(0),
             ]),
         ]);
@@ -52,6 +53,7 @@ class AwardCategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table->reorderable("sort")->defaultSort("sort")->columns([
+            ImageColumn::make("image")->disk("public"),
             TextColumn::make("name")->searchable(),
             TextColumn::make("description")->limit(80),
         ])->recordActions([EditAction::make(), DeleteAction::make()]);

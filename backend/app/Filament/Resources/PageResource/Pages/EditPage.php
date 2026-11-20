@@ -10,4 +10,9 @@ class EditPage extends EditRecord
     use \App\Filament\Concerns\PreparesRichText;
 
     protected static string $resource = PageResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [\App\Filament\Support\Preview::action(), \Filament\Actions\DeleteAction::make()];
+    }
 }

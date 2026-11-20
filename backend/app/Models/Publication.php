@@ -8,5 +8,5 @@ class Publication extends Model
 {
     protected $guarded = [];
 
-    protected $casts = ['is_published' => 'boolean', 'date' => 'date'];
+    protected $casts = ['is_published' => 'boolean', 'date' => 'date', 'allow_download' => 'boolean'];
 }

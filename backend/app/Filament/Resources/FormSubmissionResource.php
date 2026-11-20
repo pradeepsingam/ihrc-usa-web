@@ -128,7 +128,7 @@ class FormSubmissionResource extends Resource
                 Filter::make('received')->schema([
                     DatePicker::make('from')->label('Received from'),
                     DatePicker::make('until')->label('Received until'),
-                ])->query(fn (Builder $q, array $data) => $q
+                ])->query(fn (Builder $query, array $data) => $query
                     ->when($data['from'] ?? null, fn ($q, $d) => $q->whereDate('submitted_at', '>=', $d))
                     ->when($data['until'] ?? null, fn ($q, $d) => $q->whereDate('submitted_at', '<=', $d)))
                     ->indicateUsing(fn (array $data) => array_filter([

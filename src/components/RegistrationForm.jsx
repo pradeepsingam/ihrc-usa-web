@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useMemo} from 'react';
 import {Paperclip,AlertCircle,CheckCircle2,Upload} from 'lucide-react';
 import {Card,Reference} from './UI';
 import {FORM_ENDPOINT} from '../config';
@@ -15,7 +15,16 @@ const fmtDate=d=>{const x=new Date(d+'T00:00:00');return isNaN(x)?d:x.toLocaleDa
 const list=a=>a.length<3?a.join(' or '):a.slice(0,-1).join(', ')+' or '+a[a.length-1];
 const fileHint=f=>'Upload 1 supported file: '+list(f.kinds.map(k=>KIND_LABEL[k]))+'. Max '+f.maxMB+' MB.';
 
-export default function RegistrationForm({spec}){
+// Fills in anything a form from the admin Form Builder may leave out, so a half-finished
+// question can never break the page (unknown file kinds, missing choices, …).
+const normalize=spec=>({...spec,intro:spec.intro||[],sections:(spec.sections||[]).map(s=>({...s,blocks:(s.blocks||[]).filter(b=>b&&b.t).map(b=>{
+  const x={...b,opts:b.opts||[],items:b.items||[],cols:b.cols||[]};
+  if(b.t==='file'){const kinds=((b.file&&b.file.kinds)||[]).filter(k=>EXT[k]);x.file={...(b.file||{}),kinds:kinds.length?kinds:['pdf'],maxMB:Number(b.file&&b.file.maxMB)||10}}
+  if(b.t==='table'&&!b.rowLabels&&!b.rows)x.rows=3;
+  return x})}))});
+
+export default function RegistrationForm({spec:rawSpec}){
+  const spec=useMemo(()=>normalize(rawSpec),[rawSpec]);
   const[v,setV]=useState({});const[files,setFiles]=useState({});const[ticks,setTicks]=useState({});
   const[multi,setMulti]=useState({});const[tables,setTables]=useState({});const[e,setE]=useState({});const[busy,setBusy]=useState(false);const[sendErr,setSendErr]=useState('');const[done,setDone]=useState(null);
 

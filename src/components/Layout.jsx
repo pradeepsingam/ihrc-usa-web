@@ -8,6 +8,7 @@ import {
 import { nav, topNav, legal } from '../data';
 import { siteInfo } from '../content';
 import Subscribe from './Subscribe';
+import ErrorBoundary from './ErrorBoundary';
 import Cookie from './Cookie';
 import Seo from '../seo/Seo';
 import DonateLink from './DonateLink';
@@ -269,7 +270,8 @@ const Footer = () => (
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, search } = useLocation();
+  const preview = /[?&]preview=1/.test(search);
   const mainRef = useRef(null);
 
   useEffect(() => {
@@ -306,7 +308,8 @@ export default function Layout() {
       <div className="mx-auto flex w-full max-w-[1600px] flex-1 overflow-hidden">
         <Sidebar />
         <main ref={mainRef} className="min-w-0 flex-1 overflow-y-auto">
-          <Outlet />
+          {preview && <div role="status" className="mb-4 rounded-lg bg-amber-100 px-4 py-2 text-center text-sm font-semibold text-amber-900">Preview – these changes are not saved or published yet.</div>}
+          <ErrorBoundary key={pathname}><Outlet /></ErrorBoundary>
           <Footer />
         </main>
       </div>

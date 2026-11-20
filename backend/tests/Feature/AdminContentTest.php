@@ -39,7 +39,7 @@ class AdminContentTest extends TestCase
 
     public function test_every_admin_screen_opens(): void
     {
-        foreach (['', 'news', 'events', 'projects', 'publications', 'members', 'leadership-people', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'subscribers', 'newsletters', 'settings', 'form-submissions', 'activity-log', 'admin-users', 'profile'] as $s) {
+        foreach (['', 'news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'subscribers', 'newsletters', 'settings', 'form-submissions', 'activity-log', 'admin-users', 'profile'] as $s) {
             $this->get("/admin/$s")->assertOk();
         }
         foreach (\App\Models\Page::all() as $p) {
@@ -48,7 +48,7 @@ class AdminContentTest extends TestCase
         foreach (\App\Models\FormDefinition::all() as $f) {
             $this->get("/admin/form-builder/{$f->id}/edit")->assertOk();
         }
-        foreach (['news', 'events', 'projects', 'publications', 'members', 'leadership-people', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'newsletters', 'admin-users'] as $s) {
+        foreach (['news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'newsletters', 'admin-users'] as $s) {
             $this->get("/admin/$s/create")->assertOk();
         }
     }
@@ -103,22 +103,28 @@ class AdminContentTest extends TestCase
         $this->assertStringEndsWith('.pdf', $d['publications'][0]['file']);
     }
 
-    public function test_members_seats_are_unique_per_page(): void
+    public function test_members_any_number_per_role_with_country(): void
     {
-        $this->create(Resources\LeadershipResource\Pages\CreateLeadership::class, [
-            'group' => 'leadership', 'position' => 1, 'name' => 'Jane Doe', 'bio' => 'Bio', 'photo' => UploadedFile::fake()->image('jane.jpg'),
-        ]);
-        $this->create(Resources\MemberResource\Pages\CreateMember::class, ['show_on_site' => true, 'group' => 'ambassadors', 'position' => 1, 'name' => 'Amb One']);
+        foreach (['Jane Doe', 'John Roe', 'Third President'] as $i => $name) {
+            $this->create(Resources\MemberResource\Pages\CreateMember::class, [
+                'name' => $name, 'show_on_site' => true, 'group' => 'leadership', 'public_role' => 'President',
+                'country' => $i ? 'India' : 'Sri Lanka', 'position' => $i, 'photo' => UploadedFile::fake()->image('p.jpg'),
+            ]);
+        }
         $this->create(Resources\MemberResource\Pages\CreateMember::class, ['name' => 'Not public']);
-        Livewire::test(Resources\LeadershipResource\Pages\CreateLeadership::class)
-            ->fillForm(['group' => 'leadership', 'position' => 1, 'name' => 'Duplicate'])->call('create')
-            ->assertHasFormErrors(['position' => 'unique']);
+        Livewire::test(Resources\MemberResource\Pages\CreateMember::class)
+            ->fillForm(['name' => 'X', 'show_on_site' => true])->call('create')->assertHasFormErrors(['group', 'public_role']);
 
-        $leaders = $this->api()['leaders'];
-        $this->assertSame('Jane Doe', $leaders['leadership-1']['name']);
-        $this->assertStringStartsWith('http', $leaders['leadership-1']['photo']);
-        $this->assertSame('Amb One', $leaders['ambassadors-1']['name']);
-        $this->assertCount(2, $leaders, 'members not shown on the site stay private');
+        $people = $this->api()['people'];
+        $this->assertSame(['Jane Doe', 'John Roe', 'Third President'], array_column($people['leadership'], 'name'));
+        $this->assertSame(['President', 'President', 'President'], array_column($people['leadership'], 'role'));
+        $this->assertSame('Sri Lanka', $people['leadership'][0]['country']);
+        $this->assertStringStartsWith('http', $people['leadership'][0]['photo']);
+        $this->assertCount(1, $people, 'members not shown on the site stay private');
+
+        Livewire::test(Resources\MemberResource\Pages\ListMember::class)->set('activeTab', 'website')
+            ->assertCanSeeTableRecords(\App\Models\Member::where('show_on_site', true)->get())
+            ->assertCanNotSeeTableRecords(\App\Models\Member::where('name', 'Not public')->get());
     }
 
     public function test_organisation_lists(): void
