@@ -25,3 +25,30 @@ Artisan::command('mail:test {to : Address that should receive the test email}', 
 
     return 0;
 })->purpose('Send a test email to check the mail settings');
+
+// Set an admin's password from the server (e.g. when locked out): php artisan admin:password you@example.com
+Artisan::command('admin:password {email : Email address of the admin account}', function (string $email) {
+    $user = \App\Models\User::where('email', $email)->first();
+    if (! $user) {
+        $this->error("No admin account with the email $email.");
+        $this->line('Existing accounts: '.\App\Models\User::pluck('email')->implode(', '));
+
+        return 1;
+    }
+    $password = $this->secret('New password (at least 10 characters, not shown)');
+    if (mb_strlen((string) $password) < 10) {
+        $this->error('The password must be at least 10 characters.');
+
+        return 1;
+    }
+    if ($password !== $this->secret('Type it again')) {
+        $this->error('The two passwords do not match.');
+
+        return 1;
+    }
+    $user->forceFill(['password' => $password])->save();
+    \App\Models\ActivityLog::record('password reset (server)', $user);
+    $this->info("Password changed for $email. You can sign in now.");
+
+    return 0;
+})->purpose("Set an admin user's password");
