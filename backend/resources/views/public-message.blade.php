@@ -1,0 +1,4 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ $title }} – IHRC-USA</title><link rel="icon" href="/favicon.ico">
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f1f5f9;font-family:Arial,Helvetica,sans-serif;color:#0f172a;padding:16px}main{max-width:480px;background:#fff;border-radius:12px;padding:32px;text-align:center;box-shadow:0 1px 3px #0001}h1{color:#0b2e6b;font-size:22px}a{display:inline-block;margin-top:12px;background:#0b2e6b;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none}</style></head>
+<body><main><img src="/favicon.png" alt="" width="64" height="64"><h1>{{ $title }}</h1><p>{{ $text }}</p>@if($site)<a href="{{ $site }}">Back to the website</a>@endif</main></body></html>

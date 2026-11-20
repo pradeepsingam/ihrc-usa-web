@@ -1,7 +1,8 @@
 import {Routes,Route,Navigate} from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import {TextPage,Programs,Benefits,People,Profile} from './pages/Content';
+import NotFound from './pages/NotFound';
+import {TextPage,Programs,Benefits,People,Profile,FormPage} from './pages/Content';
 import {Apply,Volunteer,Contact,Verify} from './pages/Forms';
 import {HumanRights,GlobalNetwork,Events,EventDetail,NewsList,NewsDetail,Publications,Awards,Partnerships,Donation,ReportConcern,ProgramDetail,SearchPage} from './pages/PublicPages';
 import PartnershipApplication from './pages/PartnershipApplication';
@@ -27,7 +28,7 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 <Route path="human-rights" element={<HumanRights/>}/>
 <Route path="programs" element={<Programs/>}/><Route path="programs/:slug" element={<ProgramDetail/>}/>
 <Route path="global-network" element={<GlobalNetwork/>}/>
-<Route path="membership" element={<Apply/>}/><Route path="apply" element={<Apply/>}/>
+<Route path="membership" element={<Apply/>}/><Route path="apply" element={<Navigate to="/membership" replace/>}/>
 <Route path="membership-benefits" element={<Benefits/>}/>
 <Route path="volunteer" element={<Volunteer/>}/>
 <Route path="events" element={<Events/>}/><Route path="events/:id" element={<EventDetail/>}/>
@@ -41,5 +42,6 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 <Route path="report-concern" element={<ReportConcern/>}/>
 <Route path="verify" element={<Verify/>}/><Route path="contact" element={<Contact/>}/>
 <Route path="search" element={<SearchPage/>}/>
+<Route path="forms/:slug" element={<FormPage/>}/>
 <Route path="privacy" element={<Navigate to="/privacy-policy" replace/>}/>
-<Route path="*" element={<Navigate to="/" replace/>}/></Route></Routes>}
+<Route path="*" element={<NotFound/>}/></Route></Routes>}

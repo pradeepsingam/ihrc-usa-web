@@ -2,7 +2,7 @@ import {Page,Card,Heading} from '../components/UI';
 import RegistrationForm from '../components/RegistrationForm';
 import {researchForm} from '../data/researchForm';
 import {researchAreas,researchWho,researchBenefits,researchTopics,equalOpportunity,researchRef,researchClosingDate} from '../data/research';
-import {siteInfo} from '../content';
+import {siteInfo,forms} from '../content';
 
 const Bullets=({items,cols})=><ul className={'mt-3 grid gap-x-6 gap-y-2 '+(cols?'sm:grid-cols-2':'')}>{items.map(i=><li key={i} className="flex gap-2 text-slate-700"><span className="text-brand">•</span><span>{i}</span></li>)}</ul>;
 
@@ -25,6 +25,6 @@ return <Page title="Call for Researchers" sub="Join our global research network 
 <p className="mt-2 text-slate-700">Complete the Researchers Application Form below in full. Attach your CV, a one-page research proposal abstract and copies of your certificates in the attachments section. Incomplete applications will not be considered. Questions: <a className="text-brand hover:underline" href={'mailto:'+siteInfo.email}>{siteInfo.email}</a>.</p></Card>
 <section><Heading>Research Topics</Heading>
 <div className="grid gap-4 md:grid-cols-2">{researchTopics.map(([g,list])=><Card key={g}><h3 className="font-bold text-navy">{g}</h3><ol className="mt-2 list-decimal space-y-1.5 pl-5 text-sm text-slate-700">{list.map(t=><li key={t}>{t}</li>)}</ol></Card>)}</div></section>
-<section id="apply" className="scroll-mt-24"><Heading>Researchers Application Form</Heading><RegistrationForm spec={researchForm}/></section>
+<section id="apply" className="scroll-mt-24"><Heading>Researchers Application Form</Heading><RegistrationForm spec={forms.research||researchForm}/></section>
 <p className="text-sm italic text-slate-600">{equalOpportunity}</p>
 </div></Page>}

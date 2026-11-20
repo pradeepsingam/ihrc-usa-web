@@ -6,3 +6,16 @@ html,body{overflow-x:hidden}body{@apply bg-[#f3f7fc] text-slate-800 antialiased}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll 45s linear infinite;will-change:transform}
 .marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
 @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Text written with the admin panel's rich text editor */
+.rich-text > * + * { margin-top: .75rem; }
+.rich-text h2 { font-family: theme('fontFamily.serif'); font-size: 1.25rem; font-weight: 700; color: theme('colors.navy.DEFAULT'); }
+.rich-text h3 { font-size: 1.1rem; font-weight: 700; color: theme('colors.navy.DEFAULT'); }
+.rich-text ul { list-style: disc; padding-left: 1.25rem; }
+.rich-text ol { list-style: decimal; padding-left: 1.25rem; }
+.rich-text li > p { margin: 0; }
+.rich-text a { color: theme('colors.brand'); text-decoration: underline; }
+.rich-text blockquote { border-left: 4px solid theme('colors.brand'); padding-left: .75rem; font-style: italic; }
+.rich-text img { max-width: 100%; height: auto; border-radius: .5rem; }
+.rich-text table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.rich-text td, .rich-text th { border: 1px solid theme('colors.slate.300'); padding: .4rem .5rem; }

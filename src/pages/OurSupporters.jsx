@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react';
 import {Page,Card} from '../components/UI';
 import FormCta from '../components/FormCta';
 import {SUPPORTERS_ENDPOINT} from '../config';
+import {supporters} from '../content';
 
 const initials=n=>n.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
 
@@ -23,7 +24,7 @@ const Section=({title,list,empty})=><Card><h2 className="font-serif text-xl font
   :<p className="mt-3 text-sm text-slate-600">{empty}</p>}</Card>;
 
 export default function OurSupporters(){
- const [data,setData]=useState({donors:[],sponsors:[]});
+ const [data,setData]=useState(supporters);
  const [loading,setLoading]=useState(!!SUPPORTERS_ENDPOINT);
  useEffect(()=>{
   if(!SUPPORTERS_ENDPOINT)return;

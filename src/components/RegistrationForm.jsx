@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Paperclip,AlertCircle,CheckCircle2,Upload} from 'lucide-react';
-import {Card} from './UI';
+import {Card,Reference} from './UI';
 import {FORM_ENDPOINT} from '../config';
 import {siteInfo} from '../content';
 import {submitForm} from '../lib/submitForm';
@@ -85,13 +85,13 @@ export default function RegistrationForm({spec}){
     try{
       const m=await submitForm({form:spec.name,subject:spec.name+(name?' – '+name:''),to:siteInfo.email,fields,files:up});
       setDone({mode:m,files:up.map(f=>f.label+' ('+f.file.name+')')});window.scrollTo({top:0,behavior:'smooth'});
-    }catch(x){setSendErr('Sorry, we could not send your form. Please try again, or email us at '+siteInfo.email+'.')}
+    }catch(x){setSendErr(x.userMessage||'Sorry, we could not send your form. Please try again, or email us at '+siteInfo.email+'.')}
     finally{setBusy(false)}
   };
 
   if(done)return <div role="status" className="rounded-xl bg-green-50 p-6 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done.mode==='api'?'Your application has been submitted.':'Your email app has opened.'}</div>
-    <p className="mt-2 text-sm">{done.mode==='api'?'Thank you. We will review your application and get back to you.':done.mode==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send.':'Press Send in your email app to complete your application.'}</p>
-    {done.mode!=='api'&&done.files.length>0&&<div className="mt-3 text-sm"><p className="font-semibold">Please attach these files to the email:</p><ul className="mt-1 list-disc pl-5">{done.files.map(f=><li key={f}>{f}</li>)}</ul></div>}
+    <p className="mt-2 text-sm">{done.mode==='api'?(spec.successMessage||'Thank you. We will review your application and get back to you.'):done.mode==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send.':'Press Send in your email app to complete your application.'}</p>
+    {done.mode==='api'&&<Reference/>}{done.mode!=='api'&&done.files.length>0&&<div className="mt-3 text-sm"><p className="font-semibold">Please attach these files to the email:</p><ul className="mt-1 list-disc pl-5">{done.files.map(f=><li key={f}>{f}</li>)}</ul></div>}
     <button onClick={()=>{setDone(null);setV({});setFiles({});setTicks({});setMulti({});setTables({});setE({})}} className="mt-4 text-sm font-semibold underline">Fill again</button></div>;
 
   const cl=id=>'mt-1 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand '+(e[id]?'border-red-400':'border-slate-300');
