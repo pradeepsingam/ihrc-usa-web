@@ -4,10 +4,16 @@ namespace Tests\Feature;
 
 use App\Filament\Resources;
 use App\Models;
+use App\Models\FormDefinition;
+use App\Models\Member;
+use App\Models\Page;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Env;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -42,14 +48,45 @@ class AdminContentTest extends TestCase
         foreach (['', 'news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'subscribers', 'newsletters', 'settings', 'form-submissions', 'activity-log', 'admin-users', 'profile'] as $s) {
             $this->get("/admin/$s")->assertOk();
         }
-        foreach (\App\Models\Page::all() as $p) {
+        foreach (Page::all() as $p) {
             $this->get("/admin/pages/{$p->id}/edit")->assertOk();
         }
-        foreach (\App\Models\FormDefinition::all() as $f) {
+        foreach (FormDefinition::all() as $f) {
             $this->get("/admin/form-builder/{$f->id}/edit")->assertOk();
         }
         foreach (['news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'newsletters', 'admin-users'] as $s) {
             $this->get("/admin/$s/create")->assertOk();
+        }
+    }
+
+    public function test_images_survive_save_and_reopen_with_a_separate_public_upload_directory(): void
+    {
+        $root = storage_path('framework/testing/shared-host-public');
+        $environment = Env::getRepository();
+        $environment->set('PUBLIC_STORAGE_PATH', $root);
+        $filesystems = require config_path('filesystems.php');
+        config(['filesystems.disks.public' => $filesystems['disks']['public']]);
+        Storage::forgetDisk('public');
+
+        try {
+            $this->create(Resources\NewsResource\Pages\CreateNews::class, [
+                'title' => 'Upload persistence', 'date' => '2026-11-22',
+                'image' => UploadedFile::fake()->image('persistent.jpg'), 'is_published' => true,
+            ]);
+            $record = Models\News::firstOrFail();
+            $image = $record->image;
+            $this->assertFileExists($root.'/'.$image);
+
+            Livewire::test(Resources\NewsResource\Pages\EditNews::class, ['record' => $record->getRouteKey()])
+                ->fillForm(['summary' => 'Saved again without replacing the image'])
+                ->call('save')->assertHasNoFormErrors();
+            $this->assertSame($image, $record->fresh()->image);
+            $this->assertFileExists($root.'/'.$image);
+            $this->assertStringEndsWith('/storage/'.$image, $this->api()['news'][0]['image']);
+        } finally {
+            $environment->clear('PUBLIC_STORAGE_PATH');
+            Storage::forgetDisk('public');
+            File::deleteDirectory($root);
         }
     }
 
@@ -66,7 +103,7 @@ class AdminContentTest extends TestCase
         $this->assertSame('2026-11-01', $n['date']);
         $this->assertSame('education-for-children', $n['program']);
         $this->assertStringStartsWith('http', $n['image']);
-        Storage::disk('public')->assertExists(\Illuminate\Support\Str::after($n['image'], '/storage/'));
+        Storage::disk('public')->assertExists(Str::after($n['image'], '/storage/'));
 
         // Edit in admin → API changes immediately (cache cleared)
         $record = Models\News::first();
@@ -128,8 +165,8 @@ class AdminContentTest extends TestCase
         $this->assertSame('Jane Doe', $leaders['leadership-1']['name']);
 
         Livewire::test(Resources\MemberResource\Pages\ListMember::class)->set('activeTab', 'website')
-            ->assertCanSeeTableRecords(\App\Models\Member::where('show_on_site', true)->get())
-            ->assertCanNotSeeTableRecords(\App\Models\Member::where('name', 'Not public')->get());
+            ->assertCanSeeTableRecords(Member::where('show_on_site', true)->get())
+            ->assertCanNotSeeTableRecords(Member::where('name', 'Not public')->get());
     }
 
     public function test_organisation_lists(): void
@@ -152,7 +189,7 @@ class AdminContentTest extends TestCase
 
     public function test_pages_program_details_and_settings(): void
     {
-        $page = Models\Page::where('slug', 'who-we-are')->first();
+        $page = Page::where('slug', 'who-we-are')->first();
         Livewire::test(Resources\PageResource\Pages\EditPage::class, ['record' => $page->getRouteKey()])
             ->fillForm(['title' => 'About IHRC', 'subtitle' => 'New sub', 'sections' => [['heading' => 'H1', 'body' => 'B1'], ['heading' => 'H2', 'body' => 'B2']]])
             ->call('save')->assertHasNoFormErrors();
