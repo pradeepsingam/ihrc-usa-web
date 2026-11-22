@@ -3,21 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Mail\SubscribeConfirmation;
 use App\Models\Subscriber;
+use App\Services\SubscriberWelcome;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
-/** Newsletter sign-up with double opt-in (requirements 4.6). */
+/** Save newsletter sign-ups immediately and send a welcome email. */
 class SubscribeController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, SubscriberWelcome $welcome): JsonResponse
     {
-        if (filled($request->input('_hp'))) {
-            return response()->json(['ok' => true, 'message' => 'Please check your email to confirm your subscription.'], 201);
-        }
         $data = $request->validate([
             'email' => ['required', 'email:rfc', 'max:190'],
             'name' => ['nullable', 'string', 'max:120'],
@@ -29,20 +24,20 @@ class SubscribeController extends Controller
             return response()->json(['ok' => false, 'message' => 'This email address is already subscribed.'], 409);
         }
         if ($s) {
-            $s->update(['unsubscribed_at' => null, 'confirmed_at' => null, 'name' => $data['name'] ?? $s->name]);
+            $s->update(['unsubscribed_at' => null, 'confirmed_at' => now(), 'name' => $data['name'] ?? $s->name, 'ip' => $request->ip(), 'welcome_sent_at' => null]);
         } else {
-            $s = Subscriber::create(['email' => $email, 'name' => $data['name'] ?? null, 'ip' => $request->ip()]);
+            $s = Subscriber::create(['email' => $email, 'name' => $data['name'] ?? null, 'ip' => $request->ip(), 'confirmed_at' => now()]);
         }
 
-        try {
-            Mail::to($s->email)->send(new SubscribeConfirmation($s));
-        } catch (\Throwable $e) {
-            Log::error('Subscription confirmation email could not be sent to '.$s->email.': '.$e->getMessage());
+        $sent = $welcome->send($s);
 
-            return response()->json(['ok' => false, 'message' => 'We could not send the confirmation email right now. Please try again later.'], 503);
-        }
-
-        return response()->json(['ok' => true, 'message' => 'Please check your email and click the link to confirm your subscription.'], 201);
+        return response()->json([
+            'ok' => true,
+            'email_sent' => $sent,
+            'message' => $sent
+                ? 'You are subscribed to IHRC-USA news and updates. We have sent a welcome email; please check your inbox or spam folder.'
+                : 'You are subscribed to IHRC-USA news and updates. Your sign-up is saved, but we could not send the welcome email right now.',
+        ], 201);
     }
 
     public function confirm(string $token)

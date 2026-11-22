@@ -80,8 +80,10 @@ export function getMetadata(pathname) {
     }
   } else if (family === 'member-profile') {
     const person = allPeople.find(item => item.id === id);
-    if (person) { entry = [person.tbd ? person.role : person.name, person.bio || person.role]; noindex = person.tbd; image = person.photo || image; }
+    if (person) { entry = [person.tbd ? person.role : person.name, person.bio || person.role]; noindex = Boolean(person.tbd); image = person.photo || image; }
   }
+  if (family === 'preview' || path === '/preview-page') { entry = ['Content Preview', 'Preview of unpublished IHRC-USA content.']; noindex = true; }
+  if (id === '__preview') noindex = true;
   const found = Boolean(entry) && key.split('/').length <= 2;
   if (!found) { entry = ['Page Not Found', 'This page could not be found. Explore IHRC-USA programs, membership and contact information.']; noindex = true; }
   return { path, found, title: `${entry[0]} | ${SITE_NAME}`, name: entry[0], description: snippet(entry[1]), canonical: absoluteUrl(path), robots: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large', noindex, image: absoluteUrl(image), type };

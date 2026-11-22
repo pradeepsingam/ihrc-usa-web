@@ -27,6 +27,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -123,7 +124,7 @@ class FormSubmissionResource extends Resource
                 TextColumn::make('submitted_at')->label('Received')->dateTime('d M Y H:i')->sortable(),
             ])
             ->filters([
-                SelectFilter::make('form')->options(fn () => static::getEloquentQuery()->distinct()->orderBy('form')->pluck('form', 'form')->all())->searchable(),
+                SelectFilter::make('form')->label('Form / category')->placeholder('All forms')->options(fn () => static::getEloquentQuery()->distinct()->orderBy('form')->pluck('form', 'form')->all())->searchable(),
                 SelectFilter::make('status')->options(FormSubmission::STATUSES),
                 Filter::make('received')->schema([
                     DatePicker::make('from')->label('Received from'),
@@ -135,7 +136,7 @@ class FormSubmissionResource extends Resource
                         ($data['from'] ?? null) ? 'From '.$data['from'] : null,
                         ($data['until'] ?? null) ? 'Until '.$data['until'] : null,
                     ])),
-            ])
+            ], layout: FiltersLayout::AboveContent)->filtersFormColumns(3)
             ->headerActions([
                 Action::make('exportCsv')->label('Export CSV')->icon(Heroicon::ArrowDownTray)->color('gray')
                     ->action(fn ($livewire) => SubmissionExport::csv($livewire->getFilteredSortedTableQuery()->get())),

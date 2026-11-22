@@ -3,17 +3,25 @@
 namespace Tests\Feature;
 
 use App\Filament\Resources;
+use App\Filament\Resources\MemberResource;
+use App\Filament\Support\Preview;
+use App\Filament\Widgets\LatestActivity;
+use App\Filament\Widgets\LatestSubmissions;
+use App\Filament\Widgets\MailStatus;
+use App\Filament\Widgets\StatsOverview;
 use App\Mail\NewsletterMail;
 use App\Mail\SubmissionConfirmation;
 use App\Mail\SubmissionReceived;
 use App\Mail\SubscribeConfirmation;
+use App\Mail\SubscriptionWelcome;
 use App\Models;
 use App\Models\FormSubmission;
 use App\Models\Member;
 use App\Models\Setting;
 use App\Models\Subscriber;
 use App\Models\User;
-use App\Services\MemberFromSubmission;
+use App\Services\FormSpec;
+use App\Support\Mailboxes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Mail;
@@ -48,13 +56,13 @@ class RequirementsTest extends TestCase
     /** A complete, valid volunteer application exactly as the website sends it. */
     protected function volunteerAnswers(): array
     {
-        $spec = \App\Services\FormSpec::toWebsite(Models\FormDefinition::where('slug', 'volunteer')->first());
+        $spec = FormSpec::toWebsite(Models\FormDefinition::where('slug', 'volunteer')->first());
         $data = [];
         foreach (collect($spec['sections'])->flatMap(fn ($s) => $s['blocks']) as $b) {
             if (in_array($b['t'], ['info', 'file'])) {
                 continue;
             }
-            $key = \App\Services\FormSpec::answerKey($b);
+            $key = FormSpec::answerKey($b);
             $data[$key] = match (true) {
                 isset($b['mustAgree']) => $b['mustAgree'],
                 $b['t'] === 'email' => 'ann@example.org',
@@ -109,25 +117,25 @@ class RequirementsTest extends TestCase
             'IHRC-USA Website Enquiry' => 'info', 'IHRC-USA Accreditation & Recognition Application — Form IHRC-USA/ACC/001' => 'accreditation',
         ];
         foreach ($expect as $form => $box) {
-            $this->assertSame($box, \App\Support\Mailboxes::keyFor($form), $form);
+            $this->assertSame($box, Mailboxes::keyFor($form), $form);
         }
     }
 
     public function test_mailboxes_default_to_ihrc_usa_org(): void
     {
-        foreach (\App\Support\Mailboxes::BOXES as $box => $label) {
-            $this->assertSame($box.'@ihrc-usa.org', \App\Support\Mailboxes::address($box));
+        foreach (Mailboxes::BOXES as $box => $label) {
+            $this->assertSame($box.'@ihrc-usa.org', Mailboxes::address($box));
         }
     }
 
     public function test_mailbox_falls_back_to_info_then_contact_email(): void
     {
         Setting::where('key', 'like', 'mailbox.%')->update(['value' => null]);
-        $this->assertSame('info@gmail.com', \App\Support\Mailboxes::address('award')); // site contact email
+        $this->assertSame('info@gmail.com', Mailboxes::address('award')); // site contact email
         $this->setMailbox('info', 'info@ihrc.test');
-        $this->assertSame('info@ihrc.test', \App\Support\Mailboxes::address('award'));
+        $this->assertSame('info@ihrc.test', Mailboxes::address('award'));
         $this->setMailbox('award', 'award@ihrc.test');
-        $this->assertSame('award@ihrc.test', \App\Support\Mailboxes::address('award'));
+        $this->assertSame('award@ihrc.test', Mailboxes::address('award'));
     }
 
     public function test_builder_forms_check_required_fields_and_file_rules(): void
@@ -294,7 +302,7 @@ class RequirementsTest extends TestCase
         $this->actingAs($this->admin(User::MEMBERSHIP_OFFICER));
         $csv = "name,email,title,country,status,expires_at\nKala Devi,kala@example.org,Ambassador,Sri Lanka,Active,2027-12-31\n,missing@example.org,,,,\nRavi,ravi@example.org,Member,India,suspended,\n";
         Storage::disk('local')->put('imports/m.csv', $csv);
-        \App\Filament\Resources\MemberResource::importCsv('imports/m.csv');
+        MemberResource::importCsv('imports/m.csv');
         $this->assertSame(2, Member::count());
         $kala = Member::firstWhere('email', 'kala@example.org');
         $this->assertSame('2027-12-31', $kala->expires_at->toDateString());
@@ -302,11 +310,11 @@ class RequirementsTest extends TestCase
 
         // Re-import updates instead of duplicating
         Storage::disk('local')->put('imports/m2.csv', "member_id,name,city\n{$kala->member_id},Kala Devi,Colombo\n");
-        \App\Filament\Resources\MemberResource::importCsv('imports/m2.csv');
+        MemberResource::importCsv('imports/m2.csv');
         $this->assertSame(2, Member::count());
         $this->assertSame('Colombo', $kala->fresh()->city);
 
-        Livewire::test(Resources\MemberResource\Pages\ListMember::class)->callTableAction('export')->assertFileDownloaded();
+        Livewire::test(MemberResource\Pages\ListMember::class)->callTableAction('export')->assertFileDownloaded();
 
         // Public verification: only name, title, country, status, photo
         $res = $this->getJson('/api/verify/'.strtolower($kala->member_id))->assertOk()->json();
@@ -390,13 +398,56 @@ class RequirementsTest extends TestCase
 
     // ---------------------------------------------------------------- 4.6 newsletter
 
-    public function test_subscribe_double_opt_in_unsubscribe_and_send(): void
+    public function test_subscriber_is_saved_even_when_a_legacy_hidden_field_was_autofilled(): void
+    {
+        $this->postJson('/api/subscribe', ['email' => 'reader@example.org', 'name' => 'Reader', '_hp' => 'autofilled'])
+            ->assertCreated()->assertJsonPath('email_sent', true);
+        $subscriber = Subscriber::where('email', 'reader@example.org')->firstOrFail();
+        $this->assertTrue($subscriber->isActive());
+        $this->assertSame('Reader', $subscriber->name);
+        $this->actingAs($this->admin(User::EDITOR));
+        Livewire::test(Resources\SubscriberResource\Pages\ListSubscriber::class)
+            ->assertCanSeeTableRecords([$subscriber])->assertSee('Reader');
+        $this->get('/admin/subscribers/'.$subscriber->id)->assertOk()->assertSee('Welcome email sent');
+        Mail::assertSent(SubscriptionWelcome::class, fn ($mail) => $mail->hasTo('reader@example.org'));
+        $html = (new SubscriptionWelcome($subscriber))->render();
+        $this->assertStringContainsString('You are now subscribed', $html);
+        $this->assertStringContainsString(route('unsubscribe', $subscriber->token), $html);
+        $this->assertStringNotContainsString('Confirm my subscription', $html);
+    }
+
+    public function test_submissions_filter_shows_only_matching_forms_and_can_be_reset(): void
+    {
+        $contact = FormSubmission::create(['form' => 'IHRC-USA Website Enquiry', 'data' => ['Name' => 'Ann'], 'submitted_at' => now()]);
+        $application = FormSubmission::create(['form' => 'Membership Application', 'data' => ['Name' => 'Ben'], 'submitted_at' => now()]);
+        $this->actingAs($this->admin());
+        Livewire::test(Resources\FormSubmissionResource\Pages\ListFormSubmission::class)
+            ->filterTable('form', 'IHRC-USA Website Enquiry')
+            ->assertCanSeeTableRecords([$contact])->assertCanNotSeeTableRecords([$application])
+            ->resetTableFilters()->assertCanSeeTableRecords([$contact, $application]);
+    }
+
+    public function test_unsubscribed_person_can_sign_up_again_and_admin_can_resend_welcome(): void
+    {
+        $subscriber = Subscriber::create(['email' => 'reader@example.org', 'name' => 'Old name', 'confirmed_at' => now()->subMonth(), 'unsubscribed_at' => now()->subDay()]);
+        $this->postJson('/api/subscribe', ['email' => 'reader@example.org', 'name' => 'Reader'])->assertCreated();
+        $this->assertSame(1, Subscriber::count());
+        $this->assertTrue($subscriber->fresh()->isActive());
+        $this->assertSame('Reader', $subscriber->fresh()->name);
+        $this->actingAs($this->admin(User::EDITOR));
+        Livewire::test(Resources\SubscriberResource\Pages\ViewSubscriber::class, ['record' => $subscriber->id])
+            ->callAction('welcome')->assertNotified();
+        Mail::assertSent(SubscriptionWelcome::class, 2);
+    }
+
+    public function test_subscribe_immediately_unsubscribe_and_send(): void
     {
         $this->postJson('/api/subscribe', ['email' => 'Reader@Example.org', 'name' => 'Reader'])->assertCreated();
         $s = Subscriber::first();
         $this->assertSame('reader@example.org', $s->email);
-        $this->assertFalse($s->isActive());
-        Mail::assertSent(SubscribeConfirmation::class, fn ($m) => $m->hasTo('reader@example.org'));
+        $this->assertTrue($s->isActive());
+        $this->assertNotNull($s->welcome_sent_at);
+        Mail::assertSent(SubscriptionWelcome::class, fn ($m) => $m->hasTo('reader@example.org'));
 
         $this->get('/api/subscribe/confirm/'.$s->token)->assertOk()->assertSee('Subscription confirmed');
         $this->assertTrue($s->fresh()->isActive());
@@ -449,29 +500,32 @@ class RequirementsTest extends TestCase
 
     public function test_subscriber_details_page_resend_and_mail_failure(): void
     {
-        $this->postJson('/api/subscribe', ['email' => 'a@example.org', 'name' => 'Ann'])->assertCreated();
-        $s = Subscriber::first();
+        $s = Subscriber::create(['email' => 'a@example.org', 'name' => 'Ann']);
         $this->actingAs($this->admin(User::EDITOR));
         Livewire::test(Resources\SubscriberResource\Pages\ListSubscriber::class)->filterTable('state', 'pending')->assertCanSeeTableRecords([$s])
             ->filterTable('state', 'active')->assertCanNotSeeTableRecords([$s]);
         $this->get('/admin/subscribers/'.$s->id)
             ->assertOk()->assertSee('a@example.org')->assertSee('Ann')->assertSee('Waiting for confirmation');
         Livewire::test(Resources\SubscriberResource\Pages\ViewSubscriber::class, ['record' => $s->id])->callAction('resend')->assertNotified();
-        Mail::assertSent(SubscribeConfirmation::class, 2);
+        Mail::assertSent(SubscribeConfirmation::class, 1);
         Livewire::test(Resources\SubscriberResource\Pages\ViewSubscriber::class, ['record' => $s->id])->callAction('confirm');
         $this->assertTrue($s->fresh()->isActive());
 
-        // If the email cannot be sent, the visitor is told (no false "check your email").
+        // A delivery failure must not lose a sign-up or claim that email was sent.
         Mail::shouldReceive('to')->andThrow(new \RuntimeException('SMTP down'));
-        $this->postJson('/api/subscribe', ['email' => 'b@example.org'])->assertStatus(503)
-            ->assertJsonPath('message', 'We could not send the confirmation email right now. Please try again later.');
+        $this->postJson('/api/subscribe', ['email' => 'b@example.org'])->assertCreated()
+            ->assertJsonPath('email_sent', false);
+        $saved = Subscriber::where('email', 'b@example.org')->firstOrFail();
+        $this->assertTrue($saved->isActive());
+        $this->assertNull($saved->welcome_sent_at);
+        $this->assertNotNull($saved->welcome_error);
     }
 
     public function test_mail_not_configured_warning_and_settings_validation(): void
     {
         config(['mail.default' => 'log']);
         $this->actingAs($this->admin());
-        Livewire::test(\App\Filament\Widgets\MailStatus::class)->assertSee('Emails are not being sent');
+        Livewire::test(MailStatus::class)->assertSee('Emails are not being sent');
 
         $pay = Setting::where('key', 'paymentUrl')->first();
         Livewire::test(Resources\SettingResource\Pages\ListSetting::class)
@@ -490,7 +544,7 @@ class RequirementsTest extends TestCase
 
         $grab = function ($component) {
             $component->mountAction('preview')->assertActionMounted('preview');
-            $url = \App\Filament\Support\Preview::url($component->instance());
+            $url = Preview::url($component->instance());
             preg_match('#^http://site\.test/preview/([A-Za-z0-9]{40})$#', $url, $m);
             $this->assertNotEmpty($m, 'preview link in modal');
 
@@ -529,8 +583,8 @@ class RequirementsTest extends TestCase
         FormSubmission::create(['form' => 'Contact', 'data' => ['a' => 'b'], 'submitted_at' => now()]);
         Member::create(['name' => 'A', 'status' => 'Active']);
         $this->actingAs($this->admin())->get('/admin')->assertOk();
-        Livewire::test(\App\Filament\Widgets\StatsOverview::class)->assertSee('New submissions')->assertSee('Active members')->assertSee('Subscribers');
-        Livewire::test(\App\Filament\Widgets\LatestSubmissions::class)->assertSee('Contact');
-        Livewire::test(\App\Filament\Widgets\LatestActivity::class)->assertOk();
+        Livewire::test(StatsOverview::class)->assertSee('New submissions')->assertSee('Active members')->assertSee('Subscribers');
+        Livewire::test(LatestSubmissions::class)->assertSee('Contact');
+        Livewire::test(LatestActivity::class)->assertOk();
     }
 }

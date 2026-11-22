@@ -281,7 +281,7 @@ export default function Layout() {
       const t = setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 100);
       return () => clearTimeout(t);
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, search]);
 
   return (
     <div className="flex h-screen flex-col overflow-hidden">
