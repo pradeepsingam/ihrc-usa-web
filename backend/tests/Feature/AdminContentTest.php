@@ -122,6 +122,11 @@ class AdminContentTest extends TestCase
         $this->assertStringStartsWith('http', $people['leadership'][0]['photo']);
         $this->assertCount(1, $people, 'members not shown on the site stay private');
 
+        // Older website builds read "leaders" (<page>-<number>); the same people must be there.
+        $leaders = $this->api()['leaders'];
+        $this->assertSame(['leadership-1', 'leadership-2', 'leadership-3'], array_keys($leaders));
+        $this->assertSame('Jane Doe', $leaders['leadership-1']['name']);
+
         Livewire::test(Resources\MemberResource\Pages\ListMember::class)->set('activeTab', 'website')
             ->assertCanSeeTableRecords(\App\Models\Member::where('show_on_site', true)->get())
             ->assertCanNotSeeTableRecords(\App\Models\Member::where('name', 'Not public')->get());

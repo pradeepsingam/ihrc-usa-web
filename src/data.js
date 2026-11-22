@@ -56,8 +56,10 @@ export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>{
  const added=(cmsPeople[k]||[]).map(p=>({...p,role:p.role||g.r[0]}));
  const slots=g.r.map((r,i)=>{const id=k+'-'+(i+1);return {id,name:'Name to be added',role:r,tbd:!leaders[id],...leaders[id]}});
  if(!added.length)return [k,slots];
+ // "leaders" is the same people in the older format, so only empty role cards are added here.
  const filled=new Set(added.map(p=>p.role));const seen=new Set();
- return [k,[...added,...slots.filter(s=>!s.tbd||(!filled.has(s.role)&&!seen.has(s.role)&&seen.add(s.role)))]];
+ const empty=g.r.filter(r=>!filled.has(r)&&!seen.has(r)&&seen.add(r)).map((r,i)=>({id:k+'-open-'+(i+1),name:'Name to be added',role:r,tbd:true}));
+ return [k,[...added,...empty]];
 }));
 export const allPeople=Object.values(people).flat();
 export const members=[];

@@ -89,6 +89,14 @@ class ContentController extends Controller
                     'bio' => $m->bio, 'responsibilities' => $m->responsibilities,
                 ]))->values()),
 
+            // Same people in the older "<page>-<number>" format, for website builds made before the "people" list existed.
+            'leaders' => Member::where('show_on_site', true)->whereNotNull('group')->whereIn('status', ['Active', 'Pending'])
+                ->orderByRaw('position is null')->orderBy('position')->orderBy('name')->get()
+                ->groupBy('group')->flatMap(fn ($list, $group) => $list->values()->mapWithKeys(fn (Member $m, $i) => [$group.'-'.($i + 1) => $clean([
+                    'name' => $m->name, 'photo' => $m->photo_public ? $this->url($m->photo) : null, 'bio' => $m->bio,
+                    'responsibilities' => $m->responsibilities, 'memberId' => $m->member_id, 'country' => $m->country,
+                ])])),
+
             'programDetails' => ProgramDetail::all()->mapWithKeys(fn (ProgramDetail $p) => [$p->slug => $clean([
                 'description' => $p->description, 'location' => $p->location, 'date' => $date($p->date),
                 'activities' => array_values(array_filter($p->activities ?? [])), 'images' => $this->urls($p->images),
