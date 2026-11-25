@@ -17,6 +17,7 @@ use App\Models\Publication;
 use App\Models\Setting;
 use App\Models\Supporter;
 use App\Services\FormSpec;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,7 @@ class ContentController extends Controller
         $settings = Setting::orderBy('sort')->pluck('value', 'key');
         $siteInfo = ['social' => []];
         foreach ($settings as $key => $value) {
-            if ($key !== 'paymentUrl') {
+            if (! in_array($key, ['paymentUrl', 'address', 'mapUrl'], true)) {
                 data_set($siteInfo, $key, (string) $value);
             }
         }
@@ -134,7 +135,7 @@ class ContentController extends Controller
     }
 
     /** One item exactly as the website receives it (also used for admin previews of unsaved changes). */
-    public function item(\Illuminate\Database\Eloquent\Model $m): array
+    public function item(Model $m): array
     {
         $date = fn ($d) => $d?->format('Y-m-d');
         $clean = fn (array $a) => array_filter($a, fn ($v) => $v !== null && $v !== '' && $v !== []);

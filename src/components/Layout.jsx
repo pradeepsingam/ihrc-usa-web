@@ -254,7 +254,6 @@ const Footer = () => (
         {siteInfo.whatsappLink && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp</a></p>}
         {siteInfo.whatsappChannel && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Channel</a></p>}
         <p className="flex gap-2"><img src="/images/icons/mail.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
-        {siteInfo.address && <p className="flex gap-2"><img src="/images/icons/location.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" />{siteInfo.address}</p>}
       </div>
     </div>
     <div className="mx-auto max-w-6xl px-4 pb-8"><div className="max-w-md"><Subscribe /></div></div>

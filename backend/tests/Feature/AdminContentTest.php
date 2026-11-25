@@ -230,6 +230,17 @@ class AdminContentTest extends TestCase
         $this->getJson('/api/supporters')->assertOk()->assertJsonPath('donors.0.name', 'Kind Donor');
     }
 
+    public function test_public_content_omits_the_office_address_and_map(): void
+    {
+        Models\Setting::where('key', 'address')->firstOrFail()->update(['value' => 'Private office address']);
+        Models\Setting::where('key', 'mapUrl')->firstOrFail()->update(['value' => 'https://maps.google.com/?q=private-office']);
+
+        $response = $this->getJson('/api/content')->assertOk();
+        $this->assertArrayNotHasKey('address', $response->json('siteInfo'));
+        $this->assertArrayNotHasKey('mapUrl', $response->json('siteInfo'));
+        $response->assertDontSee('Private office address')->assertDontSee('private-office');
+    }
+
     public function test_pages_program_details_and_settings(): void
     {
         $page = Page::where('slug', 'who-we-are')->first();
