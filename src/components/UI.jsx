@@ -5,11 +5,14 @@ import {ChevronDown,CheckCircle2,Calendar,User,AlertCircle,MapPin,X} from 'lucid
 import {siteInfo,TBD} from '../content';
 import {submitForm,lastSubmission} from '../lib/submitForm';
 import DOMPurify from 'dompurify';
+import {htmlText} from '../lib/htmlText';
 
 // Text from the admin panel: rich text (HTML, cleaned with DOMPurify) or plain text with line breaks.
 const isHtml=s=>typeof s==='string'&&/<(p|h[1-6]|ul|ol|li|br|strong|em|a|blockquote|table|figure|img)\b/i.test(s);
 export const RichText=({text,cls=''})=>!text?null:isHtml(text)
- ?<div className={'rich-text text-slate-700 '+cls} dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(text,{ADD_ATTR:['target']})}}/>
+ ?import.meta.env.SSR
+  ?<div className={'whitespace-pre-line text-slate-700 '+cls}>{htmlText(text)}</div>
+  :<div className={'rich-text text-slate-700 '+cls} dangerouslySetInnerHTML={{__html:DOMPurify.sanitize(text,{ADD_ATTR:['target']})}}/>
  :<div className={'whitespace-pre-line text-slate-700 '+cls}>{text}</div>;
 // Reference number returned by the backend after a form is sent.
 export const Reference=()=>lastSubmission&&lastSubmission.reference?<p className="mt-2 text-sm">Your reference number: <b className="select-all font-mono">{lastSubmission.reference}</b>. Please keep it for your records.{lastSubmission.confirmationSent&&' A confirmation has also been sent to your email address.'}</p>:null;

@@ -71,13 +71,13 @@ export function getMetadata(pathname) {
   } else if (id && ['news', 'events', 'projects'].includes(family)) {
     const item = ({ news, events, projects })[family].find(item => String(item.id) === id);
     if (item) {
-      entry = [item.title, item.summary || item.description || item.body];
+      entry = [item.title+' – '+({news:'News',events:'Event',projects:'Project'})[family], item.summary || item.description || item.body];
       image = item.image || image;
       if (family === 'news') type = 'article';
     }
   } else if (family === 'member-profile') {
     const person = allPeople.find(item => item.id === id);
-    if (person) { entry = [person.tbd ? person.role : person.name, person.bio || person.role]; noindex = Boolean(person.tbd); image = person.photo || image; }
+    if (person) { entry = [person.tbd ? person.role : person.name+' – '+(person.memberId||person.id), person.bio || person.role]; noindex = Boolean(person.tbd); image = person.photo || image; }
   }
   if (family === 'preview' || path === '/preview-page') { entry = ['Content Preview', 'Preview of unpublished IHRC-USA content.']; noindex = true; }
   if (id === '__preview') noindex = true;
