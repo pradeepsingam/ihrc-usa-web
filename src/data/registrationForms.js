@@ -40,6 +40,7 @@ export const volunteerForm = {
       { t: 'text', id: 'city', n: 6, label: 'City/Town', req: 1 },
       { t: 'radio', id: 'marital', n: 7, label: 'Marital Status', opts: marital, req: 1 },
       { t: 'tel', id: 'whatsapp', n: 8, label: 'WhatsApp/Mobile Number', hint: 'Country code with mobile number (+)', req: 1 },
+      { t: 'email', id: 'email', label: 'Email Address', req: 1 },
       { t: 'text', id: 'address', n: 9, label: 'Address', req: 1 },
       { t: 'radio', id: 'language', n: 10, label: 'Preferred Language', opts: language, other: 'Other', req: 1 },
     ] },
@@ -80,7 +81,7 @@ export const volunteerForm = {
 };
 
 const rules = [
-  '1. No Financial Fundraising: Members are strictly prohibited from collecting or soliciting financial donations under the IHRC-USA name without explicit, written authorization from the SLK Headquarters.',
+  '1. No Financial Fundraising: Members are strictly prohibited from collecting or soliciting financial financial contributions under the IHRC-USA name without explicit, written authorization from the SLK Headquarters.',
   '2. No Official Representation: No Members may act, speak, or issue statements to the media as an official international representative of the IHRC-USA without a formal mandate.',
   '3. Non-Compensated Service: All Members positions are strictly unpaid. The IHRC-USA does not provide salaries, and the headquarters is not responsible for personal expenses incurred during Members work.',
   '4. IHRC-USA ID Card Policy: Issued digital or physical Members cards remain the intellectual property of the organization. Misuse, forgery, or public leaks of these documents will lead to immediate termination.',
@@ -176,14 +177,14 @@ export const membershipForm = {
     { title: 'Declaration & Agreement', blocks: [
       { t: 'radio', id: 'declaration', n: 54, label: 'Declaration & Agreement', lines: [
         '1. ' + declaration[0], '2. ' + declaration[1], '3. ' + declaration[2],
-        '4. Although an IHRC-USA Member is authorized to work as part of IHRC-USA coalition projects, he/she is not authorized to represent or collect donations without the personal authorization of the headquarters.',
+        '4. Although an IHRC-USA Member is authorized to work as part of IHRC-USA coalition projects, he/she is not authorized to represent or collect financial contributions without the personal authorization of the headquarters.',
       ], opts: AGREE, req: 1, mustAgree: 'I agree' },
     ] },
     { title: 'Consent & Final Confirmation', blocks: [
       { t: 'radio', id: 'consent', n: 55, label: 'Privacy/Data Consent & Applicant Confirmation', lines: ['1. ' + consent], opts: AGREE, req: 1, mustAgree: 'I agree' },
     ] },
     { title: '', blocks: [
-      { t: 'info', lines: ['If you have any questions or require additional information, please contact us at the following email address: info@gmail.com'] },
+      { t: 'info', lines: ['If you have any questions or require additional information, please contact us at the following email address: info@ihrc-usa.org'] },
       { t: 'tel', id: 'emergency', n: '', label: 'Please provide an emergency phone number.' },
       { t: 'file', id: 'receipt', label: 'Please Upload Payment Receipt', req: 1, payOnline: 1, file: { kinds: ['pdf', 'image'], maxMB: 10 } },
     ] },

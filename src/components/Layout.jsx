@@ -11,7 +11,7 @@ import Subscribe from './Subscribe';
 import ErrorBoundary from './ErrorBoundary';
 import Cookie from './Cookie';
 import Seo from '../seo/Seo';
-import DonateLink from './DonateLink';
+import JoinLink from './JoinLink';
 
 export const Logo = () => (
   <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="IHRC-USA">
@@ -112,9 +112,9 @@ const DesktopNav = () => (
           );
         })}
       </ul>
-      <DonateLink className="mr-4 flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-bold text-navy hover:brightness-95">
-        <Heart size={16} fill="currentColor" />Donate
-      </DonateLink>
+      <JoinLink className="mr-4 flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-bold text-navy hover:brightness-95">
+        <Heart size={16} fill="currentColor" />Join
+      </JoinLink>
     </div>
   </nav>
 );
@@ -194,9 +194,9 @@ const Sidebar = () => {
         <div className="mt-4 overflow-hidden rounded-xl bg-navy text-center text-white shadow">
           <img src="/images/sidebar-globe.jpg" alt="" className="w-full" />
           <p className="px-4 pt-3 font-serif text-lg font-bold leading-snug">Together for Human Dignity</p>
-          <DonateLink className="mx-auto my-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-navy">
-            Donate Now →
-          </DonateLink>
+          <JoinLink className="mx-auto my-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-navy">
+            Join Now →
+          </JoinLink>
         </div>
       )}
     </aside>
@@ -214,16 +214,16 @@ const Drawer = ({ open, close }) => (
       <div className="p-3"><SearchBox /></div>
       <div className="flex-1 overflow-y-auto"><Items onNav={close} /></div>
       <div className="p-3">
-        <DonateLink onClick={close} className="flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gold font-bold text-navy">
-          <Heart size={16} />Donate
-        </DonateLink>
+        <JoinLink onClick={close} className="flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-gold font-bold text-navy">
+          <Heart size={16} />Join
+        </JoinLink>
       </div>
     </aside>
   </div>
 );
 
 const quick = [['About Us', '/who-we-are'], ['Human Rights', '/human-rights'], ['Programs', '/programs'], ['Leadership(P5)', '/leadership'], ['Global Network', '/global-network'], ['Events', '/events'], ['News', '/news'], ['Publications', '/publications']];
-const involved = [['Volunteer', '/volunteer'], ['Membership', '/membership'], ['Awards & Recognition', '/awards'], ['CSO Partnership', '/partnership-application'], ['Accreditation', '/accreditation'], ['Donation', '/donation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
+const involved = [['Volunteer', '/volunteer'], ['Membership', '/membership'], ['Awards & Recognition', '/awards'], ['CSO Partnership', '/partnership-application'], ['Accreditation', '/accreditation'], ['Report a Human Rights Concern', '/report-concern'], ['Contact Us', '/contact']];
 
 const Footer = () => (
   <footer className="mt-8 bg-navy text-blue-100">

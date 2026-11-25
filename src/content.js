@@ -1,7 +1,7 @@
 export const TBD='To be added by the administrator';
 
 export const siteInfo={
-email:'info@gmail.com',
+email:'info@ihrc-usa.org',
 whatsappLink:'https://wa.me/94711010031',
 whatsappChannel:'https://whatsapp.com/channel/0029VbDiXwg72WTvs9ttGi0r',
 phone:'+94 24 2222402',

@@ -24,6 +24,7 @@ use App\Services\FormSpec;
 use App\Support\Mailboxes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Mail\PendingMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
@@ -115,10 +116,57 @@ class RequirementsTest extends TestCase
             'Event Registration: Human Rights Day' => 'event', 'Award Nomination' => 'award', 'Complaint Submission' => 'complaints',
             'CSO Partnership' => 'partnership', 'Donation Details' => 'official', 'Sponsor Registration Form' => 'official',
             'IHRC-USA Website Enquiry' => 'info', 'IHRC-USA Accreditation & Recognition Application — Form IHRC-USA/ACC/001' => 'accreditation',
+            'News / media enquiries' => 'news', 'General / official messages' => 'official', 'Message to the Secretary' => 'secretary', 'Message to the Chairman' => 'chairman',
         ];
         foreach ($expect as $form => $box) {
             $this->assertSame($box, Mailboxes::keyFor($form), $form);
         }
+    }
+
+    public function test_applicant_receives_confirmation_even_if_the_destination_mailbox_fails(): void
+    {
+        $pending = \Mockery::mock(PendingMail::class);
+        $pending->shouldReceive('send')->once()->with(\Mockery::type(SubmissionConfirmation::class));
+        Mail::shouldReceive('to')->with('info@ihrc-usa.org')->once()->andThrow(new \RuntimeException('Mailbox unavailable'));
+        Mail::shouldReceive('to')->with('visitor@example.org')->once()->andReturn($pending);
+
+        $this->postJson('/api/forms', ['form' => 'Contact', 'data' => ['Email' => 'visitor@example.org', 'Message' => 'Test']])
+            ->assertCreated()->assertJsonPath('confirmationSent', true);
+        $submission = FormSubmission::firstOrFail();
+        $this->assertNull($submission->mailed_at);
+        $this->assertNotNull($submission->confirmation_sent_at);
+    }
+
+    public function test_newsletter_test_uses_a_real_unsubscribe_token_without_marking_the_campaign_sent(): void
+    {
+        $this->actingAs($this->admin(User::EDITOR));
+        $newsletter = Models\Newsletter::create(['subject' => 'Delivery check', 'body' => '<p>Test only</p>']);
+        Livewire::test(Resources\NewsletterResource\Pages\EditNewsletter::class, ['record' => $newsletter->id])
+            ->callAction('test', ['email' => 'test-inbox@example.org'])->assertNotified();
+        $subscriber = Subscriber::where('email', 'test-inbox@example.org')->firstOrFail();
+        $this->assertFalse($subscriber->isActive());
+        $this->assertNull($newsletter->fresh()->sent_at);
+        Mail::assertQueued(NewsletterMail::class, fn ($mail) => $mail->hasTo('test-inbox@example.org') && $mail->queue === 'mail-tests');
+        $html = (new NewsletterMail($newsletter, $subscriber))->render();
+        $this->assertStringContainsString(route('unsubscribe', $subscriber->token), $html);
+        $this->get(route('unsubscribe', $subscriber->token))->assertOk();
+        $this->assertNotNull($subscriber->fresh()->unsubscribed_at);
+    }
+
+    public function test_public_copy_update_preserves_image_urls_and_existing_editor_changes(): void
+    {
+        $page = Models\Page::where('slug', 'who-we-are')->firstOrFail();
+        $page->update(['title' => 'Our Sponsors', 'sections' => [['heading' => 'Donations', 'body' => '<p>Contact info@gmail.com.</p><img src="/storage/sponsors/photo.jpg">']]]);
+        $volunteer = Models\FormDefinition::where('slug', 'volunteer')->firstOrFail();
+        $volunteer->update(['sections' => [['title' => 'Personal information', 'blocks' => []]]]);
+        $migration = require database_path('migrations/2026_11_25_000001_refresh_public_copy.php');
+        $migration->up();
+        $this->assertSame('Our Partners', $page->fresh()->title);
+        $this->assertSame('Financial contributions', $page->fresh()->sections[0]['heading']);
+        $this->assertStringContainsString('info@ihrc-usa.org', $page->fresh()->sections[0]['body']);
+        $this->assertStringContainsString('/storage/sponsors/photo.jpg', $page->fresh()->sections[0]['body']);
+        $blocks = collect(FormSpec::toWebsite($volunteer->fresh())['sections'])->flatMap(fn ($section) => $section['blocks']);
+        $this->assertTrue($blocks->contains(fn ($block) => ($block['t'] ?? '') === 'email' && ! empty($block['req'])));
     }
 
     public function test_mailboxes_default_to_ihrc_usa_org(): void
@@ -131,7 +179,7 @@ class RequirementsTest extends TestCase
     public function test_mailbox_falls_back_to_info_then_contact_email(): void
     {
         Setting::where('key', 'like', 'mailbox.%')->update(['value' => null]);
-        $this->assertSame('info@gmail.com', Mailboxes::address('award')); // site contact email
+        $this->assertSame('info@ihrc-usa.org', Mailboxes::address('award')); // site contact email
         $this->setMailbox('info', 'info@ihrc.test');
         $this->assertSame('info@ihrc.test', Mailboxes::address('award'));
         $this->setMailbox('award', 'award@ihrc.test');
@@ -264,7 +312,7 @@ class RequirementsTest extends TestCase
         $this->assertSame('Active', $m->status);
         $this->assertSame('Sri Lanka', $m->country);
         $this->assertSame('1990-01-15', $m->date_of_birth->toDateString());
-        $this->assertNull($m->email, 'the Volunteer form has no email question');
+        $this->assertSame('ann@example.org', $m->email);
         $this->assertSame('Answer', $m->phone);
         $this->assertMatchesRegularExpression('/^IHRC-M-\d{5}$/', $m->member_id);
         Storage::disk('public')->assertExists($m->photo);

@@ -122,17 +122,21 @@ class FormController extends Controller
         ])->refresh();
 
         // ---- Email the mailbox and send the applicant a confirmation.
-        try {
-            if ($to = Mailboxes::address($mailbox)) {
+        if ($to = Mailboxes::address($mailbox)) {
+            try {
                 Mail::to($to)->send(new SubmissionReceived($submission));
                 $submission->forceFill(['mailed_at' => now()])->saveQuietly();
+            } catch (\Throwable $e) {
+                Log::warning('Form mailbox email failed for '.$submission->reference.': '.$e->getMessage());
             }
-            if ($submission->applicant_email) {
+        }
+        if ($submission->applicant_email) {
+            try {
                 Mail::to($submission->applicant_email)->send(new SubmissionConfirmation($submission));
                 $submission->forceFill(['confirmation_sent_at' => now()])->saveQuietly();
+            } catch (\Throwable $e) {
+                Log::warning('Form applicant confirmation failed for '.$submission->reference.': '.$e->getMessage());
             }
-        } catch (\Throwable $e) {
-            Log::warning('Form email failed for '.$submission->reference.': '.$e->getMessage());
         }
 
         return response()->json([

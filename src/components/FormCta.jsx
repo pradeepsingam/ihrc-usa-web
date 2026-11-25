@@ -24,7 +24,6 @@ export const PAGE_CTA={
  'community-partners':['member','contact'],
  'our-partners':['partner','contact'],
  accreditation:['partner','contact'],
- 'our-supporters':['partner','contact'],
  'what-we-do':['member','volunteer'],
  'high-commissioner':['member','contact'],
  directors:['member','contact'],

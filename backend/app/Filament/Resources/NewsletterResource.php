@@ -74,11 +74,13 @@ class NewsletterResource extends Resource
 
     public static function testAction(): Action
     {
-        return Action::make('test')->label('Send test to me')->icon(Heroicon::Beaker)->color('gray')
-            ->action(function (Newsletter $record) {
-                $me = Subscriber::firstOrNew(['email' => auth()->user()->email]);
-                Mail::to(auth()->user()->email)->send(new NewsletterMail($record, $me->exists ? $me : tap($me, fn ($m) => $m->token = 'preview')));
-                Notification::make()->success()->title('Test sent to '.auth()->user()->email)->send();
+        return Action::make('test')->label('Send test newsletter')->icon(Heroicon::Beaker)->color('gray')
+            ->schema([TextInput::make('email')->label('Test inbox')->email()->required()->default(fn () => auth()->user()->email)])
+            ->action(function (Newsletter $record, array $data) {
+                $email = strtolower(trim($data['email']));
+                $subscriber = Subscriber::firstOrCreate(['email' => $email]);
+                Mail::to($email)->queue((new NewsletterMail($record, $subscriber))->onQueue('mail-tests'));
+                Notification::make()->success()->title('Test newsletter queued for '.$email)->send();
             });
     }
 

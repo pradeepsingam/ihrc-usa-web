@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         'social.tiktok' => 'TikTok URL',
         'social.twitter' => 'X / Twitter URL',
         'social.linkedin' => 'LinkedIn URL',
-        'paymentUrl' => 'Online payment link (Donate / Pay Online buttons)',
+        'paymentUrl' => 'Online payment link (Membership / Pay Online buttons)',
     ];
 
     public function run(): void

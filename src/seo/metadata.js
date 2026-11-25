@@ -1,11 +1,11 @@
 import { texts, groups, people, allPeople, programs } from '../data';
-import { news, events, projects, publications, supporters, branches, programDetails } from '../content';
+import { news, events, projects, publications, branches, programDetails } from '../content';
 
 export const SITE_URL = 'https://www.ihrc-usa.org';
 export const SITE_NAME = 'IHRC-USA';
 export const SITE_DESCRIPTION = 'Learn about IHRC-USA’s human rights education, advocacy and humanitarian initiatives. Explore our programs, membership and volunteer opportunities.';
 export const aliases = {
-  '/apply': '/membership', '/donate': '/donation', '/privacy': '/privacy-policy',
+  '/apply': '/membership', '/donate': '/membership', '/donation': '/membership', '/privacy': '/privacy-policy',
   '/ambassador-at-large': '/ambassadors',
   '/chief-human-rights-investigation-officer': '/human-rights-officers',
   '/human-rights-officer': '/human-rights-officers',
@@ -21,7 +21,6 @@ const pages = {
   '/research': ['Human Rights Research Opportunities', 'Join IHRC-USA’s research network. Explore research areas, eligibility and the application form for academics, researchers and field investigators.'],
   '/contact': ['Contact IHRC-USA', 'Contact IHRC-USA with questions about membership, volunteering, partnerships and human rights awareness initiatives.'],
   '/report-concern': ['Report a Human Rights Concern', 'Read IHRC-USA’s guidance and submit a human rights concern for initial review and possible referral through the concern reporting form.'],
-  '/donation': ['Support Human Rights Initiatives', 'Support IHRC-USA’s human rights awareness, education and humanitarian initiatives. Read donation information and complete the donation form.'],
   '/partnership-application': ['CSO Partnership Application', 'Review the requirements and apply for a civil society organization partnership with IHRC-USA.'],
   '/partnerships': ['Partnerships', 'Explore opportunities to cooperate with IHRC-USA on human rights education, advocacy and community initiatives.'],
   '/accreditation': ['Recognition & Accreditation Application', 'Read the scope, limitations and requirements of IHRC-USA’s private recognition and programme review services before applying.'],
@@ -30,7 +29,6 @@ const pages = {
   '/countries': ['Countries', 'Explore country information and IHRC-USA’s international cooperation and representation framework.'],
   '/recognition': ['Recognition & Registrations', 'Read IHRC-USA’s information about organizational registrations, recognition and cooperation.'],
   '/our-partners': ['Our Partners', 'Explore organizations cooperating with IHRC-USA in human rights awareness and community initiatives.'],
-  '/our-supporters': ['Our Supporters', 'Learn about donors and sponsors supporting IHRC-USA’s community and human rights initiatives.'],
   '/global-network': ['Global Network', 'Find published information about authorized IHRC branches and representatives in the global network.'],
   '/news': ['News & Updates', 'Read published IHRC-USA news and updates on human rights awareness, programs and community initiatives.'],
   '/events': ['Events', 'Explore published IHRC-USA events, workshops and opportunities to participate in human rights awareness initiatives.'],
@@ -51,7 +49,6 @@ export function getMetadata(pathname) {
   const key = path.slice(1);
   let entry = pages[path];
   let noindex = ['/search', '/verify'].includes(path);
-  if (path === '/our-supporters') noindex = !supporters.donors?.length && !supporters.sponsors?.length;
   let image = '/logo.jpeg';
   let type = 'website';
   if (texts[key]) entry = [texts[key].title, texts[key].sub];

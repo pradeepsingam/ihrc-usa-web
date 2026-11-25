@@ -129,7 +129,7 @@
    "sections": [
     {
      "heading": "Information We Collect",
-     "body": "We collect information you give us when you apply for membership, volunteer, contact us, verify a member or make a donation. This may include your name, email address, phone number, address and any details you choose to share."
+     "body": "We collect information you give us when you apply for membership, volunteer, contact us, verify a member or make a financial contribution. This may include your name, email address, phone number, address and any details you choose to share."
     },
     {
      "heading": "How We Use Your Information",
@@ -174,8 +174,8 @@
      "body": "Membership applications are subject to review and approval. Member IDs and certificates remain the property of the organisation and must not be misused or transferred."
     },
     {
-     "heading": "Donations",
-     "body": "Donations are voluntary and support our programs. Refunds are handled as described in our Refund Policy."
+     "heading": "Financial contributions",
+     "body": "Financial contributions are voluntary and support our programs. Refunds are handled as described in our Refund Policy."
     },
     {
      "heading": "User Conduct",
@@ -197,11 +197,11 @@
   },
   "refund": {
    "title": "Refund Policy",
-   "subtitle": "How refunds work for donations and membership fees.",
+   "subtitle": "How refunds work for financial contributions and membership fees.",
    "sections": [
     {
-     "heading": "Donations",
-     "body": "Donations are voluntary contributions that fund our work and are generally non-refundable. If you made a donation by mistake or were charged an incorrect amount, contact us within 14 days and we will review your request."
+     "heading": "Financial contributions",
+     "body": "Financial contributions are voluntary contributions that fund our work and are generally non-refundable. If you made a financial contribution by mistake or were charged an incorrect amount, contact us within 14 days and we will review your request."
     },
     {
      "heading": "Membership Fees",
@@ -247,7 +247,7 @@
     },
     {
      "heading": "Contact",
-     "body": "Questions about this notice can be sent to info@gmail.com."
+     "body": "Questions about this notice can be sent to info@ihrc-usa.org."
     }
    ]
   }
@@ -639,7 +639,7 @@
   "Educational Publications"
  ],
  "siteInfo": {
-  "email": "info@gmail.com",
+  "email": "info@ihrc-usa.org",
   "whatsappLink": "https://wa.me/94711010031",
   "whatsappChannel": "https://whatsapp.com/channel/0029VbDiXwg72WTvs9ttGi0r",
   "phone": "+94 24 2222402",
@@ -1324,7 +1324,7 @@
        "n": 53,
        "label": "Members Restrictions & Regulations",
        "lines": [
-        "1. No Financial Fundraising: Members are strictly prohibited from collecting or soliciting financial donations under the IHRC-USA name without explicit, written authorization from the SLK Headquarters.",
+        "1. No Financial Fundraising: Members are strictly prohibited from collecting or soliciting financial financial contributions under the IHRC-USA name without explicit, written authorization from the SLK Headquarters.",
         "2. No Official Representation: No Members may act, speak, or issue statements to the media as an official international representative of the IHRC-USA without a formal mandate.",
         "3. Non-Compensated Service: All Members positions are strictly unpaid. The IHRC-USA does not provide salaries, and the headquarters is not responsible for personal expenses incurred during Members work.",
         "4. IHRC-USA ID Card Policy: Issued digital or physical Members cards remain the intellectual property of the organization. Misuse, forgery, or public leaks of these documents will lead to immediate termination.",
@@ -1352,7 +1352,7 @@
         "1. I confirm that the information provided in this application is true and accurate to the best of my knowledge.",
         "2. I agree to respect the applicable Constitution, policies, Code of Conduct, safeguarding principles, and ethical standards of IHRC-USA.",
         "3. I understand that submitting this application does not automatically guarantee membership, appointment, or any official position.",
-        "4. Although an IHRC-USA Member is authorized to work as part of IHRC-USA coalition projects, he/she is not authorized to represent or collect donations without the personal authorization of the headquarters."
+        "4. Although an IHRC-USA Member is authorized to work as part of IHRC-USA coalition projects, he/she is not authorized to represent or collect financial contributions without the personal authorization of the headquarters."
        ],
        "opts": [
         "I agree",
@@ -1389,7 +1389,7 @@
       {
        "t": "info",
        "lines": [
-        "If you have any questions or require additional information, please contact us at the following email address: info@gmail.com"
+        "If you have any questions or require additional information, please contact us at the following email address: info@ihrc-usa.org"
        ]
       },
       {
@@ -1519,6 +1519,12 @@
        "n": 8,
        "label": "WhatsApp/Mobile Number",
        "hint": "Country code with mobile number (+)",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email Address",
        "req": 1
       },
       {

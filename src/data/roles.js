@@ -99,7 +99,7 @@ export const roles=[
    "No diplomatic or governmental status is created. Do not sign agreements, fundraise, make commitments or issue official statements without written authority."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Appointment certificate; approved event participation; training and leadership-development opportunities; pre-approved expense reimbursement against receipts, subject to policy."
@@ -122,7 +122,7 @@ export const roles=[
    "Cannot change policy, appoint personnel, promise funding or use the title for private business promotion."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Honorary certificate where approved; relevant training and event participation; contribution letter where verified. No salary is automatic."
@@ -145,7 +145,7 @@ export const roles=[
    "Cannot compel mediation, impose settlements, issue orders or intervene physically in dangerous situations."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Peacebuilding training; approved programme participation; certificates based on verified contribution."
@@ -168,7 +168,7 @@ export const roles=[
    "Do not expose young people to exploitation, unsafe activities or unauthorised publication of personal information."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Leadership(P5) training; approved youth events; participation certificates subject to age and safeguarding rules."
@@ -191,7 +191,7 @@ export const roles=[
    "Do not investigate violence, provide clinical treatment or legal advice unless qualified and authorised; never pressure a survivor to reconcile or withdraw a complaint."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Relevant training; approved empowerment programmes; contribution certificates based on verified work."
@@ -214,7 +214,7 @@ export const roles=[
    "Do not claim UN, EU, embassy or government endorsement without proof; do not sign MoUs, contracts or funding applications without written authority."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "International communications experience; relevant training; approved event participation; verified contribution letters."
@@ -237,7 +237,7 @@ export const roles=[
    "“At Large” does not mean unlimited or worldwide authority; cannot appoint or dismiss officers or change policy without written authority."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Senior project-coordination experience; approved representation opportunities; recognition based on assessed contribution."
@@ -261,7 +261,7 @@ export const roles=[
    "Do not enter private premises without lawful permission or alter evidence; do not replace lawyers, doctors or counsellors."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Training in human-rights documentation, safeguarding and reporting; project experience; certificates based on verified work."
@@ -284,7 +284,7 @@ export const roles=[
    "Do not provide legal advice unless qualified, conduct official investigations, declare guilt or promise outcomes."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Human-rights education training; approved programme participation; experience certificates for verified service."
@@ -307,7 +307,7 @@ export const roles=[
    "Do not make commitments or issue official statements on behalf of IHRC–USA."
   ],
   "restrictions": [
-   "Do not collect donations into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+   "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
   ],
   "benefits": [
    "Honorary certificate where approved; invitations to relevant events or advisory discussions; recognition of voluntary contribution."
@@ -349,7 +349,7 @@ export const codeOfConduct=[
  },
  {
   "t": "Financial integrity",
-  "d": "No unauthorised fundraising, personal-account donation collection, false receipts, bribes or commissions."
+  "d": "No unauthorised fundraising, personal-account financial contribution collection, false receipts, bribes or commissions."
  },
  {
   "t": "Political and religious neutrality",

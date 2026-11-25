@@ -25,7 +25,7 @@ class Mailboxes
         'award' => 'Award',
         'complaints' => 'Complaints',
         'partnership' => 'Partnership',
-        'official' => 'Official (Donations, Sponsors)',
+        'official' => 'Official correspondence',
         'accreditation' => 'Accreditation',
         'news' => 'News / media',
         'secretary' => 'Secretary',
@@ -50,6 +50,12 @@ class Mailboxes
         'Accreditation' => 'accreditation',
         'News' => 'news',
         'Media' => 'news',
+        'General' => 'official',
+        'Official' => 'official',
+        'Message to the Secretary' => 'secretary',
+        'Secretary' => 'secretary',
+        'Message to the Chairman' => 'chairman',
+        'Chairman' => 'chairman',
     ];
 
     public static function options(): array

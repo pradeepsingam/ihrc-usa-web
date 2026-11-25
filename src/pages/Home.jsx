@@ -4,7 +4,7 @@ import {ChevronLeft,ChevronRight,Heart,BadgeCheck,HandHeart,ShieldAlert} from 'l
 import {mvo,programs,texts} from '../data';
 import {news,events,pubCategories} from '../content';
 import {recognitionText,recognitionMarquee} from '../data/recognition';
-import DonateLink from '../components/DonateLink';
+import JoinLink from '../components/JoinLink';
 import CooperationMarquee from '../components/CooperationMarquee';
 import {Wrap,Heading,Btn,Card,IconBadge,ProgramCard,NewsCard,EventCard,Empty} from '../components/UI';
 
@@ -47,5 +47,5 @@ return <>
 <CooperationMarquee/>
 <Wrap cls="grid gap-4 md:grid-cols-3"><div className="rounded-xl bg-navy p-6 text-white"><BadgeCheck size={32}/><h3 className="mt-2 font-serif text-xl font-bold">Become a Member</h3><p className="mb-4 text-blue-100">Join people who share a commitment to human dignity.</p><Btn to="/membership" cls="!bg-white !text-navy">Apply Now</Btn></div>
 <div className="rounded-xl bg-brand p-6 text-white"><HandHeart size={32}/><h3 className="mt-2 font-serif text-xl font-bold">Volunteer</h3><p className="mb-4 text-blue-100">Give your time and skills to protect human rights.</p><Btn to="/volunteer" cls="!bg-white !text-navy">Join as Volunteer</Btn></div>
-<div className="rounded-xl bg-gold p-6 text-navy"><Heart size={32}/><h3 className="mt-2 font-serif text-xl font-bold">Support Our Work</h3><p className="mb-4">Your gift helps us protect dignity for generations.</p><DonateLink className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-navy px-6 py-2 text-sm font-semibold text-white transition hover:bg-white hover:text-navy">Donate</DonateLink></div></Wrap>
+<div className="rounded-xl bg-gold p-6 text-navy"><Heart size={32}/><h3 className="mt-2 font-serif text-xl font-bold">Join Our Community</h3><p className="mb-4">Take part in human rights education and community initiatives.</p><JoinLink className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-navy px-6 py-2 text-sm font-semibold text-white transition hover:bg-white hover:text-navy">Join</JoinLink></div></Wrap>
 <Wrap><div className="flex flex-col items-start justify-between gap-4 rounded-xl bg-blue-50 p-6 sm:flex-row sm:items-center"><div className="flex items-center gap-4"><ShieldAlert size={32} className="shrink-0 text-navy"/><div><h3 className="font-serif text-xl font-bold text-navy">Report a Human Rights Concern</h3><p className="text-sm text-slate-600">Share a concern with IHRC-USA using our confidential form.</p></div></div><Btn to="/report-concern">Report a Concern</Btn></div></Wrap></>}
