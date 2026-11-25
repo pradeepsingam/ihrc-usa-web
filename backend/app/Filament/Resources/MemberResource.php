@@ -69,8 +69,11 @@ class MemberResource extends Resource
     {
         return $schema->components([
             Section::make('Membership')->columns(3)->columnSpanFull()->schema([
-                TextInput::make('member_id')->label('Member ID')->disabled()->dehydrated(false)->placeholder('Created automatically')
-                    ->helperText('Used on the Verify Member page.'),
+                TextInput::make('member_id')->label('Member ID')->required()->maxLength(255)->unique(ignoreRecord: true)
+                    ->mutateStateForValidationUsing(fn (?string $state): string => strtoupper(trim($state ?? '')))
+                    ->dehydrateStateUsing(fn (?string $state): string => strtoupper(trim($state ?? '')))
+                    ->placeholder('Enter member ID')
+                    ->helperText('Enter a unique member ID. Used on the Verify Member page.'),
                 Select::make('status')->options(Member::STATUSES)->default('Active')->required(),
                 TextInput::make('title')->label('Membership title / category')->datalist(Member::TITLES)->maxLength(190),
                 DatePicker::make('joined_at')->label('Joined')->default(now()),
@@ -134,7 +137,9 @@ class MemberResource extends Resource
             TextColumn::make('name')->searchable()->sortable(),
             TextColumn::make('title')->searchable()->toggleable(),
             TextColumn::make('country')->searchable()->toggleable(),
-            TextColumn::make('status')->badge()->color(fn ($state) => match ($state) { 'Active' => 'success', 'Pending' => 'warning', 'Suspended', 'Rejected' => 'danger', default => 'gray' }),
+            TextColumn::make('status')->badge()->color(fn ($state) => match ($state) {
+                'Active' => 'success', 'Pending' => 'warning', 'Suspended', 'Rejected' => 'danger', default => 'gray'
+            }),
             TextColumn::make('expires_at')->label('Expires')->date()->sortable()->toggleable(),
             IconColumn::make('show_on_site')->label('On website')->boolean()->toggleable(),
             TextColumn::make('group')->label('Members page')->formatStateUsing(fn ($state) => SiteStructure::groupOptions()[$state] ?? $state)->toggleable()->sortable(),

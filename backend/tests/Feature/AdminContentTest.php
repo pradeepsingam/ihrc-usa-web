@@ -144,11 +144,11 @@ class AdminContentTest extends TestCase
     {
         foreach (['Jane Doe', 'John Roe', 'Third President'] as $i => $name) {
             $this->create(Resources\MemberResource\Pages\CreateMember::class, [
-                'name' => $name, 'show_on_site' => true, 'group' => 'leadership', 'public_role' => 'President',
+                'member_id' => 'IHRC-P-'.($i + 1), 'name' => $name, 'show_on_site' => true, 'group' => 'leadership', 'public_role' => 'President',
                 'country' => $i ? 'India' : 'Sri Lanka', 'position' => $i, 'photo' => UploadedFile::fake()->image('p.jpg'),
             ]);
         }
-        $this->create(Resources\MemberResource\Pages\CreateMember::class, ['name' => 'Not public']);
+        $this->create(Resources\MemberResource\Pages\CreateMember::class, ['member_id' => 'IHRC-PRIVATE-1', 'name' => 'Not public']);
         Livewire::test(Resources\MemberResource\Pages\CreateMember::class)
             ->fillForm(['name' => 'X', 'show_on_site' => true])->call('create')->assertHasFormErrors(['group', 'public_role']);
 
@@ -167,6 +167,49 @@ class AdminContentTest extends TestCase
         Livewire::test(Resources\MemberResource\Pages\ListMember::class)->set('activeTab', 'website')
             ->assertCanSeeTableRecords(Member::where('show_on_site', true)->get())
             ->assertCanNotSeeTableRecords(Member::where('name', 'Not public')->get());
+    }
+
+    public function test_member_ids_are_entered_manually_and_can_be_changed(): void
+    {
+        $this->create(Resources\MemberResource\Pages\CreateMember::class, [
+            'member_id' => ' custom-2026-42 ', 'name' => 'Manual Member',
+        ]);
+        $member = Member::where('name', 'Manual Member')->firstOrFail();
+        $this->assertSame('CUSTOM-2026-42', $member->member_id);
+
+        Livewire::test(Resources\MemberResource\Pages\EditMember::class, ['record' => $member->getRouteKey()])
+            ->fillForm(['name' => 'Updated Member'])->call('save')->assertHasNoFormErrors();
+        $this->assertSame('CUSTOM-2026-42', $member->fresh()->member_id);
+
+        Livewire::test(Resources\MemberResource\Pages\EditMember::class, ['record' => $member->getRouteKey()])
+            ->fillForm(['member_id' => ' replacement-42 '])->call('save')->assertHasNoFormErrors();
+        $this->assertSame('REPLACEMENT-42', $member->fresh()->member_id);
+        $this->getJson('/api/verify/replacement-42')->assertOk()->assertJsonPath('name', 'Updated Member');
+        $this->getJson('/api/verify/CUSTOM-2026-42')->assertNotFound();
+    }
+
+    public function test_member_admin_rejects_empty_and_duplicate_member_ids(): void
+    {
+        $this->create(Resources\MemberResource\Pages\CreateMember::class, [
+            'member_id' => 'ASSIGNED-42', 'name' => 'Existing Member',
+        ]);
+        $this->create(Resources\MemberResource\Pages\CreateMember::class, [
+            'member_id' => 'OTHER-43', 'name' => 'Other Member',
+        ]);
+
+        Livewire::test(Resources\MemberResource\Pages\CreateMember::class)
+            ->fillForm(['member_id' => '   ', 'name' => 'Missing ID'])
+            ->call('create')->assertHasFormErrors(['member_id' => 'required']);
+        Livewire::test(Resources\MemberResource\Pages\CreateMember::class)
+            ->fillForm(['member_id' => ' assigned-42 ', 'name' => 'Duplicate ID'])
+            ->call('create')->assertHasFormErrors(['member_id' => 'unique']);
+
+        $other = Member::where('member_id', 'OTHER-43')->firstOrFail();
+        Livewire::test(Resources\MemberResource\Pages\EditMember::class, ['record' => $other->getRouteKey()])
+            ->fillForm(['member_id' => 'assigned-42'])->call('save')->assertHasFormErrors(['member_id' => 'unique']);
+        $this->assertSame('OTHER-43', $other->fresh()->member_id);
+        $this->assertDatabaseMissing('members', ['name' => 'Missing ID']);
+        $this->assertDatabaseMissing('members', ['name' => 'Duplicate ID']);
     }
 
     public function test_organisation_lists(): void
