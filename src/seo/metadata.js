@@ -58,7 +58,8 @@ export function getMetadata(pathname) {
   }
   const emptyLists = { '/news': news, '/events': events, '/projects': projects, '/publications': publications, '/global-network': branches };
   if (emptyLists[path]?.length === 0) noindex = true;
-  const [family, id] = key.split('/');
+  const [family] = key.split('/');
+  const id = key.slice(family.length + 1);
   if (id && family === 'programs') {
     const program = programs.find(item => item.slug === id);
     if (program) {
@@ -76,12 +77,12 @@ export function getMetadata(pathname) {
       if (family === 'news') type = 'article';
     }
   } else if (family === 'member-profile') {
-    const person = allPeople.find(item => item.id === id);
-    if (person) { entry = [person.tbd ? person.role : person.name+' – '+(person.memberId||person.id), person.bio || person.role]; noindex = Boolean(person.tbd); image = person.photo || image; }
+    const person = allPeople.find(item => String(item.id) === id || String(item.memberId || '') === id);
+    if (person) { entry = [person.name+' – '+(person.memberId||person.id), person.bio || person.role]; image = person.photo || image; }
   }
   if (family === 'preview' || path === '/preview-page') { entry = ['Content Preview', 'Preview of unpublished IHRC-USA content.']; noindex = true; }
   if (id === '__preview') noindex = true;
-  const found = Boolean(entry) && key.split('/').length <= 2;
+  const found = Boolean(entry) && (family === 'member-profile' || key.split('/').length <= 2);
   if (!found) { entry = ['Page Not Found', 'This page could not be found. Explore IHRC-USA programs, membership and contact information.']; noindex = true; }
   return { path, found, title: `${entry[0]} | ${SITE_NAME}`, name: entry[0], description: snippet(entry[1]), canonical: absoluteUrl(path), robots: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large', noindex, image: absoluteUrl(image), type };
 }
@@ -91,7 +92,9 @@ export function getRoutes() {
     ...Object.keys(pages), ...Object.keys(texts).map(key => '/' + key), ...Object.keys(groups).map(key => '/' + key),
     ...programs.map(program => '/programs/' + program.slug),
     ...Object.entries({ news, events, projects }).flatMap(([family, items]) => items.map(item => `/${family}/${item.id}`)),
-    ...allPeople.map(person => '/member-profile/' + person.id),
+    // Member IDs can be typed freely in the admin; only IDs that are safe as folder names are pre-rendered.
+    // Any other profile still opens, rendered in the browser.
+    ...allPeople.map(person => '/member-profile/' + person.id).filter(path => /^\/member-profile(?:\/[a-zA-Z0-9_-]+)+$/.test(path)),
   ])];
 }
 

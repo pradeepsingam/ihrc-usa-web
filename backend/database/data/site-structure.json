@@ -387,9 +387,9 @@
    ]
   },
   "deputy-secretary-general": {
-   "title": "Deputy Secretary-General",
+   "title": "Members",
    "roles": [
-    "Deputy Secretary-General"
+    "Member"
    ]
   },
   "international-executive-council": {
@@ -415,14 +415,9 @@
    ]
   },
   "standing-committees": {
-   "title": "Standing Committees",
+   "title": "Representatives",
    "roles": [
-    "Committee Member",
-    "Committee Member",
-    "Committee Member",
-    "Committee Member",
-    "Committee Member",
-    "Committee Member"
+    "Representative"
    ]
   },
   "high-commissioner": {

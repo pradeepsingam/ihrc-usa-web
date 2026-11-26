@@ -2,7 +2,7 @@ import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handsha
 import {leaders,people as cmsPeople} from './content';
 import {remotePages} from './lib/loadContent';
 const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['What We Do','/what-we-do'],['Roles & Responsibilities','/roles-responsibilities'],['Our Partners','/our-partners'],['Our Recognition','/recognition'],['Countries','/countries']];
-const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Deputy Secretary-General','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Standing Committees','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
+const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Members','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Representatives','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
 const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion'],['Environment','/programs?cat=Environment']];
 export const nav=[
 {l:'Home',to:'/',i:Home},
@@ -42,24 +42,22 @@ ambassadors:{title:'Ambassadors',sub:'Public advocates who raise awareness of hu
 'board-of-directors':{title:'Board of Directors',sub:'The Board of Directors governing IHRC-USA.',r:Array(8).fill('Board Member')},
 'president-chairperson':{title:'President',sub:'The head of IHRC-USA.',r:Array(1).fill('President')},
 'secretary-general-chief-executive':{title:'Secretary-General',sub:'The chief executive of IHRC-USA.',r:Array(1).fill('Secretary-General')},
-'deputy-secretary-general':{title:'Deputy Secretary-General',sub:'Supports the Secretary-General in leading IHRC-USA.',r:Array(1).fill('Deputy Secretary-General')},
+'deputy-secretary-general':{title:'Members',sub:'Members of IHRC-USA.',r:['Member']},
 'international-executive-council':{title:'International Executive Council',sub:'The international executive body of IHRC-USA.',r:Array(6).fill('Council Member')},
 'advisory-council':{title:'Advisory Council',sub:'Advisers supporting IHRC-USA with experience and expertise.',r:Array(6).fill('Advisory Council Member')},
-'standing-committees':{title:'Standing Committees',sub:'The standing committees of IHRC-USA.',r:Array(6).fill('Committee Member')},
+'standing-committees':{title:'Representatives',sub:'Representatives of IHRC-USA.',r:['Representative']},
 'high-commissioner':{title:'High Commissioner',sub:'High Commissioners of IHRC-USA – regional, international and national.',cats:['International','Regional','National'],r:['Regional','International','National'].map(c=>'High Commissioner — '+c)},
 'community-partners':{title:'Community Partners',sub:'Community partners working with IHRC-USA.',r:Array(6).fill('Community Partner')},
 'honorary-members':{title:'Honorary Members',sub:'Persons recognised for supporting the organisation through experience, expertise, goodwill or community standing.',r:Array(6).fill('Honorary Member')},
 volunteers:{title:'Volunteers',sub:'The dedicated volunteers behind our community work.',r:Array(8).fill('Volunteer')}};
-// People on each Members page: everyone the admin added for that page (any number per role), followed by a
-// "Name to be added" card for each of the page's usual roles that nobody holds yet.
+// People on each Members page: only the people the admin added for that page (any number per role).
+// No sample "Name to be added" cards are shown.
 export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>{
  const added=(cmsPeople[k]||[]).map(p=>({...p,role:p.role||g.r[0]}));
- const slots=g.r.map((r,i)=>{const id=k+'-'+(i+1);return {id,name:'Name to be added',role:r,tbd:!leaders[id],...leaders[id]}});
- if(!added.length)return [k,slots];
- // "leaders" is the same people in the older format, so only empty role cards are added here.
- const filled=new Set(added.map(p=>p.role));const seen=new Set();
- const empty=g.r.filter(r=>!filled.has(r)&&!seen.has(r)&&seen.add(r)).map((r,i)=>({id:k+'-open-'+(i+1),name:'Name to be added',role:r,tbd:true}));
- return [k,[...added,...empty]];
+ if(added.length)return [k,added];
+ // Older content format ("leaders": <page>-<number>), used only when the newer "people" list is missing.
+ const old=g.r.map((r,i)=>{const id=k+'-'+(i+1);return leaders[id]?{id:leaders[id].memberId||id,role:r,...leaders[id]}:null}).filter(Boolean);
+ return [k,old];
 }));
 export const allPeople=Object.values(people).flat();
 export const members=[];

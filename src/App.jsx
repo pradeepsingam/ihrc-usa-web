@@ -25,7 +25,7 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 {Object.keys(texts).map(k=><Route key={k} path={k} element={<TextPage k={k}/>}/>)}
 {Object.keys(groups).map(g=><Route key={g} path={g} element={<People g={g}/>}/>)}
 <Route path="ambassador-at-large" element={<Navigate to="/ambassadors" replace/>}/><Route path="chief-human-rights-investigation-officer" element={<Navigate to="/human-rights-officers" replace/>}/><Route path="human-rights-officer" element={<Navigate to="/human-rights-officers" replace/>}/>
-<Route path="member-profile" element={<Profile/>}/><Route path="member-profile/:id" element={<Profile/>}/>
+<Route path="member-profile" element={<Profile/>}/><Route path="member-profile/*" element={<Profile/>}/>
 <Route path="roles-responsibilities" element={<Roles/>}/><Route path="countries" element={<Countries/>}/><Route path="recognition" element={<Recognition/>}/><Route path="our-partners" element={<OurPartners/>}/><Route path="our-supporters" element={<NotFound/>}/><Route path="what-we-do" element={<WhatWeDo/>}/>
 <Route path="research" element={<Research/>}/>
 <Route path="human-rights" element={<HumanRights/>}/>

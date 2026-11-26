@@ -17,10 +17,10 @@ export const rolesStructure=[
    "Board of Directors",
    "President / Chairperson",
    "Secretary-General / Chief Executive",
-   "Deputy Secretary-General",
+   "Members",
    "International Executive Council",
    "Advisory Council",
-   "Standing Committees"
+   "Representatives"
   ]
  ],
  [

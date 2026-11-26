@@ -88,6 +88,11 @@ class ContentController extends Controller
                     'id' => $m->member_id ?: 'member-'.$m->id, 'name' => $m->name, 'role' => $m->public_role ?: $m->title,
                     'photo' => $m->photo_public ? $this->url($m->photo) : null, 'country' => $m->country,
                     'bio' => $m->bio, 'responsibilities' => $m->responsibilities,
+                    // Public profile details. Private details (date of birth, gender, address, phone, e-mail,
+                    // documents) are never sent to the website.
+                    'memberId' => $m->member_id, 'title' => $m->title, 'profession' => $m->profession,
+                    'organization' => $m->organization, 'city' => $m->city, 'interests' => $m->interests,
+                    'joined' => $m->joined_at?->format('j F Y'),
                 ]))->values()),
 
             // Same people in the older "<page>-<number>" format, for website builds made before the "people" list existed.
