@@ -1,0 +1,36 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.html index.php
+AddHandler application/x-httpd-alt-php83___lsphp .php
+php_value memory_limit 512M
+php_value upload_max_filesize 100M
+php_value post_max_size 120M
+php_value max_execution_time 120
+RewriteEngine On
+RewriteRule ^our-supporters(?:/|$) - [R=404,L,NC]
+RewriteRule ^(?:donate|donation)/?$ /membership/ [R=301,L,NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://ihrc-usa.org%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.ihrc-usa\.org$ [NC]
+RewriteRule ^ https://ihrc-usa.org%{REQUEST_URI} [R=301,L]
+RewriteRule (^|/)\.(?!well-known/) - [F,L]
+RewriteRule ^storage/.*\.(?:php[0-9]?|phtml|phar)(?:/|$) - [F,L,NC]
+RewriteRule ^(?:backend|vendor|src|scripts|public|database|bootstrap|config|resources|routes)(?:/|$) - [F,L]
+RewriteRule ^(?:package(?:-lock)?\.json|composer\.(?:json|lock)|artisan|phpunit\.xml|.*\.sqlite(?:-wal|-shm)?|.*\.log)$ - [F,L,NC]
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteCond %{HTTP:x-xsrf-token} .
+RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+RewriteRule ^(?:admin|api|livewire(?:-[a-z0-9]+)?|up)(?:/|$) index.php [L]
+RewriteRule ^preview(?:/|$) index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(?:news|events|projects|forms|programs|awards)/[^/]+/?$ index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^member-profile/.+$ index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+<FilesMatch "^(?:\.env.*|php\.ini|\.user\.ini)$">
+    Require all denied
+</FilesMatch>
