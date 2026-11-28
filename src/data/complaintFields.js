@@ -56,4 +56,3 @@ f(35,'declared','I have read and understood the above declaration and confirm th
 f(36,'consented','I consent to '+ORG+' collecting and using the information I provide for the purpose of reviewing and responding to this complaint, in accordance with its privacy policy and applicable law.',{type:'consent',req:1,group:'Consent to the handling of my information'}),
 f(37,'signName','Name of Complainant / Authorized Representative'),
 f(38,'submitDate','Date of Submission',{type:'date'})]}];
-
