@@ -371,6 +371,35 @@ class RequirementsTest extends TestCase
         $this->getJson('/api/verify/IHRC-M-99999')->assertNotFound();
     }
 
+    public function test_member_verification_preserves_slashes_in_query_parameters(): void
+    {
+        $member = Member::create([
+            'member_id' => 'IHRC/231426124NG', 'name' => 'Custom ID Member',
+            'title' => 'Member', 'country' => 'Nigeria', 'status' => 'Active',
+            'email' => 'private@example.org', 'phone' => '+234123456789',
+            'address' => 'Private address', 'photo' => 'members/private.jpg', 'photo_public' => false,
+        ]);
+        $url = '/api/verify?'.http_build_query(['memberId' => ' ihrc/231426124ng ']);
+
+        $this->getJson($url)->assertOk()->assertExactJson([
+            'found' => true, 'memberId' => 'IHRC/231426124NG', 'name' => 'Custom ID Member',
+            'title' => 'Member', 'country' => 'Nigeria', 'status' => 'Active', 'photo' => null,
+        ]);
+
+        $member->update(['status' => 'Rejected']);
+        $this->getJson($url)->assertNotFound()->assertJsonPath('found', false);
+        $this->getJson('/api/verify?'.http_build_query(['memberId' => 'IHRC/UNKNOWN']))
+            ->assertNotFound()->assertJsonPath('found', false);
+    }
+
+    public function test_member_verification_validates_query_parameters(): void
+    {
+        foreach ([[], ['memberId' => '   '], ['memberId' => ['IHRC/231426124NG']], ['memberId' => str_repeat('A', 256)]] as $query) {
+            $this->getJson('/api/verify?'.http_build_query($query))
+                ->assertUnprocessable()->assertJsonValidationErrors('memberId');
+        }
+    }
+
     // ---------------------------------------------------------------- 4.5 content
 
     public function test_public_lists_rich_text_registration_switch_and_publication_cover(): void

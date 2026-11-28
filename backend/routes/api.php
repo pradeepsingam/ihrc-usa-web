@@ -18,6 +18,7 @@ Route::get('/preview/{token}', fn (string $token) => response()->json(cache('pre
 
 Route::post('/forms', [FormController::class, 'store'])->middleware('throttle:10,1');
 
+Route::get('/verify', VerifyController::class)->middleware('throttle:30,1');
 Route::get('/verify/{memberId}', VerifyController::class)->middleware('throttle:30,1');
 
 Route::post('/subscribe', [SubscribeController::class, 'store'])->middleware('throttle:5,1');
