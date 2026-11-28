@@ -1,6 +1,7 @@
+import {managed} from '../lib/managedContent';
 import {ShieldCheck,Users,HeartPulse,Lock,PersonStanding,Scale,Home,Globe2,HeartHandshake,Megaphone,Bird,Heart,Briefcase,GraduationCap,Landmark,HandHeart,Handshake,BookOpen,Gavel,TrendingUp,UserCheck} from 'lucide-react';
 
-export const ihrcBenefits=[
+export const ihrcBenefits=managed("ihrcBenefits.ihrcBenefits","Benefits of IHRC",'Website content',[
 ['Fundamental Protections','Ensures fundamental protections against abuse such as torture, exploitation, cruel treatment and injustice.',ShieldCheck],
 ['Equality and Non-Discrimination','Promotes equality and ensures fair treatment, protection of minority rights and freedom from discrimination.',Users],
 ['Quality of Life','Guarantees access to food, healthcare, and a safe environment for a life with dignity.',HeartPulse],
@@ -21,4 +22,4 @@ export const ihrcBenefits=[
 ['Foundation for Morality and Ethics','Builds a just society based on moral and ethical principles.',BookOpen],
 ['Promotes the Rule of Law','Ensures fair laws, justice, and equality before the law.',Gavel],
 ['Economic Development for All','Promotes stability, investment, and fair economic opportunities for all.',TrendingUp],
-['Promotes Personal Responsibility','Encourages respect for others’ rights and responsibilities in building a better society.',UserCheck]];
+['Promotes Personal Responsibility','Encourages respect for others’ rights and responsibilities in building a better society.',UserCheck]]);

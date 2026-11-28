@@ -467,158 +467,3139 @@
  "programs": [
   {
    "slug": "education-for-children",
-   "title": "1. Education for Children",
-   "category": "Education"
+   "title": "Education for Children",
+   "number": 1,
+   "category": "Education",
+   "summary": "To create educational awareness and increase the literacy rate of society.",
+   "image_url": "/images/programs/education-for-children.jpg"
   },
   {
    "slug": "environmental-protection",
-   "title": "2. Environmental Protection",
-   "category": "Environment"
+   "title": "Environmental Protection",
+   "number": 2,
+   "category": "Environment",
+   "summary": "To work hard to prevent environmental pollution.",
+   "image_url": "/images/programs/environmental-protection.jpg"
   },
   {
    "slug": "traffic-rules",
-   "title": "3. Traffic Rules",
-   "category": "Education"
+   "title": "Traffic Rules",
+   "number": 3,
+   "category": "Education",
+   "summary": "To create awareness about traffic rules among the public.",
+   "image_url": "/images/programs/traffic-rules.jpg"
   },
   {
    "slug": "healthy-society",
-   "title": "4. Healthy Society",
-   "category": "Education"
+   "title": "Healthy Society",
+   "number": 4,
+   "category": "Education",
+   "summary": "To create an educated, healthy and strong society.",
+   "image_url": "/images/programs/healthy-society.jpg"
   },
   {
    "slug": "women-s-empowerment",
-   "title": "5. Women’s Empowerment",
-   "category": "Inclusion"
+   "title": "Women’s Empowerment",
+   "number": 5,
+   "category": "Inclusion",
+   "summary": "To empower women by making them aware of their rights.",
+   "image_url": "/images/programs/women-s-empowerment.jpg"
   },
   {
    "slug": "prevention-of-human-trafficking",
-   "title": "6. Prevention of Human Trafficking",
-   "category": "Protection"
+   "title": "Prevention of Human Trafficking",
+   "number": 6,
+   "category": "Protection",
+   "summary": "To prevent illegal abortion and human trafficking.",
+   "image_url": "/images/programs/prevention-of-human-trafficking.jpg"
   },
   {
    "slug": "help-for-the-poor",
-   "title": "7. Help for the Poor",
-   "category": "Humanitarian"
+   "title": "Help for the Poor",
+   "number": 7,
+   "category": "Humanitarian",
+   "summary": "To secure the rights of poor and helpless people in society.",
+   "image_url": "/images/programs/help-for-the-poor.jpg"
   },
   {
    "slug": "health",
-   "title": "8. Health",
-   "category": "Humanitarian"
+   "title": "Health",
+   "number": 8,
+   "category": "Humanitarian",
+   "summary": "To create health awareness and provide appropriate medical treatment.",
+   "image_url": "/images/programs/health.jpg"
   },
   {
    "slug": "government-schemes",
-   "title": "9. Government Schemes",
-   "category": "Advocacy"
+   "title": "Government Schemes",
+   "number": 9,
+   "category": "Advocacy",
+   "summary": "To ensure that government welfare schemes reach ordinary citizens.",
+   "image_url": "/images/programs/government-schemes.jpg"
   },
   {
    "slug": "eradication",
-   "title": "10. Eradication",
-   "category": "Advocacy"
+   "title": "Eradication",
+   "number": 10,
+   "category": "Advocacy",
+   "summary": "To create public awareness and work towards building a society free from fear and corruption.",
+   "image_url": "/images/programs/eradication.jpg"
   },
   {
    "slug": "police-public-relations",
-   "title": "11. Police–Public Relations",
-   "category": "Advocacy"
+   "title": "Police–Public Relations",
+   "number": 11,
+   "category": "Advocacy",
+   "summary": "To establish better coordination between the police and the public.",
+   "image_url": "/images/programs/police-public-relations.jpg"
   },
   {
    "slug": "advice-and-assistance",
-   "title": "12. Advice and Assistance",
-   "category": "Humanitarian"
+   "title": "Advice and Assistance",
+   "number": 12,
+   "category": "Humanitarian",
+   "summary": "To provide necessary advice and assistance to affected persons.",
+   "image_url": "/images/programs/advice-and-assistance.jpg"
   },
   {
    "slug": "transparency",
-   "title": "13. Transparency",
-   "category": "Advocacy"
+   "title": "Transparency",
+   "number": 13,
+   "category": "Advocacy",
+   "summary": "To work with the government to expose corruption and promote transparency.",
+   "image_url": "/images/programs/transparency.jpg"
   },
   {
    "slug": "prevention-of-human-rights-violations",
-   "title": "14. Prevention of Human Rights Violations",
-   "category": "Protection"
+   "title": "Prevention of Human Rights Violations",
+   "number": 14,
+   "category": "Protection",
+   "summary": "To continuously strive to prevent human rights violations.",
+   "image_url": "/images/programs/prevention-of-human-rights-violations.jpg"
   },
   {
    "slug": "legal-aid",
-   "title": "15. Legal Aid",
-   "category": "Protection"
+   "title": "Legal Aid",
+   "number": 15,
+   "category": "Protection",
+   "summary": "To provide legal advice and assistance to those in need.",
+   "image_url": "/images/programs/legal-aid.jpg"
   },
   {
    "slug": "universal-rights",
-   "title": "16. Universal Rights",
-   "category": "Advocacy"
+   "title": "Universal Rights",
+   "number": 16,
+   "category": "Advocacy",
+   "summary": "To uphold the indivisibility and universality of human rights.",
+   "image_url": "/images/programs/universal-rights.jpg"
   },
   {
    "slug": "equality",
-   "title": "17. Equality",
-   "category": "Inclusion"
+   "title": "Equality",
+   "number": 17,
+   "category": "Inclusion",
+   "summary": "To ensure equality and non-discrimination among all parties.",
+   "image_url": "/images/programs/equality.jpg"
   },
   {
    "slug": "empowerment",
-   "title": "18. Empowerment",
-   "category": "Inclusion"
+   "title": "Empowerment",
+   "number": 18,
+   "category": "Inclusion",
+   "summary": "To promote meaningful participation, inclusion and social empowerment.",
+   "image_url": "/images/programs/empowerment.jpg"
   },
   {
    "slug": "accountability",
-   "title": "19. Accountability",
-   "category": "Advocacy"
+   "title": "Accountability",
+   "number": 19,
+   "category": "Advocacy",
+   "summary": "To ensure transparency and accountability in governance.",
+   "image_url": "/images/programs/accountability.jpg"
   },
   {
    "slug": "rule-of-law",
-   "title": "20. Rule of Law",
-   "category": "Advocacy"
+   "title": "Rule of Law",
+   "number": 20,
+   "category": "Advocacy",
+   "summary": "To give due respect to the rule of law.",
+   "image_url": "/images/programs/rule-of-law.jpg"
   },
   {
    "slug": "non-discrimination",
-   "title": "21. Non-Discrimination",
-   "category": "Inclusion"
+   "title": "Non-Discrimination",
+   "number": 21,
+   "category": "Inclusion",
+   "summary": "To promote equality and freedom from discrimination.",
+   "image_url": "/images/programs/non-discrimination.jpg"
   },
   {
    "slug": "indigenous-values",
-   "title": "22. Indigenous Values",
-   "category": "Inclusion"
+   "title": "Indigenous Values",
+   "number": 22,
+   "category": "Inclusion",
+   "summary": "To learn about and respect Indigenous worldviews, relationships and values.",
+   "image_url": "/images/programs/indigenous-values.jpg"
   },
   {
    "slug": "connecting-with-nature",
-   "title": "23. Connecting with Nature",
-   "category": "Environment"
+   "title": "Connecting with Nature",
+   "number": 23,
+   "category": "Environment",
+   "summary": "To re-establish a respectful relationship with the Earth and nature.",
+   "image_url": "/images/programs/connecting-with-nature.jpg"
   },
   {
    "slug": "waste-management",
-   "title": "24. Waste Management",
-   "category": "Environment"
+   "title": "Waste Management",
+   "number": 24,
+   "category": "Environment",
+   "summary": "To promote waste reduction and recycling and raise public awareness.",
+   "image_url": "/images/programs/waste-management.jpg"
   },
   {
    "slug": "sustainable-agriculture",
-   "title": "25. Sustainable Agriculture",
-   "category": "Environment"
+   "title": "Sustainable Agriculture",
+   "number": 25,
+   "category": "Environment",
+   "summary": "To support sustainable farming and food systems.",
+   "image_url": "/images/programs/sustainable-agriculture.jpg"
   },
   {
    "slug": "water-conservation",
-   "title": "26. Water Conservation",
-   "category": "Environment"
+   "title": "Water Conservation",
+   "number": 26,
+   "category": "Environment",
+   "summary": "To promote rainwater harvesting, water recycling and water conservation practices.",
+   "image_url": "/images/programs/water-conservation.jpg"
   },
   {
    "slug": "minority-rights",
-   "title": "27. Minority Rights",
-   "category": "Inclusion"
+   "title": "Minority Rights",
+   "number": 27,
+   "category": "Inclusion",
+   "summary": "To uphold a democracy in which the rights of the majority do not override the rights of minorities.",
+   "image_url": "/images/programs/minority-rights.jpg"
   },
   {
    "slug": "the-speed-of-trust",
-   "title": "28. The Speed of Trust",
-   "category": "Inclusion"
+   "title": "The Speed of Trust",
+   "number": 28,
+   "category": "Inclusion",
+   "summary": "To learn from the stories of diverse people and build mutual trust within society.",
+   "image_url": "/images/programs/the-speed-of-trust.jpg"
   },
   {
    "slug": "right-to-information",
-   "title": "29. Right to Information",
-   "category": "Advocacy"
+   "title": "Right to Information",
+   "number": 29,
+   "category": "Advocacy",
+   "summary": "To ensure the right of all persons, including persons with disabilities and people from different linguistic and cultural backgrounds, to access information.",
+   "image_url": "/images/programs/right-to-information.jpg"
   },
   {
    "slug": "investigations",
-   "title": "30. Investigations",
-   "category": "Protection"
+   "title": "Investigations",
+   "number": 30,
+   "category": "Protection",
+   "summary": "To conduct investigations into human rights violations and submit reports to the State Human Rights Commission.",
+   "image_url": "/images/programs/investigations.jpg"
   },
   {
    "slug": "legal-functions",
-   "title": "31. Legal Functions",
-   "category": "Advocacy"
+   "title": "Legal Functions",
+   "number": 31,
+   "category": "Advocacy",
+   "summary": "To perform all other lawful functions necessary to achieve the above objectives.",
+   "image_url": "/images/programs/legal-functions.jpg"
+  }
+ ],
+ "websiteContent": [
+  {
+   "key": "data.mvo",
+   "label": "Vision, mission and objectives cards",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "t": "Our Vision",
+      "d": "A world where every person enjoys dignity, equality, freedom, justice and peace.",
+      "to": "/vision-mission"
+     },
+     {
+      "t": "Our Mission",
+      "d": "To promote human-rights awareness, humanitarian values, peace, equality and community empowerment.",
+      "to": "/vision-mission"
+     },
+     {
+      "t": "Our Objectives",
+      "d": "To build a fair, peaceful and inclusive society.",
+      "to": "/objectives"
+     }
+    ]
+   }
+  },
+  {
+   "key": "data.benefits",
+   "label": "Membership benefit cards",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Official Membership ID",
+      "A verifiable member number and digital certificate."
+     ],
+     [
+      "Training & Workshops",
+      "Priority access to human rights training."
+     ],
+     [
+      "Networking",
+      "Connect with human rights advocates worldwide."
+     ],
+     [
+      "Voice in the Assembly",
+      "Eligible to take part in General Assembly activities."
+     ],
+     [
+      "Community Projects",
+      "Join field projects and outreach campaigns."
+     ],
+     [
+      "Resources",
+      "Guides, reports and toolkits for members."
+     ]
+    ]
+   }
+  },
+  {
+   "key": "copy.Layout",
+   "label": "Layout — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-equal-justice-for-everyone-everywhere": "“Equal Justice for Everyone & Everywhere”",
+     "text-together-for-human-dignity": "Together for Human Dignity",
+     "text-promoting-human-rights-awareness-humanitarian-values-peace-equali": "Promoting human rights awareness, humanitarian values, peace, equality and community development. Equal Justice for Everyone & Everywhere.",
+     "text-quick-links": "Quick Links",
+     "text-get-involved": "Get Involved",
+     "text-contact": "Contact",
+     "text-office": "Office:",
+     "text-whatsapp": "WhatsApp",
+     "text-whatsapp-channel": "WhatsApp Channel",
+     "text-2026-ihrc-usa-all-rights-reserved": "© 2026 IHRC-USA. All rights reserved.",
+     "text-cookie-settings": "Cookie Settings",
+     "text-because-what-we-do-we-do-for-generations": "\"Because what we do, we do for generations\"",
+     "text-preview-these-changes-are-not-saved-or-published-yet": "Preview – these changes are not saved or published yet."
+    }
+   }
+  },
+  {
+   "key": "recognition.recognitionText",
+   "label": "Recognition Text",
+   "group": "Website content",
+   "content": {
+    "value": "The International Human Rights Council–USA (IHRC-USA) is an independent, civil society organization (CSO). It is registered on the United Nations Partner Portal, and its organizational profile is featured on the Office of the United Nations High Commissioner for Human Rights (OHCHR) website in connection with the Universal Periodic Review (UPR). Furthermore, IHRC-USA has completed the procedures for registration with the United Nations NGO Branch and is also registered on the European Commission’s EU Funding & Tenders Portal."
+   }
+  },
+  {
+   "key": "recognition.recognitionMarquee",
+   "label": "Recognition Marquee",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "src": "/images/recognition/un-partner-portal.png",
+      "alt": "UN Partner Portal"
+     },
+     {
+      "src": "/images/recognition/un-partner-portal-banner.png",
+      "alt": "UN Partner Portal – joint platform of UN agencies"
+     },
+     {
+      "src": "/images/recognition/ohchr-logo.png",
+      "alt": "UN Human Rights (OHCHR)"
+     },
+     {
+      "src": "/images/recognition/ohchr-horizontal.png",
+      "alt": "UN Human Rights – Office of the High Commissioner"
+     },
+     {
+      "src": "/images/recognition/un-ngo-branch.png",
+      "alt": "UN-NGO Branch"
+     },
+     {
+      "src": "/images/recognition/european-commission.png",
+      "alt": "European Commission"
+     },
+     {
+      "src": "/images/recognition/iom.png",
+      "alt": "IOM – UN Migration"
+     },
+     {
+      "src": "/images/recognition/un-women.png",
+      "alt": "UN Women"
+     },
+     {
+      "src": "/images/recognition/fao.png",
+      "alt": "FAO"
+     },
+     {
+      "src": "/images/recognition/unfpa.png",
+      "alt": "UNFPA"
+     },
+     {
+      "src": "/images/recognition/unicef.png",
+      "alt": "UNICEF"
+     },
+     {
+      "src": "/images/recognition/unops.png",
+      "alt": "UNOPS"
+     },
+     {
+      "src": "/images/recognition/wfp.png",
+      "alt": "World Food Programme (WFP)"
+     },
+     {
+      "src": "/images/recognition/who.png",
+      "alt": "World Health Organization"
+     },
+     {
+      "src": "/images/recognition/sdg.png",
+      "alt": "Sustainable Development Goals"
+     }
+    ]
+   }
+  },
+  {
+   "key": "recognition.recognitionSections",
+   "label": "Recognition Sections",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "t": "UN Partner Portal",
+      "d": "IHRC-USA is registered on the United Nations Partner Portal. The Portal is a platform for Civil Society Organizations (CSOs) to engage with the UN on partnership opportunities. It was developed jointly by IOM, the UN Secretariat, UN Women, FAO, UNFPA, UNHCR, UNICEF, UNOPS, WFP and WHO to make collaboration between the UN and its partners harmonized, efficient and easy.",
+      "images": [
+       {
+        "src": "/images/recognition/un-partner-portal.png",
+        "c": "UN Partner Portal"
+       },
+       {
+        "src": "/images/recognition/un-partner-portal-banner.png",
+        "c": "UN Partner Portal – a joint platform of UN agencies for civil society organizations",
+        "wide": true
+       }
+      ],
+      "sub": {
+       "h": "UN agencies behind the Partner Portal",
+       "items": [
+        {
+         "src": "/images/recognition/iom.png",
+         "c": "IOM – UN Migration",
+         "d": "Migration and the protection of migrants."
+        },
+        {
+         "src": "/images/recognition/un-women.png",
+         "c": "UN Women",
+         "d": "Gender equality and the empowerment of women and girls."
+        },
+        {
+         "src": "/images/recognition/fao.png",
+         "c": "FAO – Food and Agriculture Organization",
+         "d": "Food security, agriculture and rural development."
+        },
+        {
+         "src": "/images/recognition/unfpa.png",
+         "c": "UNFPA",
+         "d": "Reproductive health, population and women’s rights."
+        },
+        {
+         "src": "/images/recognition/unicef.png",
+         "c": "UNICEF",
+         "d": "The rights, health, education and protection of children."
+        },
+        {
+         "src": "/images/recognition/unops.png",
+         "c": "UNOPS",
+         "d": "Project management, procurement and infrastructure support for the UN."
+        },
+        {
+         "src": "/images/recognition/wfp.png",
+         "c": "WFP – World Food Programme",
+         "d": "Emergency food assistance and hunger relief."
+        },
+        {
+         "src": "/images/recognition/who.png",
+         "c": "WHO – World Health Organization",
+         "d": "Global public health."
+        }
+       ]
+      }
+     },
+     {
+      "t": "OHCHR and the Universal Periodic Review (UPR)",
+      "d": "IHRC-USA’s organizational profile is featured on the website of the Office of the United Nations High Commissioner for Human Rights (OHCHR) in connection with the Universal Periodic Review (UPR). OHCHR is the UN office that leads human-rights work worldwide, and the UPR is the process through which the human-rights record of every UN member state is reviewed.",
+      "images": [
+       {
+        "src": "/images/recognition/ohchr-logo.png",
+        "c": "United Nations Human Rights – Office of the High Commissioner"
+       },
+       {
+        "src": "/images/recognition/ohchr-horizontal.png",
+        "c": "OHCHR – horizontal logo"
+       }
+      ]
+     },
+     {
+      "t": "UN NGO Branch",
+      "d": "IHRC-USA has completed the procedures for registration with the United Nations NGO Branch, the UN office that supports civil society organizations in their engagement with the United Nations.",
+      "images": [
+       {
+        "src": "/images/recognition/un-ngo-branch.png",
+        "c": "UN-NGO Branch"
+       }
+      ]
+     },
+     {
+      "t": "European Commission – EU Funding & Tenders Portal",
+      "d": "IHRC-USA is registered on the European Commission’s EU Funding & Tenders Portal, the European Commission’s online gateway for EU funding opportunities and tenders.",
+      "images": [
+       {
+        "src": "/images/recognition/european-commission.png",
+        "c": "European Commission"
+       }
+      ]
+     },
+     {
+      "t": "We Support the Sustainable Development Goals",
+      "d": "IHRC-USA’s work supports the 17 United Nations Sustainable Development Goals, from ending poverty and hunger to peace, justice and strong institutions.",
+      "images": [
+       {
+        "src": "/images/recognition/sdg.png",
+        "c": "The 17 Sustainable Development Goals"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "key": "copy.CooperationMarquee",
+   "label": "Cooperation Marquee — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-in-support-of-multilateral-cooperation": "In Support of Multilateral Cooperation",
+     "text-stronger-together-for-a-peaceful-inclusive-sustainable-world": "Stronger Together for a Peaceful, Inclusive & Sustainable World"
+    }
+   }
+  },
+  {
+   "key": "copy.Home",
+   "label": "Home — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "text-learn-more": "Learn More →",
+     "text-our-mission": "Our Mission",
+     "text-international-human-rights-council-usa-human-rights-education-and": "International Human Rights Council – USA: Human Rights Education and Humanitarian Action",
+     "text-our-recognition": "Our Recognition",
+     "text-about-ihrc-usa": "About IHRC-USA",
+     "text-the-international-human-rights-council-usa-ihrc-usa-is-an-organiz": "The International Human Rights Council – USA (IHRC-USA) is an organization focused on human rights awareness, humanitarian values, peace, equality and community development, working through education, advocacy, community engagement and responsible cooperation.",
+     "text-about-us": "About Us →",
+     "text-welcome-message": "Welcome Message",
+     "text-read-the-chairman-s-message": "Read the Chairman’s Message",
+     "text-human-rights-priorities": "Human Rights Priorities",
+     "text-featured-programs": "Featured Programs",
+     "text-latest-news-events": "Latest News & Events",
+     "text-no-news-or-events-have-been-published-yet-please-check-back-soon": "No news or events have been published yet. Please check back soon.",
+     "text-publications-resources": "Publications & Resources",
+     "text-become-a-member": "Become a Member",
+     "text-join-people-who-share-a-commitment-to-human-dignity": "Join people who share a commitment to human dignity.",
+     "text-apply-now": "Apply Now",
+     "text-volunteer": "Volunteer",
+     "text-give-your-time-and-skills-to-protect-human-rights": "Give your time and skills to protect human rights.",
+     "text-join-as-volunteer": "Join as Volunteer",
+     "text-join-our-community": "Join Our Community",
+     "text-take-part-in-human-rights-education-and-community-initiatives": "Take part in human rights education and community initiatives.",
+     "text-report-a-human-rights-concern": "Report a Human Rights Concern",
+     "text-share-a-concern-with-ihrc-usa-using-our-confidential-form": "Share a concern with IHRC-USA using our confidential form.",
+     "text-report-a-concern": "Report a Concern"
+    }
+   }
+  },
+  {
+   "key": "Home.slides",
+   "label": "Homepage slideshow",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "k": "IHRC-USA",
+      "h": "Equal Justice",
+      "h2": "for Everyone & Everywhere.",
+      "bg": "/images/hero-building.jpg",
+      "p": "Promoting Human Dignity , Advancing Justice , Building Peace , Serving Humanity , Defending Human Rights",
+      "to": "/who-we-are",
+      "g": "from-sky-50 to-sky-100"
+     },
+     {
+      "k": "Get Involved",
+      "h": "Join Our Community.",
+      "h2": "Become a Member.",
+      "bg": "/images/hero-students.jpg",
+      "p": "Stand with advocates and volunteers across the island.",
+      "to": "/apply",
+      "g": "from-sky-50 to-sky-100"
+     },
+     {
+      "k": "Programs",
+      "h": "Education for Rights.",
+      "h2": "Hope for Generations.",
+      "bg": "/images/hero 1.png",
+      "p": "Workshops, clinics and youth forums in every province.",
+      "to": "/programs",
+      "g": "from-sky-50 to-sky-100"
+     },
+     {
+      "k": "Our Motto",
+      "h": "Always, Everywhere,",
+      "h2": "Service Above Self.",
+      "bg": "/images/motto.jpg",
+      "p": "dignity, equality, freedom, peace, security and well-being for all.",
+      "to": "/vision-mission",
+      "g": "from-sky-50 to-sky-100"
+     }
+    ]
+   }
+  },
+  {
+   "key": "Home.priorities",
+   "label": "Homepage priorities",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Human Rights",
+      "Promoting awareness of fundamental human rights and dignity."
+     ],
+     [
+      "Justice",
+      "Encouraging equality, fairness, accountability and access to justice."
+     ],
+     [
+      "Peace",
+      "Supporting dialogue, tolerance and peaceful coexistence."
+     ],
+     [
+      "Humanitarian Service",
+      "Supporting vulnerable communities through responsible humanitarian initiatives."
+     ],
+     [
+      "Education",
+      "Promoting knowledge, awareness and opportunities for learning."
+     ],
+     [
+      "Empowerment",
+      "Encouraging women, children, youth and communities to participate in positive change."
+     ]
+    ]
+   }
+  },
+  {
+   "key": "copy.NotFound",
+   "label": "Not Found — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-page-not-found": "Page Not Found",
+     "page-introduction-the-page-you-requested-could-not-be-found": "The page you requested could not be found.",
+     "text-explore-our-programs-or-return-to-the-home-page": "Explore our programs or return to the home page.",
+     "text-explore-programs": "Explore Programs"
+    }
+   }
+  },
+  {
+   "key": "objectives.objectiveGroups",
+   "label": "Objective Groups",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "id": "education",
+      "title": "Education & Awareness",
+      "summary": "Learning, safety and a healthy society",
+      "icon": "📚",
+      "tone": "blue",
+      "items": [
+       "To create awareness among children about education and to make efforts to increase the literacy rate in the society.",
+       "To create awareness among the people about following traffic rules.",
+       "Striving to create an educated, healthy, and strong society."
+      ]
+     },
+     {
+      "id": "welfare",
+      "title": "Health & Welfare",
+      "summary": "Support and care for people in need",
+      "icon": "🤝",
+      "tone": "amber",
+      "items": [
+       "To help the poor and helpless people of the society and to get their rights.",
+       "To create awareness among the people about health and provide access to proper treatment.",
+       "Extending the benefits of government schemes to ordinary citizens.",
+       "Counseling and assistance to affected individuals."
+      ]
+     },
+     {
+      "id": "rights",
+      "title": "Rights & Empowerment",
+      "summary": "Knowing and protecting everyone's rights",
+      "icon": "✊",
+      "tone": "rose",
+      "items": [
+       "To empower women by making them aware of their rights.",
+       "To prevent abortion and human trafficking.",
+       "To create awareness among the community about their rights to free them from corruption and fear.",
+       "Striving to prevent human rights violations.",
+       "We believe that the protection and promotion of human rights is essential to a functioning democracy, and we are committed to the vision of a democracy in which the rights of the majority do not trump the rights of the minority."
+      ]
+     },
+     {
+      "id": "justice",
+      "title": "Justice & Governance",
+      "summary": "Fair, honest and accountable institutions",
+      "icon": "⚖️",
+      "tone": "indigo",
+      "items": [
+       "Establish proper coordination and understanding between the police administration and the public.",
+       "Work with the government to expose corruption and bring transparency between the government and society.",
+       "Providing legal advice and assistance.",
+       "Conducting investigations into human rights violations and submitting reports and recommendations to the State Human Rights Commission and working together.",
+       "To do all such other lawful things as are incidental or conjunctive to the attainment of the above objectives or any one or more of them."
+      ]
+     },
+     {
+      "id": "environment",
+      "title": "Environment",
+      "summary": "Land, water, waste and food",
+      "icon": "🌱",
+      "tone": "emerald",
+      "items": [
+       "To strive to prevent environmental pollution.",
+       "Restoring a respectful relationship with the land.",
+       "Promote waste reduction and recycling. This includes educating the public about waste reduction, supporting recycling programs, and advocating for sustainable waste management practices.",
+       "Supporting sustainable agriculture and food systems.",
+       "Promote rainwater harvesting, water recycling, and water conservation practices."
+      ]
+     },
+     {
+      "id": "principles",
+      "title": "Guiding Principles",
+      "summary": "How we work with people and communities",
+      "icon": "🧭",
+      "tone": "violet",
+      "items": [
+       "Indivisibility, inalienability, and universality of rights.",
+       "Intersectional equality and non-discrimination.",
+       "Meaningful participation, inclusion and empowerment.",
+       "Transparency and accountability.",
+       "Respect for the rule of law.",
+       "Equality and non-discrimination.",
+       "Listening to, learning from, and honoring Indigenous worldviews, including the value of working in reciprocity and relationship.",
+       "When engaging with society, we move at the speed of trust. We recognize the importance of learning from the stories of the diverse people in these countries, including our elders and youth.",
+       "Access to information, space, and services is essential to the realization of human rights. Our work will be tailored to different abilities, cultures, languages, educational levels, learning styles, and perspectives."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "key": "copy.ObjectivesSection",
+   "label": "Objectives Section — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-objectives": "Objectives",
+     "text-objectives-in": "objectives in",
+     "text-topics-tap-a-topic-to-read-it": "topics. Tap a topic to read it.",
+     "text-search-objectives": "Search objectives"
+    }
+   }
+  },
+  {
+   "key": "coreValues.coreValues",
+   "label": "Core Values",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "name": "Integrity",
+      "text": "The International Human Rights Council – USA is an independent civil society organization that pursues pressing issues. Its staff is highly committed to their work; Furthermore, they are not intimidated by governments or authorities from regions or geographical areas that do not comply with basic human rights standards. Grants for IHRC-USA are not accepted from donors who wish to direct operations or do not support our objectives."
+     },
+     {
+      "name": "Conduct",
+      "text": "Must be honest and transparent. Use your powers responsibly. Report any misconduct. Avoid real or perceived conflicts of interest. Work to gain and maintain the trust of high-level public figures."
+     },
+     {
+      "name": "Neutrality",
+      "text": "Make decisions and provide advice based on merit. Act without personal bias, greed, prejudice, or selfishness. Act objectively and fairly, considering all relevant facts and fair criteria. Implement government policies and programs equitably."
+     },
+     {
+      "name": "Accountability",
+      "text": "Strive to set clear goals in a transparent manner. Accept your decisions and take responsibility for your actions. Endeavor to use resources in the best possible way. Subject yourself to appropriate self-examination."
+     },
+     {
+      "name": "Respect",
+      "text": "Treat colleagues, other government officials, and the community fairly and objectively. Ensure freedom from discrimination, harassment, and bullying. Use this to continuously improve upon decisions. Share your opinions."
+     },
+     {
+      "name": "Leadership(P5)",
+      "text": "Act vigorously to implement, encourage, and support these values. One must act independently and without bias, without identifying themselves with any political party or ideology. There should be no discrimination based on race, religion, language, caste, or gender when making decisions."
+     },
+     {
+      "name": "Support",
+      "text": "Make decisions and provide advice in accordance with human rights. Act vigorously to implement, encourage, and support human rights. Promote human rights education."
+     },
+     {
+      "name": "Skills",
+      "text": "Human rights defenders possess significant expertise in our fields. Our analysis is based on robust research and international human rights standards. IHRC-USA always strives for high-quality work, and staff seek to support the growth of the skills and expertise of local partners."
+     },
+     {
+      "name": "Performance",
+      "text": "The International Human Rights Council – USA is a results-oriented and lean organization with strict financial controls and management. To ensure transparency, accountability, and learning in planning, monitoring, and evaluation, we use a results-based management system. We are able to adapt quickly to changing and volatile situations and have a high degree of flexibility when needed."
+     }
+    ]
+   }
+  },
+  {
+   "key": "copy.CoreValues",
+   "label": "Core Values — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-core-values": "Core Values"
+    }
+   }
+  },
+  {
+   "key": "sdgs.sdgs",
+   "label": "Sdgs",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "n": 1,
+      "title": "No Poverty",
+      "color": "#E5243B",
+      "text": "End poverty in all its forms everywhere"
+     },
+     {
+      "n": 2,
+      "title": "Zero Hunger",
+      "color": "#DDA63A",
+      "text": "End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
+     },
+     {
+      "n": 3,
+      "title": "Good Health and Well-being",
+      "color": "#4C9F38",
+      "text": "Ensure healthy lives and promote well-being for all at all ages"
+     },
+     {
+      "n": 4,
+      "title": "Quality Education",
+      "color": "#C5192D",
+      "text": "Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all"
+     },
+     {
+      "n": 5,
+      "title": "Gender Equality",
+      "color": "#FF3A21",
+      "text": "Achieve gender equality and empower all women and girls"
+     },
+     {
+      "n": 6,
+      "title": "Clean Water and Sanitation",
+      "color": "#26BDE2",
+      "text": "Ensure availability and sustainable management of water and sanitation for all"
+     },
+     {
+      "n": 7,
+      "title": "Affordable and Clean Energy",
+      "color": "#FCC30B",
+      "text": "Ensure access to affordable, reliable, sustainable and modern energy for all"
+     },
+     {
+      "n": 8,
+      "title": "Decent Work and Economic Growth",
+      "color": "#A21942",
+      "text": "Promote sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all"
+     },
+     {
+      "n": 9,
+      "title": "Industry, Innovation and Infrastructure",
+      "color": "#FD6925",
+      "text": "Build resilient infrastructure, promote inclusive and sustainable industrialization and foster innovation"
+     },
+     {
+      "n": 10,
+      "title": "Reduced Inequalities",
+      "color": "#DD1367",
+      "text": "Reduce inequality within and among countries"
+     },
+     {
+      "n": 11,
+      "title": "Sustainable Cities and Communities",
+      "color": "#FD9D24",
+      "text": "Make cities and human settlements inclusive, safe, resilient and sustainable"
+     },
+     {
+      "n": 12,
+      "title": "Responsible Consumption and Production",
+      "color": "#BF8B2E",
+      "text": "Ensure sustainable consumption and production patterns"
+     },
+     {
+      "n": 13,
+      "title": "Climate Action",
+      "color": "#3F7E44",
+      "text": "Take urgent action to combat climate change and its impacts"
+     },
+     {
+      "n": 14,
+      "title": "Life Below Water",
+      "color": "#0A97D9",
+      "text": "Conserve and sustainably use the oceans, seas and marine resources for sustainable development"
+     },
+     {
+      "n": 15,
+      "title": "Life on Land",
+      "color": "#56C02B",
+      "text": "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss"
+     },
+     {
+      "n": 16,
+      "title": "Peace, Justice and Strong Institutions",
+      "color": "#00689D",
+      "text": "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels"
+     },
+     {
+      "n": 17,
+      "title": "Partnerships for the Goals",
+      "color": "#19486A",
+      "text": "Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development"
+     }
+    ]
+   }
+  },
+  {
+   "key": "copy.SdgGoals",
+   "label": "Sdg Goals — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-we-support-the-sustainable-development-goals": "We Support the Sustainable Development Goals",
+     "text-ihrc-usa-works-in-support-of-the-united-nations-sustainable-devel": "IHRC-USA works in support of the United Nations Sustainable Development Goals. Hover over (or tap) the goals to open them up and read each one.",
+     "text-sustainable": "Sustainable",
+     "text-development": "Development",
+     "text-goals": "Goals",
+     "text-move-your-mouse-over-a-goal-to-see-what-it-stands-for": "Move your mouse over a goal to see what it stands for."
+    }
+   }
+  },
+  {
+   "key": "ihrcBenefits.ihrcBenefits",
+   "label": "Benefits of IHRC",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Fundamental Protections",
+      "Ensures fundamental protections against abuse such as torture, exploitation, cruel treatment and injustice.",
+      null
+     ],
+     [
+      "Equality and Non-Discrimination",
+      "Promotes equality and ensures fair treatment, protection of minority rights and freedom from discrimination.",
+      null
+     ],
+     [
+      "Quality of Life",
+      "Guarantees access to food, healthcare, and a safe environment for a life with dignity.",
+      null
+     ],
+     [
+      "Protection",
+      "Protects freedom of expression, privacy, beliefs, and the right to live in peace.",
+      null
+     ],
+     [
+      "Empowerment and Dignity",
+      "Helps individuals participate in public affairs and live with dignity.",
+      null
+     ],
+     [
+      "Access to Justice",
+      "Ensures rights and ensures that serious violations do not go unpunished.",
+      null
+     ],
+     [
+      "Basic Needs",
+      "Ensures access to medicine, food, water, clothing, and shelter for all.",
+      null
+     ],
+     [
+      "Protects the Environment",
+      "Supports the right to clean air, clean soil, clean water, and a healthy environment.",
+      null
+     ],
+     [
+      "Protects Vulnerable People",
+      "Protects vulnerable people from abuse and exploitation.",
+      null
+     ],
+     [
+      "Speak Out Against Corruption",
+      "Allows people to speak out against abuse and corruption without fear.",
+      null
+     ],
+     [
+      "Freedom of Religion",
+      "Protects the freedom to follow any religion or none at all.",
+      null
+     ],
+     [
+      "Freedom to Love",
+      "Allows people to love whomever they choose without discrimination.",
+      null
+     ],
+     [
+      "Equal Employment Opportunities",
+      "Promotes fair work, equal pay, and safe working conditions for all.",
+      null
+     ],
+     [
+      "Access to Education",
+      "Makes quality education accessible to everyone, not just the privileged.",
+      null
+     ],
+     [
+      "Holds Governments Accountable",
+      "Sets universal standards that hold governments accountable for human rights violations.",
+      null
+     ],
+     [
+      "Protecting Human Dignity",
+      "Protects people from exploitation, abuse, and discrimination.",
+      null
+     ],
+     [
+      "Social Harmony and Peace",
+      "Reduces conflict and promotes peaceful coexistence and cooperation.",
+      null
+     ],
+     [
+      "Foundation for Morality and Ethics",
+      "Builds a just society based on moral and ethical principles.",
+      null
+     ],
+     [
+      "Promotes the Rule of Law",
+      "Ensures fair laws, justice, and equality before the law.",
+      null
+     ],
+     [
+      "Economic Development for All",
+      "Promotes stability, investment, and fair economic opportunities for all.",
+      null
+     ],
+     [
+      "Promotes Personal Responsibility",
+      "Encourages respect for others’ rights and responsibilities in building a better society.",
+      null
+     ]
+    ]
+   }
+  },
+  {
+   "key": "copy.BenefitsOfIhrc",
+   "label": "Benefits Of Ihrc — headings and text",
+   "group": "Shared website text",
+   "content": {
+    "value": {
+     "text-benefits-of-ihrc": "Benefits of IHRC"
+    }
+   }
+  },
+  {
+   "key": "copy.Content",
+   "label": "Content — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-introduction-please-complete-the-form-below": "Please complete the form below.",
+     "page-title-programs": "Programs",
+     "page-introduction-our-31-specific-objectives": "Our specific objectives and programs.",
+     "page-title-membership-benefits": "Membership Benefits",
+     "page-introduction-why-join-the-ihrc-usa": "Why join the IHRC-USA.",
+     "text-apply-for-membership": "Apply for Membership",
+     "text-all-countries": "All countries",
+     "text-members-of-this-page-will-be-listed-here-soon": "Members of this page will be listed here soon.",
+     "text-biography": "Biography",
+     "text-responsibilities": "Responsibilities"
+    }
+   }
+  },
+  {
+   "key": "copy.Forms",
+   "label": "Forms — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "text-contact": "Contact",
+     "text-email": "Email:",
+     "text-office": "Office:",
+     "page-title-membership": "Membership",
+     "page-introduction-join-ihrc-usa-and-stand-for-human-dignity": "Join IHRC-USA and stand for human dignity.",
+     "text-introduction": "Introduction",
+     "text-ihrc-usa-seeks-to-bring-together-individuals-volunteers-professio": "IHRC-USA seeks to bring together individuals, volunteers, professionals, community leaders and organizations who share a commitment to human dignity and social responsibility.",
+     "text-view-membership-benefits": "View Membership Benefits",
+     "text-membership-information": "Membership Information",
+     "text-membership-categories-eligibility-and-any-fees": "Membership categories, eligibility and any fees:",
+     "page-title-volunteer": "Volunteer",
+     "page-introduction-give-your-time-to-protect-human-rights": "Give your time to protect human rights.",
+     "text-volunteers-are-at-the-heart-of-our-community-work-join-us-in-prom": "Volunteers are at the heart of our community work. Join us in promoting human rights awareness, education, humanitarian service and community participation.",
+     "text-opportunities": "Opportunities",
+     "text-volunteers-can-support-our-work-in-these-areas": "Volunteers can support our work in these areas:",
+     "page-title-contact-ihrc-usa": "Contact IHRC-USA",
+     "page-introduction-we-d-love-to-hear-from-you": "We’d love to hear from you.",
+     "text-contact-form": "Contact Form",
+     "text-enquiry-type": "Enquiry type",
+     "text-general-enquiries": "General Enquiries",
+     "text-office-1": "Office",
+     "text-whatsapp": "WhatsApp",
+     "text-whatsapp-channel": "WhatsApp Channel",
+     "text-join-our-whatsapp-channel": "Join our WhatsApp Channel",
+     "text-social-media": "Social Media",
+     "text-report-a-human-rights-concern": "Report a Human Rights Concern",
+     "text-use-our-separate-confidential-form": "Use our separate confidential form.",
+     "text-report-a-concern": "Report a Concern",
+     "page-title-verify-member": "Verify Member",
+     "page-introduction-enter-a-member-id-for-example-ihrc-m-00012-to-check-membership-st": "Enter a member ID (for example IHRC-M-00012) to check membership status.",
+     "text-please-enter-a-member-id": "Please enter a member ID.",
+     "text-no-member-found-for-this-id": "No member found for this ID.",
+     "text-too-many-checks-please-wait-a-minute-and-try-again": "Too many checks. Please wait a minute and try again.",
+     "text-verification-is-not-available-right-now-please-try-again-later": "Verification is not available right now. Please try again later.",
+     "text-member": "member",
+     "text-member-id": "Member ID",
+     "text-title": "Title",
+     "text-country": "Country"
+    }
+   }
+  },
+  {
+   "key": "ComplaintForm.complaintInfo",
+   "label": "Complaint Info",
+   "group": "Website content",
+   "content": {
+    "value": {
+     "intro": [
+      "IHRC-USA provides this complaint submission form as a channel for individuals who wish to report concerns, alleged misconduct, unfair treatment, harassment, discrimination, abuse, exploitation, or other matters affecting their rights, dignity, safety, or well-being.",
+      "This form is intended for individuals who have experienced harm or believe they have been affected by the actions, conduct, decisions, or omissions of another person, organization, institution, company, or other entity.",
+      "Every complaint should be treated respectfully, confidentially, impartially, and with appropriate care."
+     ],
+     "notice": [
+      "Submitting a complaint does not automatically establish that an allegation is true.",
+      "IHRC-USA may review submissions within its organizational mandate and available capacity.",
+      "Submission of this form does not constitute a police report, court filing, or formal legal proceeding.",
+      "IHRC-USA does not replace police, courts, government authorities, emergency services, or qualified legal professionals.",
+      "If someone is in immediate danger, contact the appropriate local emergency services or law-enforcement authority without waiting for a response to this form."
+     ],
+     "who": [
+      "Individuals who have personally experienced alleged misconduct or unfair treatment.",
+      "Individuals affected by the actions of another person.",
+      "Employees or former employees reporting workplace-related concerns.",
+      "Students or parents reporting concerns involving educational institutions.",
+      "Individuals reporting alleged discrimination, harassment, or exploitation.",
+      "Individuals affected by the conduct of an organization or institution.",
+      "Family members or authorized representatives submitting a complaint on behalf of an affected person, where appropriate.",
+      "Witnesses reporting concerns with the affected person's knowledge or where permitted by applicable procedures."
+     ],
+     "types": [
+      "Human rights violations and concerns.",
+      "Discrimination and unequal treatment.",
+      "Harassment, intimidation, and bullying.",
+      "Workplace misconduct and unfair treatment.",
+      "Abuse of authority or position.",
+      "Alleged exploitation or coercion.",
+      "Child protection and safeguarding concerns.",
+      "Women's rights and gender-based discrimination.",
+      "Educational institution-related complaints.",
+      "Organizational misconduct.",
+      "Community-related disputes involving rights or dignity.",
+      "Alleged fraud or misleading conduct.",
+      "Other matters involving human dignity, equality, safety, or welfare."
+     ],
+     "outside": "Complaints outside the organization's mandate may be referred to an appropriate authority where lawful and suitable.",
+     "declaration": [
+      "I confirm that the information provided in this complaint is accurate to the best of my knowledge.",
+      "I understand that submitting a complaint does not automatically establish that the allegations are proven.",
+      "I understand that IHRC-USA may review the information within its organizational mandate and available capacity.",
+      "I understand that IHRC-USA is not a court, police authority, or government enforcement agency.",
+      "I understand that further information may be requested where appropriate.",
+      "I understand that confidentiality will be handled in accordance with applicable privacy requirements and organizational policies, but absolute confidentiality cannot be guaranteed in every circumstance.",
+      "I confirm that I am authorized to provide the information submitted, where I am acting on behalf of another person."
+     ]
+    }
+   }
+  },
+  {
+   "key": "copy.PublicPages",
+   "label": "Public Pages — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-human-rights": "Human Rights",
+     "page-introduction-learn-about-the-rights-that-belong-to-every-person": "Learn about the rights that belong to every person.",
+     "text-handbooks-awareness-materials-and-training-resources-are-publishe": "Handbooks, awareness materials and training resources are published in our resource library.",
+     "text-open-publications": "Open Publications",
+     "text-external-resources": "External resources",
+     "text-report-a-human-rights-concern": "Report a Human Rights Concern",
+     "page-title-global-network": "Global Network",
+     "page-introduction-officially-authorised-ihrc-branches": "Officially authorised IHRC branches.",
+     "text-representative": "Representative",
+     "text-designation": "Designation",
+     "text-email": "Email",
+     "text-phone": "Phone",
+     "text-office-location": "Office location",
+     "text-programs": "Programs",
+     "text-no-branches-match-your-search": "No branches match your search.",
+     "text-only-officially-authorised-branches-and-representatives-are-liste": "Only officially authorised branches and representatives are listed in this directory.",
+     "page-title-events": "Events",
+     "page-introduction-upcoming-and-past-ihrc-events": "Upcoming and past IHRC events.",
+     "text-location": "Location",
+     "text-this-event-has-ended": "This event has ended.",
+     "text-all-events": "← All events",
+     "page-title-news": "News",
+     "page-introduction-ihrc-announcements-and-organisational-updates": "IHRC announcements and organisational updates.",
+     "text-close": "Close",
+     "page-title-publications-resources": "Publications & Resources",
+     "page-introduction-handbooks-reports-and-educational-materials": "Handbooks, reports and educational materials.",
+     "text-download": "Download",
+     "page-title-awards-recognition": "Awards & Recognition",
+     "page-introduction-recognising-outstanding-service-to-human-rights": "Recognising outstanding service to human rights.",
+     "text-about-the-awards": "About the Awards",
+     "text-information-about-ihrc-usa-awards-and-recognition": "Information about IHRC-USA awards and recognition:",
+     "text-award-categories-will-be-announced-here": "Award categories will be announced here.",
+     "page-title-partnerships": "Partnerships",
+     "page-introduction-working-together-for-human-dignity": "Working together for human dignity.",
+     "text-ihrc-usa-works-together-with-the-state-human-rights-defenders-wom": "IHRC-USA works together with the state, human rights defenders, women, children, indigenous peoples, internally displaced persons, refugees and community members, and through civil society organizations (CSOs), to protect and fulfil the fundamental rights of all.",
+     "text-visit-website": "Visit website",
+     "text-verified-partners-will-be-listed-here": "Verified partners will be listed here.",
+     "text-civil-society-organizations-csos-can-apply-for-cso-status-with-th": "Civil society organizations (CSOs) can apply for CSO status with the Department of Social Affairs and Partnerships (DSAP) of the International Human Rights Council-USA. Complete the questionnaire online; it is sent to",
+     "text-apply-online": "Apply Online",
+     "page-title-report-a-human-rights-concern": "Report a Human Rights Concern",
+     "page-introduction-submit-a-complaint-or-report-a-human-rights-concern": "Submit a complaint or report a human rights concern.",
+     "text-official-complaint-submission": "Official Complaint Submission",
+     "text-important-notice": "Important Notice",
+     "text-who-can-submit-a-complaint": "Who can submit a complaint?",
+     "text-types-of-complaints-accepted": "Types of complaints accepted",
+     "text-complaint-submission-form": "Complaint Submission Form",
+     "text-complaints-against-an-individual-organization-institution-company": "Complaints Against an Individual, Organization, Institution, Company, or Other Entity. Please complete the relevant sections as accurately as possible.",
+     "text-activities": "Activities",
+     "text-no-news-events-or-projects-for-this-program-yet": "No news, events or projects for this program yet.",
+     "text-all-programs": "All programs",
+     "page-title-search": "Search"
+    }
+   }
+  },
+  {
+   "key": "PublicPages.hr",
+   "label": "Human rights articles",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "What Are Human Rights?",
+      "Human rights are the basic rights and freedoms that belong to every person simply because they are human. They do not depend on nationality, sex, ethnic origin, colour, religion, language or any other status.\n\nThe Universal Declaration of Human Rights, adopted by the United Nations General Assembly on 10 December 1948, sets out for the first time the fundamental rights to be universally protected. They include civil and political rights, such as life, liberty and freedom of expression, and economic, social and cultural rights, such as education, health and an adequate standard of living."
+     ],
+     [
+      "Why Human Rights Matter",
+      "Human rights protect human dignity and set limits on how those in power may treat people. They are the foundation of freedom, justice and peace, and they allow every person to take part in the life of their community on an equal footing.\n\nWhen rights are respected, people can live safely, learn, work, speak freely and seek justice. When they are denied, discrimination, poverty and conflict are more likely to grow."
+     ],
+     [
+      "Universal Human Rights Principles",
+      "• Universality – human rights belong to everyone, everywhere.\n• Inalienability – rights cannot be taken away, except in specific situations and according to due process.\n• Indivisibility and interdependence – civil, political, economic, social and cultural rights are equally important and linked to one another.\n• Equality and non-discrimination – every person is entitled to rights without distinction of any kind.\n• Participation and inclusion – everyone has the right to take part in decisions that affect them.\n• Accountability and the rule of law – those responsible for protecting rights must answer for their actions."
+     ],
+     [
+      "Equality and Non-Discrimination",
+      "All human beings are born free and equal in dignity and rights. Discrimination means treating people unfairly because of characteristics such as race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth or other status.\n\nEquality before the law and protection against discrimination apply to everyone. States are expected to take active steps to remove barriers that keep people from enjoying their rights."
+     ],
+     [
+      "Children’s Rights",
+      "The Convention on the Rights of the Child (1989) recognises that children have their own rights, including the right to life and development, to education, to health care, to protection from violence, abuse and exploitation, and to be heard in matters that affect them.\n\nIn every decision concerning children, their best interests must be a primary consideration."
+     ],
+     [
+      "Women’s Rights",
+      "Women and girls are entitled to the same human rights as everyone else. The Convention on the Elimination of All Forms of Discrimination against Women (1979) calls for equality in education, work, health, family life and public participation, and for protection from violence and discrimination."
+     ],
+     [
+      "Disability Rights",
+      "The Convention on the Rights of Persons with Disabilities (2006) affirms that persons with disabilities have the same rights as everyone else. It stresses dignity, independence, accessibility, reasonable accommodation and full inclusion in society, and the principle that decisions should involve the people they affect."
+     ],
+     [
+      "Refugees and Displaced Persons",
+      "Everyone has the right to seek asylum from persecution. The 1951 Refugee Convention protects refugees, including through the principle of non-refoulement: people must not be returned to a place where their life or freedom would be at risk.\n\nPeople displaced within their own country keep all of their rights. The UN Guiding Principles on Internal Displacement describe the protection and assistance they are entitled to receive."
+     ],
+     [
+      "Access to Justice",
+      "Access to justice means that people can seek and obtain a fair remedy when their rights are violated. It includes equality before the law, the right to a fair and public hearing by an independent and impartial court, the presumption of innocence, and access to legal information and assistance."
+     ],
+     [
+      "Human Rights Education",
+      "People can only claim their rights if they know them. Human rights education builds knowledge, skills and attitudes that promote respect for rights and equality. It is a continuing process for children, young people and adults, in schools, communities and workplaces, and it is recognised in the UN Declaration on Human Rights Education and Training (2011)."
+     ]
+    ]
+   }
+  },
+  {
+   "key": "PublicPages.hrLinks",
+   "label": "Human rights resource links",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Universal Declaration of Human Rights (United Nations)",
+      "https://www.un.org/en/about-us/universal-declaration-of-human-rights"
+     ],
+     [
+      "Office of the UN High Commissioner for Human Rights (OHCHR)",
+      "https://www.ohchr.org"
+     ],
+     [
+      "Human rights education resources (OHCHR)",
+      "https://www.ohchr.org/en/education-and-training"
+     ],
+     [
+      "United Nations (UN)",
+      "https://www.un.org/en/"
+     ],
+     [
+      "European Court of Human Rights (ECHR)",
+      "https://www.echr.coe.int/"
+     ],
+     [
+      "European Commission",
+      "https://commission.europa.eu/index_en"
+     ]
+    ]
+   }
+  },
+  {
+   "key": "PublicPages.pc",
+   "label": "Partner categories",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Government and state institutions",
+     "Civil society organizations (CSOs)",
+     "Human rights defenders",
+     "Community organizations"
+    ]
+   }
+  },
+  {
+   "key": "copy.PartnershipApplication",
+   "label": "Partnership Application — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-cso-partnership": "CSO Partnership",
+     "page-introduction-apply-for-cso-status-with-the-department-of-social-affairs-and-pa": "Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).",
+     "text-your-application-has-been-submitted": "Your application has been submitted.",
+     "text-please-also-email-your-partnership-request-letter-logo-and-regist": "Please also email your partnership request letter, logo and registration copy to",
+     "text-back-to-partnerships": "Back to Partnerships",
+     "text-fill-in-the-form-online-below-your-answers-are-sent-to-the-ihrc-e": "Fill in the form online below. Your answers are sent to the IHRC email address.",
+     "text-general-formatting-rules": "General Formatting Rules",
+     "text-please-correct-the-highlighted-fields-and-try-again": "Please correct the highlighted fields and try again.",
+     "text-files-cannot-be-uploaded-on-this-page": ". Files cannot be uploaded on this page.",
+     "text-f-general-formatting-rules": "F. General Formatting Rules",
+     "text-i-agree-to-the-13-general-formatting-rules-above": "I Agree to the 13 general formatting rules above.",
+     "text-when-you-press-the-button-your-application-is-sent-to": "When you press the button, your application is sent to",
+     "text-please-also-email-the-required-documents-letter-logo-registration": ". Please also email the required documents (letter, logo, registration copy) to the same address."
+    }
+   }
+  },
+  {
+   "key": "roles.rolesIntro",
+   "label": "Roles introduction and rules",
+   "group": "Website content",
+   "content": {
+    "value": {
+     "text": "This handbook defines internal IHRC–USA roles and must be read with the Articles of Association, applicable laws, valid management resolutions and each appointment letter.",
+     "notice": "IMPORTANT: “Ambassador” and “Officer” are internal organisational titles only. They do not confer diplomatic or governmental status, UN or EU recognition, police or investigative powers, judicial authority or a licence to practise law. No appointee may sign contracts, make financial commitments, issue official statements or represent the organisation beyond a specific written delegation.",
+     "rules": [
+      "Every appointment must be in writing and state its term, scope, supervisor, duties and delegated authority.",
+      "Salary, honorarium, allowances and expense reimbursement are available only when expressly approved in writing and subject to policy and budget.",
+      "No appointee has powers of arrest, search, compulsory questioning, seizure, punishment, legal advice or government direction.",
+      "Use the organisation’s name, logo and ID only for authorised work; maintain impartiality, confidentiality, safeguarding and financial integrity."
+     ]
+    }
+   }
+  },
+  {
+   "key": "roles.rolesStructure",
+   "label": "Organisational positions",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Governance & Leadership(P5)",
+      [
+       "General Assembly ",
+       "Board of Directors",
+       "President / Chairperson",
+       "Secretary-General / Chief Executive",
+       "Members",
+       "International Executive Council",
+       "Advisory Council",
+       "Representatives"
+      ]
+     ],
+     [
+      "Departmental Directors",
+      [
+       "Human Rights & Legal Affairs",
+       "Peace & Reconciliation",
+       "Women & Child Protection",
+       "Youth Empowerment",
+       "Social Justice & Equality",
+       "Education & Research",
+       "Environment & Sustainable Development",
+       "International Relations & Cooperation",
+       "Media & Communications",
+       "Finance & Administration",
+       "Membership & Volunteer Affairs",
+       "Monitoring, Evaluation & Reporting",
+       "National Representatives"
+      ]
+     ],
+     [
+      "Departmental Coordinators",
+      [
+       "Human Rights & Legal Affairs",
+       "Peace & Reconciliation",
+       "Women & Child Protection",
+       "Youth Empowerment",
+       "Social Justice & Equality",
+       "Education & Research",
+       "Environment & Sustainable Development",
+       "International Relations & Cooperation",
+       "Media & Communications",
+       "Finance & Administration",
+       "Membership & Volunteer Affairs",
+       "Monitoring, Evaluation & Reporting",
+       "Community Coordinators",
+       "Regional Coordinators",
+       "District Coordinators"
+      ]
+     ],
+     [
+      "Ambassadors & Officers",
+      [
+       "Ambassador",
+       "Goodwill Ambassador",
+       "Peace Ambassador",
+       "Youth Ambassador",
+       "Women Ambassador",
+       "Ambassador – International Communications",
+       "Ambassador At Large",
+       "Chief Human Rights Investigation Officer",
+       "Human Rights Officer"
+      ]
+     ],
+     [
+      "Members & Partners",
+      [
+       "Members",
+       "Volunteers",
+       "Honorary Members",
+       "Community Partners"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "key": "roles.roles",
+   "label": "Position descriptions",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "name": "Ambassador",
+      "purpose": "Represents IHRC–USA’s mission and approved programmes to communities and institutions within the appointment’s scope.",
+      "authority": [
+       "Introduce the organisation and explain approved programmes in the assigned area.",
+       "Coordinate approved awareness events and build community contacts.",
+       "Submit activity reports and refer partnership opportunities to management."
+      ],
+      "duties": [
+       "Protect the organisation’s reputation and impartiality; communicate accurately; disclose conflicts of interest.",
+       "No diplomatic or governmental status is created. Do not sign agreements, fundraise, make commitments or issue official statements without written authority."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Appointment certificate; approved event participation; training and leadership-development opportunities; pre-approved expense reimbursement against receipts, subject to policy."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Goodwill Ambassador",
+      "purpose": "Promotes goodwill, humanitarian values, mutual respect and social harmony.",
+      "authority": [
+       "Promote approved humanitarian and goodwill initiatives.",
+       "Participate in approved events and share community feedback.",
+       "Respect the dignity and privacy of people receiving assistance."
+      ],
+      "duties": [
+       "Remain impartial; obtain informed consent before sharing identifiable stories or images.",
+       "Cannot change policy, appoint personnel, promise funding or use the title for private business promotion."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Honorary certificate where approved; relevant training and event participation; contribution letter where verified. No salary is automatic."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Peace Ambassador",
+      "purpose": "Promotes peace, non-violence, conflict prevention, dialogue and reconciliation.",
+      "authority": [
+       "Coordinate approved peace-education and dialogue activities.",
+       "Promote tolerance and peaceful communication among youth and communities.",
+       "Refer high-risk situations to qualified professionals or lawful authorities."
+      ],
+      "duties": [
+       "Prioritise safety, confidentiality and neutrality.",
+       "Cannot compel mediation, impose settlements, issue orders or intervene physically in dangerous situations."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Peacebuilding training; approved programme participation; certificates based on verified contribution."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Youth Ambassador",
+      "purpose": "Encourages youth leadership, human-rights education, learning, volunteering and skills development.",
+      "authority": [
+       "Coordinate approved youth events and volunteer groups.",
+       "Promote civic awareness, digital safety, education and skills opportunities.",
+       "Report youth programme outcomes to management."
+      ],
+      "duties": [
+       "Follow child-safeguarding rules, supervision and parental/guardian consent where required.",
+       "Do not expose young people to exploitation, unsafe activities or unauthorised publication of personal information."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Leadership(P5) training; approved youth events; participation certificates subject to age and safeguarding rules."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Women Ambassador",
+      "purpose": "Promotes women’s rights, equality, safety, leadership, education and empowerment.",
+      "authority": [
+       "Coordinate approved women’s rights and empowerment activities.",
+       "Promote awareness of rights, safety, education and opportunities.",
+       "Refer survivors and service needs to qualified organisations."
+      ],
+      "duties": [
+       "Respect survivors’ choices, safety, privacy and dignity.",
+       "Do not investigate violence, provide clinical treatment or legal advice unless qualified and authorised; never pressure a survivor to reconcile or withdraw a complaint."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Relevant training; approved empowerment programmes; contribution certificates based on verified work."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Ambassador – International Communications",
+      "purpose": "Coordinates approved international correspondence, information exchange, translation support and initial overseas contacts.",
+      "authority": [
+       "Maintain accurate contact records and correspondence.",
+       "Translate information faithfully and forward partnership enquiries to management.",
+       "Arrange approved meetings and report international opportunities."
+      ],
+      "duties": [
+       "Protect personal data and correspondence; respect cultural and language differences.",
+       "Do not claim UN, EU, embassy or government endorsement without proof; do not sign MoUs, contracts or funding applications without written authority."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "International communications experience; relevant training; approved event participation; verified contribution letters."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Ambassador At Large",
+      "purpose": "Undertakes special assignments and cross-regional initiatives allocated by IHRC–USA management.",
+      "authority": [
+       "Work only within written terms of reference defining scope, duration and reporting line.",
+       "Coordinate approved cross-regional projects and submit progress reports.",
+       "Assess regional needs, opportunities and operational risks."
+      ],
+      "duties": [
+       "Respect local laws, budgets and delegated authority.",
+       "“At Large” does not mean unlimited or worldwide authority; cannot appoint or dismiss officers or change policy without written authority."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Senior project-coordination experience; approved representation opportunities; recognition based on assessed contribution."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Chief Human Rights Investigation Officer",
+      "purpose": "Oversees initial documentation, information assessment and report preparation for human-rights complaints referred to the organisation.",
+      "authority": [
+       "Assess immediate safety risks and refer urgent needs to appropriate services.",
+       "Obtain informed consent; record dates, sources and document handling; distinguish verified facts, allegations and unverified information.",
+       "Protect records and confidentiality; submit impartial reports with limitations clearly stated."
+      ],
+      "duties": [
+       "This is not a police, criminal-investigation, court or government appointment.",
+       "No arrest, search, seizure, compulsory questioning, threats, covert surveillance, hacking, unlawful recording or determination of guilt.",
+       "Do not enter private premises without lawful permission or alter evidence; do not replace lawyers, doctors or counsellors."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Training in human-rights documentation, safeguarding and reporting; project experience; certificates based on verified work."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Human Rights Officer",
+      "purpose": "Supports human-rights education, community awareness, basic complaint intake, safe documentation and referral.",
+      "authority": [
+       "Conduct approved awareness sessions and provide general rights information.",
+       "Listen respectfully, assess immediate safety and record basic information with consent.",
+       "Refer people to appropriate legal, medical, psychosocial or public services; prepare anonymised reports."
+      ],
+      "duties": [
+       "Respect informed choice, privacy and confidentiality; keep accurate records.",
+       "Do not provide legal advice unless qualified, conduct official investigations, declare guilt or promise outcomes."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Human-rights education training; approved programme participation; experience certificates for verified service."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     },
+     {
+      "name": "Honorary Member",
+      "purpose": "Recognises a person who supports the organisation through experience, expertise, goodwill or community standing.",
+      "authority": [
+       "Support organisational objectives and attend invited events.",
+       "Offer advice, expertise or introductions when invited.",
+       "Protect the organisation’s reputation and confidential information."
+      ],
+      "duties": [
+       "Honorary status alone does not grant voting rights, directorship, management control or financial authority unless expressly provided by governing documents or resolution.",
+       "Do not make commitments or issue official statements on behalf of IHRC–USA."
+      ],
+      "restrictions": [
+       "Do not collect financial contributions into a personal account, issue unauthorised receipts, create false credentials, disclose confidential identities, harass or threaten anyone."
+      ],
+      "benefits": [
+       "Honorary certificate where approved; invitations to relevant events or advisory discussions; recognition of voluntary contribution."
+      ],
+      "reporting": [
+       "Submit periodic reports to the supervisor named in the appointment letter. Performance may be assessed on quality, integrity, timeliness, safeguarding and compliance.",
+       "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "key": "roles.codeOfConduct",
+   "label": "Code of conduct",
+   "group": "Website content",
+   "content": {
+    "value": [
+     {
+      "t": "Human dignity and equality",
+      "d": "Treat everyone respectfully; discrimination is prohibited."
+     },
+     {
+      "t": "Integrity",
+      "d": "Reports, certificates and expense claims must be truthful. Fabrication and misleading claims are prohibited."
+     },
+     {
+      "t": "Responsible use of title",
+      "d": "Use the title, ID card, logo and resources only for authorised work; never imply governmental or diplomatic authority."
+     },
+     {
+      "t": "Confidentiality and data protection",
+      "d": "Collect only necessary information, store it securely and share it only on a lawful, authorised basis."
+     },
+     {
+      "t": "Safeguarding",
+      "d": "Follow child-protection and vulnerable-person safeguarding procedures, including consent and supervision."
+     },
+     {
+      "t": "Prevention of harassment and exploitation",
+      "d": "Sexual exploitation, harassment, coercion, bullying, intimidation and abuse of authority are prohibited."
+     },
+     {
+      "t": "Conflict of interest",
+      "d": "Disclose personal, family, political, commercial or financial interests and withdraw from conflicted decisions."
+     },
+     {
+      "t": "Financial integrity",
+      "d": "No unauthorised fundraising, personal-account financial contribution collection, false receipts, bribes or commissions."
+     },
+     {
+      "t": "Political and religious neutrality",
+      "d": "Do not use IHRC–USA’s name to campaign for a party/candidate or pressure anyone on religion."
+     },
+     {
+      "t": "Media and social media",
+      "d": "Share only approved information; do not publish confidential records, unverified allegations, hate speech or personal data without authority."
+     },
+     {
+      "t": "Legal compliance and safety",
+      "d": "Follow applicable laws, permits, safety requirements and organisational policies."
+     },
+     {
+      "t": "Reporting and non-retaliation",
+      "d": "Report misconduct through designated channels; retaliation against good-faith reporters is prohibited."
+     },
+     {
+      "t": "Respectful workplace",
+      "d": "Threats, violence, humiliation, bullying and unsafe conduct are prohibited."
+     },
+     {
+      "t": "Organisational property",
+      "d": "Protect ID cards, documents, devices and access credentials; return them when the appointment ends."
+     },
+     {
+      "t": "Accountability",
+      "d": "Promptly report incidents, data breaches and safety risks and cooperate with authorised reviews."
+     }
+    ]
+   }
+  },
+  {
+   "key": "copy.Roles",
+   "label": "Roles — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-roles-responsibilities": "Roles & Responsibilities",
+     "page-introduction-position-descriptions-authority-duties-and-code-of-conduct-within": "Position descriptions, authority, duties and code of conduct within IHRC-USA.",
+     "text-introduction-and-legal-notice": "Introduction and Legal Notice",
+     "text-general-rules": "General Rules",
+     "text-organisational-positions": "Organisational Positions",
+     "text-the-positions-and-participant-categories-within-ihrc-usa": "The positions and participant categories within IHRC-USA.",
+     "text-purpose": "Purpose:",
+     "text-benefits-are-conditional-not-guaranteed-and-depend-on-written-app": "Benefits are conditional, not guaranteed, and depend on written approval, available resources, performance and policy."
+    }
+   }
+  },
+  {
+   "key": "research.researchAreas",
+   "label": "Research Areas",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Human Rights & Protection",
+     "Refugees, Migration & Humanitarian Action",
+     "Gender, Equality & Non-Discrimination",
+     "SDGs & Socio-Economic Rights",
+     "Digital Rights & IT",
+     "Institutional & Legal Studies"
+    ]
+   }
+  },
+  {
+   "key": "research.researchWho",
+   "label": "Research Who",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Postgraduate degree or above",
+     "Demonstrated research experience",
+     "Publications desirable",
+     "Proficiency in English (Tamil and/or Sinhala an advantage)"
+    ]
+   }
+  },
+  {
+   "key": "research.researchBenefits",
+   "label": "Research Benefits",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "International recognition",
+     "Publication support",
+     "Training and mentorship",
+     "Global networking",
+     "Honoraria for commissioned assignments"
+    ]
+   }
+  },
+  {
+   "key": "research.researchTopics",
+   "label": "Research Topics",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Human Rights & Protection",
+      [
+       "International Criminal Justice and Accountability: Effectiveness of Mechanisms for Transitional and Restorative Justice",
+       "Fair Trial Rights: International Monitoring of Trials of Journalists, Human Rights Defenders and Political Prisoners",
+       "Child Organ Trafficking: Prevention and Protection Mechanisms for a Global Problem",
+       "Anti-Human Trafficking: Effectiveness Assessment of Legal Aid and Rehabilitation Services for Victims"
+      ]
+     ],
+     [
+      "Refugees, Migration & Humanitarian Action",
+      [
+       "Refugee Rights Advocacy: Effectiveness of Legal Pathways for Resettlement, Repatriation and Family Reunification",
+       "Situation of Unaccompanied Minors in US Border and Immigration Detention: A Human Rights Assessment",
+       "Service Delivery for Vulnerable Groups (IDPs, Refugees) in Humanitarian Emergencies: Barriers and Opportunities"
+      ]
+     ],
+     [
+      "Gender, Equality & Non-Discrimination",
+      [
+       "Gender and Racial Discrimination: Advancing the Rights of Women, Gender-Diverse Persons and LGBTQ+ Individuals",
+       "Ensuring Equal Access to Water and Sanitation: A Human Rights-Based Analysis",
+       "Reducing Gender-Based Violence in Armed Conflict: Prevention and Protection Strategies"
+      ]
+     ],
+     [
+      "SDGs & Socio-Economic Rights",
+      [
+       "Poverty Eradication (SDG 1) and Zero Hunger (SDG 2): Effectiveness of a Human Rights-Based Approach",
+       "Health and Well-Being (SDG 3): Disparities in Healthcare Access for Marginalized Communities",
+       "Quality Education (SDG 4): Impact of Integrating Human Rights Education into School Curricula",
+       "Climate Action (SDG 13) and Environmental Rights: Judicial Enforcement of the Right to a Clean, Healthy and Sustainable Environment",
+       "Decent Work and Economic Growth (SDG 8): Labour Rights Violations Among Migrant Workers and in Sub-Minimum Wage Sectors"
+      ]
+     ],
+     [
+      "IT, Digital Rights & Communications",
+      [
+       "Use of Artificial Intelligence (AI) and Big Data in Human Rights Monitoring: Ethical and Privacy Challenges",
+       "Role of Social Media in Combating Misinformation on Human Rights Violations",
+       "Complaints and Redress Mechanisms in the Digital Age: Effectiveness and Accessibility of New Technologies"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "key": "research.equalOpportunity",
+   "label": "Equal Opportunity",
+   "group": "Website content",
+   "content": {
+    "value": "IHRC-USA is an equal opportunity organization. No discrimination is made on the basis of race, religion, gender, age, disability, region or political affiliation. Women, persons with disabilities and researchers from affected communities are strongly encouraged to apply."
+   }
+  },
+  {
+   "key": "research.researchRef",
+   "label": "Research Ref",
+   "group": "Website content",
+   "content": {
+    "value": ""
+   }
+  },
+  {
+   "key": "research.researchClosingDate",
+   "label": "Research Closing Date",
+   "group": "Website content",
+   "content": {
+    "value": ""
+   }
+  },
+  {
+   "key": "copy.Research",
+   "label": "Research — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-call-for-researchers": "Call for Researchers",
+     "page-introduction-join-our-global-research-network-in-the-service-of-human-rights": "Join our global research network in the service of human rights.",
+     "text-join-our-global-research-network": "Join Our Global Research Network!",
+     "text-the-international-human-rights-council-usa-ihrc-usa-invites-resea": "The International Human Rights Council – USA (IHRC-USA) invites researchers, academics, legal experts and field investigators to join its global research network in the service of human rights.",
+     "text-closing-date": "Closing Date:",
+     "text-strengthen-the-knowledge-base-for-human-rights-join-us": "Strengthen the knowledge base for human rights. Join us.",
+     "text-apply-online": "Apply Online",
+     "text-research-areas": "Research Areas",
+     "text-who-can-apply": "Who Can Apply",
+     "text-benefits": "Benefits",
+     "text-how-to-apply": "How to Apply",
+     "text-complete-the-researchers-application-form-below-in-full-attach-yo": "Complete the Researchers Application Form below in full. Attach your CV, a one-page research proposal abstract and copies of your certificates in the attachments section. Incomplete applications will not be considered. Questions:",
+     "text-research-topics": "Research Topics",
+     "text-researchers-application-form": "Researchers Application Form"
+    }
+   }
+  },
+  {
+   "key": "countries.countries",
+   "label": "Countries",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "af",
+      "Afghanistan"
+     ],
+     [
+      "al",
+      "Albania"
+     ],
+     [
+      "dz",
+      "Algeria"
+     ],
+     [
+      "ad",
+      "Andorra"
+     ],
+     [
+      "ao",
+      "Angola"
+     ],
+     [
+      "ag",
+      "Antigua and Barbuda"
+     ],
+     [
+      "ar",
+      "Argentina"
+     ],
+     [
+      "am",
+      "Armenia"
+     ],
+     [
+      "au",
+      "Australia"
+     ],
+     [
+      "at",
+      "Austria"
+     ],
+     [
+      "az",
+      "Azerbaijan"
+     ],
+     [
+      "bs",
+      "Bahamas"
+     ],
+     [
+      "bh",
+      "Bahrain"
+     ],
+     [
+      "bd",
+      "Bangladesh"
+     ],
+     [
+      "bb",
+      "Barbados"
+     ],
+     [
+      "by",
+      "Belarus"
+     ],
+     [
+      "be",
+      "Belgium"
+     ],
+     [
+      "bz",
+      "Belize"
+     ],
+     [
+      "bj",
+      "Benin"
+     ],
+     [
+      "bt",
+      "Bhutan"
+     ],
+     [
+      "bo",
+      "Bolivia"
+     ],
+     [
+      "ba",
+      "Bosnia and Herzegovina"
+     ],
+     [
+      "bw",
+      "Botswana"
+     ],
+     [
+      "br",
+      "Brazil"
+     ],
+     [
+      "bn",
+      "Brunei"
+     ],
+     [
+      "bg",
+      "Bulgaria"
+     ],
+     [
+      "bf",
+      "Burkina Faso"
+     ],
+     [
+      "bi",
+      "Burundi"
+     ],
+     [
+      "cv",
+      "Cabo Verde"
+     ],
+     [
+      "kh",
+      "Cambodia"
+     ],
+     [
+      "cm",
+      "Cameroon"
+     ],
+     [
+      "ca",
+      "Canada"
+     ],
+     [
+      "cf",
+      "Central African Republic"
+     ],
+     [
+      "td",
+      "Chad"
+     ],
+     [
+      "cl",
+      "Chile"
+     ],
+     [
+      "cn",
+      "China"
+     ],
+     [
+      "co",
+      "Colombia"
+     ],
+     [
+      "km",
+      "Comoros"
+     ],
+     [
+      "cg",
+      "Congo"
+     ],
+     [
+      "cr",
+      "Costa Rica"
+     ],
+     [
+      "hr",
+      "Croatia"
+     ],
+     [
+      "cu",
+      "Cuba"
+     ],
+     [
+      "cy",
+      "Cyprus"
+     ],
+     [
+      "cz",
+      "Czechia"
+     ],
+     [
+      "ci",
+      "Côte d'Ivoire"
+     ],
+     [
+      "cd",
+      "Democratic Republic of the Congo"
+     ],
+     [
+      "dk",
+      "Denmark"
+     ],
+     [
+      "dj",
+      "Djibouti"
+     ],
+     [
+      "dm",
+      "Dominica"
+     ],
+     [
+      "do",
+      "Dominican Republic"
+     ],
+     [
+      "ec",
+      "Ecuador"
+     ],
+     [
+      "eg",
+      "Egypt"
+     ],
+     [
+      "sv",
+      "El Salvador"
+     ],
+     [
+      "gq",
+      "Equatorial Guinea"
+     ],
+     [
+      "er",
+      "Eritrea"
+     ],
+     [
+      "ee",
+      "Estonia"
+     ],
+     [
+      "sz",
+      "Eswatini"
+     ],
+     [
+      "et",
+      "Ethiopia"
+     ],
+     [
+      "fj",
+      "Fiji"
+     ],
+     [
+      "fi",
+      "Finland"
+     ],
+     [
+      "fr",
+      "France"
+     ],
+     [
+      "ga",
+      "Gabon"
+     ],
+     [
+      "gm",
+      "Gambia"
+     ],
+     [
+      "ge",
+      "Georgia"
+     ],
+     [
+      "de",
+      "Germany"
+     ],
+     [
+      "gh",
+      "Ghana"
+     ],
+     [
+      "gr",
+      "Greece"
+     ],
+     [
+      "gd",
+      "Grenada"
+     ],
+     [
+      "gt",
+      "Guatemala"
+     ],
+     [
+      "gn",
+      "Guinea"
+     ],
+     [
+      "gw",
+      "Guinea-Bissau"
+     ],
+     [
+      "gy",
+      "Guyana"
+     ],
+     [
+      "ht",
+      "Haiti"
+     ],
+     [
+      "hn",
+      "Honduras"
+     ],
+     [
+      "hu",
+      "Hungary"
+     ],
+     [
+      "is",
+      "Iceland"
+     ],
+     [
+      "in",
+      "India"
+     ],
+     [
+      "id",
+      "Indonesia"
+     ],
+     [
+      "ir",
+      "Iran"
+     ],
+     [
+      "iq",
+      "Iraq"
+     ],
+     [
+      "ie",
+      "Ireland"
+     ],
+     [
+      "il",
+      "Israel"
+     ],
+     [
+      "it",
+      "Italy"
+     ],
+     [
+      "jm",
+      "Jamaica"
+     ],
+     [
+      "jp",
+      "Japan"
+     ],
+     [
+      "jo",
+      "Jordan"
+     ],
+     [
+      "kz",
+      "Kazakhstan"
+     ],
+     [
+      "ke",
+      "Kenya"
+     ],
+     [
+      "ki",
+      "Kiribati"
+     ],
+     [
+      "kw",
+      "Kuwait"
+     ],
+     [
+      "kg",
+      "Kyrgyzstan"
+     ],
+     [
+      "la",
+      "Laos"
+     ],
+     [
+      "lv",
+      "Latvia"
+     ],
+     [
+      "lb",
+      "Lebanon"
+     ],
+     [
+      "ls",
+      "Lesotho"
+     ],
+     [
+      "lr",
+      "Liberia"
+     ],
+     [
+      "ly",
+      "Libya"
+     ],
+     [
+      "li",
+      "Liechtenstein"
+     ],
+     [
+      "lt",
+      "Lithuania"
+     ],
+     [
+      "lu",
+      "Luxembourg"
+     ],
+     [
+      "mg",
+      "Madagascar"
+     ],
+     [
+      "mw",
+      "Malawi"
+     ],
+     [
+      "my",
+      "Malaysia"
+     ],
+     [
+      "mv",
+      "Maldives"
+     ],
+     [
+      "ml",
+      "Mali"
+     ],
+     [
+      "mt",
+      "Malta"
+     ],
+     [
+      "mh",
+      "Marshall Islands"
+     ],
+     [
+      "mr",
+      "Mauritania"
+     ],
+     [
+      "mu",
+      "Mauritius"
+     ],
+     [
+      "mx",
+      "Mexico"
+     ],
+     [
+      "fm",
+      "Micronesia"
+     ],
+     [
+      "md",
+      "Moldova"
+     ],
+     [
+      "mc",
+      "Monaco"
+     ],
+     [
+      "mn",
+      "Mongolia"
+     ],
+     [
+      "me",
+      "Montenegro"
+     ],
+     [
+      "ma",
+      "Morocco"
+     ],
+     [
+      "mz",
+      "Mozambique"
+     ],
+     [
+      "mm",
+      "Myanmar"
+     ],
+     [
+      "na",
+      "Namibia"
+     ],
+     [
+      "nr",
+      "Nauru"
+     ],
+     [
+      "np",
+      "Nepal"
+     ],
+     [
+      "nl",
+      "Netherlands"
+     ],
+     [
+      "nz",
+      "New Zealand"
+     ],
+     [
+      "ni",
+      "Nicaragua"
+     ],
+     [
+      "ne",
+      "Niger"
+     ],
+     [
+      "ng",
+      "Nigeria"
+     ],
+     [
+      "kp",
+      "North Korea"
+     ],
+     [
+      "mk",
+      "North Macedonia"
+     ],
+     [
+      "no",
+      "Norway"
+     ],
+     [
+      "om",
+      "Oman"
+     ],
+     [
+      "pk",
+      "Pakistan"
+     ],
+     [
+      "pw",
+      "Palau"
+     ],
+     [
+      "ps",
+      "Palestine"
+     ],
+     [
+      "pa",
+      "Panama"
+     ],
+     [
+      "pg",
+      "Papua New Guinea"
+     ],
+     [
+      "py",
+      "Paraguay"
+     ],
+     [
+      "pe",
+      "Peru"
+     ],
+     [
+      "ph",
+      "Philippines"
+     ],
+     [
+      "pl",
+      "Poland"
+     ],
+     [
+      "pt",
+      "Portugal"
+     ],
+     [
+      "qa",
+      "Qatar"
+     ],
+     [
+      "ro",
+      "Romania"
+     ],
+     [
+      "ru",
+      "Russia"
+     ],
+     [
+      "rw",
+      "Rwanda"
+     ],
+     [
+      "kn",
+      "Saint Kitts and Nevis"
+     ],
+     [
+      "lc",
+      "Saint Lucia"
+     ],
+     [
+      "vc",
+      "Saint Vincent and the Grenadines"
+     ],
+     [
+      "ws",
+      "Samoa"
+     ],
+     [
+      "sm",
+      "San Marino"
+     ],
+     [
+      "st",
+      "Sao Tome and Principe"
+     ],
+     [
+      "sa",
+      "Saudi Arabia"
+     ],
+     [
+      "sn",
+      "Senegal"
+     ],
+     [
+      "rs",
+      "Serbia"
+     ],
+     [
+      "sc",
+      "Seychelles"
+     ],
+     [
+      "sl",
+      "Sierra Leone"
+     ],
+     [
+      "sg",
+      "Singapore"
+     ],
+     [
+      "sk",
+      "Slovakia"
+     ],
+     [
+      "si",
+      "Slovenia"
+     ],
+     [
+      "sb",
+      "Solomon Islands"
+     ],
+     [
+      "so",
+      "Somalia"
+     ],
+     [
+      "za",
+      "South Africa"
+     ],
+     [
+      "kr",
+      "South Korea"
+     ],
+     [
+      "ss",
+      "South Sudan"
+     ],
+     [
+      "es",
+      "Spain"
+     ],
+     [
+      "lk",
+      "Sri Lanka"
+     ],
+     [
+      "sd",
+      "Sudan"
+     ],
+     [
+      "sr",
+      "Suriname"
+     ],
+     [
+      "se",
+      "Sweden"
+     ],
+     [
+      "ch",
+      "Switzerland"
+     ],
+     [
+      "sy",
+      "Syria"
+     ],
+     [
+      "tj",
+      "Tajikistan"
+     ],
+     [
+      "tz",
+      "Tanzania"
+     ],
+     [
+      "th",
+      "Thailand"
+     ],
+     [
+      "tl",
+      "Timor-Leste"
+     ],
+     [
+      "tg",
+      "Togo"
+     ],
+     [
+      "to",
+      "Tonga"
+     ],
+     [
+      "tt",
+      "Trinidad and Tobago"
+     ],
+     [
+      "tn",
+      "Tunisia"
+     ],
+     [
+      "tm",
+      "Turkmenistan"
+     ],
+     [
+      "tv",
+      "Tuvalu"
+     ],
+     [
+      "tr",
+      "Türkiye"
+     ],
+     [
+      "ug",
+      "Uganda"
+     ],
+     [
+      "ua",
+      "Ukraine"
+     ],
+     [
+      "ae",
+      "United Arab Emirates"
+     ],
+     [
+      "gb",
+      "United Kingdom"
+     ],
+     [
+      "us",
+      "United States of America"
+     ],
+     [
+      "uy",
+      "Uruguay"
+     ],
+     [
+      "uz",
+      "Uzbekistan"
+     ],
+     [
+      "vu",
+      "Vanuatu"
+     ],
+     [
+      "va",
+      "Vatican City (Holy See)"
+     ],
+     [
+      "ve",
+      "Venezuela"
+     ],
+     [
+      "vn",
+      "Vietnam"
+     ],
+     [
+      "ye",
+      "Yemen"
+     ],
+     [
+      "zm",
+      "Zambia"
+     ],
+     [
+      "zw",
+      "Zimbabwe"
+     ]
+    ]
+   }
+  },
+  {
+   "key": "copy.Countries",
+   "label": "Countries — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-introduction-public-ihrc-usa-member-profiles-for-this-country": "Public IHRC-USA member profiles for this country.",
+     "text-all-countries": "← All countries",
+     "text-no-public-member-profiles-are-listed-for": "No public member profiles are listed for",
+     "page-title-countries": "Countries",
+     "page-introduction-flags-and-names-of-the-195-countries-recognised-worldwide-193-un-": "Flags and names of the 195 countries recognised worldwide — 193 UN member states and 2 observer states.",
+     "text-showing": "Showing",
+     "text-countries": "countries",
+     "text-choose-a-country-to-see-its-public-member-profiles": "Choose a country to see its public member profiles.",
+     "text-no-country-found": "No country found.",
+     "text-the-193-un-member-states-plus-the-holy-see-vatican-city-and-pales": "The 193 UN member states plus the Holy See (Vatican City) and Palestine as observer states."
+    }
+   }
+  },
+  {
+   "key": "copy.Recognition",
+   "label": "Recognition — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-our-recognition": "Our Recognition",
+     "page-introduction-registrations-and-listings-of-ihrc-usa-with-the-united-nations-an": "Registrations and listings of IHRC-USA with the United Nations and the European Commission.",
+     "text-our-recognition": "Our Recognition"
+    }
+   }
+  },
+  {
+   "key": "copy.OurPartners",
+   "label": "Our Partners — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-our-partners": "Our Partners",
+     "page-introduction-the-organizations-and-institutions-ihrc-usa-works-with-and-is-rec": "The organizations and institutions IHRC-USA works with and is recognised by.",
+     "text-our-partners": "Our Partners",
+     "text-our-recognition": "Our Recognition"
+    }
+   }
+  },
+  {
+   "key": "copy.WhatWeDo",
+   "label": "What We Do — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-what-we-do": "What We Do",
+     "page-introduction-education-awareness-research-community-participation-and-humanita": "Education, awareness, Research, community participation and humanitarian service for human dignity.",
+     "text-ihrc-usa-works-to-promote-human-rights-awareness-research-humanit": "IHRC-USA works to promote human-rights awareness, Research, humanitarian values, peace, equality and community empowerment through education, advocacy, service, partnerships and responsible action.",
+     "text-our-purpose": "Our Purpose",
+     "text-research": "Research",
+     "text-ihrc-usa-invites-researchers-academics-legal-experts-and-field-in": "IHRC-USA invites researchers, academics, legal experts and field investigators to join its global research network in the service of human rights.",
+     "text-research-areas": "Research Areas",
+     "text-who-can-apply": "Who Can Apply",
+     "text-benefits": "Benefits",
+     "text-how-to-apply": "How to Apply",
+     "text-complete-the-researchers-application-form-in-full-and-attach-your": "Complete the Researchers Application Form in full and attach your CV, a one-page research proposal abstract and copies of your certificates.",
+     "text-research-application": "Research Application",
+     "text-call-for-researchers": "Call for Researchers",
+     "text-our-programme-areas": "Our Programme Areas",
+     "text-our-work-is-organised-across-these-eight-programme-areas-supporte": "Our work is organised across these eight programme areas, supported by",
+     "text-specific-objectives": "specific objectives.",
+     "text-view-all-programs": "View all programs"
+    }
+   }
+  },
+  {
+   "key": "WhatWeDo.purpose",
+   "label": "Purpose",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Promote understanding of human rights.",
+     "Encourage equality and dignity.",
+     "Support vulnerable communities.",
+     "Promote peaceful coexistence.",
+     "Encourage humanitarian service.",
+     "Promote educational awareness.",
+     "Encourage women’s and children’s empowerment.",
+     "Support youth participation.",
+     "Promote environmental responsibility.",
+     "Encourage international cooperation."
+    ]
+   }
+  },
+  {
+   "key": "WhatWeDo.areas",
+   "label": "Areas",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Human Rights Protection and Advocacy",
+      [
+       [
+        "Human Rights Protection",
+        "/programs/prevention-of-human-rights-violations"
+       ],
+       [
+        "Human Rights Defenders",
+        "/programs/advice-and-assistance"
+       ],
+       [
+        "Fundamental Freedoms",
+        "/programs/universal-rights"
+       ],
+       [
+        "Anti-Discrimination",
+        "/programs/non-discrimination"
+       ],
+       [
+        "Human Rights Monitoring",
+        "/programs/investigations"
+       ]
+      ]
+     ],
+     [
+      "Justice, Law and Accountability",
+      [
+       [
+        "Legal Assistance",
+        "/programs/legal-aid"
+       ],
+       [
+        "Access to Justice",
+        "/programs/rule-of-law"
+       ],
+       [
+        "Prevention of Torture",
+        "/programs/prevention-of-human-rights-violations"
+       ],
+       [
+        "Anti-Corruption",
+        "/programs/eradication"
+       ],
+       [
+        "Institutional Accountability",
+        "/programs/accountability"
+       ]
+      ]
+     ],
+     [
+      "Education, Research and Capacity Building",
+      [
+       [
+        "Human Rights Education",
+        "/programs?cat=Education"
+       ],
+       [
+        "Literacy and Research",
+        "/programs/education-for-children"
+       ],
+       [
+        "Training and Development",
+        "/events"
+       ],
+       [
+        "Publications and Reports",
+        "/news"
+       ],
+       [
+        "Institutional Capacity Building",
+        "/events"
+       ]
+      ]
+     ],
+     [
+      "Women, Children and Vulnerable Groups",
+      [
+       [
+        "Women’s Empowerment",
+        "/programs/women-s-empowerment"
+       ],
+       [
+        "Child Protection",
+        "/programs/prevention-of-human-trafficking"
+       ],
+       [
+        "Disability Rights",
+        "/programs/right-to-information"
+       ],
+       [
+        "Elderly Rights",
+        "/programs/help-for-the-poor"
+       ],
+       [
+        "Refugee and Migrant Protection",
+        "/programs/minority-rights"
+       ]
+      ]
+     ],
+     [
+      "Humanitarian Assistance and Social Development",
+      [
+       [
+        "Humanitarian Support",
+        "/programs?cat=Humanitarian"
+       ],
+       [
+        "Emergency Relief",
+        "/news"
+       ],
+       [
+        "Victim Assistance",
+        "/programs/advice-and-assistance"
+       ],
+       [
+        "Health Awareness",
+        "/programs/health"
+       ],
+       [
+        "Community Development",
+        "/programs/healthy-society"
+       ]
+      ]
+     ],
+     [
+      "Peace, Reconciliation and Social Harmony",
+      [
+       [
+        "Peacebuilding",
+        "/programs/the-speed-of-trust"
+       ],
+       [
+        "Conflict Resolution",
+        "/programs/police-public-relations"
+       ],
+       [
+        "Transitional Justice",
+        "/programs/accountability"
+       ],
+       [
+        "Intercultural Dialogue",
+        "/programs/indigenous-values"
+       ],
+       [
+        "Social Cohesion",
+        "/programs/equality"
+       ]
+      ]
+     ],
+     [
+      "Environmental and Sustainable Development",
+      [
+       [
+        "Environmental Protection",
+        "/programs/environmental-protection"
+       ],
+       [
+        "Climate Awareness",
+        "/programs?cat=Environment"
+       ],
+       [
+        "Biodiversity Conservation",
+        "/programs/connecting-with-nature"
+       ],
+       [
+        "Sustainable Communities",
+        "/programs/sustainable-agriculture"
+       ],
+       [
+        "Environmental Justice",
+        "/programs/waste-management"
+       ]
+      ]
+     ],
+     [
+      "Global Cooperation and International Relations",
+      [
+       [
+        "International Advocacy",
+        "/news"
+       ],
+       [
+        "Global Partnerships",
+        "/events"
+       ],
+       [
+        "International Human Rights Cooperation",
+        "/programs/universal-rights"
+       ],
+       [
+        "Policy Development",
+        "/programs/government-schemes"
+       ],
+       [
+        "Cross-Border Humanitarian Initiatives",
+        "/programs?cat=Humanitarian"
+       ]
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "key": "copy.Accreditation",
+   "label": "Accreditation — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-accreditation-recognition": "Accreditation & Recognition",
+     "page-introduction-apply-for-ihrc-usa-accreditation-or-recognition-form-no-ihrc-usa-": "Apply for IHRC-USA accreditation or recognition — Form No. IHRC-USA/ACC/001",
+     "text-accreditations": "Accreditations",
+     "text-important-notice-instructions": "Important Notice & Instructions",
+     "text-supporting-documents-required": "Supporting Documents Required",
+     "text-attach-copies-not-originals-unless-specifically-requested-upload-": "Attach copies (not originals) unless specifically requested. Upload instructions will be provided after initial review.",
+     "text-application-form": "Application Form",
+     "text-complete-all-applicable-fields-write": "Complete all applicable fields. Write",
+     "text-where-a-field-does-not-apply-fields-marked": "where a field does not apply. Fields marked",
+     "text-are-required": "are required.",
+     "text-disclaimer": "Disclaimer:",
+     "text-ihrc-usa-accreditation-is-a-private-institutional-recognition-it-": "IHRC-USA accreditation is a private institutional recognition. It does not constitute a government licence, statutory accreditation, recognized academic qualification, professional licensure or authorization to practise any regulated profession. IHRC-USA may request clarification, further evidence or an interview and may approve, condition, defer or decline any application."
+    }
+   }
+  },
+  {
+   "key": "Accreditation.intro",
+   "label": "Accreditation introduction",
+   "group": "Website content",
+   "content": {
+    "value": "The International Human Rights Council – USA (IHRC-USA) has developed a structured framework for granting accreditations and recognitions to individuals, community leaders, non-governmental organizations, and community-based organizations working in the fields of human rights, social justice, education, the protection of women and children, human dignity, and community development.\n\nIHRC-USA firmly believes that accreditation should be more than merely awarding a medal, certificate, or honorary title. It should represent a formal recognition of an individual’s or organization’s service, qualifications, experience, contributions to society, and credibility. All recognitions should be granted through a fair, transparent, and systematic evaluation process based on established criteria and standards."
+   }
+  },
+  {
+   "key": "Accreditation.notice",
+   "label": "Accreditation notice",
+   "group": "Website content",
+   "content": {
+    "value": [
+     [
+      "Important Notice & Instructions",
+      "This form is for applicants seeking a private recognition, programme review or service expressly offered by IHRC-USA. Submission does not guarantee approval.\n\nUnless separately authorized and documented, IHRC-USA recognition is not a government licence, statutory approval, recognized academic accreditation, professional license or authorization to practice a regulated profession.\n\nComplete all applicable fields; write N/A where not applicable; attach copies (not originals) unless specifically requested."
+     ],
+     [
+      "Legal & International Recognition Distinction",
+      "IHRC-USA grants its own institutional accreditations, recognitions and honorary titles in accordance with its organizational policies and established procedures.\n\nFurthermore, ECOSOC Consultative Status with the United Nations is a separate formal status that requires an independent application, review and assessment process by the relevant UN authorities. IHRC-USA’s institutional accreditations do not automatically confer, represent or imply UN ECOSOC Consultative Status."
+     ],
+     [
+      "Our Commitment",
+      "IHRC-USA is committed to maintaining transparency, credibility, accountability and international standards in all its accreditation and recognition activities."
+     ]
+    ]
+   }
+  },
+  {
+   "key": "Accreditation.docChecklist",
+   "label": "Accreditation document checklist",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Certificate of incorporation / registration",
+     "Articles, bylaws or constitution",
+     "Current directors / trustees / office-bearers list",
+     "Organizational chart and staff profiles",
+     "Strategic plan, annual and programme reports",
+     "Human rights, safeguarding, complaints and ethics policies",
+     "Financial statements and audit / review report (last 4 years)",
+     "Curriculum, learning outcomes and assessment tools (if applicable)",
+     "Evidence of activities, outcomes and impact",
+     "Applicable licences, permissions and insurance",
+     "Conflict-of-interest declarations",
+     "Other supporting documents"
+    ]
+   }
+  },
+  {
+   "key": "copy.Projects",
+   "label": "Projects — headings and text",
+   "group": "Page text",
+   "content": {
+    "value": {
+     "page-title-projects": "Projects",
+     "page-introduction-ihrc-usa-projects-and-project-articles": "IHRC-USA projects and project articles.",
+     "text-program": "Program:",
+     "text-download-document": "Download document",
+     "text-gallery": "Gallery",
+     "text-more-projects": "More Projects",
+     "text-all-projects": "← All projects"
+    }
+   }
+  },
+  {
+   "key": "content.pubCategories",
+   "label": "Publication categories",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Official Handbook",
+     "Human Rights Awareness Materials",
+     "Training Resources",
+     "Research",
+     "Annual Reports",
+     "Newsletters",
+     "Conference Reports",
+     "Policy Documents",
+     "Press Releases",
+     "Educational Publications"
+    ]
+   }
+  }
+ ],
+ "partners": [
+  {
+   "name": "UN & US Human Rights Organization",
+   "logo": "/images/partners/un-us-human-rights.jpg"
+  },
+  {
+   "name": "Peace One Day Mali",
+   "logo": "/images/partners/peace-one-day-mali.jpg"
   }
  ],
  "pubCategories": [

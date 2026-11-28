@@ -1,7 +1,8 @@
+import {programCatalog,cmsState} from '../content';
 // The 31 Specific Objectives of IHRC-USA, shown on the website as Programs.
 // n = objective number, t = title, d = description, c = category (used by the filter tabs).
 // Images: /public/images/programs/<slug>.jpg
-export const programs=[
+const defaults=[
   {n:1,t:"Education for Children",c:"Education",d:"To create educational awareness and increase the literacy rate of society."},
   {n:2,t:"Environmental Protection",c:"Environment",d:"To work hard to prevent environmental pollution."},
   {n:3,t:"Traffic Rules",c:"Education",d:"To create awareness about traffic rules among the public."},
@@ -34,4 +35,6 @@ export const programs=[
   {n:30,t:"Investigations",c:"Protection",d:"To conduct investigations into human rights violations and submit reports to the State Human Rights Commission."},
   {n:31,t:"Legal Functions",c:"Advocacy",d:"To perform all other lawful functions necessary to achieve the above objectives."},
 ];
-programs.forEach(p=>{p.slug=p.t.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');p.img='/images/programs/'+p.slug+'.jpg'});
+defaults.forEach(p=>{p.slug=p.t.toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');p.img='/images/programs/'+p.slug+'.jpg'});
+
+export const programs=cmsState.programs?programCatalog:defaults;

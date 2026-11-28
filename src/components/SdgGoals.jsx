@@ -1,6 +1,16 @@
+import {managed} from '../lib/managedContent';
 import {useState} from 'react';
 import {Card} from './UI';
 import {sdgs} from '../data/sdgs';
+const editableCopy=managed("copy.SdgGoals","Sdg Goals — headings and text","Shared website text",{
+ "text-we-support-the-sustainable-development-goals": "We Support the Sustainable Development Goals",
+ "text-ihrc-usa-works-in-support-of-the-united-nations-sustainable-devel": "IHRC-USA works in support of the United Nations Sustainable Development Goals. Hover over (or tap) the goals to open them up and read each one.",
+ "text-sustainable": "Sustainable",
+ "text-development": "Development",
+ "text-goals": "Goals",
+ "text-move-your-mouse-over-a-goal-to-see-what-it-stands-for": "Move your mouse over a goal to see what it stands for."
+});
+
 
 const font={fontFamily:"'Arial Narrow','Roboto Condensed','Helvetica Neue',Arial,sans-serif",fontStretch:'condensed'};
 
@@ -8,8 +18,8 @@ export default function SdgGoals(){
 const [active,setActive]=useState(null);
 const g=active?sdgs.find(s=>s.n===active):null;
 return <Card>
-<h2 className="font-serif text-xl font-bold text-navy">We Support the Sustainable Development Goals</h2>
-<p className="mt-2 text-base text-slate-700 sm:text-lg">IHRC-USA works in support of the United Nations Sustainable Development Goals. Hover over (or tap) the goals to open them up and read each one.</p>
+<h2 className="font-serif text-xl font-bold text-navy">{editableCopy["text-we-support-the-sustainable-development-goals"]}</h2>
+<p className="mt-2 text-base text-slate-700 sm:text-lg">{editableCopy["text-ihrc-usa-works-in-support-of-the-united-nations-sustainable-devel"]}</p>
 <div className="mx-auto mt-6 max-w-4xl" onMouseLeave={()=>setActive(null)}>
 <ul className="group/sdg grid grid-cols-6 gap-[1.6%] transition-all duration-300 ease-out hover:gap-3 focus-within:gap-3 sm:hover:gap-5">
 {sdgs.map(s=><li key={s.n} className="relative">
@@ -22,10 +32,10 @@ style={{background:s.color,containerType:'inline-size',...(active===s.n?{boxShad
 </button></li>)}
 <li aria-hidden="true" className="relative">
 <div className="grid aspect-square w-full place-items-center rounded-[3%] bg-slate-100 p-[8%] text-center font-bold uppercase leading-none text-[#009edb] transition-all duration-300 group-hover/sdg:rounded-lg" style={{...font,containerType:'inline-size'}}>
-<span style={{fontSize:'15cqw',lineHeight:1.05}}>Sustainable<br/>Development<br/><span style={{fontSize:'22cqw'}}>Goals</span></span></div></li>
+<span style={{fontSize:'15cqw',lineHeight:1.05}}>{editableCopy["text-sustainable"]}<br/>{editableCopy["text-development"]}<br/><span style={{fontSize:'22cqw'}}>{editableCopy["text-goals"]}</span></span></div></li>
 </ul>
 <div aria-live="polite" className="mt-6 min-h-[8rem] rounded-lg border-l-8 bg-slate-50 p-5 transition-colors sm:p-6" style={{borderLeftColor:g?g.color:'#cbd5e1'}}>
 {g?<><p className="text-lg font-bold uppercase tracking-wide sm:text-xl" style={{color:g.color}}>Goal {g.n} · {g.title}</p><p className="mt-2 text-lg leading-relaxed text-slate-800 sm:text-2xl">{g.text}</p></>
-:<p className="text-lg text-slate-500 sm:text-xl">Move your mouse over a goal to see what it stands for.</p>}
+:<p className="text-lg text-slate-500 sm:text-xl">{editableCopy["text-move-your-mouse-over-a-goal-to-see-what-it-stands-for"]}</p>}
 </div></div>
 </Card>}

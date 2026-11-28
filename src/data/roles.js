@@ -1,5 +1,6 @@
+import {managed} from '../lib/managedContent';
 // Source: IHRC-USA Complete Job Description & Responsibilities Handbook (v1.0, 16 November 2026) and Comprehensive Job Description Manual.
-export const rolesIntro={
+export const rolesIntro=managed("roles.rolesIntro","Roles introduction and rules",'Website content',{
  "text": "This handbook defines internal IHRC–USA roles and must be read with the Articles of Association, applicable laws, valid management resolutions and each appointment letter.",
  "notice": "IMPORTANT: “Ambassador” and “Officer” are internal organisational titles only. They do not confer diplomatic or governmental status, UN or EU recognition, police or investigative powers, judicial authority or a licence to practise law. No appointee may sign contracts, make financial commitments, issue official statements or represent the organisation beyond a specific written delegation.",
  "rules": [
@@ -8,8 +9,8 @@ export const rolesIntro={
   "No appointee has powers of arrest, search, compulsory questioning, seizure, punishment, legal advice or government direction.",
   "Use the organisation’s name, logo and ID only for authorised work; maintain impartiality, confidentiality, safeguarding and financial integrity."
  ]
-};
-export const rolesStructure=[
+});
+export const rolesStructure=managed("roles.rolesStructure","Organisational positions",'Website content',[
  [
   "Governance & Leadership(P5)",
   [
@@ -84,8 +85,8 @@ export const rolesStructure=[
    "Community Partners"
   ]
  ]
-];
-export const roles=[
+]);
+export const roles=managed("roles.roles","Position descriptions",'Website content',[
  {
   "name": "Ambassador",
   "purpose": "Represents IHRC–USA’s mission and approved programmes to communities and institutions within the appointment’s scope.",
@@ -317,8 +318,8 @@ export const roles=[
    "The appointment term is stated in the appointment letter. Following a fair process, appointment may be suspended or ended for misconduct or policy breach. Return organisational property and access credentials when the appointment ends."
   ]
  }
-];
-export const codeOfConduct=[
+]);
+export const codeOfConduct=managed("roles.codeOfConduct","Code of conduct",'Website content',[
  {
   "t": "Human dignity and equality",
   "d": "Treat everyone respectfully; discrimination is prohibited."
@@ -379,4 +380,4 @@ export const codeOfConduct=[
   "t": "Accountability",
   "d": "Promptly report incidents, data breaches and safety risks and cooperate with authorised reviews."
  }
-];
+]);

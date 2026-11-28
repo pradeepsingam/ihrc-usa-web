@@ -16,7 +16,9 @@ use App\Models\Project;
 use App\Models\Publication;
 use App\Models\Setting;
 use App\Models\Supporter;
+use App\Models\WebsiteContent;
 use App\Services\FormSpec;
+use App\Support\SiteStructure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
@@ -57,6 +59,13 @@ class ContentController extends Controller
         return [
             'siteInfo' => $siteInfo,
             'paymentUrl' => (string) ($settings['paymentUrl'] ?? ''),
+            'pubCategories' => array_values(SiteStructure::publicationCategories()),
+            'websiteContent' => WebsiteContent::orderBy('key')->get()->mapWithKeys(fn (WebsiteContent $entry) => [$entry->key => $entry->content['value'] ?? null]),
+            'programs' => ProgramDetail::where('is_published', true)->orderBy('sort')->orderBy('number')->orderBy('id')->get()->map(fn (ProgramDetail $program) => [
+                'slug' => $program->slug, 'n' => $program->number, 't' => $program->title,
+                'c' => $program->category, 'd' => $program->summary,
+                'img' => $program->image ? $this->url($program->image) : $program->image_url,
+            ])->values(),
 
             // Unpublished pages are sent as {published:false} so the website hides its built-in copy too.
             'pages' => Page::orderBy('menu_sort')->get()->mapWithKeys(fn (Page $p) => [$p->slug => $this->item($p)]),
@@ -103,8 +112,8 @@ class ContentController extends Controller
                     'responsibilities' => $m->responsibilities, 'memberId' => $m->member_id, 'country' => $m->country,
                 ])])),
 
-            'programDetails' => ProgramDetail::all()->mapWithKeys(fn (ProgramDetail $p) => [$p->slug => $clean([
-                'description' => $p->description, 'location' => $p->location, 'date' => $date($p->date),
+            'programDetails' => ProgramDetail::where('is_published', true)->get()->mapWithKeys(fn (ProgramDetail $p) => [$p->slug => $clean([
+                'description' => $this->rich($p->description), 'location' => $p->location, 'date' => $date($p->date),
                 'activities' => array_values(array_filter($p->activities ?? [])), 'images' => $this->urls($p->images),
             ])]),
 

@@ -19,13 +19,16 @@ export const events=[];
 //   projects { id, title, date, status:'Ongoing'|'Completed'|'Planned', location, summary, body, image, images, file, program }
 export const projects=[];
 export const publications=[];
-export const partners=[];
+export const partners=[{name:'UN & US Human Rights Organization',logo:'/images/partners/un-us-human-rights.jpg'},{name:'Peace One Day Mali',logo:'/images/partners/peace-one-day-mali.jpg'}];
 export const supporters={donors:[],sponsors:[]};
 export const awardCategories=[];
 export const leaders={};
 // People added in the admin (Members → Shown on website), per Members page: {leadership:[{id,name,role,country,photo,bio,…}]}
 export const people={};
 export const programDetails={};
+export const programCatalog=[];
+export const websiteContent={};
+export const cmsState={programs:false};
 // Forms made or edited in the admin Form Builder, keyed by web address (membership, volunteer, research, …)
 export const forms={};
 

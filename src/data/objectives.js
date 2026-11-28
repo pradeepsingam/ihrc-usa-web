@@ -1,5 +1,6 @@
+import {managed} from '../lib/managedContent';
 
-export const objectiveGroups = [
+export const objectiveGroups = managed("objectives.objectiveGroups","Objective Groups",'Website content',[
   {
     id: "education",
     title: "Education & Awareness",
@@ -85,4 +86,4 @@ export const objectiveGroups = [
       "Access to information, space, and services is essential to the realization of human rights. Our work will be tailored to different abilities, cultures, languages, educational levels, learning styles, and perspectives.",
     ],
   },
-];
+]);

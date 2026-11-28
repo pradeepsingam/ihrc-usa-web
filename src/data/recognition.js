@@ -1,7 +1,8 @@
+import {managed} from '../lib/managedContent';
 const I='/images/recognition/';
-export const recognitionText='The International Human Rights Council–USA (IHRC-USA) is an independent, civil society organization (CSO). It is registered on the United Nations Partner Portal, and its organizational profile is featured on the Office of the United Nations High Commissioner for Human Rights (OHCHR) website in connection with the Universal Periodic Review (UPR). Furthermore, IHRC-USA has completed the procedures for registration with the United Nations NGO Branch and is also registered on the European Commission’s EU Funding & Tenders Portal.';
+export const recognitionText=managed("recognition.recognitionText","Recognition Text",'Website content','The International Human Rights Council–USA (IHRC-USA) is an independent, civil society organization (CSO). It is registered on the United Nations Partner Portal, and its organizational profile is featured on the Office of the United Nations High Commissioner for Human Rights (OHCHR) website in connection with the Universal Periodic Review (UPR). Furthermore, IHRC-USA has completed the procedures for registration with the United Nations NGO Branch and is also registered on the European Commission’s EU Funding & Tenders Portal.');
 
-export const recognitionMarquee=[
+export const recognitionMarquee=managed("recognition.recognitionMarquee","Recognition Marquee",'Website content',[
 ['un-partner-portal','UN Partner Portal'],
 ['un-partner-portal-banner','UN Partner Portal – joint platform of UN agencies'],
 ['ohchr-logo','UN Human Rights (OHCHR)'],
@@ -16,9 +17,9 @@ export const recognitionMarquee=[
 ['unops','UNOPS'],
 ['wfp','World Food Programme (WFP)'],
 ['who','World Health Organization'],
-['sdg','Sustainable Development Goals']].map(([f,n])=>({src:I+f+'.png',alt:n}));
+['sdg','Sustainable Development Goals']].map(([f,n])=>({src:I+f+'.png',alt:n})));
 
-export const recognitionSections=[
+export const recognitionSections=managed("recognition.recognitionSections","Recognition Sections",'Website content',[
 {t:'UN Partner Portal',d:'IHRC-USA is registered on the United Nations Partner Portal. The Portal is a platform for Civil Society Organizations (CSOs) to engage with the UN on partnership opportunities. It was developed jointly by IOM, the UN Secretariat, UN Women, FAO, UNFPA, UNHCR, UNICEF, UNOPS, WFP and WHO to make collaboration between the UN and its partners harmonized, efficient and easy.',
  images:[{src:I+'un-partner-portal.png',c:'UN Partner Portal'},{src:I+'un-partner-portal-banner.png',c:'UN Partner Portal – a joint platform of UN agencies for civil society organizations',wide:true}],
  sub:{h:'UN agencies behind the Partner Portal',items:[
@@ -37,4 +38,4 @@ export const recognitionSections=[
 {t:'European Commission – EU Funding & Tenders Portal',d:'IHRC-USA is registered on the European Commission’s EU Funding & Tenders Portal, the European Commission’s online gateway for EU funding opportunities and tenders.',
  images:[{src:I+'european-commission.png',c:'European Commission'}]},
 {t:'We Support the Sustainable Development Goals',d:'IHRC-USA’s work supports the 17 United Nations Sustainable Development Goals, from ending poverty and hunger to peace, justice and strong institutions.',
- images:[{src:I+'sdg.png',c:'The 17 Sustainable Development Goals'}]}];
+ images:[{src:I+'sdg.png',c:'The 17 Sustainable Development Goals'}]}]);

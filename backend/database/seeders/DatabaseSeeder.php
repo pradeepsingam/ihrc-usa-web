@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Setting;
 use App\Models\User;
 use App\Services\FormSpec;
+use App\Support\ContentCatalog;
 use App\Support\Mailboxes;
 use App\Support\SiteStructure;
 use Illuminate\Database\Seeder;
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        ContentCatalog::sync();
         // Site settings: keep existing values, only add missing keys.
         $current = SiteStructure::all()['siteInfo'] ?? [];
         $sort = 0;

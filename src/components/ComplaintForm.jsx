@@ -1,3 +1,4 @@
+import {managed} from '../lib/managedContent';
 import {useState,useRef} from 'react';
 import {AlertCircle,CheckCircle2,Copy,Download,Mail,ChevronLeft,ChevronRight,Pencil,ShieldAlert,Send} from 'lucide-react';
 import {siteInfo} from '../content';
@@ -9,7 +10,7 @@ import {Reference} from './UI';
 export const ORG='IHRC-USA';
 
 // ---------- Text shown on the Report a Concern page (from the official complaint form document) ----------
-export const complaintInfo={
+export const complaintInfo=managed("ComplaintForm.complaintInfo","Complaint Info",'Website content',{
 intro:[
 ORG+' provides this complaint submission form as a channel for individuals who wish to report concerns, alleged misconduct, unfair treatment, harassment, discrimination, abuse, exploitation, or other matters affecting their rights, dignity, safety, or well-being.',
 'This form is intended for individuals who have experienced harm or believe they have been affected by the actions, conduct, decisions, or omissions of another person, organization, institution, company, or other entity.',
@@ -39,7 +40,7 @@ declaration:[
 'I understand that '+ORG+' is not a court, police authority, or government enforcement agency.',
 'I understand that further information may be requested where appropriate.',
 'I understand that confidentiality will be handled in accordance with applicable privacy requirements and organizational policies, but absolute confidentiality cannot be guaranteed in every circumstance.',
-'I confirm that I am authorized to provide the information submitted, where I am acting on behalf of another person.']};
+'I confirm that I am authorized to provide the information submitted, where I am acting on behalf of another person.']});
 
 // ---------- Form definition: Sections A–I, questions numbered as in the document ----------
 const YN=['Yes','No'],YNS=['Yes','No','Not sure'];

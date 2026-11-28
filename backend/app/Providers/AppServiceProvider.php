@@ -18,12 +18,12 @@ class AppServiceProvider extends ServiceProvider
     public const POLICIES = [
         Policies\ContentPolicy::class => [Models\News::class, Models\Event::class, Models\Project::class, Models\Publication::class,
             Models\Supporter::class, Models\Partner::class, Models\Branch::class, Models\AwardCategory::class,
-            Models\ProgramDetail::class, Models\Page::class],
+            Models\ProgramDetail::class, Models\Page::class, Models\WebsiteContent::class],
         Policies\MemberPolicy::class => [Models\Member::class],
         Policies\SubmissionPolicy::class => [Models\FormSubmission::class],
         Policies\SubscriberPolicy::class => [Models\Subscriber::class, Models\Newsletter::class],
         Policies\AdminOnlyPolicy::class => [Models\Setting::class, Models\User::class, Models\FormDefinition::class],
-        Policies\ActivityLogPolicy::class => [Models\ActivityLog::class],
+        Policies\ActivityLogPolicy::class => [ActivityLog::class],
     ];
 
     /** Changes to these models are not written to the activity log. */

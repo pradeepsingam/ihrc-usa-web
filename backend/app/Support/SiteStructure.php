@@ -2,6 +2,9 @@
 
 namespace App\Support;
 
+use App\Models\ProgramDetail;
+use App\Models\WebsiteContent;
+
 /**
  * The fixed structure of the public website (pages, member groups, programs, categories).
  * Exported from the React app by `npm run export-structure` into database/data/site-structure.json.
@@ -29,7 +32,7 @@ class SiteStructure
     /** Seats of a group: [1 => '1 — President', 2 => '2 — Vice President', ...] */
     public static function seatOptions(?string $group): array
     {
-        $roles = $group ? (static::all()["groups"][$group]["roles"] ?? []) : [];
+        $roles = $group ? (static::all()['groups'][$group]['roles'] ?? []) : [];
         $out = [];
         foreach ($roles as $i => $role) {
             $out[$i + 1] = ($i + 1).' — '.$role;
@@ -52,16 +55,18 @@ class SiteStructure
     /** ['education-for-children' => '1. Education for Children', ...] */
     public static function programOptions(): array
     {
-        return collect(static::all()['programs'] ?? [])->mapWithKeys(fn ($p) => [$p['slug'] => $p['title']])->all();
+        return ProgramDetail::orderBy('sort')->orderBy('number')->get()->mapWithKeys(fn (ProgramDetail $program) => [$program->slug => ($program->number ? $program->number.'. ' : '').$program->title])->all();
     }
 
     public static function programCategories(): array
     {
-        return collect(static::all()['programs'] ?? [])->pluck('category')->unique()->mapWithKeys(fn ($c) => [$c => $c])->all();
+        return ProgramDetail::whereNotNull('category')->distinct()->orderBy('category')->pluck('category')->mapWithKeys(fn (string $category) => [$category => $category])->all();
     }
 
     public static function publicationCategories(): array
     {
-        return collect(static::all()['pubCategories'] ?? [])->mapWithKeys(fn ($c) => [$c => $c])->all();
+        $entry = WebsiteContent::where('key', 'content.pubCategories')->first();
+
+        return collect($entry?->content['value'] ?? static::all()['pubCategories'] ?? [])->mapWithKeys(fn ($c) => [$c => $c])->all();
     }
 }

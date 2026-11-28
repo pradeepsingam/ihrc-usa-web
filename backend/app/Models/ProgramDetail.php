@@ -8,5 +8,5 @@ class ProgramDetail extends Model
 {
     protected $guarded = [];
 
-    protected $casts = ['date' => 'date', 'activities' => 'array', 'images' => 'array'];
+    protected $casts = ['date' => 'date', 'activities' => 'array', 'images' => 'array', 'is_published' => 'boolean', 'number' => 'integer', 'sort' => 'integer'];
 }

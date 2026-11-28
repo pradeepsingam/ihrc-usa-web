@@ -45,7 +45,7 @@ class AdminContentTest extends TestCase
 
     public function test_every_admin_screen_opens(): void
     {
-        foreach (['', 'news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'pages', 'form-builder', 'subscribers', 'newsletters', 'settings', 'form-submissions', 'activity-log', 'admin-users', 'profile'] as $s) {
+        foreach (['', 'news', 'events', 'projects', 'publications', 'members', 'branches', 'partners', 'supporters', 'award-categories', 'program-details', 'website-contents', 'pages', 'form-builder', 'subscribers', 'newsletters', 'settings', 'form-submissions', 'activity-log', 'admin-users', 'profile'] as $s) {
             $this->get("/admin/$s")->assertOk();
         }
         foreach (Page::all() as $p) {
@@ -222,8 +222,9 @@ class AdminContentTest extends TestCase
 
         $d = $this->api();
         $this->assertSame('Northern Branch', $d['branches'][0]['name']);
-        $this->assertSame('Partner Org', $d['partners'][0]['name']);
-        $this->assertStringStartsWith('http', $d['partners'][0]['logo']);
+        $partner = collect($d['partners'])->firstWhere('name', 'Partner Org');
+        $this->assertNotNull($partner);
+        $this->assertStringStartsWith('http', $partner['logo']);
         $this->assertSame('Big Sponsor', $d['supporters']['sponsors'][0]['name']);
         $this->assertSame('Kind Donor', $d['supporters']['donors'][0]['name']);
         $this->assertSame('Peace Award', $d['awardCategories'][0]['name']);
@@ -248,9 +249,10 @@ class AdminContentTest extends TestCase
             ->fillForm(['title' => 'About IHRC', 'subtitle' => 'New sub', 'sections' => [['heading' => 'H1', 'body' => 'B1'], ['heading' => 'H2', 'body' => 'B2']]])
             ->call('save')->assertHasNoFormErrors();
 
-        $this->create(Resources\ProgramDetailResource\Pages\CreateProgramDetail::class, [
-            'slug' => 'environmental-protection', 'description' => 'Long text', 'activities' => ['Tree planting', 'Cleanups'],
-        ]);
+        $program = Models\ProgramDetail::where('slug', 'environmental-protection')->firstOrFail();
+        Livewire::test(Resources\ProgramDetailResource\Pages\EditProgramDetail::class, ['record' => $program->getRouteKey()])
+            ->fillForm(['description' => 'Long text', 'activities' => ['Tree planting', 'Cleanups']])
+            ->call('save')->assertHasNoFormErrors();
 
         Models\Setting::where('key', 'email')->first()->update(['value' => 'office@ihrc.example']);
         Models\Setting::where('key', 'social.youtube')->first()->update(['value' => 'https://youtube.com/@ihrc']);

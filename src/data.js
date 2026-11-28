@@ -1,9 +1,11 @@
+import {programs as programItems} from './data/programs';
+import {managed} from './lib/managedContent';
 import {Home,Info,Users,Globe2,Newspaper,Heart,BadgeCheck,Mail,Scale,Eye,Handshake,Network} from 'lucide-react';
 import {leaders,people as cmsPeople} from './content';
 import {remotePages} from './lib/loadContent';
 const A=[['Who We Are','/who-we-are'],['Chairman’s Message','/chairman-message'],['Vision & Mission','/vision-mission'],['Objectives & Core Values','/objectives'],['What We Do','/what-we-do'],['Roles & Responsibilities','/roles-responsibilities'],['Our Partners','/our-partners'],['Our Recognition','/recognition'],['Countries','/countries']];
 const L=[['Leadership(P5)','/leadership'],['General Assembly','/general-assembly'],['Board of Directors','/board-of-directors'],['President','/president-chairperson'],['Secretary-General','/secretary-general-chief-executive'],['Members','/deputy-secretary-general'],['International Executive Council','/international-executive-council'],['Advisory Council','/advisory-council'],['Representatives','/standing-committees'],['High Commissioner','/high-commissioner'],['Commissioners','/commissioners'],['Directors','/directors'],['Coordinators','/coordinators'],['Human Rights Officers','/human-rights-officers'],['Ambassadors','/ambassadors'],['Community Partners','/community-partners'],['Honorary Members','/honorary-members'],['Volunteers','/volunteers']];
-const P=[['All Programs','/programs'],['Protection','/programs?cat=Protection'],['Education','/programs?cat=Education'],['Advocacy','/programs?cat=Advocacy'],['Humanitarian','/programs?cat=Humanitarian'],['Inclusion','/programs?cat=Inclusion'],['Environment','/programs?cat=Environment']];
+const P=[['All Programs','/programs'],...[...new Set(programItems.map(p=>p.c).filter(Boolean))].map(category=>[category,'/programs?cat='+encodeURIComponent(category)])];
 export const nav=[
 {l:'Home',to:'/',i:Home},
 {l:'About',i:Info,c:[...A,['Human Rights','/human-rights']]},
@@ -23,10 +25,10 @@ export const topNav=[
 {l:'Get Involved',c:[['Volunteer','/volunteer'],['Global Network','/global-network'],['Call for Researchers','/research'],['Membership','/membership'],['Membership Benefits','/membership-benefits'],['Awards & Recognition','/awards'],['CSO Partnership','/partnership-application'],['Accreditation','/accreditation']]},
 {l:'Contact Us',to:'/contact'}];
 export const legal=[['Privacy Policy','/privacy-policy'],['Terms of Use','/terms'],['Official Disclaimer','/disclaimer'],['Refund Policy','/refund']];
-export const mvo=[
+export const mvo=managed("data.mvo","Vision, mission and objectives cards",'Website content',[
 {t:'Our Vision',d:'A world where every person enjoys dignity, equality, freedom, justice and peace.',i:Eye,to:'/vision-mission'},
 {t:'Our Mission',d:'To promote human-rights awareness, humanitarian values, peace, equality and community empowerment.',i:Scale,to:'/vision-mission'},
-{t:'Our Objectives',d:'To build a fair, peaceful and inclusive society.',i:Handshake,to:'/objectives'}];
+{t:'Our Objectives',d:'To build a fair, peaceful and inclusive society.',i:Handshake,to:'/objectives'}]);
 export {programs} from './data/programs';
 export const ambassadorCats=['Goodwill Ambassador','Peace Ambassador','Youth Ambassador','Women Ambassador','Ambassador – International Communications','Ambassador At Large'];
 const deptCats=['International','Regional','National','Human Rights & Legal Affairs','Peace & Reconciliation','Women & Child Protection','Youth Empowerment','Social Justice & Equality','Education & Research','Environment & Sustainable Development','International Relations & Cooperation','Media & Communications','Finance & Administration','Membership & Volunteer Affairs','Monitoring, Evaluation & Reporting'];
@@ -61,7 +63,7 @@ export const people=Object.fromEntries(Object.entries(groups).map(([k,g])=>{
 }));
 export const allPeople=Object.values(people).flat();
 export const members=[];
-export const benefits=[['Official Membership ID','A verifiable member number and digital certificate.'],['Training & Workshops','Priority access to human rights training.'],['Networking','Connect with human rights advocates worldwide.'],['Voice in the Assembly','Eligible to take part in General Assembly activities.'],['Community Projects','Join field projects and outreach campaigns.'],['Resources','Guides, reports and toolkits for members.']];
+export const benefits=managed("data.benefits","Membership benefit cards",'Website content',[['Official Membership ID','A verifiable member number and digital certificate.'],['Training & Workshops','Priority access to human rights training.'],['Networking','Connect with human rights advocates worldwide.'],['Voice in the Assembly','Eligible to take part in General Assembly activities.'],['Community Projects','Join field projects and outreach campaigns.'],['Resources','Guides, reports and toolkits for members.']]);
 const p=(t,s,b)=>({title:t,sub:s,b});
 export const texts={
 'who-we-are':p('Who We Are','An organization focused on human rights awareness, humanitarian values, peace, equality and community development.',[

@@ -1,9 +1,26 @@
+import {managed} from '../lib/managedContent';
 import {useState} from 'react';
 import {Mail,FileText,Paperclip,AlertCircle,CheckCircle2} from 'lucide-react';
 import {Page,Card,Accordion,Btn} from '../components/UI';
 import {submitForm} from '../lib/submitForm';
 import {Reference} from '../components/UI';
 import {partnershipMeta as meta,partnershipSections as sections,formattingRules,allQuestionItems} from '../data/partnershipForm';
+const editableCopy=managed("copy.PartnershipApplication","Partnership Application — headings and text","Page text",{
+ "page-title-cso-partnership": "CSO Partnership",
+ "page-introduction-apply-for-cso-status-with-the-department-of-social-affairs-and-pa": "Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).",
+ "text-your-application-has-been-submitted": "Your application has been submitted.",
+ "text-please-also-email-your-partnership-request-letter-logo-and-regist": "Please also email your partnership request letter, logo and registration copy to",
+ "text-back-to-partnerships": "Back to Partnerships",
+ "text-fill-in-the-form-online-below-your-answers-are-sent-to-the-ihrc-e": "Fill in the form online below. Your answers are sent to the IHRC email address.",
+ "text-general-formatting-rules": "General Formatting Rules",
+ "text-please-correct-the-highlighted-fields-and-try-again": "Please correct the highlighted fields and try again.",
+ "text-files-cannot-be-uploaded-on-this-page": ". Files cannot be uploaded on this page.",
+ "text-f-general-formatting-rules": "F. General Formatting Rules",
+ "text-i-agree-to-the-13-general-formatting-rules-above": "I Agree to the 13 general formatting rules above.",
+ "text-when-you-press-the-button-your-application-is-sent-to": "When you press the button, your application is sent to",
+ "text-please-also-email-the-required-documents-letter-logo-registration": ". Please also email the required documents (letter, logo, registration copy) to the same address."
+});
+
 
 const rules={email:/^\S+@\S+\.\S+$/,tel:/^\+?[\d\s()-]{7,20}$/,url:/^(https?:\/\/)?[\w-]+(\.[\w-]+)+\S*$/i};
 const fmtDate=d=>{const x=new Date(d+'T00:00:00');return isNaN(x)?d:x.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})};
@@ -50,9 +67,9 @@ export default function PartnershipApplication(){
   const Label=({q,htmlFor})=><label htmlFor={htmlFor} className="block text-sm font-semibold text-navy">{q.n?<span className="mr-1">{q.n}.</span>:null}{q.label}{q.req&&<span className="text-red-600"> *</span>}</label>;
   const Err=({id})=>e[id]?<span role="alert" className="mt-1 block text-xs text-red-600">{e[id]}</span>:null;
 
-  return <Page title="CSO Partnership" sub="Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).">
+  return <Page title={editableCopy["page-title-cso-partnership"]} sub={editableCopy["page-introduction-apply-for-cso-status-with-the-department-of-social-affairs-and-pa"]}>
     <div className="space-y-6">
-      {done&&<div role="status" className="rounded-xl bg-green-50 p-5 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done==='api'?<>Your application has been submitted.<Reference/></>:'Your email app has opened.'}</div><p className="mt-2 text-sm">{done==='api'?'Thank you. ':done==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send. ':'Press Send in your email app to complete your application. '}Please also email your partnership request letter, logo and registration copy to <a className="font-semibold underline" href={'mailto:'+meta.email}>{meta.email}</a>.</p></div>}
+      {done&&<div role="status" className="rounded-xl bg-green-50 p-5 text-green-800"><div className="flex items-center gap-2 font-semibold"><CheckCircle2 size={20}/>{done==='api'?<>{editableCopy["text-your-application-has-been-submitted"]}<Reference/></>:'Your email app has opened.'}</div><p className="mt-2 text-sm">{done==='api'?'Thank you. ':done==='mailto-copy'?'Your answers were copied: paste them into the email body (Ctrl+V) and press Send. ':'Press Send in your email app to complete your application. '}{editableCopy["text-please-also-email-your-partnership-request-letter-logo-and-regist"]+" "}<a className="font-semibold underline" href={'mailto:'+meta.email}>{meta.email}</a>.</p></div>}
 
       <Card>
         <p className="font-serif text-lg font-bold text-navy">{meta.org}</p>
@@ -60,17 +77,17 @@ export default function PartnershipApplication(){
         <p className="mt-3 text-sm text-slate-700">{meta.subtitle}.</p>
         <div className="mt-4 flex flex-wrap gap-3">
           <a href={'mailto:'+meta.email} className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border-2 border-navy px-6 py-2 text-sm font-semibold text-navy transition hover:bg-navy hover:text-white"><Mail size={16}/>{meta.email}</a>
-          <Btn to="/partnerships" alt>Back to Partnerships</Btn>
+          <Btn to="/partnerships" alt>{editableCopy["text-back-to-partnerships"]}</Btn>
         </div>
-        <p className="mt-3 text-xs text-slate-500">Fill in the form online below. Your answers are sent to the IHRC email address.</p>
+        <p className="mt-3 text-xs text-slate-500">{editableCopy["text-fill-in-the-form-online-below-your-answers-are-sent-to-the-ihrc-e"]}</p>
       </Card>
 
-      <section><h2 className="mb-3 border-l-4 border-brand pl-3 text-xl font-bold text-navy">General Formatting Rules</h2>
+      <section><h2 className="mb-3 border-l-4 border-brand pl-3 text-xl font-bold text-navy">{editableCopy["text-general-formatting-rules"]}</h2>
         <Accordion items={[['Read these 13 rules before you fill in the form',formattingRules.map((r,i)=>(i+1)+'. '+r).join('\n\n')]]}/></section>
 
       <form noValidate onSubmit={submit} className="space-y-6">
         {sendErr&&<div role="alert" className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700"><AlertCircle size={18}/>{sendErr}</div>}
-        {Object.keys(e).length>0&&<div role="alert" className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700"><AlertCircle size={18}/>Please correct the highlighted fields and try again.</div>}
+        {Object.keys(e).length>0&&<div role="alert" className="flex items-center gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-700"><AlertCircle size={18}/>{editableCopy["text-please-correct-the-highlighted-fields-and-try-again"]}</div>}
         {sections.map(s=><Card key={s.title}>
           <h2 className="mb-4 font-serif text-xl font-bold text-navy">{s.title}</h2>
           <div className="space-y-5">
@@ -79,16 +96,16 @@ export default function PartnershipApplication(){
                 <div className="mt-2 grid gap-3 sm:grid-cols-2">{q.parts.map(p=><div key={p.id}><label htmlFor={'pa-'+p.id} className="block text-sm font-medium text-slate-700">{p.label}{p.req&&<span className="text-red-600"> *</span>}</label><Input f={p} v={v} e={e} set={set}/><Err id={p.id}/></div>)}</div></fieldset>
               :q.fileOnly?<div><span className="block text-sm font-semibold text-navy">{q.n}. {q.label}{q.req&&<span className="text-red-600"> *</span>}</span>{q.hint&&<span className="block text-xs text-slate-500">{q.hint}</span>}</div>
               :<div><Label q={q} htmlFor={'pa-'+q.id}/>{q.hint&&<span className="block text-xs text-slate-500">{q.hint}</span>}<Input f={q} v={v} e={e} set={set}/><Err id={q.id}/></div>}
-              {q.attach&&<p className="mt-2 flex items-start gap-2 rounded-lg bg-blue-50 px-3 py-2 text-xs text-slate-700"><Paperclip size={14} className="mt-0.5 shrink-0 text-brand"/><span>{q.fileOnly?'Attach to your email: ':'Attach to your email (if available): '}<b>{q.attach}</b>. Files cannot be uploaded on this page.</span></p>}
+              {q.attach&&<p className="mt-2 flex items-start gap-2 rounded-lg bg-blue-50 px-3 py-2 text-xs text-slate-700"><Paperclip size={14} className="mt-0.5 shrink-0 text-brand"/><span>{q.fileOnly?'Attach to your email: ':'Attach to your email (if available): '}<b>{q.attach}</b>{editableCopy["text-files-cannot-be-uploaded-on-this-page"]}</span></p>}
             </div>)}
           </div>
         </Card>)}
 
         <Card>
-          <h2 className="mb-2 font-serif text-xl font-bold text-navy">F. General Formatting Rules</h2>
-          <label htmlFor="pa-agree" className="flex items-start gap-3 text-sm text-slate-700"><input id="pa-agree" type="checkbox" checked={agree} onChange={x=>{setAgree(x.target.checked);if(x.target.checked)setE(p=>{const n={...p};delete n.agree;return n})}} className="mt-1 h-4 w-4"/><span>I Agree to the 13 general formatting rules above. <span className="text-red-600">*</span></span></label>
+          <h2 className="mb-2 font-serif text-xl font-bold text-navy">{editableCopy["text-f-general-formatting-rules"]}</h2>
+          <label htmlFor="pa-agree" className="flex items-start gap-3 text-sm text-slate-700"><input id="pa-agree" type="checkbox" checked={agree} onChange={x=>{setAgree(x.target.checked);if(x.target.checked)setE(p=>{const n={...p};delete n.agree;return n})}} className="mt-1 h-4 w-4"/><span>{editableCopy["text-i-agree-to-the-13-general-formatting-rules-above"]+" "}<span className="text-red-600">*</span></span></label>
           <Err id="agree"/>
-          <div className="mt-5 rounded-lg bg-slate-50 p-3 text-xs text-slate-600"><FileText size={14} className="mr-1 inline"/>When you press the button, your application is sent to <b>{meta.email}</b>. Please also email the required documents (letter, logo, registration copy) to the same address.</div>
+          <div className="mt-5 rounded-lg bg-slate-50 p-3 text-xs text-slate-600"><FileText size={14} className="mr-1 inline"/>{editableCopy["text-when-you-press-the-button-your-application-is-sent-to"]+" "}<b>{meta.email}</b>{editableCopy["text-please-also-email-the-required-documents-letter-logo-registration"]}</div>
           <button disabled={busy} className="mt-4 min-h-[48px] w-full rounded-full bg-navy px-8 font-semibold text-white hover:bg-brand disabled:opacity-60 sm:w-auto">{busy?'Sending…':'Submit Application'}</button>
         </Card>
       </form>

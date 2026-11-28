@@ -1,4 +1,10 @@
+import {managed} from '../lib/managedContent';
 import {Wrap,Heading} from './UI';
+const editableCopy=managed("copy.CooperationMarquee","Cooperation Marquee — headings and text","Shared website text",{
+ "text-in-support-of-multilateral-cooperation": "In Support of Multilateral Cooperation",
+ "text-stronger-together-for-a-peaceful-inclusive-sustainable-world": "Stronger Together for a Peaceful, Inclusive & Sustainable World"
+});
+
 
 const orgs=[
 ['European Commission','european-commission','Promotes European cooperation and partnership'],
@@ -23,8 +29,8 @@ const Item=({o,hide})=><li aria-hidden={hide?'true':undefined} className="mr-4 f
 
 export default function CooperationMarquee(){
 return <Wrap>
-<Heading>In Support of Multilateral Cooperation</Heading>
-<p className="-mt-3 mb-5 font-serif italic text-slate-600">Stronger Together for a Peaceful, Inclusive &amp; Sustainable World</p>
+<Heading>{editableCopy["text-in-support-of-multilateral-cooperation"]}</Heading>
+<p className="-mt-3 mb-5 font-serif italic text-slate-600">{editableCopy["text-stronger-together-for-a-peaceful-inclusive-sustainable-world"]}</p>
 <div className="marquee overflow-hidden" aria-label="Organizations we support">
 <ul className="marquee-track">
 {orgs.map(o=><Item key={o[1]} o={o}/>)}

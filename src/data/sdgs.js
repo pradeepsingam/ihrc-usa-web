@@ -1,4 +1,5 @@
-export const sdgs = [
+import {managed} from '../lib/managedContent';
+export const sdgs = managed("sdgs.sdgs","Sdgs",'Website content',[
   { n: 1, title: "No Poverty", color: "#E5243B", text: "End poverty in all its forms everywhere" },
   { n: 2, title: "Zero Hunger", color: "#DDA63A", text: "End hunger, achieve food security and improved nutrition and promote sustainable agriculture" },
   { n: 3, title: "Good Health and Well-being", color: "#4C9F38", text: "Ensure healthy lives and promote well-being for all at all ages" },
@@ -16,4 +17,4 @@ export const sdgs = [
   { n: 15, title: "Life on Land", color: "#56C02B", text: "Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests, combat desertification, and halt and reverse land degradation and halt biodiversity loss" },
   { n: 16, title: "Peace, Justice and Strong Institutions", color: "#00689D", text: "Promote peaceful and inclusive societies for sustainable development, provide access to justice for all and build effective, accountable and inclusive institutions at all levels" },
   { n: 17, title: "Partnerships for the Goals", color: "#19486A", text: "Strengthen the means of implementation and revitalize the Global Partnership for Sustainable Development" },
-];
+]);

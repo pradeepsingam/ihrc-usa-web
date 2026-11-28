@@ -1,3 +1,4 @@
+import {managed} from '../lib/managedContent';
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
@@ -12,6 +13,22 @@ import ErrorBoundary from './ErrorBoundary';
 import Cookie from './Cookie';
 import Seo from '../seo/Seo';
 import JoinLink from './JoinLink';
+const editableCopy=managed("copy.Layout","Layout — headings and text","Shared website text",{
+ "text-equal-justice-for-everyone-everywhere": "“Equal Justice for Everyone & Everywhere”",
+ "text-together-for-human-dignity": "Together for Human Dignity",
+ "text-promoting-human-rights-awareness-humanitarian-values-peace-equali": "Promoting human rights awareness, humanitarian values, peace, equality and community development. Equal Justice for Everyone & Everywhere.",
+ "text-quick-links": "Quick Links",
+ "text-get-involved": "Get Involved",
+ "text-contact": "Contact",
+ "text-office": "Office:",
+ "text-whatsapp": "WhatsApp",
+ "text-whatsapp-channel": "WhatsApp Channel",
+ "text-2026-ihrc-usa-all-rights-reserved": "© 2026 IHRC-USA. All rights reserved.",
+ "text-cookie-settings": "Cookie Settings",
+ "text-because-what-we-do-we-do-for-generations": "\"Because what we do, we do for generations\"",
+ "text-preview-these-changes-are-not-saved-or-published-yet": "Preview – these changes are not saved or published yet."
+});
+
 
 export const Logo = () => (
   <Link to="/" className="flex items-center gap-3 sm:gap-4" aria-label="IHRC-USA">
@@ -19,7 +36,7 @@ export const Logo = () => (
     <span className="hidden h-9 w-px bg-slate-300 sm:block" />
     <span className="font-serif leading-tight">
       <b className="block text-xl text-navy sm:text-2xl">IHRC-USA</b>
-      <i className="hidden text-xs sm:block">“Equal Justice for Everyone & Everywhere”</i>
+      <i className="hidden text-xs sm:block">{editableCopy["text-equal-justice-for-everyone-everywhere"]}</i>
     </span>
   </Link>
 );
@@ -193,7 +210,7 @@ const Sidebar = () => {
       {!collapsed && (
         <div className="mt-4 overflow-hidden rounded-xl bg-navy text-center text-white shadow">
           <img src="/images/sidebar-globe.jpg" alt="" className="w-full" />
-          <p className="px-4 pt-3 font-serif text-lg font-bold leading-snug">Together for Human Dignity</p>
+          <p className="px-4 pt-3 font-serif text-lg font-bold leading-snug">{editableCopy["text-together-for-human-dignity"]}</p>
           <JoinLink className="mx-auto my-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-navy">
             Join Now →
           </JoinLink>
@@ -233,35 +250,33 @@ const Footer = () => (
           <img src="/logo.jpeg" alt="IHRC-USA logo" width="56" height="56" className="h-14 w-14 rounded bg-white object-contain p-1" />
           <b className="font-serif text-xl text-white">IHRC-USA</b>
         </Link>
-        <p className="mt-3 text-sm">Promoting human rights awareness, humanitarian values, peace, equality and community development. Equal Justice for Everyone &amp; Everywhere.</p>
+        <p className="mt-3 text-sm">{editableCopy["text-promoting-human-rights-awareness-humanitarian-values-peace-equali"]}</p>
         <div className="mt-4 flex gap-2"><Social /></div>
       </div>
       <div>
-        <b className="text-white">Quick Links</b>
+        <b className="text-white">{editableCopy["text-quick-links"]}</b>
         <ul className="mt-2 space-y-1 text-sm">
           {quick.map(([l, t]) => <li key={t}><Link to={t} className="hover:text-white">{l}</Link></li>)}
         </ul>
       </div>
       <div>
-        <b className="text-white">Get Involved</b>
+        <b className="text-white">{editableCopy["text-get-involved"]}</b>
         <ul className="mt-2 space-y-1 text-sm">
           {involved.map(([l, t]) => <li key={t}><Link to={t} className="hover:text-white">{l}</Link></li>)}
         </ul>
       </div>
       <div className="space-y-2 text-sm">
-        <b className="text-white">Contact</b>
-        {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" style={{ color: '#34D399' }} /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">Office: {siteInfo.phone}</a></p>}
-        {siteInfo.whatsappLink && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp</a></p>}
-        {siteInfo.whatsappChannel && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp Channel</a></p>}
+        <b className="text-white">{editableCopy["text-contact"]}</b>
+        {siteInfo.phone && <p className="flex gap-2"><Phone size={16} className="mt-0.5 shrink-0" style={{ color: '#34D399' }} /><a href={'tel:' + siteInfo.phone.replace(/\s+/g, '')} className="hover:text-white">{editableCopy["text-office"]+" "}{siteInfo.phone}</a></p>}
+        {siteInfo.whatsappLink && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappLink} target="_blank" rel="noopener noreferrer" className="hover:text-white">{editableCopy["text-whatsapp"]}</a></p>}
+        {siteInfo.whatsappChannel && <p className="flex gap-2"><span className="mt-0.5 shrink-0" style={{ color: '#25D366' }}><WhatsAppIcon size={16} /></span><a href={siteInfo.whatsappChannel} target="_blank" rel="noopener noreferrer" className="hover:text-white">{editableCopy["text-whatsapp-channel"]}</a></p>}
         <p className="flex gap-2"><img src="/images/icons/mail.png" alt="" aria-hidden="true" className="h-5 w-5 shrink-0" /><a href={'mailto:' + siteInfo.email} className="hover:text-white">{siteInfo.email}</a></p>
       </div>
     </div>
     <div className="mx-auto max-w-6xl px-4 pb-8"><div className="max-w-md"><Subscribe /></div></div>
-    <div className="border-t border-white/10 px-4 py-4 text-center text-xs">
-      © 2026 IHRC-USA. All rights reserved.
-      <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
+    <div className="border-t border-white/10 px-4 py-4 text-center text-xs">{editableCopy["text-2026-ihrc-usa-all-rights-reserved"]}<div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
         {legal.map(([l, t]) => <Link key={t} to={t} className="hover:text-white">{l}</Link>)}
-        <button onClick={() => window.dispatchEvent(new Event('open-cookie-settings'))} className="hover:text-white">Cookie Settings</button>
+        <button onClick={() => window.dispatchEvent(new Event('open-cookie-settings'))} className="hover:text-white">{editableCopy["text-cookie-settings"]}</button>
       </div>
     </div>
   </footer>
@@ -288,9 +303,7 @@ export default function Layout() {
       <header className="shrink-0 bg-gradient-to-r from-white via-white to-sky-50 shadow-sm">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-1 lg:px-12 lg:py-1.5">
           <Logo />
-          <p className="hidden flex-1 text-center font-serif text-lg italic text-slate-700 xl:block">
-            "Because what we do, we do for generations"
-          </p>
+          <p className="hidden flex-1 text-center font-serif text-lg italic text-slate-700 xl:block">{editableCopy["text-because-what-we-do-we-do-for-generations"]}</p>
           <div className="hidden items-center gap-2 md:flex">
             <Social /><span className="mx-3 h-8 w-px bg-navy" /><SearchBox cls="w-64" />
           </div>
@@ -307,7 +320,7 @@ export default function Layout() {
       <div className="mx-auto flex w-full max-w-[1600px] flex-1 overflow-hidden">
         <Sidebar />
         <main ref={mainRef} className="min-w-0 flex-1 overflow-y-auto">
-          {preview && <div role="status" className="mb-4 rounded-lg bg-amber-100 px-4 py-2 text-center text-sm font-semibold text-amber-900">Preview – these changes are not saved or published yet.</div>}
+          {preview && <div role="status" className="mb-4 rounded-lg bg-amber-100 px-4 py-2 text-center text-sm font-semibold text-amber-900">{editableCopy["text-preview-these-changes-are-not-saved-or-published-yet"]}</div>}
           <ErrorBoundary key={pathname}><Outlet /></ErrorBoundary>
           <Footer />
         </main>

@@ -1,9 +1,14 @@
+import {managed} from '../lib/managedContent';
 import {Card} from './UI';
 import {coreValues} from '../data/coreValues';
+const editableCopy=managed("copy.CoreValues","Core Values — headings and text","Shared website text",{
+ "text-core-values": "Core Values"
+});
+
 
 export default function CoreValues(){
 return <Card>
-<h2 className="font-serif text-xl font-bold text-navy">Core Values</h2>
+<h2 className="font-serif text-xl font-bold text-navy">{editableCopy["text-core-values"]}</h2>
 <ul className="mt-4 grid gap-4 sm:grid-cols-2">{coreValues.map(({name,text,icon:Icon})=>
 <li key={name} className="flex items-start gap-3">
 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-blue-100 text-brand"><Icon size={22} aria-hidden="true"/></span>

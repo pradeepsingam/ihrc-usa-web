@@ -1,5 +1,13 @@
+import {managed} from '../lib/managedContent';
 import { useMemo, useState } from "react";
 import { objectiveGroups } from "../data/objectives";
+const editableCopy=managed("copy.ObjectivesSection","Objectives Section — headings and text","Shared website text",{
+ "text-objectives": "Objectives",
+ "text-objectives-in": "objectives in",
+ "text-topics-tap-a-topic-to-read-it": "topics. Tap a topic to read it.",
+ "text-search-objectives": "Search objectives"
+});
+
 
 const TONES = {
   blue: { rule: "border-l-blue-500", icon: "bg-blue-100", dot: "bg-blue-500" },
@@ -31,7 +39,7 @@ function Chevron({ open }) {
 
 export default function ObjectivesSection() {
   const [query, setQuery] = useState("");
-  const [openIds, setOpenIds] = useState(() => new Set([objectiveGroups[0].id]));
+  const [openIds, setOpenIds] = useState(() => new Set(objectiveGroups[0]?[objectiveGroups[0].id]:[]));
 
   const q = query.trim().toLowerCase();
   const total = useMemo(
@@ -73,12 +81,9 @@ export default function ObjectivesSection() {
           <h2
             id="objectives-title"
             className="font-serif text-2xl font-bold text-navy"
-          >
-            Objectives
-          </h2>
+          >{editableCopy["text-objectives"]}</h2>
           <p className="mt-1 text-sm text-slate-500">
-            {total} objectives in {objectiveGroups.length} topics. Tap a topic to read it.
-          </p>
+            {total}{" "+editableCopy["text-objectives-in"]+" "}{objectiveGroups.length}{" "+editableCopy["text-topics-tap-a-topic-to-read-it"]}</p>
         </div>
         {!q && (
           <button
@@ -92,9 +97,7 @@ export default function ObjectivesSection() {
       </div>
 
       <div className="mt-4">
-        <label htmlFor="objective-search" className="sr-only">
-          Search objectives
-        </label>
+        <label htmlFor="objective-search" className="sr-only">{editableCopy["text-search-objectives"]}</label>
         <input
           id="objective-search"
           type="search"
