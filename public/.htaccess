@@ -24,7 +24,7 @@ RewriteRule ^(?:admin|api|livewire(?:-[a-z0-9]+)?|up)(?:/|$) index.php [L]
 RewriteRule ^preview(?:/|$) index.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(?:news|events|projects|forms|programs)/[^/]+/?$ index.html [L]
+RewriteRule ^(?:news|events|projects|forms|programs|awards)/[^/]+/?$ index.html [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^member-profile/.+$ index.html [L]

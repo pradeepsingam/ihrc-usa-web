@@ -10,17 +10,17 @@ export let lastSubmission = null;
 //   The backend answers { reference, message } — the reference number is shown to the visitor.
 //   On an error the backend's message is thrown (err.userMessage) so the form can show it.
 // Returns 'api' (sent to backend), 'mailto-copy' or 'mailto' (email fallback, files cannot be attached).
-export async function submitForm({form,subject,fields,to,files=[]}){
+export async function submitForm({form,formKey,subject,fields,to,files=[]}){
   const data={};fields.forEach(f=>{data[f.label]=(f.value||'').toString().trim()});
   const submittedAt=new Date().toISOString();
   if(FORM_ENDPOINT){
     let res;
     if(files.length){
-      const fd=new FormData();fd.append('form',form);fd.append('subject',subject);fd.append('submittedAt',submittedAt);fd.append('data',JSON.stringify(data));fd.append('_hp','');
+      const fd=new FormData();fd.append('form',form);if(formKey)fd.append('formKey',formKey);fd.append('subject',subject);fd.append('submittedAt',submittedAt);fd.append('data',JSON.stringify(data));fd.append('_hp','');
       files.forEach(f=>fd.append(f.id,f.file,f.file.name));
       res=await fetch(FORM_ENDPOINT,{method:'POST',headers:{Accept:'application/json'},body:fd});
     }else{
-      res=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({form,subject,submittedAt,data,_hp:''})});
+      res=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({form,formKey,subject,submittedAt,data,_hp:''})});
     }
     let body={};try{body=await res.json()}catch(e){}
     if(!res.ok){

@@ -70,7 +70,7 @@ class ContentController extends Controller
             // Unpublished pages are sent as {published:false} so the website hides its built-in copy too.
             'pages' => Page::orderBy('menu_sort')->get()->mapWithKeys(fn (Page $p) => [$p->slug => $this->item($p)]),
 
-            'forms' => FormDefinition::where('is_published', true)->get()->mapWithKeys(fn ($f) => [$f->slug => $this->item($f)]),
+            'forms' => FormDefinition::all()->mapWithKeys(fn ($f) => [$f->slug => $f->is_published ? $this->item($f) : ['published' => false]]),
 
             'news' => $this->list('news'),
             'events' => $this->list('events'),
@@ -82,7 +82,7 @@ class ContentController extends Controller
                 'description' => $p->description, 'website' => $p->website,
             ])),
 
-            'awardCategories' => AwardCategory::orderBy('sort')->get()->map(fn (AwardCategory $a) => $clean(['name' => $a->name, 'description' => $a->description, 'image' => $this->url($a->image)]))->values(),
+            'awardCategories' => AwardCategory::orderBy('sort')->get()->map(fn (AwardCategory $a) => $clean(['id' => (string) $a->id, 'name' => $a->name, 'description' => $this->rich($a->description), 'image' => $this->url($a->image)]))->values(),
 
             'branches' => Branch::orderBy('sort')->orderBy('country')->get()->map(fn (Branch $b) => $clean([
                 'id' => (string) $b->id, 'country' => $b->country, 'name' => $b->name,
@@ -179,6 +179,8 @@ class ContentController extends Controller
             ]) + ['download' => (bool) ($m->allow_download ?? true)],
             $m instanceof Page => $m->is_published ? $clean([
                 'title' => $m->title,
+                'composite' => (bool) $m->is_composite,
+                'showDefaultContent' => (bool) $m->show_default_content,
                 'sub' => (string) $m->subtitle,
                 'b' => collect($m->sections ?? [])->map(fn ($s) => [$s['heading'] ?? '', $this->rich($s['body'] ?? '')])->values()->all(),
                 'image' => $this->url($m->image),

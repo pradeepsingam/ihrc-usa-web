@@ -96,7 +96,14 @@ class RequirementsTest extends TestCase
         $this->setMailbox('complaints', 'complaints@ihrc.test');
         $this->setMailbox('info', 'info@ihrc.test');
 
-        $r = $this->postJson('/api/forms', ['form' => 'Complaint Submission', 'subject' => 'Complaint – A', 'data' => ['Section A · 6. Email Address' => 'victim@example.org', 'Text' => 'x']])
+        $spec = FormSpec::toWebsite(Models\FormDefinition::where('slug', 'complaint')->firstOrFail());
+        $answers = [];
+        foreach (collect($spec['sections'])->flatMap(fn ($section) => $section['blocks']) as $block) {
+            if (empty($block['showIf'])) {
+                $answers[FormSpec::answerKey($block)] = $block['t'] === 'email' ? 'victim@example.org' : ($block['opts'][0] ?? ($block['t'] === 'agree' ? 'All statements accepted' : 'Example answer'));
+            }
+        }
+        $r = $this->postJson('/api/forms', ['form' => 'Complaint Submission', 'formKey' => 'complaint', 'subject' => 'Complaint – A', 'data' => $answers])
             ->assertCreated()->json();
 
         $this->assertMatchesRegularExpression('/^IHRC-\d{4}-\d{6}$/', $r['reference']);

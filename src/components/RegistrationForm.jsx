@@ -23,9 +23,13 @@ const normalize=spec=>({...spec,intro:spec.intro||[],sections:(spec.sections||[]
   if(b.t==='table'&&!b.rowLabels&&!b.rows)x.rows=3;
   return x})}))});
 
-export default function RegistrationForm({spec:rawSpec}){
+export default function RegistrationForm({spec:rawSpec,initialValues={}}){
+ if(rawSpec?.published===false)return <p role="status">This form is currently unavailable.</p>;
+ return <ActiveRegistrationForm key={rawSpec?.name} spec={rawSpec} initialValues={initialValues}/>;
+}
+function ActiveRegistrationForm({spec:rawSpec,initialValues}){
   const spec=useMemo(()=>normalize(rawSpec),[rawSpec]);
-  const[v,setV]=useState({});const[files,setFiles]=useState({});const[ticks,setTicks]=useState({});
+  const[v,setV]=useState(initialValues);const[files,setFiles]=useState({});const[ticks,setTicks]=useState({});
   const[multi,setMulti]=useState({});const[tables,setTables]=useState({});const[e,setE]=useState({});const[busy,setBusy]=useState(false);const[sendErr,setSendErr]=useState('');const[done,setDone]=useState(null);
 
   const blocks=spec.sections.flatMap(s=>s.blocks);
@@ -83,7 +87,7 @@ export default function RegistrationForm({spec:rawSpec}){
       if(b.t==='file'){const f=files[b.id];if(f)up.push({id:b.id,label,file:f});return}
       if(b.t==='table'){const rows=[];for(let r=0;r<tableRows(b);r++){const parts=b.cols.map((c,ci)=>{const x=((tables[b.id]||{})[r+'|'+ci]||'').trim();return x?c+': '+x:''}).filter(Boolean);if(parts.length)rows.push((b.rowLabels?b.rowLabels[r]:(r+1))+' — '+parts.join(' | '))}fields.push({label,value:rows.join('\n')});return}
       if(b.t==='multi'){fields.push({label,value:(multi[b.id]||[]).join('; ')});return}
-      if(b.t==='agree'){fields.push({label,value:'All statements accepted'});return}
+      if(b.t==='agree'){fields.push({label,value:b.items.every((_,i)=>ticks[b.id]?.[i])?'All statements accepted':''});return}
       let value=v[b.id]||'';
       if(b.t==='date')value=fmtDate(value);
       if(b.other&&value===b.other)value=b.other+': '+(v[b.id+'__other']||'');
@@ -92,7 +96,7 @@ export default function RegistrationForm({spec:rawSpec}){
     const name=(v.fullName||'').trim();
     setBusy(true);
     try{
-      const m=await submitForm({form:spec.name,subject:spec.name+(name?' – '+name:''),to:siteInfo.email,fields,files:up});
+      const m=await submitForm({form:spec.name,formKey:spec.key,subject:spec.name+(name?' – '+name:''),to:siteInfo.email,fields,files:up});
       setDone({mode:m,files:up.map(f=>f.label+' ('+f.file.name+')')});window.scrollTo({top:0,behavior:'smooth'});
     }catch(x){setSendErr(x.userMessage||'Sorry, we could not send your form. Please try again, or email us at '+siteInfo.email+'.')}
     finally{setBusy(false)}

@@ -1,5 +1,152 @@
 {
  "pages": {
+  "volunteer": {
+   "title": "Volunteer",
+   "subtitle": "Give your time to protect human rights.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "global-network": {
+   "title": "Global Network",
+   "subtitle": "Officially authorised IHRC branches.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "research": {
+   "title": "Call for Researchers",
+   "subtitle": "Join our global research network in the service of human rights.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "membership": {
+   "title": "Membership",
+   "subtitle": "Join IHRC-USA and stand for human dignity.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "membership-benefits": {
+   "title": "Membership Benefits",
+   "subtitle": "Why join the IHRC-USA.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "awards": {
+   "title": "Awards & Recognition",
+   "subtitle": "Recognising outstanding service to human rights.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "partnership-application": {
+   "title": "CSO Partnership",
+   "subtitle": "Apply for CSO status with the Department of Social Affairs and Partnerships (DSAP).",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "accreditation": {
+   "title": "Accreditation & Recognition",
+   "subtitle": "Apply for IHRC-USA accreditation or recognition — Form No. IHRC-USA/ACC/001",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "what-we-do": {
+   "title": "What We Do",
+   "subtitle": "Education, awareness, Research, community participation and humanitarian service for human dignity.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "roles-responsibilities": {
+   "title": "Roles & Responsibilities",
+   "subtitle": "Position descriptions, authority, duties and code of conduct within IHRC-USA.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "our-partners": {
+   "title": "Our Partners",
+   "subtitle": "The organizations and institutions IHRC-USA works with and is recognised by.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "recognition": {
+   "title": "Our Recognition",
+   "subtitle": "Registrations and listings of IHRC-USA with the United Nations and the European Commission.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "countries": {
+   "title": "Countries",
+   "subtitle": "Flags and names of the 195 countries recognised worldwide — 193 UN member states and 2 observer states.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "human-rights": {
+   "title": "Human Rights",
+   "subtitle": "Learn about the rights that belong to every person.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "events": {
+   "title": "Events",
+   "subtitle": "Upcoming and past IHRC events.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "news": {
+   "title": "News",
+   "subtitle": "IHRC announcements and organisational updates.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "projects": {
+   "title": "Projects",
+   "subtitle": "IHRC-USA projects and project articles.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "publications": {
+   "title": "Publications & Resources",
+   "subtitle": "Handbooks, reports and educational materials.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "contact": {
+   "title": "Contact IHRC-USA",
+   "subtitle": "We’d love to hear from you.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "report-concern": {
+   "title": "Report a Human Rights Concern",
+   "subtitle": "Submit a complaint or report a human rights concern.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
+  "partnerships": {
+   "title": "Partnerships",
+   "subtitle": "Working together for human dignity.",
+   "sections": [],
+   "is_composite": true,
+   "show_default_content": true
+  },
   "who-we-are": {
    "title": "Who We Are",
    "subtitle": "An organization focused on human rights awareness, humanitarian values, peace, equality and community development.",
@@ -1599,6 +1746,20 @@
    }
   },
   {
+   "key": "Forms.areas",
+   "label": "Volunteer opportunities",
+   "group": "Website content",
+   "content": {
+    "value": [
+     "Education & Awareness",
+     "Health & Welfare",
+     "Rights & Empowerment",
+     "Justice & Governance",
+     "Environment"
+    ]
+   }
+  },
+  {
    "key": "ComplaintForm.complaintInfo",
    "label": "Complaint Info",
    "group": "Website content",
@@ -1660,6 +1821,16 @@
    "group": "Page text",
    "content": {
     "value": {
+     "section-heading-awareness-materials-and-educational-resources": "Awareness Materials and Educational Resources",
+     "section-heading-event-registration": "Event Registration",
+     "section-heading-gallery": "Gallery",
+     "section-heading-related-news": "Related News",
+     "section-heading-award-categories": "Award Categories",
+     "section-heading-award-nomination-form": "Award Nomination Form",
+     "section-heading-partner-categories": "Partner Categories",
+     "section-heading-our-partners": "Our Partners",
+     "section-heading-cso-partnership-cso-status": "CSO Partnership (CSO Status)",
+     "section-heading-news-events-projects": "News, Events & Projects",
      "page-title-human-rights": "Human Rights",
      "page-introduction-learn-about-the-rights-that-belong-to-every-person": "Learn about the rights that belong to every person.",
      "text-handbooks-awareness-materials-and-training-resources-are-publishe": "Handbooks, awareness materials and training resources are published in our resource library.",
@@ -3629,6 +3800,1552 @@
   }
  },
  "forms": {
+  "contact": {
+   "key": "contact",
+   "slug": "contact",
+   "name": "IHRC-USA Website Enquiry",
+   "title": "Contact Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "subject",
+       "label": "Subject",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "message",
+       "label": "Message",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "info",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "contact-news": {
+   "key": "contact-news",
+   "slug": "contact-news",
+   "name": "News enquiry",
+   "title": "Contact Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "subject",
+       "label": "Subject",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "message",
+       "label": "Message",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "news",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "contact-official": {
+   "key": "contact-official",
+   "slug": "contact-official",
+   "name": "Official message",
+   "title": "Contact Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "subject",
+       "label": "Subject",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "message",
+       "label": "Message",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "official",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "contact-secretary": {
+   "key": "contact-secretary",
+   "slug": "contact-secretary",
+   "name": "Message to the Secretary",
+   "title": "Contact Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "subject",
+       "label": "Subject",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "message",
+       "label": "Message",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "secretary",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "contact-chairman": {
+   "key": "contact-chairman",
+   "slug": "contact-chairman",
+   "name": "Message to the Chairman",
+   "title": "Contact Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "subject",
+       "label": "Subject",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "message",
+       "label": "Message",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "chairman",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "award-nomination": {
+   "key": "award-nomination",
+   "slug": "award-nomination",
+   "name": "Award Nomination",
+   "title": "Award Nomination Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "nominee",
+       "label": "Nominee name",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "label": "Country",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "org",
+       "label": "Organization",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "category",
+       "label": "Award category",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "achievements",
+       "label": "Achievements",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "documents",
+       "label": "Supporting documents",
+       "req": 0,
+       "hint": "Add links to supporting documents."
+      },
+      {
+       "t": "text",
+       "id": "nominator",
+       "label": "Nominator name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Nominator email",
+       "req": 1
+      },
+      {
+       "t": "tel",
+       "id": "phone",
+       "label": "Nominator phone",
+       "req": 0
+      }
+     ]
+    }
+   ],
+   "mailbox": "award",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "accreditation": {
+   "key": "accreditation",
+   "slug": "accreditation",
+   "name": "IHRC-USA Accreditation & Recognition Application — Form IHRC-USA/ACC/001",
+   "title": "Application Form",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "select",
+       "id": "recognition_sought",
+       "label": "A1. Recognition sought",
+       "req": 1,
+       "opts": [
+        "Human Rights Organization",
+        "Educational Institution / Programme",
+        "Professional Development Programme",
+        "Individual Profile",
+        "Project / Initiative",
+        "Award / Honorary Recognition",
+        "Other"
+       ]
+      },
+      {
+       "t": "select",
+       "id": "application_type",
+       "label": "A2. Application type",
+       "req": 1,
+       "opts": [
+        "New",
+        "Renewal",
+        "Scope Extension",
+        "Reassessment"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "title_category",
+       "label": "A3. Exact title, category and scope requested",
+       "req": 1,
+       "hint": "State the precise recognition or category you are applying for."
+      },
+      {
+       "t": "text",
+       "id": "countries_operation",
+       "label": "A4. Countries, states and locations of operation",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "previous_applications",
+       "label": "A5. Previous applications to IHRC-USA or other bodies (dates & outcomes)",
+       "req": 0,
+       "hint": "Write N/A if none."
+      },
+      {
+       "t": "text",
+       "id": "legal_name",
+       "label": "B1. Full legal name",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "trading_name",
+       "label": "B2. Trading name, acronym or former name",
+       "req": 0,
+       "hint": "Write N/A if none."
+      },
+      {
+       "t": "select",
+       "id": "entity_type",
+       "label": "B3. Entity type",
+       "req": 1,
+       "opts": [
+        "Nonprofit / NGO",
+        "Corporation",
+        "Association",
+        "School / Educational Institution",
+        "Individual",
+        "Community-Based Organization",
+        "Other"
+       ]
+      },
+      {
+       "t": "text",
+       "id": "country_state",
+       "label": "B4. Country / state of formation or residence",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "reg_number",
+       "label": "B5. Registration / incorporation number and date",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "reg_address",
+       "label": "B6. Registered address",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "operating_address",
+       "label": "B7. Principal operating address",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "website",
+       "label": "B8. Website and official social media links",
+       "req": 0
+      },
+      {
+       "t": "tel",
+       "id": "telephone",
+       "label": "B9. Telephone",
+       "req": 0
+      },
+      {
+       "t": "email",
+       "id": "official_email",
+       "label": "B9. Official email",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "primary_contact",
+       "label": "B10. Primary contact – name, position and contact details",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "operations_started",
+       "label": "B11. Date operations commenced and number of branches",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "staff_count",
+       "label": "B12. Staff, volunteers, members and annual beneficiaries (numbers)",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "governing_law",
+       "label": "C1. Governing law and jurisdiction",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "governing_docs",
+       "label": "C2. Articles, bylaws, constitution, trust deed and adoption dates",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "directors",
+       "label": "C3. Names, roles and terms of directors / trustees / office bearers",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "board_appointment",
+       "label": "C4. How board members are appointed, elected, removed and replaced",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "meeting_frequency",
+       "label": "C5. Meeting frequency and minutes-keeping procedure",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "delegated_authority",
+       "label": "C6. Documented powers, delegated authority and reporting lines",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "related_entities",
+       "label": "C7. Related entities, affiliates, subsidiaries or controlling persons",
+       "req": 0,
+       "hint": "Write N/A if none."
+      },
+      {
+       "t": "text",
+       "id": "regulatory_actions",
+       "label": "C8. Regulatory actions, litigation, insolvency or investigations involving applicant / senior officers",
+       "req": 0,
+       "hint": "Write N/A if none."
+      },
+      {
+       "t": "textarea",
+       "id": "mission_vision",
+       "label": "D1. Mission, vision and principal objectives",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "hr_themes",
+       "label": "D2. Human rights themes and groups served",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "activities",
+       "label": "D3. Description of main activities and programmes (last 3 years)",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "geographic_reach",
+       "label": "D4. Geographic reach and target communities",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "outcomes",
+       "label": "D5. Key outcomes and impact (evidence-based)",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "partners",
+       "label": "D6. Key partners, funders and networks",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "annual_budget",
+       "label": "E1. Annual operating budget (USD approximate)",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "funding_sources",
+       "label": "E2. Main sources of funding",
+       "req": 0
+      },
+      {
+       "t": "select",
+       "id": "financial_audit",
+       "label": "E3. Financial statements audited / reviewed?",
+       "req": 0,
+       "opts": [
+        "Yes – independently audited",
+        "Yes – internally reviewed",
+        "No",
+        "Not applicable"
+       ]
+      },
+      {
+       "t": "select",
+       "id": "safeguarding_policy",
+       "label": "F1. Does the organization have a safeguarding / child-protection policy?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "In development"
+       ]
+      },
+      {
+       "t": "select",
+       "id": "complaints_mechanism",
+       "label": "F2. Complaints and grievance mechanism in place?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "In development"
+       ]
+      },
+      {
+       "t": "select",
+       "id": "conflict_interest",
+       "label": "F3. Conflict-of-interest policy in place?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "In development"
+       ]
+      },
+      {
+       "t": "text",
+       "id": "individual_name",
+       "label": "G1. Full name (individual applicants only)",
+       "req": 0,
+       "hint": "Write N/A if applying as an organization."
+      },
+      {
+       "t": "textarea",
+       "id": "individual_qualifications",
+       "label": "G2. Qualifications, credentials and professional memberships",
+       "req": 0,
+       "hint": "Write N/A if applying as an organization."
+      },
+      {
+       "t": "textarea",
+       "id": "individual_experience",
+       "label": "G3. Human rights experience and notable contributions",
+       "req": 0,
+       "hint": "Write N/A if applying as an organization."
+      },
+      {
+       "t": "select",
+       "id": "declaration",
+       "label": "J. Declarations & Consents",
+       "req": 1,
+       "hint": "Select to confirm all declarations in Parts J1–J6 of the application form.",
+       "opts": [
+        "I confirm all information and documents are true and complete, and I understand that submission does not guarantee approval."
+       ]
+      },
+      {
+       "t": "text",
+       "id": "authorised_name",
+       "label": "Authorised applicant full name",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "authorised_position",
+       "label": "Position / title",
+       "req": 1
+      },
+      {
+       "t": "date",
+       "id": "submission_date",
+       "label": "Date",
+       "req": 1
+      },
+      {
+       "t": "textarea",
+       "id": "notes",
+       "label": "Additional notes or supporting information",
+       "req": 0,
+       "hint": "Use this field for any information not covered above."
+      }
+     ]
+    }
+   ],
+   "mailbox": "accreditation",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "event-registration": {
+   "key": "event-registration",
+   "slug": "event-registration",
+   "name": "Event Registration",
+   "title": "Event Registration",
+   "sections": [
+    {
+     "title": "",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "label": "Full name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "label": "Email",
+       "req": 1
+      },
+      {
+       "t": "tel",
+       "id": "phone",
+       "label": "Phone",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "event",
+       "label": "Event",
+       "req": 1
+      }
+     ]
+    }
+   ],
+   "mailbox": "event",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "complaint": {
+   "key": "complaint",
+   "slug": "complaint",
+   "name": "Complaint Submission",
+   "title": "Complaint Submission Form",
+   "sections": [
+    {
+     "title": "A. Complainant Information",
+     "blocks": [
+      {
+       "t": "text",
+       "id": "name",
+       "n": 1,
+       "label": "Full Name",
+       "req": 1
+      },
+      {
+       "t": "select",
+       "id": "gender",
+       "n": 2,
+       "label": "Gender (optional)",
+       "req": 0,
+       "opts": [
+        "Female",
+        "Male",
+        "Other",
+        "Prefer not to say"
+       ]
+      },
+      {
+       "t": "select",
+       "id": "age",
+       "n": 3,
+       "label": "Age Group (optional)",
+       "req": 0,
+       "opts": [
+        "Under 18",
+        "18–25",
+        "26–40",
+        "41–60",
+        "Over 60",
+        "Prefer not to say"
+       ]
+      },
+      {
+       "t": "text",
+       "id": "country",
+       "n": 4,
+       "label": "Country of Residence",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "city",
+       "n": 5,
+       "label": "City / District",
+       "req": 0
+      },
+      {
+       "t": "email",
+       "id": "email",
+       "n": 6,
+       "label": "Email Address",
+       "req": 1
+      },
+      {
+       "t": "tel",
+       "id": "phone",
+       "n": 7,
+       "label": "Contact Number (including country code)",
+       "req": 0
+      },
+      {
+       "t": "radio",
+       "id": "comm",
+       "n": 8,
+       "label": "Preferred Method of Communication",
+       "req": 0,
+       "opts": [
+        "Email",
+        "Telephone",
+        "Other"
+       ],
+       "other": "Other"
+      },
+      {
+       "t": "radio",
+       "id": "behalf",
+       "n": 9,
+       "label": "Are you submitting this complaint on your own behalf?",
+       "req": 1,
+       "opts": [
+        "Yes",
+        "No, I am submitting it on behalf of another person."
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "behalfExplain",
+       "n": 9,
+       "label": "Explain your relationship to the affected person and your authority to submit on their behalf",
+       "req": 1,
+       "showIf": {
+        "id": "behalf",
+        "eq": "No, I am submitting it on behalf of another person."
+       }
+      }
+     ]
+    },
+    {
+     "title": "B. Person or Organization You Are Complaining About",
+     "blocks": [
+      {
+       "t": "radio",
+       "id": "against",
+       "n": 10,
+       "label": "Who is the complaint against?",
+       "req": 1,
+       "opts": [
+        "An individual",
+        "An organization",
+        "A company or business",
+        "A government or public institution",
+        "An educational institution",
+        "An employer",
+        "An association or group",
+        "Other"
+       ],
+       "other": "Other"
+      },
+      {
+       "t": "text",
+       "id": "againstName",
+       "n": 11,
+       "label": "Name of the Individual or Organization",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "position",
+       "n": 12,
+       "label": "Position / Designation (if applicable)",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "againstCountry",
+       "n": 13,
+       "label": "Country Where the Individual or Organization Operates",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "againstAddress",
+       "n": 14,
+       "label": "Address or Location (if known)",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "againstWeb",
+       "n": 15,
+       "label": "Website / Official Contact Information (if available)",
+       "req": 0
+      }
+     ]
+    },
+    {
+     "title": "C. Type of Complaint",
+     "blocks": [
+      {
+       "t": "multi",
+       "id": "nature",
+       "n": 16,
+       "label": "What is the nature of your complaint?",
+       "req": 1,
+       "hint": "Select all applicable categories.",
+       "opts": [
+        "Human rights violation or concern",
+        "Discrimination",
+        "Harassment or bullying",
+        "Physical abuse or violence",
+        "Verbal or psychological abuse",
+        "Workplace misconduct",
+        "Unfair treatment",
+        "Abuse of authority",
+        "Exploitation or coercion",
+        "Fraud or misleading conduct",
+        "Financial misconduct",
+        "Child protection concern",
+        "Women's rights concern",
+        "Educational institution-related concern",
+        "Organizational misconduct",
+        "Threats or intimidation",
+        "Privacy or confidentiality concern",
+        "Other"
+       ],
+       "other": "Other"
+      }
+     ]
+    },
+    {
+     "title": "D. Incident Details",
+     "blocks": [
+      {
+       "t": "date",
+       "id": "incidentDate",
+       "n": 17,
+       "label": "Date of Incident or Beginning of the Problem",
+       "req": 1
+      },
+      {
+       "t": "text",
+       "id": "incidentPlace",
+       "n": 18,
+       "label": "Location Where the Incident Occurred",
+       "req": 1
+      },
+      {
+       "t": "radio",
+       "id": "ongoing",
+       "n": 19,
+       "label": "Is the problem ongoing?",
+       "req": 1,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "description",
+       "n": 20,
+       "label": "Please explain what happened",
+       "req": 1,
+       "hint": "Provide a clear and detailed description of the incident, including what occurred, how you were affected, and any relevant circumstances."
+      },
+      {
+       "t": "multi",
+       "id": "affected",
+       "n": 21,
+       "label": "How has this incident affected you or the affected person?",
+       "req": 0,
+       "opts": [
+        "Physical well-being",
+        "Emotional or psychological well-being",
+        "Employment or professional life",
+        "Education",
+        "Financial circumstances",
+        "Family or personal life",
+        "Safety or security",
+        "Reputation or dignity",
+        "Other"
+       ],
+       "other": "Other"
+      },
+      {
+       "t": "textarea",
+       "id": "affectedExtra",
+       "n": 21,
+       "label": "Additional explanation",
+       "req": 0
+      }
+     ]
+    },
+    {
+     "title": "E. Witnesses and Supporting Evidence",
+     "blocks": [
+      {
+       "t": "radio",
+       "id": "witnesses",
+       "n": 22,
+       "label": "Were there any witnesses?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "witnessDetails",
+       "n": 22,
+       "label": "Provide their names or relevant details only where appropriate and safe",
+       "req": 0,
+       "showIf": {
+        "id": "witnesses",
+        "eq": "Yes"
+       }
+      },
+      {
+       "t": "multi",
+       "id": "evidence",
+       "n": 23,
+       "label": "Do you have supporting evidence?",
+       "req": 0,
+       "opts": [
+        "Emails or written communication",
+        "Letters or official documents",
+        "Photographs",
+        "Videos",
+        "Audio recordings",
+        "Screenshots or messages",
+        "Medical or professional reports",
+        "Witness statements",
+        "Other supporting materials",
+        "No supporting evidence currently available"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "evidenceDesc",
+       "n": 24,
+       "label": "Please provide a brief description of the available evidence",
+       "req": 0
+      },
+      {
+       "t": "radio",
+       "id": "canProvide",
+       "n": 25,
+       "label": "Can you provide supporting documents if requested?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "F. Previous Actions Taken",
+     "blocks": [
+      {
+       "t": "radio",
+       "id": "reported",
+       "n": 26,
+       "label": "Have you previously reported this matter to another authority or organization?",
+       "req": 1,
+       "opts": [
+        "Yes",
+        "No"
+       ]
+      },
+      {
+       "t": "text",
+       "id": "reportedTo",
+       "n": 26,
+       "label": "Identify the authority or organization",
+       "req": 0,
+       "showIf": {
+        "id": "reported",
+        "eq": "Yes"
+       }
+      },
+      {
+       "t": "radio",
+       "id": "response",
+       "n": 27,
+       "label": "Have you received any response or assistance?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "Pending",
+        "Other"
+       ],
+       "other": "Other"
+      },
+      {
+       "t": "radio",
+       "id": "legalCase",
+       "n": 28,
+       "label": "Is there an ongoing legal case, police investigation, or official proceeding related to this matter?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "legalExplain",
+       "n": 28,
+       "label": "Provide a brief explanation without sharing confidential legal information",
+       "req": 0,
+       "showIf": {
+        "id": "legalCase",
+        "eq": "Yes"
+       }
+      }
+     ]
+    },
+    {
+     "title": "G. Assistance Requested",
+     "blocks": [
+      {
+       "t": "multi",
+       "id": "assistance",
+       "n": 29,
+       "label": "What kind of assistance or action are you requesting from IHRC-USA?",
+       "req": 1,
+       "opts": [
+        "Review of my complaint",
+        "Guidance about appropriate reporting channels",
+        "Human rights awareness or information",
+        "Referral to an appropriate authority or organization",
+        "Guidance on available support services",
+        "Assistance identifying relevant resources",
+        "Other"
+       ],
+       "other": "Other"
+      },
+      {
+       "t": "textarea",
+       "id": "outcome",
+       "n": 30,
+       "label": "What outcome are you hoping to achieve?",
+       "req": 1
+      }
+     ]
+    },
+    {
+     "title": "H. Safety and Confidentiality",
+     "blocks": [
+      {
+       "t": "radio",
+       "id": "danger",
+       "n": 31,
+       "label": "Are you or the affected person currently in danger?",
+       "req": 1,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      },
+      {
+       "t": "radio",
+       "id": "safeContact",
+       "n": 32,
+       "label": "Is it safe for IHRC-USA to contact you using the contact details provided?",
+       "req": 1,
+       "opts": [
+        "Yes",
+        "No"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "safeTime",
+       "n": 33,
+       "label": "Is there a safe time or method for contacting you?",
+       "req": 0
+      },
+      {
+       "t": "radio",
+       "id": "retaliation",
+       "n": 34,
+       "label": "Do you have any concerns about retaliation, threats, or further harm if the complaint becomes known?",
+       "req": 0,
+       "opts": [
+        "Yes",
+        "No",
+        "Not sure"
+       ]
+      },
+      {
+       "t": "textarea",
+       "id": "retaliationExplain",
+       "n": 34,
+       "label": "Explain only what is safe to disclose",
+       "req": 0,
+       "showIf": {
+        "id": "retaliation",
+        "eq": "Yes"
+       }
+      }
+     ]
+    },
+    {
+     "title": "I. Declaration and Consent",
+     "blocks": [
+      {
+       "t": "agree",
+       "id": "declared",
+       "n": 35,
+       "label": "I have read and understood the above declaration and confirm that the information submitted is accurate to the best of my knowledge.",
+       "req": 1,
+       "items": [
+        "I have read and understood the above declaration and confirm that the information submitted is accurate to the best of my knowledge."
+       ]
+      },
+      {
+       "t": "agree",
+       "id": "consented",
+       "n": 36,
+       "label": "I consent to IHRC-USA collecting and using the information I provide for the purpose of reviewing and responding to this complaint, in accordance with its privacy policy and applicable law.",
+       "req": 1,
+       "items": [
+        "I consent to IHRC-USA collecting and using the information I provide for the purpose of reviewing and responding to this complaint, in accordance with its privacy policy and applicable law."
+       ]
+      },
+      {
+       "t": "text",
+       "id": "signName",
+       "n": 37,
+       "label": "Name of Complainant / Authorized Representative",
+       "req": 0
+      },
+      {
+       "t": "date",
+       "id": "submitDate",
+       "n": 38,
+       "label": "Date of Submission",
+       "req": 0
+      }
+     ]
+    }
+   ],
+   "mailbox": "complaints",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "partnership-application": {
+   "key": "partnership-application",
+   "slug": "partnership-application",
+   "name": "CSO Partnership Application",
+   "title": "Application Form",
+   "sections": [
+    {
+     "title": "A. Organization Details",
+     "blocks": [
+      {
+       "t": "email",
+       "id": "applicantEmail",
+       "label": "Email",
+       "req": 1,
+       "hint": "The e-mail address used for all future communications."
+      },
+      {
+       "t": "text",
+       "id": "ngoName",
+       "label": "Name of the civil society organization (CSO)",
+       "req": 1,
+       "hint": "Must match the certificate of registration exactly. Please do not use all capital letters.",
+       "n": 1
+      },
+      {
+       "t": "text",
+       "id": "ngoAcronym",
+       "label": "Acronym of the civil society organization (CSO)",
+       "req": 1,
+       "hint": "Capital letters are allowed for acronyms only. Spell the acronym out the first time it appears.",
+       "n": 2
+      },
+      {
+       "t": "date",
+       "id": "submitDate",
+       "label": "Date of submission of the application",
+       "req": 1,
+       "hint": "Example: January 7, 2019",
+       "n": 3
+      },
+      {
+       "t": "textarea",
+       "id": "hqAddress",
+       "label": "Address of headquarters",
+       "req": 0,
+       "hint": "A valid physical address (PO Boxes are not accepted).",
+       "n": 4
+      },
+      {
+       "t": "tel",
+       "id": "orgTel",
+       "label": "A. Telephone",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "orgFax",
+       "label": "B. Fax",
+       "req": 0
+      },
+      {
+       "t": "email",
+       "id": "orgEmail",
+       "label": "C. Email",
+       "req": 0
+      },
+      {
+       "t": "text",
+       "id": "orgWeb",
+       "label": "D. Website",
+       "req": 0
+      },
+      {
+       "t": "textarea",
+       "id": "branches",
+       "label": "Address of all branches or regional headquarters",
+       "req": 1,
+       "hint": "Including names and contact information, telephone, fax, email and website.",
+       "n": 6
+      },
+      {
+       "t": "text",
+       "id": "contactName",
+       "label": "A. Name",
+       "req": 1
+      },
+      {
+       "t": "email",
+       "id": "contactEmail",
+       "label": "B. Email",
+       "req": 1
+      },
+      {
+       "t": "tel",
+       "id": "contactWhatsapp",
+       "label": "C. WhatsApp Number",
+       "req": 1
+      }
+     ]
+    },
+    {
+     "title": "B. Aims, History and Relevance",
+     "blocks": [
+      {
+       "t": "textarea",
+       "id": "aims",
+       "label": "Aims and purposes of the CSO",
+       "req": 1,
+       "hint": "As set forth in its constitution, statutes or by-laws, including its strategy.",
+       "n": 8
+      },
+      {
+       "t": "file",
+       "id": "aimsFile",
+       "label": "Constitution, statutes or by-laws (if available)",
+       "file": {
+        "kinds": [
+         "document",
+         "image"
+        ],
+        "maxMB": 10
+       }
+      },
+      {
+       "t": "textarea",
+       "id": "history",
+       "label": "History of the CSO, including the length of time the CSO has been in existence and relevant previous activities/events.",
+       "req": 1,
+       "n": 9
+      },
+      {
+       "t": "textarea",
+       "id": "relevance",
+       "label": "Descriptive statement of the extent to which the purposes of the CSO relate to those of IHRC-USA, in particular what contribution the CSO can make to the work of IHRC-USA, including its technical cooperation programme.",
+       "req": 1,
+       "n": 10
+      },
+      {
+       "t": "textarea",
+       "id": "structure",
+       "label": "Organizational structure and officers’ names and titles",
+       "req": 1,
+       "n": 11
+      }
+     ]
+    },
+    {
+     "title": "C. Membership and Cooperation",
+     "blocks": [
+      {
+       "t": "textarea",
+       "id": "membership",
+       "label": "Membership",
+       "req": 1,
+       "hint": "Nature of membership, name of members and country where their main offices are based.",
+       "n": 12
+      },
+      {
+       "t": "textarea",
+       "id": "affiliation",
+       "label": "Indicate whether the CSO is a member of, affiliated to or otherwise associated with another CSO which enjoys consultative status or has other forms of association with IHRC-USA.",
+       "req": 1,
+       "n": 13
+      },
+      {
+       "t": "textarea",
+       "id": "expertise",
+       "label": "Indicate how the CSO can contribute new expertise to IHRC-USA by describing which work outputs, as described in the Strategic Plan for the Organization, that they would be interested in contributing to in the next biennium?",
+       "req": 1,
+       "n": 14
+      },
+      {
+       "t": "textarea",
+       "id": "un",
+       "label": "Relations with the United Nations system and other intergovernmental organizations?",
+       "req": 1,
+       "n": 15
+      },
+      {
+       "t": "textarea",
+       "id": "participate",
+       "label": "Indicate by what means IHRC-USA could participate in the CSO’s activities",
+       "req": 1,
+       "n": 16
+      },
+      {
+       "t": "textarea",
+       "id": "promote",
+       "label": "Indicate by what means the CSO will promote and disseminate the principles and work of IHRC-USA?",
+       "req": 1,
+       "n": 17
+      }
+     ]
+    },
+    {
+     "title": "D. Funding, Publications and Additional Information",
+     "blocks": [
+      {
+       "t": "textarea",
+       "id": "funding",
+       "label": "Indicate source of funding and provide evidence of financial sustainability",
+       "req": 1,
+       "hint": "Three years.",
+       "n": 18
+      },
+      {
+       "t": "textarea",
+       "id": "publications",
+       "label": "List of publications and/or other relevant documentation",
+       "req": 1,
+       "n": 19
+      },
+      {
+       "t": "file",
+       "id": "publicationsFile",
+       "label": "Publications or other relevant documentation",
+       "file": {
+        "kinds": [
+         "document",
+         "image"
+        ],
+        "maxMB": 10
+       }
+      },
+      {
+       "t": "textarea",
+       "id": "additional",
+       "label": "Additional information which the CSO may wish to provide",
+       "req": 1,
+       "n": 20
+      },
+      {
+       "t": "textarea",
+       "id": "provide",
+       "label": "What would that civil society organization (CSO) like to provide to IHRC-USA?",
+       "req": 1,
+       "hint": "Please provide it clearly written, with the office seal and signature.",
+       "n": 21
+      },
+      {
+       "t": "file",
+       "id": "provideFile",
+       "label": "Signed and sealed statement (if prepared as a separate document)",
+       "file": {
+        "kinds": [
+         "document",
+         "image"
+        ],
+        "maxMB": 10
+       }
+      }
+     ]
+    },
+    {
+     "title": "E. Required Documents",
+     "blocks": [
+      {
+       "t": "file",
+       "id": "letter",
+       "label": "Partnership Request Letter",
+       "req": 1,
+       "file": {
+        "kinds": [
+         "document",
+         "image"
+        ],
+        "maxMB": 10
+       }
+      },
+      {
+       "t": "file",
+       "id": "logoReg",
+       "label": "Upload Organization Logo and Registration copy",
+       "req": 1,
+       "file": {
+        "kinds": [
+         "document",
+         "image"
+        ],
+        "maxMB": 10
+       }
+      }
+     ]
+    }
+   ],
+   "mailbox": "partnership",
+   "intro": [
+    "Questionnaire to be completed by civil society organizations applying for CSO Status with the Department of Social Affairs and Partnerships (DSAP), International Human Rights Council-USA"
+   ],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
+  "formatting-rules": {
+   "key": "formatting-rules",
+   "slug": "formatting-rules",
+   "name": "General Formatting Rules",
+   "title": "General Formatting Rules Form",
+   "sections": [
+    {
+     "title": "General Formatting Rules",
+     "blocks": [
+      {
+       "t": "agree",
+       "id": "formattingAgreement",
+       "label": "I agree to the general formatting rules",
+       "req": 1,
+       "items": [
+        "Please make sure all questions are thoroughly answered. Any unanswered or partially answered question may differ the review and consideration of your application.",
+        "Please note that all the information provided as part of your application (including supporting documents) must be consistent with the information presented in the organization’s website.",
+        "Throughout the application form, in the supporting documents provided and on the organization’s website, IHRC-USA terminology must be respected.",
+        "Please ensure that the principles of the IHRC-USA Charter are respected throughout the application form, in the supporting documents and on the organization’s website.",
+        "Please have clear and concise text.",
+        "Please do not use CAPS (or UPPER CASE) in the name of the organization or when filling out the form. CAPS (or UPPER CASE) can be used only for acronyms as long as they are spelled out the first time it appears.",
+        "Please be careful when copying and pasting text from other documents that it does not get altered with unwanted symbols.",
+        "“-” and numbering (1., 2.,.) can be used for clarity.",
+        "The organization’s name on the profile must match the certificate of registration exactly.",
+        "The permanent address must be a valid physical address (PO Boxes are not accepted).",
+        "Keep the e-mail address up to date at all times - it will be used for all future communications.",
+        "Ensure any website provided is active at all times.",
+        "All applications, including the required documents, must be submitted using the email method accessible at info@ihrc-usa.org."
+       ]
+      }
+     ]
+    }
+   ],
+   "mailbox": "partnership",
+   "intro": [],
+   "successMessage": "Thank you. Your form has been submitted successfully. We will get back to you soon."
+  },
   "membership": {
    "key": "membership",
    "name": "Membership Registration",

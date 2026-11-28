@@ -1,3 +1,5 @@
+import {forms} from '../content';
+import RegistrationForm from '../components/RegistrationForm';
 import {managed} from '../lib/managedContent';
 import {useState} from 'react';
 import {Mail,FileText,Paperclip,AlertCircle,CheckCircle2} from 'lucide-react';
@@ -35,7 +37,7 @@ const Input=({f,v,e,set})=>{
   return f.type==='textarea'?<textarea rows={5} {...common}/>:<input type={f.type==='url'?'text':f.type||'text'} inputMode={f.type==='url'?'url':undefined} {...common}/>;
 };
 
-export default function PartnershipApplication(){
+function LegacyPartnershipApplication(){
   const[v,setV]=useState({});const[e,setE]=useState({});const[agree,setAgree]=useState(false);const[done,setDone]=useState(false);const[busy,setBusy]=useState(false);const[sendErr,setSendErr]=useState('');
   const set=(id,x)=>{setV(p=>({...p,[id]:x}));if(e[id])setE(p=>{const n={...p};delete n[id];return n})};
 
@@ -111,4 +113,13 @@ export default function PartnershipApplication(){
       </form>
     </div>
   </Page>;
+}
+
+export default function PartnershipApplication(){
+ const application=forms['partnership-application'];
+ if(!application)return <LegacyPartnershipApplication/>;
+ if(application.published===false)return <Page title="CSO Partnership"><p>This form is currently unavailable.</p></Page>;
+ const rules=forms['formatting-rules'];
+ const spec={...application,sections:[...(application.sections||[]),...(rules&&rules.published!==false?rules.sections||[]:[])]};
+ return <Page title={editableCopy['page-title-cso-partnership']} sub={editableCopy['page-introduction-apply-for-cso-status-with-the-department-of-social-affairs-and-pa']}><RegistrationForm spec={spec}/></Page>;
 }

@@ -1,5 +1,6 @@
+import {remotePages} from '../lib/loadContent';
 import { texts, groups, people, allPeople, programs } from '../data';
-import { news, events, projects, publications, branches, programDetails } from '../content';
+import { news, events, projects, publications, branches, awardCategories, programDetails } from '../content';
 
 export const SITE_URL = 'https://www.ihrc-usa.org';
 export const SITE_NAME = 'IHRC-USA';
@@ -60,7 +61,10 @@ export function getMetadata(pathname) {
   if (emptyLists[path]?.length === 0) noindex = true;
   const [family] = key.split('/');
   const id = key.slice(family.length + 1);
-  if (id && family === 'programs') {
+  if (id && family === 'awards') {
+    const award=awardCategories.find(a=>String(a.id)===id);
+    if(award){entry=[award.name+' – Award Category',award.description];image=award.image||image;}
+  } else if (id && family === 'programs') {
     const program = programs.find(item => item.slug === id);
     if (program) {
       const detail = programDetails[id];
@@ -82,6 +86,8 @@ export function getMetadata(pathname) {
   }
   if (family === 'preview' || path === '/preview-page') { entry = ['Content Preview', 'Preview of unpublished IHRC-USA content.']; noindex = true; }
   if (id === '__preview') noindex = true;
+  if(remotePages[key]?.composite&&remotePages[key].published!==false){entry=[remotePages[key].title,remotePages[key].sub];image=remotePages[key].image||image;}
+  if(remotePages[key]?.published===false)entry=undefined;
   const found = Boolean(entry) && (family === 'member-profile' || key.split('/').length <= 2);
   if (!found) { entry = ['Page Not Found', 'This page could not be found. Explore IHRC-USA programs, membership and contact information.']; noindex = true; }
   return { path, found, title: `${entry[0]} | ${SITE_NAME}`, name: entry[0], description: snippet(entry[1]), canonical: absoluteUrl(path), robots: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large', noindex, image: absoluteUrl(image), type };
@@ -90,6 +96,7 @@ export function getMetadata(pathname) {
 export function getRoutes() {
   return [...new Set([
     ...Object.keys(pages), ...Object.keys(texts).map(key => '/' + key), ...Object.keys(groups).map(key => '/' + key),
+    ...awardCategories.map(award=>'/awards/'+award.id),
     ...programs.map(program => '/programs/' + program.slug),
     ...Object.entries({ news, events, projects }).flatMap(([family, items]) => items.map(item => `/${family}/${item.id}`)),
     // Member IDs can be typed freely in the admin; only IDs that are safe as folder names are pre-rendered.

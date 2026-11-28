@@ -16,10 +16,11 @@ class FormSubmissionTest extends TestCase
 
     public function test_json_form_is_stored(): void
     {
-        $this->postJson('/api/forms', ['form' => 'IHRC-USA Website Enquiry', 'subject' => 'IHRC-USA Website Enquiry', 'submittedAt' => now()->toIso8601String(), 'data' => ['Name' => 'Ann', 'Message' => 'Hi']])
+        $this->postJson('/api/forms', ['form' => 'IHRC-USA Website Enquiry', 'subject' => 'IHRC-USA Website Enquiry', 'submittedAt' => now()->toIso8601String(), 'data' => ['Name' => 'Ann', 'Email' => 'ann@example.org', 'Country' => 'USA', 'Subject' => 'Question', 'Message' => 'Hi']])
             ->assertCreated();
         $s = FormSubmission::first();
-        $this->assertSame(['Name' => 'Ann', 'Message' => 'Hi'], $s->data);
+        $this->assertSame('Hi', $s->data['Message']);
+        $this->assertSame('ann@example.org', $s->data['Email']);
         $this->assertNull($s->read_at);
     }
 

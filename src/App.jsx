@@ -5,7 +5,7 @@ import NotFound from './pages/NotFound';
 import Preview from './pages/Preview';
 import {TextPage,Programs,Benefits,People,Profile,FormPage} from './pages/Content';
 import {Apply,Volunteer,Contact,Verify} from './pages/Forms';
-import {HumanRights,GlobalNetwork,Events,EventDetail,NewsList,NewsDetail,Publications,Awards,Partnerships,ReportConcern,ProgramDetail,SearchPage} from './pages/PublicPages';
+import {HumanRights,GlobalNetwork,Events,EventDetail,NewsList,NewsDetail,Publications,Awards,AwardDetail,Partnerships,ReportConcern,ProgramDetail,SearchPage} from './pages/PublicPages';
 import PartnershipApplication from './pages/PartnershipApplication';
 import Roles from './pages/Roles';
 import Research from './pages/Research';
@@ -38,7 +38,7 @@ export default function App(){return <Routes><Route element={<Layout/>}>
 <Route path="news" element={<NewsList/>}/><Route path="news/:id" element={<NewsDetail/>}/>
 <Route path="projects" element={<Projects/>}/><Route path="projects/:id" element={<ProjectDetail/>}/>
 <Route path="publications" element={<Publications/>}/>
-<Route path="awards" element={<Awards/>}/>
+<Route path="awards/:id" element={<AwardDetail/>}/><Route path="awards" element={<Awards/>}/>
 <Route path="partnerships" element={<Partnerships/>}/><Route path="partnership-application" element={<PartnershipApplication/>}/>
 <Route path="donation" element={<Navigate to="/membership" replace/>}/><Route path="donate" element={<Navigate to="/membership" replace/>}/>
 <Route path="accreditation" element={<Accreditation/>}/>

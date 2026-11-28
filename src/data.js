@@ -93,7 +93,7 @@ export const pageBgs={'who-we-are':'/images/bg/who-we-are.jpg','chairman-message
 const menuTargets={About:[A,topNav[1].c],Members:[L,topNav[4].c],'News & Events':[nav[4].c,topNav[5].c],'Get Involved':[nav[5].c,topNav[6].c],Contact:[nav[7].c]};
 for(const [k,v] of Object.entries(remotePages)){
   if(k==='our-supporters'||v.published===false){delete texts[k];continue}
-  texts[k]={...(texts[k]||{}),...v};
+  if(!v.composite)texts[k]={...(texts[k]||{}),...v};
   if(v.image)pageBgs[k]=v.image;
   if(v.menu){const item=[v.menuLabel||v.title,'/'+k];
     if(v.menu==='Top'){if(!topNav.some(x=>x.to==='/'+k))topNav.splice(topNav.length-1,0,{l:item[0],to:item[1]})}

@@ -36,6 +36,7 @@ class FormController extends Controller
         $request->validate([
             'form' => ['required', 'string', 'max:1000'],
             'subject' => ['nullable', 'string', 'max:1000'],
+            'formKey' => ['nullable', 'string', 'max:100'],
         ]);
 
         // ---- Spam protection: hidden "honeypot" field must stay empty; bots fill it in.
@@ -76,9 +77,22 @@ class FormController extends Controller
         }
 
         // ---- Required fields, email format and per-field file rules for Form Builder forms.
-        $definition = FormDefinition::where('name', $form)->first();
+        $definition = $request->filled('formKey')
+            ? FormDefinition::where('slug', $request->string('formKey')->toString())->firstOrFail()
+            : FormDefinition::where('name', $form)->first();
         if ($definition) {
-            $errors = FormSpec::validate(FormSpec::toWebsite($definition), $data, $uploads->all());
+            if (! $definition->is_published) {
+                return response()->json(['ok' => false, 'message' => 'This form is currently unavailable.'], 403);
+            }
+            $form = $definition->name;
+            $spec = FormSpec::toWebsite($definition);
+            if ($definition->slug === 'partnership-application') {
+                $formatting = FormDefinition::where('slug', 'formatting-rules')->where('is_published', true)->first();
+                if ($formatting) {
+                    $spec['sections'] = array_merge($spec['sections'], FormSpec::toWebsite($formatting)['sections']);
+                }
+            }
+            $errors = FormSpec::validate($spec, $data, $uploads->all());
             if ($errors) {
                 return $this->error($errors[0], $errors);
             }
