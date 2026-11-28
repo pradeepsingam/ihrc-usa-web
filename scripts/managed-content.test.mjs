@@ -11,6 +11,7 @@ test('CMS programs, page text and structured sections reach the rendered website
   Object.assign(content.websiteContent,{
    'copy.Home':{'text-about-ihrc-usa':'Edited home heading'},
    'Home.slides':[],
+   'countries.countries':[['us',null]],
    'research.researchAreas':['Edited research area'],
    'coreValues.coreValues':[{name:'Edited core value',text:'Edited value description'}],
    'ihrcBenefits.ihrcBenefits':[['Edited benefit','Edited benefit description',null]],
@@ -33,6 +34,9 @@ test('CMS programs, page text and structured sections reach the rendered website
   assert.match(render('/research'),/Edited research area/);
   assert.match(render('/research'),/Edited nested topic/);
   assert.match(render('/what-we-do'),/Edited purpose/);
+  assert.doesNotThrow(()=>render('/countries'));
+  content.websiteContent['test.blank']=null;
+  assert.equal(helper.managed('test.blank','Blank','Test','Original text'),'');
   assert.match(render('/membership-benefits'),/Edited benefit description/);
   const core=await server.ssrLoadModule('/src/data/coreValues.js');
   assert.equal(core.coreValues[0].name,'Edited core value');

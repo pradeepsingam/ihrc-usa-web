@@ -61,7 +61,7 @@ class WebsiteContentResource extends Resource
                         $field->schema(static::fields($first))->collapsed()
                             ->itemLabel(fn (array $state): string => str((string) ($state['title'] ?? $state['name'] ?? $state['t'] ?? $state[0] ?? 'Item'))->limit(90)->toString());
                     } else {
-                        $field->simple(Textarea::make('text')->label('Text')->rows(2)->maxLength(30000));
+                        $field->simple(Textarea::make('text')->label('Text')->rows(2)->required()->maxLength(30000));
                     }
                     $fields[] = $field->columnSpanFull();
                 } else {

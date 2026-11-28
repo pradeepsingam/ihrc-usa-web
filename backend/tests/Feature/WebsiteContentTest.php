@@ -128,6 +128,16 @@ class WebsiteContentTest extends TestCase
         return array_map(fn ($item) => $this->repeaterState($item, ! $isItem && array_is_list($value)), $value);
     }
 
+    public function test_blank_list_entries_are_rejected_without_overwriting_saved_content(): void
+    {
+        $record = WebsiteContent::where('key', 'research.researchAreas')->firstOrFail();
+        $original = $record->content;
+        Livewire::test(WebsiteContentResource\Pages\EditWebsiteContent::class, ['record' => $record->id])
+            ->fillForm(['content' => ['value' => [['text' => '']]]])->call('save')
+            ->assertHasFormErrors(['content.value.0.text' => 'required']);
+        $this->assertSame($original, $record->fresh()->content);
+    }
+
     public function test_viewers_cannot_edit_website_content(): void
     {
         $record = WebsiteContent::firstOrFail();
